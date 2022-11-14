@@ -180,7 +180,7 @@ interface PageDocumentData {
  * Slice for *Page → Slice Zone*
  *
  */
-type PageDocumentDataSlicesSlice = HeroSlice | GuestListSlice;
+type PageDocumentDataSlicesSlice = HeroSlice | GuestListSlice | SponsorListSlice | EventDetailsSlice | CharityDetailsSlice | RegisterCtaSlice | LastYearRecapSlice | DonationLeaderboardSlice;
 /**
  * Page document from Prismic
  *
@@ -216,6 +216,17 @@ interface SponsorDocumentData {
      */
     logo: prismicT.ImageField<never>;
     /**
+     * Description field in *Sponsor*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: sponsor.description
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    description: prismicT.RichTextField;
+    /**
      * Link field in *Sponsor*
      *
      * - **Field Type**: Link
@@ -226,6 +237,18 @@ interface SponsorDocumentData {
      *
      */
     link: prismicT.LinkField;
+    /**
+     * Type field in *Sponsor*
+     *
+     * - **Field Type**: Select
+     * - **Placeholder**: *None*
+     * - **Default Value**: Company
+     * - **API ID Path**: sponsor.type
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/select
+     *
+     */
+    type: prismicT.SelectField<"Company" | "Community", "filled">;
 }
 /**
  * Sponsor document from Prismic
@@ -238,6 +261,183 @@ interface SponsorDocumentData {
  */
 export type SponsorDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<SponsorDocumentData>, "sponsor", Lang>;
 export type AllDocumentTypes = GuestDocument | PageDocument | SponsorDocument;
+/**
+ * Primary content in CharityDetails → Primary
+ *
+ */
+interface CharityDetailsSliceDefaultPrimary {
+    /**
+     * Heading field in *CharityDetails → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: charity_details.primary.heading
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    heading: prismicT.KeyTextField;
+    /**
+     * Body field in *CharityDetails → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: charity_details.primary.body
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    body: prismicT.RichTextField;
+    /**
+     * Charity Logo field in *CharityDetails → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: charity_details.primary.charityLogo
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    charityLogo: prismicT.ImageField<never>;
+}
+/**
+ * Default variation for CharityDetails Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `CharityDetails`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type CharityDetailsSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<CharityDetailsSliceDefaultPrimary>, never>;
+/**
+ * Slice variation for *CharityDetails*
+ *
+ */
+type CharityDetailsSliceVariation = CharityDetailsSliceDefault;
+/**
+ * CharityDetails Shared Slice
+ *
+ * - **API ID**: `charity_details`
+ * - **Description**: `CharityDetails`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type CharityDetailsSlice = prismicT.SharedSlice<"charity_details", CharityDetailsSliceVariation>;
+/**
+ * Primary content in DonationLeaderboard → Primary
+ *
+ */
+interface DonationLeaderboardSliceDefaultPrimary {
+    /**
+     * Heading field in *DonationLeaderboard → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: donation_leaderboard.primary.heading
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    heading: prismicT.KeyTextField;
+    /**
+     * Body field in *DonationLeaderboard → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: donation_leaderboard.primary.body
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    body: prismicT.RichTextField;
+}
+/**
+ * Default variation for DonationLeaderboard Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `DonationLeaderboard`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type DonationLeaderboardSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<DonationLeaderboardSliceDefaultPrimary>, never>;
+/**
+ * Slice variation for *DonationLeaderboard*
+ *
+ */
+type DonationLeaderboardSliceVariation = DonationLeaderboardSliceDefault;
+/**
+ * DonationLeaderboard Shared Slice
+ *
+ * - **API ID**: `donation_leaderboard`
+ * - **Description**: `DonationLeaderboard`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type DonationLeaderboardSlice = prismicT.SharedSlice<"donation_leaderboard", DonationLeaderboardSliceVariation>;
+/**
+ * Primary content in EventDetails → Primary
+ *
+ */
+interface EventDetailsSliceDefaultPrimary {
+    /**
+     * Heading field in *EventDetails → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: event_details.primary.heading
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    heading: prismicT.KeyTextField;
+    /**
+     * Body field in *EventDetails → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: event_details.primary.body
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    body: prismicT.RichTextField;
+    /**
+     * Date and Time field in *EventDetails → Primary*
+     *
+     * - **Field Type**: Timestamp
+     * - **Placeholder**: *None*
+     * - **API ID Path**: event_details.primary.dateTime
+     * - **Documentation**: https://prismic.io/docs/core-concepts/timestamp
+     *
+     */
+    dateTime: prismicT.TimestampField;
+    /**
+     * Link to Show field in *EventDetails → Primary*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: event_details.primary.showLink
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    showLink: prismicT.LinkField;
+}
+/**
+ * Default variation for EventDetails Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `EventDetails`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type EventDetailsSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<EventDetailsSliceDefaultPrimary>, never>;
+/**
+ * Slice variation for *EventDetails*
+ *
+ */
+type EventDetailsSliceVariation = EventDetailsSliceDefault;
+/**
+ * EventDetails Shared Slice
+ *
+ * - **API ID**: `event_details`
+ * - **Description**: `EventDetails`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type EventDetailsSlice = prismicT.SharedSlice<"event_details", EventDetailsSliceVariation>;
 /**
  * Primary content in GuestList → Primary
  *
@@ -265,22 +465,6 @@ interface GuestListSliceDefaultPrimary {
     body: prismicT.RichTextField;
 }
 /**
- * Item in GuestList → Items
- *
- */
-export interface GuestListSliceDefaultItem {
-    /**
-     * Guest field in *GuestList → Items*
-     *
-     * - **Field Type**: Content Relationship
-     * - **Placeholder**: *None*
-     * - **API ID Path**: guest_list.items[].guest
-     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
-     *
-     */
-    guest: prismicT.RelationField;
-}
-/**
  * Default variation for GuestList Slice
  *
  * - **API ID**: `default`
@@ -288,7 +472,7 @@ export interface GuestListSliceDefaultItem {
  * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
  *
  */
-export type GuestListSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<GuestListSliceDefaultPrimary>, Simplify<GuestListSliceDefaultItem>>;
+export type GuestListSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<GuestListSliceDefaultPrimary>, never>;
 /**
  * Slice variation for *GuestList*
  *
@@ -319,15 +503,15 @@ interface HeroSliceDefaultPrimary {
      */
     heading: prismicT.KeyTextField;
     /**
-     * Description field in *Hero → Primary*
+     * Body field in *Hero → Primary*
      *
      * - **Field Type**: Rich Text
      * - **Placeholder**: *None*
-     * - **API ID Path**: hero.primary.description
+     * - **API ID Path**: hero.primary.body
      * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
      *
      */
-    description: prismicT.RichTextField;
+    body: prismicT.RichTextField;
 }
 /**
  * Default variation for Hero Slice
@@ -352,11 +536,158 @@ type HeroSliceVariation = HeroSliceDefault;
  *
  */
 export type HeroSlice = prismicT.SharedSlice<"hero", HeroSliceVariation>;
+/**
+ * Primary content in LastYearRecap → Primary
+ *
+ */
+interface LastYearRecapSliceDefaultPrimary {
+    /**
+     * Heading field in *LastYearRecap → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: last_year_recap.primary.heading
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    heading: prismicT.KeyTextField;
+    /**
+     * Body field in *LastYearRecap → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: last_year_recap.primary.body
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    body: prismicT.RichTextField;
+}
+/**
+ * Default variation for LastYearRecap Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `LastYearRecap`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type LastYearRecapSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<LastYearRecapSliceDefaultPrimary>, never>;
+/**
+ * Slice variation for *LastYearRecap*
+ *
+ */
+type LastYearRecapSliceVariation = LastYearRecapSliceDefault;
+/**
+ * LastYearRecap Shared Slice
+ *
+ * - **API ID**: `last_year_recap`
+ * - **Description**: `LastYearRecap`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type LastYearRecapSlice = prismicT.SharedSlice<"last_year_recap", LastYearRecapSliceVariation>;
+/**
+ * Primary content in RegisterCTA → Primary
+ *
+ */
+interface RegisterCtaSliceDefaultPrimary {
+    /**
+     * Heading field in *RegisterCTA → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: register_cta.primary.heading
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    heading: prismicT.KeyTextField;
+    /**
+     * Body field in *RegisterCTA → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: register_cta.primary.body
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    body: prismicT.RichTextField;
+}
+/**
+ * Default variation for RegisterCTA Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `RegisterCTA`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type RegisterCtaSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<RegisterCtaSliceDefaultPrimary>, never>;
+/**
+ * Slice variation for *RegisterCTA*
+ *
+ */
+type RegisterCtaSliceVariation = RegisterCtaSliceDefault;
+/**
+ * RegisterCTA Shared Slice
+ *
+ * - **API ID**: `register_cta`
+ * - **Description**: `RegisterCTA`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type RegisterCtaSlice = prismicT.SharedSlice<"register_cta", RegisterCtaSliceVariation>;
+/**
+ * Primary content in SponsorList → Primary
+ *
+ */
+interface SponsorListSliceDefaultPrimary {
+    /**
+     * Heading field in *SponsorList → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: sponsor_list.primary.heading
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    heading: prismicT.KeyTextField;
+    /**
+     * Body field in *SponsorList → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: sponsor_list.primary.body
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    body: prismicT.RichTextField;
+}
+/**
+ * Default variation for SponsorList Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `SponsorList`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type SponsorListSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<SponsorListSliceDefaultPrimary>, never>;
+/**
+ * Slice variation for *SponsorList*
+ *
+ */
+type SponsorListSliceVariation = SponsorListSliceDefault;
+/**
+ * SponsorList Shared Slice
+ *
+ * - **API ID**: `sponsor_list`
+ * - **Description**: `SponsorList`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type SponsorListSlice = prismicT.SharedSlice<"sponsor_list", SponsorListSliceVariation>;
 declare module "@prismicio/client" {
     interface CreateClient {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { GuestDocumentData, GuestDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, SponsorDocumentData, SponsorDocument, AllDocumentTypes, GuestListSliceDefaultPrimary, GuestListSliceDefaultItem, GuestListSliceDefault, GuestListSliceVariation, GuestListSlice, HeroSliceDefaultPrimary, HeroSliceDefault, HeroSliceVariation, HeroSlice };
+        export type { GuestDocumentData, GuestDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, SponsorDocumentData, SponsorDocument, AllDocumentTypes, CharityDetailsSliceDefaultPrimary, CharityDetailsSliceDefault, CharityDetailsSliceVariation, CharityDetailsSlice, DonationLeaderboardSliceDefaultPrimary, DonationLeaderboardSliceDefault, DonationLeaderboardSliceVariation, DonationLeaderboardSlice, EventDetailsSliceDefaultPrimary, EventDetailsSliceDefault, EventDetailsSliceVariation, EventDetailsSlice, GuestListSliceDefaultPrimary, GuestListSliceDefault, GuestListSliceVariation, GuestListSlice, HeroSliceDefaultPrimary, HeroSliceDefault, HeroSliceVariation, HeroSlice, LastYearRecapSliceDefaultPrimary, LastYearRecapSliceDefault, LastYearRecapSliceVariation, LastYearRecapSlice, RegisterCtaSliceDefaultPrimary, RegisterCtaSliceDefault, RegisterCtaSliceVariation, RegisterCtaSlice, SponsorListSliceDefaultPrimary, SponsorListSliceDefault, SponsorListSliceVariation, SponsorListSlice };
     }
 }

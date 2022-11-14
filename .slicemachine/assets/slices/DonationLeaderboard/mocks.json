@@ -1,0 +1,20 @@
+[
+  {
+    "variation": "default",
+    "version": "sktwi1xtmkfgx8626",
+    "items": [
+      {}
+    ],
+    "primary": {
+      "heading": "herd",
+      "body": [
+        {
+          "type": "paragraph",
+          "text": "Elit aute cillum ut qui tempor enim reprehenderit eiusmod nostrud minim consectetur ullamco enim. Dolor exercitation nostrud dolore consectetur est adipisicing velit reprehenderit voluptate et reprehenderit incididunt cillum. Voluptate aliquip sint cupidatat nisi.",
+          "spans": []
+        }
+      ]
+    },
+    "slice_type": "donation_leaderboard"
+  }
+]

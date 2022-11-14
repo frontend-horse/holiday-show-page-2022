@@ -4,9 +4,16 @@ import { getAllSponsors } from "../lib/prismicio";
 
 const { heading, body } = Astro.props.primary;
 
-// Fetch guests and map to order from CMS
 const allSponsors = await getAllSponsors();
 console.log("🚀 ~ file: SponsorList.astro ~ line 9 ~ allSponsors", allSponsors);
+
+const companies = allSponsors.filter(
+  (sponsor) => sponsor.data.type === "Company"
+);
+
+const communities = allSponsors.filter(
+  (sponsor) => sponsor.data.type === "Community"
+);
 
 const bodyHTML = prismicH.asHTML(body);
 ---
@@ -16,11 +23,26 @@ const bodyHTML = prismicH.asHTML(body);
 
   <Fragment set:html="bodyHTML" />
 
+  <h3>Companies</h3>
   <div>
     {
-      allSponsors.map((sponsor) => (
+      companies.map((sponsor) => (
         <div>
-          <a href={sponsor.data.link.url}>
+          <a href={`/sponsor/${sponsor.uid}`}>
+            <span class="sr-only">{sponsor.data.name}</span>
+            <img src={sponsor.data.logo.url} alt={sponsor.data.name} />
+          </a>
+        </div>
+      ))
+    }
+  </div>
+
+  <h3>Communities</h3>
+  <div>
+    {
+      communities.map((sponsor) => (
+        <div>
+          <a href={`/sponsor/${sponsor.uid}`}>
             <h3 class="sr-only">{sponsor.data.name}</h3>
             <img src={sponsor.data.logo.url} alt={sponsor.data.name} />
           </a>

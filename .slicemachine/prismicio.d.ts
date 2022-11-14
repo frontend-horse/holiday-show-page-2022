@@ -180,7 +180,7 @@ interface PageDocumentData {
  * Slice for *Page → Slice Zone*
  *
  */
-type PageDocumentDataSlicesSlice = HeroSlice | GuestListSlice | SponsorListSlice | EventDetailsSlice | CharityDetailsSlice | RegisterCtaSlice | LastYearRecapSlice;
+type PageDocumentDataSlicesSlice = HeroSlice | GuestListSlice | SponsorListSlice | EventDetailsSlice | CharityDetailsSlice | RegisterCtaSlice | LastYearRecapSlice | DonationLeaderboardSlice;
 /**
  * Page document from Prismic
  *
@@ -216,6 +216,17 @@ interface SponsorDocumentData {
      */
     logo: prismicT.ImageField<never>;
     /**
+     * Description field in *Sponsor*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: sponsor.description
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    description: prismicT.RichTextField;
+    /**
      * Link field in *Sponsor*
      *
      * - **Field Type**: Link
@@ -226,6 +237,18 @@ interface SponsorDocumentData {
      *
      */
     link: prismicT.LinkField;
+    /**
+     * Type field in *Sponsor*
+     *
+     * - **Field Type**: Select
+     * - **Placeholder**: *None*
+     * - **Default Value**: Company
+     * - **API ID Path**: sponsor.type
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/select
+     *
+     */
+    type: prismicT.SelectField<"Company" | "Community", "filled">;
 }
 /**
  * Sponsor document from Prismic
@@ -297,6 +320,55 @@ type CharityDetailsSliceVariation = CharityDetailsSliceDefault;
  *
  */
 export type CharityDetailsSlice = prismicT.SharedSlice<"charity_details", CharityDetailsSliceVariation>;
+/**
+ * Primary content in DonationLeaderboard → Primary
+ *
+ */
+interface DonationLeaderboardSliceDefaultPrimary {
+    /**
+     * Heading field in *DonationLeaderboard → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: donation_leaderboard.primary.heading
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    heading: prismicT.KeyTextField;
+    /**
+     * Body field in *DonationLeaderboard → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: donation_leaderboard.primary.body
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    body: prismicT.RichTextField;
+}
+/**
+ * Default variation for DonationLeaderboard Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `DonationLeaderboard`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type DonationLeaderboardSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<DonationLeaderboardSliceDefaultPrimary>, never>;
+/**
+ * Slice variation for *DonationLeaderboard*
+ *
+ */
+type DonationLeaderboardSliceVariation = DonationLeaderboardSliceDefault;
+/**
+ * DonationLeaderboard Shared Slice
+ *
+ * - **API ID**: `donation_leaderboard`
+ * - **Description**: `DonationLeaderboard`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type DonationLeaderboardSlice = prismicT.SharedSlice<"donation_leaderboard", DonationLeaderboardSliceVariation>;
 /**
  * Primary content in EventDetails → Primary
  *
@@ -616,6 +688,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { GuestDocumentData, GuestDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, SponsorDocumentData, SponsorDocument, AllDocumentTypes, CharityDetailsSliceDefaultPrimary, CharityDetailsSliceDefault, CharityDetailsSliceVariation, CharityDetailsSlice, EventDetailsSliceDefaultPrimary, EventDetailsSliceDefault, EventDetailsSliceVariation, EventDetailsSlice, GuestListSliceDefaultPrimary, GuestListSliceDefault, GuestListSliceVariation, GuestListSlice, HeroSliceDefaultPrimary, HeroSliceDefault, HeroSliceVariation, HeroSlice, LastYearRecapSliceDefaultPrimary, LastYearRecapSliceDefault, LastYearRecapSliceVariation, LastYearRecapSlice, RegisterCtaSliceDefaultPrimary, RegisterCtaSliceDefault, RegisterCtaSliceVariation, RegisterCtaSlice, SponsorListSliceDefaultPrimary, SponsorListSliceDefault, SponsorListSliceVariation, SponsorListSlice };
+        export type { GuestDocumentData, GuestDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, SponsorDocumentData, SponsorDocument, AllDocumentTypes, CharityDetailsSliceDefaultPrimary, CharityDetailsSliceDefault, CharityDetailsSliceVariation, CharityDetailsSlice, DonationLeaderboardSliceDefaultPrimary, DonationLeaderboardSliceDefault, DonationLeaderboardSliceVariation, DonationLeaderboardSlice, EventDetailsSliceDefaultPrimary, EventDetailsSliceDefault, EventDetailsSliceVariation, EventDetailsSlice, GuestListSliceDefaultPrimary, GuestListSliceDefault, GuestListSliceVariation, GuestListSlice, HeroSliceDefaultPrimary, HeroSliceDefault, HeroSliceVariation, HeroSlice, LastYearRecapSliceDefaultPrimary, LastYearRecapSliceDefault, LastYearRecapSliceVariation, LastYearRecapSlice, RegisterCtaSliceDefaultPrimary, RegisterCtaSliceDefault, RegisterCtaSliceVariation, RegisterCtaSlice, SponsorListSliceDefaultPrimary, SponsorListSliceDefault, SponsorListSliceVariation, SponsorListSlice };
     }
 }

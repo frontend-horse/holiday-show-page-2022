@@ -44,6 +44,9 @@
             },
             "last_year_recap": {
               "type": "SharedSlice"
+            },
+            "donation_leaderboard": {
+              "type": "SharedSlice"
             }
           }
         }

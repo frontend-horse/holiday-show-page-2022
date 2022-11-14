@@ -22,7 +22,14 @@
         }
       }
     },
-    "sponsor": {}
+    "sponsor": {
+      "description": {
+        "config": {
+          "patternType": "PARAGRAPH",
+          "blocks": 1
+        }
+      }
+    }
   },
   "slices": {
     "Hero": {
@@ -107,6 +114,18 @@
     "LastYearRecap": {
       "default": {
         "primary": {}
+      }
+    },
+    "DonationLeaderboard": {
+      "default": {
+        "primary": {
+          "body": {
+            "config": {
+              "patternType": "PARAGRAPH",
+              "blocks": 1
+            }
+          }
+        }
       }
     }
   }
