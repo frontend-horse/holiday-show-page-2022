@@ -1,0 +1,15 @@
+---
+// We might want to take certain props for when it's
+// on the homepage or on the Guest's individual page.
+
+const props = Astro.props;
+---
+
+<div>
+  <img
+    src={props.avatar.url}
+    alt={`Headshot of ${props.guestName}`}
+    width={props.avatar.dimensions.width}
+    height={props.avatar.dimensions.height}
+  />
+</div>

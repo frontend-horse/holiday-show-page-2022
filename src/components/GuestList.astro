@@ -1,6 +1,7 @@
 ---
 import * as prismicH from "@prismicio/helpers";
 import { getAllGuests } from "../lib/prismicio";
+import GuestAvatar from "./GuestAvatar.astro";
 
 const slice = Astro.props;
 
@@ -26,12 +27,8 @@ const body = prismicH.asHTML(slice.primary.body);
       sortedGuests.map((guest) => (
         <div>
           <h3>{guest.data.name}</h3>
-          <img
-            src={guest.data.avatar.url}
-            alt={`Headshot of ${guest.data.name}`}
-            width="200"
-            height="200"
-          />
+          <GuestAvatar avatar={guest.data.avatar} guestName={guest.data.name} />
+
           <a href={`/guest/${guest.uid}`}>View Details</a>
         </div>
       ))
