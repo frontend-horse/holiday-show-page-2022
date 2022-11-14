@@ -1,0 +1,26 @@
+[
+  {
+    "variation": "default",
+    "version": "sktwi1xtmkfgx8626",
+    "items": [
+      {}
+    ],
+    "primary": {
+      "title": [
+        {
+          "type": "heading1",
+          "text": "Recognize",
+          "spans": []
+        }
+      ],
+      "description": [
+        {
+          "type": "paragraph",
+          "text": "Incididunt labore ipsum id tempor dolor velit exercitation culpa pariatur in. Ullamco deserunt sit fugiat culpa veniam anim nostrud deserunt ullamco Lorem.",
+          "spans": []
+        }
+      ]
+    },
+    "slice_type": "previous_year_recap"
+  }
+]

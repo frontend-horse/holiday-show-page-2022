@@ -1,0 +1,29 @@
+[
+  {
+    "variation": "default",
+    "version": "sktwi1xtmkfgx8626",
+    "items": [
+      {}
+    ],
+    "primary": {
+      "heading": "son",
+      "body": [
+        {
+          "type": "paragraph",
+          "text": "Exercitation voluptate esse ut ipsum.",
+          "spans": []
+        }
+      ],
+      "charityLogo": {
+        "dimensions": {
+          "width": 900,
+          "height": 500
+        },
+        "alt": null,
+        "copyright": null,
+        "url": "https://images.unsplash.com/photo-1587613865763-4b8b0d19e8ab"
+      }
+    },
+    "slice_type": "charity_details"
+  }
+]

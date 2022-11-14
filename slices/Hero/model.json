@@ -18,10 +18,10 @@
             "placeholder": ""
           }
         },
-        "description": {
+        "body": {
           "type": "StructuredText",
           "config": {
-            "label": "Description",
+            "label": "Body",
             "placeholder": "",
             "allowTargetBlank": true,
             "multi": "paragraph,preformatted,strong,em,hyperlink,list-item,o-list-item"

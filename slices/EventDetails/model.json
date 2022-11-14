@@ -1,15 +1,15 @@
 {
-  "id": "guest_list",
+  "id": "event_details",
   "type": "SharedSlice",
-  "name": "GuestList",
-  "description": "GuestList",
+  "name": "EventDetails",
+  "description": "EventDetails",
   "variations": [
     {
       "id": "default",
       "name": "Default",
       "docURL": "...",
       "version": "sktwi1xtmkfgx8626",
-      "description": "GuestList",
+      "description": "EventDetails",
       "primary": {
         "heading": {
           "type": "Text",
@@ -24,7 +24,22 @@
             "label": "Body",
             "placeholder": "",
             "allowTargetBlank": true,
-            "single": "paragraph"
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "dateTime": {
+          "type": "Timestamp",
+          "config": {
+            "label": "Date and Time",
+            "placeholder": ""
+          }
+        },
+        "showLink": {
+          "type": "Link",
+          "config": {
+            "label": "Link to Show",
+            "placeholder": "",
+            "select": null
           }
         }
       },

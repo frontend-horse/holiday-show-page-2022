@@ -1,7 +1,7 @@
 ---
 import * as prismicH from "@prismicio/helpers";
 
-const { heading, body } = Astro.props.primary;
+const { heading, body, charityLogo } = Astro.props.primary;
 
 const bodyHTML = prismicH.asHTML(body);
 ---
@@ -10,4 +10,5 @@ const bodyHTML = prismicH.asHTML(body);
   <h2>{heading}</h2>
 
   <Fragment set:html="bodyHTML" />
+  <img src={charityLogo.url} alt="" />
 </section>

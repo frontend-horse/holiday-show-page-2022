@@ -1,15 +1,15 @@
 {
-  "id": "guest_list",
+  "id": "sponsor_list",
   "type": "SharedSlice",
-  "name": "GuestList",
-  "description": "GuestList",
+  "name": "SponsorList",
+  "description": "SponsorList",
   "variations": [
     {
       "id": "default",
       "name": "Default",
       "docURL": "...",
       "version": "sktwi1xtmkfgx8626",
-      "description": "GuestList",
+      "description": "SponsorList",
       "primary": {
         "heading": {
           "type": "Text",
@@ -24,7 +24,7 @@
             "label": "Body",
             "placeholder": "",
             "allowTargetBlank": true,
-            "single": "paragraph"
+            "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
           }
         }
       },

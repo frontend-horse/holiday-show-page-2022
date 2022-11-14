@@ -28,7 +28,7 @@
     "Hero": {
       "default": {
         "primary": {
-          "description": {
+          "body": {
             "config": {
               "patternType": "PARAGRAPH",
               "blocks": 1
@@ -46,7 +46,67 @@
               "blocks": 1
             }
           }
+        },
+        "items": {}
+      }
+    },
+    "SponsorList": {
+      "default": {
+        "primary": {}
+      }
+    },
+    "EventDetails": {
+      "default": {
+        "primary": {
+          "body": {
+            "config": {
+              "patternType": "PARAGRAPH",
+              "blocks": 1
+            }
+          }
         }
+      }
+    },
+    "CharityDetails": {
+      "default": {
+        "primary": {
+          "body": {
+            "config": {
+              "patternType": "PARAGRAPH",
+              "blocks": 1
+            }
+          }
+        }
+      }
+    },
+    "RegisterCTA": {
+      "default": {
+        "primary": {
+          "body": {
+            "config": {
+              "patternType": "PARAGRAPH",
+              "blocks": 1
+            }
+          }
+        }
+      }
+    },
+    "PreviousYearRecap": {},
+    "Content": {
+      "default": {
+        "primary": {
+          "body": {
+            "config": {
+              "patternType": "PARAGRAPH",
+              "blocks": 1
+            }
+          }
+        }
+      }
+    },
+    "LastYearRecap": {
+      "default": {
+        "primary": {}
       }
     }
   }

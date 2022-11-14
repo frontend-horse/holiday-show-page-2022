@@ -29,6 +29,21 @@
             },
             "guest_list": {
               "type": "SharedSlice"
+            },
+            "sponsor_list": {
+              "type": "SharedSlice"
+            },
+            "event_details": {
+              "type": "SharedSlice"
+            },
+            "charity_details": {
+              "type": "SharedSlice"
+            },
+            "register_cta": {
+              "type": "SharedSlice"
+            },
+            "last_year_recap": {
+              "type": "SharedSlice"
             }
           }
         }

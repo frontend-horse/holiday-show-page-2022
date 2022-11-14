@@ -86,6 +86,11 @@ export async function getAllGuests() {
   return await client.getAllByType("guest", {
     orderings: {
       field: "my.guest.name",
+      direction: "asc",
     },
   });
+}
+
+export async function getAllSponsors() {
+  return await client.getAllByType("sponsor");
 }

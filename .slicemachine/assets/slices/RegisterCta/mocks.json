@@ -6,15 +6,15 @@
       {}
     ],
     "primary": {
-      "heading": "will",
+      "heading": "education",
       "body": [
         {
           "type": "paragraph",
-          "text": "Minim eu proident quis est voluptate magna proident sint fugiat sint in quis irure voluptate.",
+          "text": "Ullamco fugiat excepteur officia labore.",
           "spans": []
         }
       ]
     },
-    "slice_type": "guest_list"
+    "slice_type": "register_cta"
   }
 ]

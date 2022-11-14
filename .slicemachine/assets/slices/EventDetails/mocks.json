@@ -1,0 +1,25 @@
+[
+  {
+    "variation": "default",
+    "version": "sktwi1xtmkfgx8626",
+    "items": [
+      {}
+    ],
+    "primary": {
+      "heading": "on",
+      "body": [
+        {
+          "type": "paragraph",
+          "text": "Aliquip eu culpa do ea sunt ea excepteur irure culpa magna elit culpa ea. Est in sit do. Quis laborum ipsum qui quis dolore consequat irure non magna commodo esse.",
+          "spans": []
+        }
+      ],
+      "dateTime": "2018-01-07T05:42:58+0000",
+      "showLink": {
+        "link_type": "Web",
+        "url": "https://prismic.io"
+      }
+    },
+    "slice_type": "event_details"
+  }
+]

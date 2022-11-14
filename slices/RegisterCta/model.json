@@ -1,15 +1,15 @@
 {
-  "id": "guest_list",
+  "id": "register_cta",
   "type": "SharedSlice",
-  "name": "GuestList",
-  "description": "GuestList",
+  "name": "RegisterCTA",
+  "description": "RegisterCTA",
   "variations": [
     {
       "id": "default",
       "name": "Default",
       "docURL": "...",
       "version": "sktwi1xtmkfgx8626",
-      "description": "GuestList",
+      "description": "RegisterCTA",
       "primary": {
         "heading": {
           "type": "Text",
@@ -24,7 +24,7 @@
             "label": "Body",
             "placeholder": "",
             "allowTargetBlank": true,
-            "single": "paragraph"
+            "multi": "paragraph,strong,em"
           }
         }
       },

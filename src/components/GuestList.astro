@@ -3,18 +3,18 @@ import * as prismicH from "@prismicio/helpers";
 import { getAllGuests } from "../lib/prismicio";
 import GuestAvatar from "./GuestAvatar.astro";
 
-const slice = Astro.props;
+const { heading, body } = Astro.props.primary;
 
 // Fetch guests and map to order from CMS
 const allGuests = await getAllGuests();
 
-const body = prismicH.asHTML(slice.primary.body);
+const bodyHTML = prismicH.asHTML(body);
 ---
 
-<div>
-  <h2>{slice.primary.heading}</h2>
+<section>
+  <h2>{heading}</h2>
 
-  <Fragment set:html="body" />
+  <Fragment set:html="bodyHTML" />
 
   <div>
     {
@@ -28,4 +28,4 @@ const body = prismicH.asHTML(slice.primary.body);
       ))
     }
   </div>
-</div>
+</section>

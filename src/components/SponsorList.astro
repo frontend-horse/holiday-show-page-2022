@@ -1,0 +1,45 @@
+---
+import * as prismicH from "@prismicio/helpers";
+import { getAllSponsors } from "../lib/prismicio";
+
+const { heading, body } = Astro.props.primary;
+
+// Fetch guests and map to order from CMS
+const allSponsors = await getAllSponsors();
+console.log("🚀 ~ file: SponsorList.astro ~ line 9 ~ allSponsors", allSponsors);
+
+const bodyHTML = prismicH.asHTML(body);
+---
+
+<section>
+  <h2>{heading}</h2>
+
+  <Fragment set:html="bodyHTML" />
+
+  <div>
+    {
+      allSponsors.map((sponsor) => (
+        <div>
+          <a href={sponsor.data.link.url}>
+            <h3 class="sr-only">{sponsor.data.name}</h3>
+            <img src={sponsor.data.logo.url} alt={sponsor.data.name} />
+          </a>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+</style>

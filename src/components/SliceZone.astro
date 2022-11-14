@@ -1,10 +1,22 @@
 ---
 import GuestList from "./GuestList.astro";
 import Hero from "./Hero.astro";
+import SponsorList from "./SponsorList.astro";
+import RegisterCTA from "./RegisterCTA.astro";
+import CharityDetails from "./CharityDetails.astro";
+import EventDetails from "./EventDetails.astro";
+import LastYearRecap from "./LastYearRecap.astro";
+
 const components = {
   hero: Hero,
   guest_list: GuestList,
+  sponsor_list: SponsorList,
+  charity_details: CharityDetails,
+  event_details: EventDetails,
+  register_cta: RegisterCTA,
+  last_year_recap: LastYearRecap,
 };
+
 const { slices } = Astro.props;
 
 // This component takes in content from Prismic and renders the appropriate component

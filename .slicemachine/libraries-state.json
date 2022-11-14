@@ -1,6 +1,175 @@
 {
   "slices": {
     "components": {
+      "charity_details": {
+        "library": "slices",
+        "id": "charity_details",
+        "name": "CharityDetails",
+        "description": "CharityDetails",
+        "model": {
+          "id": "charity_details",
+          "type": "SharedSlice",
+          "name": "CharityDetails",
+          "description": "CharityDetails",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "CharityDetails",
+              "primary": {
+                "heading": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Heading",
+                    "placeholder": ""
+                  }
+                },
+                "body": {
+                  "type": "StructuredText",
+                  "config": {
+                    "label": "Body",
+                    "placeholder": "",
+                    "allowTargetBlank": true,
+                    "multi": "paragraph,em,strong,hyperlink"
+                  }
+                },
+                "charityLogo": {
+                  "type": "Image",
+                  "config": {
+                    "label": "Charity Logo",
+                    "constraint": {},
+                    "thumbnails": []
+                  }
+                }
+              },
+              "items": {},
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "version": "sktwi1xtmkfgx8626",
+            "items": [
+              {}
+            ],
+            "primary": {
+              "heading": "son",
+              "body": [
+                {
+                  "type": "paragraph",
+                  "text": "Exercitation voluptate esse ut ipsum.",
+                  "spans": []
+                }
+              ],
+              "charityLogo": {
+                "dimensions": {
+                  "width": 900,
+                  "height": 500
+                },
+                "alt": null,
+                "copyright": null,
+                "url": "https://images.unsplash.com/photo-1587613865763-4b8b0d19e8ab"
+              }
+            },
+            "slice_type": "charity_details"
+          }
+        },
+        "meta": {
+          "fileName": null,
+          "extension": null
+        },
+        "screenshotPaths": {}
+      },
+      "event_details": {
+        "library": "slices",
+        "id": "event_details",
+        "name": "EventDetails",
+        "description": "EventDetails",
+        "model": {
+          "id": "event_details",
+          "type": "SharedSlice",
+          "name": "EventDetails",
+          "description": "EventDetails",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "EventDetails",
+              "primary": {
+                "heading": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Heading",
+                    "placeholder": ""
+                  }
+                },
+                "body": {
+                  "type": "StructuredText",
+                  "config": {
+                    "label": "Body",
+                    "placeholder": "",
+                    "allowTargetBlank": true,
+                    "multi": "paragraph,strong,em,hyperlink"
+                  }
+                },
+                "dateTime": {
+                  "type": "Timestamp",
+                  "config": {
+                    "label": "Date and Time",
+                    "placeholder": ""
+                  }
+                },
+                "showLink": {
+                  "type": "Link",
+                  "config": {
+                    "label": "Link to Show",
+                    "placeholder": "",
+                    "select": null
+                  }
+                }
+              },
+              "items": {},
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "version": "sktwi1xtmkfgx8626",
+            "items": [
+              {}
+            ],
+            "primary": {
+              "heading": "on",
+              "body": [
+                {
+                  "type": "paragraph",
+                  "text": "Aliquip eu culpa do ea sunt ea excepteur irure culpa magna elit culpa ea. Est in sit do. Quis laborum ipsum qui quis dolore consequat irure non magna commodo esse.",
+                  "spans": []
+                }
+              ],
+              "dateTime": "2018-01-07T05:42:58+0000",
+              "showLink": {
+                "link_type": "Web",
+                "url": "https://prismic.io"
+              }
+            },
+            "slice_type": "event_details"
+          }
+        },
+        "meta": {
+          "fileName": null,
+          "extension": null
+        },
+        "screenshotPaths": {}
+      },
       "guest_list": {
         "library": "slices",
         "id": "guest_list",
@@ -36,15 +205,7 @@
                   }
                 }
               },
-              "items": {
-                "guest": {
-                  "type": "Link",
-                  "config": {
-                    "label": "Guest",
-                    "select": "document"
-                  }
-                }
-              },
+              "items": {},
               "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
             }
           ]
@@ -54,25 +215,14 @@
             "variation": "default",
             "version": "sktwi1xtmkfgx8626",
             "items": [
-              {
-                "guest": {
-                  "id": "mock_document_id",
-                  "link_type": "Document",
-                  "type": "mock",
-                  "tags": [],
-                  "lang": "en-us",
-                  "slug": null,
-                  "first_publication_date": "1970-01-01T00:00:01+0000",
-                  "last_publication_date": "1970-01-01T01:00:00+0000"
-                }
-              }
+              {}
             ],
             "primary": {
-              "heading": "there",
+              "heading": "will",
               "body": [
                 {
                   "type": "paragraph",
-                  "text": "Cillum veniam mollit aliqua ex in in magna. Cillum cupidatat occaecat dolore laborum sit do excepteur consectetur occaecat ipsum adipisicing consequat anim culpa irure. Enim dolor culpa ea do deserunt ex.",
+                  "text": "Minim eu proident quis est voluptate magna proident sint fugiat sint in quis irure voluptate.",
                   "spans": []
                 }
               ]
@@ -111,10 +261,10 @@
                     "placeholder": ""
                   }
                 },
-                "description": {
+                "body": {
                   "type": "StructuredText",
                   "config": {
-                    "label": "Description",
+                    "label": "Body",
                     "placeholder": "",
                     "allowTargetBlank": true,
                     "multi": "paragraph,preformatted,strong,em,hyperlink,list-item,o-list-item"
@@ -134,16 +284,214 @@
               {}
             ],
             "primary": {
-              "heading": "ants",
-              "description": [
+              "heading": "waste",
+              "body": [
                 {
                   "type": "paragraph",
-                  "text": "Veniam voluptate consequat ad dolore.",
+                  "text": "Eiusmod ea adipisicing ullamco ex magna nisi in pariatur ea labore non sint dolore voluptate. Deserunt aliquip occaecat proident ea duis anim ut. Quis officia incididunt aliqua incididunt nostrud culpa.",
                   "spans": []
                 }
               ]
             },
             "slice_type": "hero"
+          }
+        },
+        "meta": {
+          "fileName": null,
+          "extension": null
+        },
+        "screenshotPaths": {}
+      },
+      "last_year_recap": {
+        "library": "slices",
+        "id": "last_year_recap",
+        "name": "LastYearRecap",
+        "description": "LastYearRecap",
+        "model": {
+          "id": "last_year_recap",
+          "type": "SharedSlice",
+          "name": "LastYearRecap",
+          "description": "LastYearRecap",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "LastYearRecap",
+              "primary": {
+                "heading": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Heading",
+                    "placeholder": ""
+                  }
+                },
+                "body": {
+                  "type": "StructuredText",
+                  "config": {
+                    "label": "Body",
+                    "placeholder": "",
+                    "allowTargetBlank": true,
+                    "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+                  }
+                }
+              },
+              "items": {},
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "version": "sktwi1xtmkfgx8626",
+            "items": [
+              {}
+            ],
+            "primary": {
+              "heading": "respect",
+              "body": [
+                {
+                  "type": "paragraph",
+                  "text": "Lorem voluptate quis tempor nostrud velit qui amet fugiat aliqua qui exercitation adipisicing ad minim. Aliquip sint nostrud quis Lorem sit Lorem in in reprehenderit magna. Pariatur esse eiusmod do nulla anim elit ad labore tempor excepteur duis sunt incididunt anim pariatur.",
+                  "spans": []
+                }
+              ]
+            },
+            "slice_type": "last_year_recap"
+          }
+        },
+        "meta": {
+          "fileName": null,
+          "extension": null
+        },
+        "screenshotPaths": {}
+      },
+      "register_cta": {
+        "library": "slices",
+        "id": "register_cta",
+        "name": "RegisterCTA",
+        "description": "RegisterCTA",
+        "model": {
+          "id": "register_cta",
+          "type": "SharedSlice",
+          "name": "RegisterCTA",
+          "description": "RegisterCTA",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "RegisterCTA",
+              "primary": {
+                "heading": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Heading",
+                    "placeholder": ""
+                  }
+                },
+                "body": {
+                  "type": "StructuredText",
+                  "config": {
+                    "label": "Body",
+                    "placeholder": "",
+                    "allowTargetBlank": true,
+                    "multi": "paragraph,strong,em"
+                  }
+                }
+              },
+              "items": {},
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "version": "sktwi1xtmkfgx8626",
+            "items": [
+              {}
+            ],
+            "primary": {
+              "heading": "education",
+              "body": [
+                {
+                  "type": "paragraph",
+                  "text": "Ullamco fugiat excepteur officia labore.",
+                  "spans": []
+                }
+              ]
+            },
+            "slice_type": "register_cta"
+          }
+        },
+        "meta": {
+          "fileName": null,
+          "extension": null
+        },
+        "screenshotPaths": {}
+      },
+      "sponsor_list": {
+        "library": "slices",
+        "id": "sponsor_list",
+        "name": "SponsorList",
+        "description": "SponsorList",
+        "model": {
+          "id": "sponsor_list",
+          "type": "SharedSlice",
+          "name": "SponsorList",
+          "description": "SponsorList",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "SponsorList",
+              "primary": {
+                "heading": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Heading",
+                    "placeholder": ""
+                  }
+                },
+                "body": {
+                  "type": "StructuredText",
+                  "config": {
+                    "label": "Body",
+                    "placeholder": "",
+                    "allowTargetBlank": true,
+                    "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+                  }
+                }
+              },
+              "items": {},
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "version": "sktwi1xtmkfgx8626",
+            "items": [
+              {}
+            ],
+            "primary": {
+              "heading": "sun",
+              "body": [
+                {
+                  "type": "paragraph",
+                  "text": "Amet elit aute commodo fugiat eiusmod. Fugiat aliquip enim tempor non anim sint reprehenderit eiusmod ullamco ut elit duis esse commodo. Exercitation occaecat do mollit eu.",
+                  "spans": []
+                }
+              ]
+            },
+            "slice_type": "sponsor_list"
           }
         },
         "meta": {
