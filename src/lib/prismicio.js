@@ -83,5 +83,9 @@ export async function getHomepage() {
 }
 
 export async function getAllGuests() {
-  return await client.getAllByType("guest");
+  return await client.getAllByType("guest", {
+    orderings: {
+      field: "my.guest.name",
+    },
+  });
 }

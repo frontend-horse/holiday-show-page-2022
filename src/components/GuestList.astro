@@ -8,12 +8,6 @@ const slice = Astro.props;
 // Fetch guests and map to order from CMS
 const allGuests = await getAllGuests();
 
-const guestOrder = slice.items;
-
-const sortedGuests = guestOrder.map((guestToFind) =>
-  allGuests.find(({ id }) => id === guestToFind.guest.id)
-);
-
 const body = prismicH.asHTML(slice.primary.body);
 ---
 
@@ -24,7 +18,7 @@ const body = prismicH.asHTML(slice.primary.body);
 
   <div>
     {
-      sortedGuests.map((guest) => (
+      allGuests.map((guest) => (
         <div>
           <h3>{guest.data.name}</h3>
           <GuestAvatar avatar={guest.data.avatar} guestName={guest.data.name} />
