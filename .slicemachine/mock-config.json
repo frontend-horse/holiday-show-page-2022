@@ -21,7 +21,8 @@
           "blocks": 1
         }
       }
-    }
+    },
+    "sponsor": {}
   },
   "slices": {
     "Hero": {
