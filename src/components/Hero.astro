@@ -1,0 +1,13 @@
+---
+import * as prismicH from "@prismicio/helpers";
+
+const slice = Astro.props.primary;
+
+const description = prismicH.asHTML(slice.description);
+---
+
+<div>
+  <h2>{slice.heading}</h2>
+
+  <Fragment set:html="description" />
+</div>

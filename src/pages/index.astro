@@ -1,0 +1,16 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SliceZone from "../components/SliceZone.astro";
+import { getHomepage } from "../lib/prismicio";
+
+const page = await getHomepage();
+const title = page.data.title;
+---
+
+<Layout title="Welcome to Astro.">
+  <main>
+    <SliceZone slices={page.data.slices} />
+  </main>
+</Layout>
+
+<style></style>

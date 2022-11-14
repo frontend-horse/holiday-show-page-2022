@@ -1,0 +1,39 @@
+---
+import * as prismicH from "@prismicio/helpers";
+import { getAllGuests } from "../lib/prismicio";
+
+const slice = Astro.props;
+
+// Fetch guests and map to order from CMS
+const allGuests = await getAllGuests();
+
+const guestOrder = slice.items;
+
+const sortedGuests = guestOrder.map((guestToFind) =>
+  allGuests.find(({ id }) => id === guestToFind.guest.id)
+);
+
+const body = prismicH.asHTML(slice.primary.body);
+---
+
+<div>
+  <h2>{slice.primary.heading}</h2>
+
+  <Fragment set:html="body" />
+
+  <div>
+    {
+      sortedGuests.map((guest) => (
+        <div>
+          <h3>{guest.data.name}</h3>
+          <img
+            src={guest.data.avatar.url}
+            alt={`Headshot of ${guest.data.name}`}
+            width="200"
+            height="200"
+          />
+        </div>
+      ))
+    }
+  </div>
+</div>

@@ -1,0 +1,30 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SliceZone from "../components/SliceZone.astro";
+import { getAllPages } from "../lib/prismicio";
+
+export async function getStaticPaths() {
+  const allPages = await getAllPages();
+  console.log(
+    "🚀 ~ file: [uid].astro ~ line 8 ~ getStaticPaths ~ allPages",
+    allPages
+  );
+
+  const paths = allPages.map((page) => ({
+    params: { uid: page.uid === "home" ? "/" : page.uid },
+    props: page,
+  }));
+  return paths;
+}
+
+const page = Astro.props;
+const title = page.data.title;
+---
+
+<Layout title="Welcome to Astro.">
+  <main>
+    <SliceZone slices={page.data.slices} />
+  </main>
+</Layout>
+
+<style></style>

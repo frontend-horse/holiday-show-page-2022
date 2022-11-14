@@ -1,0 +1,157 @@
+{
+  "slices": {
+    "components": {
+      "guest_list": {
+        "library": "slices",
+        "id": "guest_list",
+        "name": "GuestList",
+        "description": "GuestList",
+        "model": {
+          "id": "guest_list",
+          "type": "SharedSlice",
+          "name": "GuestList",
+          "description": "GuestList",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "GuestList",
+              "primary": {
+                "heading": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Heading",
+                    "placeholder": ""
+                  }
+                },
+                "body": {
+                  "type": "StructuredText",
+                  "config": {
+                    "label": "Body",
+                    "placeholder": "",
+                    "allowTargetBlank": true,
+                    "single": "paragraph"
+                  }
+                }
+              },
+              "items": {
+                "guest": {
+                  "type": "Link",
+                  "config": {
+                    "label": "Guest",
+                    "select": "document"
+                  }
+                }
+              },
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "version": "sktwi1xtmkfgx8626",
+            "items": [
+              {
+                "guest": {
+                  "id": "mock_document_id",
+                  "link_type": "Document",
+                  "type": "mock",
+                  "tags": [],
+                  "lang": "en-us",
+                  "slug": null,
+                  "first_publication_date": "1970-01-01T00:00:01+0000",
+                  "last_publication_date": "1970-01-01T01:00:00+0000"
+                }
+              }
+            ],
+            "primary": {
+              "heading": "there",
+              "body": [
+                {
+                  "type": "paragraph",
+                  "text": "Cillum veniam mollit aliqua ex in in magna. Cillum cupidatat occaecat dolore laborum sit do excepteur consectetur occaecat ipsum adipisicing consequat anim culpa irure. Enim dolor culpa ea do deserunt ex.",
+                  "spans": []
+                }
+              ]
+            },
+            "slice_type": "guest_list"
+          }
+        },
+        "meta": {
+          "fileName": null,
+          "extension": null
+        },
+        "screenshotPaths": {}
+      },
+      "hero": {
+        "library": "slices",
+        "id": "hero",
+        "name": "Hero",
+        "description": "Hero",
+        "model": {
+          "id": "hero",
+          "type": "SharedSlice",
+          "name": "Hero",
+          "description": "Hero",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "Hero",
+              "primary": {
+                "heading": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Heading",
+                    "placeholder": ""
+                  }
+                },
+                "description": {
+                  "type": "StructuredText",
+                  "config": {
+                    "label": "Description",
+                    "placeholder": "",
+                    "allowTargetBlank": true,
+                    "multi": "paragraph,preformatted,strong,em,hyperlink,list-item,o-list-item"
+                  }
+                }
+              },
+              "items": {},
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "version": "sktwi1xtmkfgx8626",
+            "items": [
+              {}
+            ],
+            "primary": {
+              "heading": "ants",
+              "description": [
+                {
+                  "type": "paragraph",
+                  "text": "Veniam voluptate consequat ad dolore.",
+                  "spans": []
+                }
+              ]
+            },
+            "slice_type": "hero"
+          }
+        },
+        "meta": {
+          "fileName": null,
+          "extension": null
+        },
+        "screenshotPaths": {}
+      }
+    }
+  }
+}

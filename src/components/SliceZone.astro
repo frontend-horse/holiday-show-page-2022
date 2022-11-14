@@ -1,0 +1,20 @@
+---
+import GuestList from "./GuestList.astro";
+import Hero from "./Hero.astro";
+const components = {
+  hero: Hero,
+  guest_list: GuestList,
+};
+const { slices } = Astro.props;
+
+// This component takes in content from Prismic and renders the appropriate component
+---
+
+<>
+  {
+    slices.map((slice, index) => {
+      const Component = components[slice.slice_type];
+      return <Component key={index} {...slice} />;
+    })
+  }
+</>

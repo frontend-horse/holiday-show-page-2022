@@ -1,0 +1,42 @@
+---
+export interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+
+import NavBar from "../components/NavBar.astro";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <NavBar />
+    <slot />
+  </body>
+</html>
+<style is:global lang="scss">
+  @import "open-props/style";
+  @import "open-props/normalize";
+  @import "open-props/buttons";
+
+  body {
+    display: grid;
+    grid-template-rows: max-content;
+    grid-template-columns:
+      1fr
+      min(1024px, 100%)
+      1fr;
+
+    > * {
+      grid-column: 2;
+    }
+  }
+</style>

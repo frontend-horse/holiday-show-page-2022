@@ -1,0 +1,8 @@
+{
+  "apiEndpoint": "https://fh-holiday-show.prismic.io/api/v2",
+  "libraries": [
+    "@/slices"
+  ],
+  "framework": "none",
+  "_latest": "0.5.2"
+}
