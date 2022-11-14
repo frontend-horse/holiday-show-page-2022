@@ -1,0 +1,51 @@
+---
+import * as prismicH from "@prismicio/helpers";
+import Layout from "../../layouts/Layout.astro";
+import SliceZone from "../../components/SliceZone.astro";
+import { getAllGuests } from "../../lib/prismicio";
+
+export async function getStaticPaths() {
+  const allPages = await getAllGuests();
+  const paths = allPages.map((page) => ({
+    params: { uid: page.uid },
+    props: page,
+  }));
+  return paths;
+}
+
+const {
+  name,
+  avatar,
+  jobTitle,
+  guestBio,
+  twitterUrl,
+  websiteUrl,
+  mastadonUrl,
+  topicTitle,
+  topicDescription,
+} = Astro.props.data;
+
+const guestBioHTML = prismicH.asHTML(guestBio);
+const topicDescriptionHTML = prismicH.asHTML(topicDescription);
+---
+
+<Layout title={` - Holiday Snowtacular`}>
+  <main>
+    <h1>{name}</h1>
+    <img src={avatar.url} alt={`Headshot of ${name}`} />
+    <span>{jobTitle}</span>
+    <dl>
+      <dt>Bio</dt>
+      <dd>
+        <Fragment set:html="guestBioHTML" />
+      </dd>
+      <dt>Topic</dt>
+      <dd>{topicTitle}</dd>
+      <dd>
+        <Fragment set:html="topicDescriptionHTML" />
+      </dd>
+    </dl>
+  </main>
+</Layout>
+
+<style></style>

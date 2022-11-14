@@ -27,6 +27,22 @@
           "thumbnails": []
         }
       },
+      "jobTitle": {
+        "type": "Text",
+        "config": {
+          "label": "Job Title",
+          "placeholder": ""
+        }
+      },
+      "guestBio": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Guest Bio",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "single": "paragraph,strong,em,hyperlink"
+        }
+      },
       "twitterUrl": {
         "type": "Text",
         "config": {

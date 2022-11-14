@@ -31,6 +31,28 @@ interface GuestDocumentData {
      */
     avatar: prismicT.ImageField<never>;
     /**
+     * Job Title field in *Guest*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: guest.jobTitle
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    jobTitle: prismicT.KeyTextField;
+    /**
+     * Guest Bio field in *Guest*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: guest.guestBio
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    guestBio: prismicT.RichTextField;
+    /**
      * Twitter URL field in *Guest*
      *
      * - **Field Type**: Text

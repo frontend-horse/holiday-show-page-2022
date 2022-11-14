@@ -6,6 +6,12 @@
           "patternType": "PARAGRAPH",
           "blocks": 1
         }
+      },
+      "guestBio": {
+        "config": {
+          "patternType": "PARAGRAPH",
+          "blocks": 1
+        }
       }
     },
     "page": {
