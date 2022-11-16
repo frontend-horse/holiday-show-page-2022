@@ -5,19 +5,20 @@ import * as prismicH from "@prismicio/helpers";
 
 const props = Astro.props;
 
-const avatarURL = prismicH.asImageSrc(props.avatar.url, {
-  w: 200,
-  h: 200,
+const avatarURL = prismicH.asImageSrc(props.avatar, {
+  w: 300,
+  h: 300,
   fit: "crop",
   crop: "faces",
 });
+console.log("🚀 ~ file: GuestAvatar.astro ~ line 14 ~ avatarURL", avatarURL);
 ---
 
 <div>
   <img
     src={avatarURL}
     alt={`Headshot of ${props.guestName}`}
-    width={props.avatar.dimensions.width}
-    height={props.avatar.dimensions.height}
+    width={300}
+    height={300}
   />
 </div>
