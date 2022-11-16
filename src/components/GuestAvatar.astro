@@ -1,13 +1,21 @@
 ---
+import * as prismicH from "@prismicio/helpers";
 // We might want to take certain props for when it's
 // on the homepage or on the Guest's individual page.
 
 const props = Astro.props;
+
+const avatarURL = prismicH.asImageSrc(props.avatar.url, {
+  w: 200,
+  h: 200,
+  fit: "crop",
+  crop: "faces",
+});
 ---
 
 <div>
   <img
-    src={props.avatar.url}
+    src={avatarURL}
     alt={`Headshot of ${props.guestName}`}
     width={props.avatar.dimensions.width}
     height={props.avatar.dimensions.height}
