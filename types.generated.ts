@@ -42,6 +42,17 @@ interface GuestDocumentData {
      */
     jobTitle: prismicT.KeyTextField;
     /**
+     * Company field in *Guest*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: guest.company
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    company: prismicT.KeyTextField;
+    /**
      * Guest Bio field in *Guest*
      *
      * - **Field Type**: Rich Text

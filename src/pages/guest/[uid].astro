@@ -18,6 +18,7 @@ const {
   name,
   avatar,
   jobTitle,
+  company,
   guestBio,
   twitterUrl,
   websiteUrl,
@@ -34,7 +35,7 @@ const topicDescriptionHTML = prismicH.asHTML(topicDescription);
   <main>
     <h1>{name}</h1>
     <GuestAvatar avatar={avatar} guestName={name} />
-    <span>{jobTitle}</span>
+    <span>{jobTitle} @ {company}</span>
     <dl>
       <dt>Bio</dt>
       <dd>

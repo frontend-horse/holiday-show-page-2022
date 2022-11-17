@@ -34,6 +34,13 @@
           "placeholder": ""
         }
       },
+      "company": {
+        "type": "Text",
+        "config": {
+          "label": "Company",
+          "placeholder": ""
+        }
+      },
       "guestBio": {
         "type": "StructuredText",
         "config": {
