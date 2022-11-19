@@ -7,10 +7,7 @@ import { SponsorDocument } from "../../../types.generated";
 
 export async function getStaticPaths() {
   const allPages = await getAllSponsors();
-  console.log(
-    "🚀 ~ file: [uid].astro ~ line 10 ~ getStaticPaths ~ allPages",
-    allPages
-  );
+
   const paths = allPages.map((page) => ({
     params: { uid: page.uid },
     props: page,
