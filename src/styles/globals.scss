@@ -1,0 +1,21 @@
+@layer reset, global, typography, components;
+
+@layer global {
+  :root {
+    // Colors
+    --background-color: #0c2461;
+    --primary-color: #fed330;
+    --black: #282828;
+    --white: #ffffff;
+  }
+  body {
+    background: var(--background-color);
+    overflow-x: hidden;
+  }
+  main {
+    margin-block-start: 3rem;
+  }
+  main > * + * {
+    margin-block-start: 3rem;
+  }
+}

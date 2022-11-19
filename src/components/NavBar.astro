@@ -1,19 +1,15 @@
 ---
-import Logo from "./Logo.astro";
-import RegistrationButton from "./RegistrationButton.astro";
+import Logo from './Logo.astro';
+import RegistrationButton from './RegistrationButton.astro';
 ---
 
-<header>
-  <a href="/">
-    <Logo />
-  </a>
-
-  <RegistrationButton />
+<header role="banner">
+  <nav>
+    <a href="#">Speakers</a>
+    <a href="#">Sponsors</a>
+  </nav>
+  <Logo />
+  <div class="actions">
+    <RegistrationButton>Register</RegistrationButton>
+  </div>
 </header>
-
-<style>
-  header {
-    display: flex;
-    justify-content: space-between;
-  }
-</style>

@@ -11,19 +11,18 @@ const allGuests = await getAllGuests();
 const bodyHTML = prismicH.asHTML(body);
 ---
 
-<section>
+<section class="guests">
   <h2>{heading}</h2>
 
   <Fragment set:html="bodyHTML" />
 
-  <div>
+  <div class="guest-grid">
     {
       allGuests.map((guest) => (
-        <div>
-          <h3>{guest.data.name}</h3>
+        <div class="guest">
           <GuestAvatar avatar={guest.data.avatar} guestName={guest.data.name} />
-
-          <a href={`/guest/${guest.uid}`}>View Details</a>
+          <h3><a href={`/guest/${guest.uid}`}>{guest.data.name}</a></h3>
+          <p>{guest.data.company}</p>
         </div>
       ))
     }
