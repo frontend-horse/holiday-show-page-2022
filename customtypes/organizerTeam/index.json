@@ -33,14 +33,6 @@
                 "placeholder": ""
               }
             },
-            "avatar": {
-              "type": "Image",
-              "config": {
-                "label": "Avatar",
-                "constraint": {},
-                "thumbnails": []
-              }
-            },
             "websiteURL": {
               "type": "Text",
               "config": {

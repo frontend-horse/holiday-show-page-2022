@@ -181,16 +181,6 @@ export interface OrganizerTeamDocumentDataMemberItem {
      */
     name: prismicT.KeyTextField;
     /**
-     * Avatar field in *Organizer Team → Member*
-     *
-     * - **Field Type**: Image
-     * - **Placeholder**: *None*
-     * - **API ID Path**: organizerTeam.member[].avatar
-     * - **Documentation**: https://prismic.io/docs/core-concepts/image
-     *
-     */
-    avatar: prismicT.ImageField<never>;
-    /**
      * Website URL field in *Organizer Team → Member*
      *
      * - **Field Type**: Text

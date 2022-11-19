@@ -94,3 +94,7 @@ export async function getAllGuests() {
 export async function getAllSponsors() {
   return await client.getAllByType("sponsor");
 }
+
+export async function getOrganizers() {
+  return await client.getSingle("organizerTeam");
+}
