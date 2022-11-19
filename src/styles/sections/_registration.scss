@@ -1,0 +1,11 @@
+@layer sections {
+  .registration {
+    --container-width: 80ch;
+
+    margin-inline: auto;
+    width: min(var(--container-width), 100% - 3rem);
+    > * + * {
+      margin-block-start: 1.5rem;
+    }
+  }
+}

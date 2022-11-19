@@ -6,7 +6,7 @@ const { heading, body, charityLogo } = Astro.props.primary;
 const bodyHTML = prismicH.asHTML(body);
 ---
 
-<section>
+<section class="charity">
   <h2>{heading}</h2>
 
   <Fragment set:html="bodyHTML" />

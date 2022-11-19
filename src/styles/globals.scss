@@ -1,5 +1,4 @@
-@layer reset, global, typography, components;
-
+@layer reset, global, typography, components, sections;
 @layer global {
   :root {
     // Colors
@@ -8,14 +7,20 @@
     --black: #282828;
     --white: #ffffff;
   }
+  
+  html{
+    scroll-behavior: smooth;
+  }
+
   body {
     background: var(--background-color);
     overflow-x: hidden;
   }
+  
   main {
     margin-block-start: 3rem;
-  }
-  main > * + * {
-    margin-block-start: 3rem;
+    > * + * {
+      margin-block-start: 3rem;
+    }
   }
 }

@@ -11,7 +11,7 @@ const allGuests = await getAllGuests();
 const bodyHTML = prismicH.asHTML(body);
 ---
 
-<section class="guests">
+<section id="guests" class="guests">
   <h2>{heading}</h2>
 
   <Fragment set:html="bodyHTML" />

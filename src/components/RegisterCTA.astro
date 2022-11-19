@@ -1,13 +1,13 @@
 ---
-import * as prismicH from "@prismicio/helpers";
-import RegistrationButton from "./RegistrationButton.astro";
+import * as prismicH from '@prismicio/helpers';
+import RegistrationButton from './RegistrationButton.astro';
 
 const { heading, body } = Astro.props.primary;
 
 const bodyHTML = prismicH.asHTML(body);
 ---
 
-<section>
+<section class="registration">
   <h2>{heading}</h2>
 
   <Fragment set:html="bodyHTML" />
