@@ -129,6 +129,98 @@ interface GuestDocumentData {
  * @typeParam Lang - Language API ID of the document.
  */
 export type GuestDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<GuestDocumentData>, "guest", Lang>;
+/** Content for Organizer Team documents */
+interface OrganizerTeamDocumentData {
+    /**
+     * Heading field in *Organizer Team*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: organizerTeam.heading
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    heading: prismicT.KeyTextField;
+    /**
+     * Body field in *Organizer Team*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: organizerTeam.body
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    body: prismicT.RichTextField;
+    /**
+     * Member field in *Organizer Team*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: organizerTeam.member[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/group
+     *
+     */
+    member: prismicT.GroupField<Simplify<OrganizerTeamDocumentDataMemberItem>>;
+}
+/**
+ * Item in Organizer Team → Member
+ *
+ */
+export interface OrganizerTeamDocumentDataMemberItem {
+    /**
+     * Name field in *Organizer Team → Member*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: organizerTeam.member[].name
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    name: prismicT.KeyTextField;
+    /**
+     * Avatar field in *Organizer Team → Member*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: organizerTeam.member[].avatar
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    avatar: prismicT.ImageField<never>;
+    /**
+     * Website URL field in *Organizer Team → Member*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: organizerTeam.member[].websiteURL
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    websiteURL: prismicT.KeyTextField;
+    /**
+     * Contributions field in *Organizer Team → Member*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: Design, organization, development..
+     * - **API ID Path**: organizerTeam.member[].contributions
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    contributions: prismicT.KeyTextField;
+}
+/**
+ * Organizer Team document from Prismic
+ *
+ * - **API ID**: `organizerTeam`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type OrganizerTeamDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<OrganizerTeamDocumentData>, "organizerTeam", Lang>;
 /** Content for Page documents */
 interface PageDocumentData {
     /**
@@ -271,7 +363,7 @@ interface SponsorDocumentData {
  * @typeParam Lang - Language API ID of the document.
  */
 export type SponsorDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<SponsorDocumentData>, "sponsor", Lang>;
-export type AllDocumentTypes = GuestDocument | PageDocument | SponsorDocument;
+export type AllDocumentTypes = GuestDocument | OrganizerTeamDocument | PageDocument | SponsorDocument;
 /**
  * Primary content in CharityDetails → Primary
  *
@@ -699,6 +791,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { GuestDocumentData, GuestDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, SponsorDocumentData, SponsorDocument, AllDocumentTypes, CharityDetailsSliceDefaultPrimary, CharityDetailsSliceDefault, CharityDetailsSliceVariation, CharityDetailsSlice, DonationLeaderboardSliceDefaultPrimary, DonationLeaderboardSliceDefault, DonationLeaderboardSliceVariation, DonationLeaderboardSlice, EventDetailsSliceDefaultPrimary, EventDetailsSliceDefault, EventDetailsSliceVariation, EventDetailsSlice, GuestListSliceDefaultPrimary, GuestListSliceDefault, GuestListSliceVariation, GuestListSlice, HeroSliceDefaultPrimary, HeroSliceDefault, HeroSliceVariation, HeroSlice, LastYearRecapSliceDefaultPrimary, LastYearRecapSliceDefault, LastYearRecapSliceVariation, LastYearRecapSlice, RegisterCtaSliceDefaultPrimary, RegisterCtaSliceDefault, RegisterCtaSliceVariation, RegisterCtaSlice, SponsorListSliceDefaultPrimary, SponsorListSliceDefault, SponsorListSliceVariation, SponsorListSlice };
+        export type { GuestDocumentData, GuestDocument, OrganizerTeamDocumentData, OrganizerTeamDocumentDataMemberItem, OrganizerTeamDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, SponsorDocumentData, SponsorDocument, AllDocumentTypes, CharityDetailsSliceDefaultPrimary, CharityDetailsSliceDefault, CharityDetailsSliceVariation, CharityDetailsSlice, DonationLeaderboardSliceDefaultPrimary, DonationLeaderboardSliceDefault, DonationLeaderboardSliceVariation, DonationLeaderboardSlice, EventDetailsSliceDefaultPrimary, EventDetailsSliceDefault, EventDetailsSliceVariation, EventDetailsSlice, GuestListSliceDefaultPrimary, GuestListSliceDefault, GuestListSliceVariation, GuestListSlice, HeroSliceDefaultPrimary, HeroSliceDefault, HeroSliceVariation, HeroSlice, LastYearRecapSliceDefaultPrimary, LastYearRecapSliceDefault, LastYearRecapSliceVariation, LastYearRecapSlice, RegisterCtaSliceDefaultPrimary, RegisterCtaSliceDefault, RegisterCtaSliceVariation, RegisterCtaSlice, SponsorListSliceDefaultPrimary, SponsorListSliceDefault, SponsorListSliceVariation, SponsorListSlice };
     }
 }

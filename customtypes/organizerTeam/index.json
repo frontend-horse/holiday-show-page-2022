@@ -1,0 +1,63 @@
+{
+  "id": "organizerTeam",
+  "label": "Organizer Team",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "heading": {
+        "type": "Text",
+        "config": {
+          "label": "Heading",
+          "placeholder": ""
+        }
+      },
+      "body": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Body",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,em,strong,list-item,o-list-item,hyperlink"
+        }
+      },
+      "member": {
+        "type": "Group",
+        "config": {
+          "label": "Member",
+          "fields": {
+            "name": {
+              "type": "Text",
+              "config": {
+                "label": "Name",
+                "placeholder": ""
+              }
+            },
+            "avatar": {
+              "type": "Image",
+              "config": {
+                "label": "Avatar",
+                "constraint": {},
+                "thumbnails": []
+              }
+            },
+            "websiteURL": {
+              "type": "Text",
+              "config": {
+                "label": "Website URL",
+                "placeholder": ""
+              }
+            },
+            "contributions": {
+              "type": "Text",
+              "config": {
+                "label": "Contributions",
+                "placeholder": "Design, organization, development.."
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

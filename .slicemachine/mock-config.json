@@ -29,6 +29,15 @@
           "blocks": 1
         }
       }
+    },
+    "organizerTeam": {
+      "member": {},
+      "body": {
+        "config": {
+          "patternType": "PARAGRAPH",
+          "blocks": 1
+        }
+      }
     }
   },
   "slices": {
