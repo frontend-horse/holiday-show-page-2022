@@ -13,14 +13,20 @@
     "generate-types": "npx prismic-ts-codegen"
   },
   "dependencies": {
+    "@astrojs/svelte": "^1.0.2",
     "@prismicio/client": "^6.7.1",
     "@prismicio/helpers": "^2.3.5",
     "astro": "^1.6.7",
+    "node-fetch": "^2.6.7",
     "open-props": "^1.4.24",
-    "sass": "^1.56.1"
+    "sass": "^1.56.1",
+    "svelte": "^3.53.1",
+    "tiltifyapi": "^2.2.3"
   },
   "devDependencies": {
+    "@faker-js/faker": "^7.6.0",
     "@prismicio/types": "^0.2.3",
+    "netlify-cli": "^12.2.4",
     "prismic-ts-codegen": "^0.1.5",
     "slice-machine-ui": "^0.5.2"
   }
