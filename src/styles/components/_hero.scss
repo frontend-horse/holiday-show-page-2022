@@ -49,10 +49,8 @@
         width: min(var(--width), 100%);
       }
       .cta {
-        --cta-background: #75c0f5;
-        
         align-items: center;
-        background: var(--cta-background);
+        background: var(--hero-cta-background);
         border-radius: 3rem;
         color: var(--black);
         display: none;

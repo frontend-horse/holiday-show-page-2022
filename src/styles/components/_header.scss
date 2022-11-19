@@ -54,9 +54,9 @@
       }
     }
     .button {
-      --button-color: #c23616;
+      --button-bg-color: var(--accent-color);
       &:hover {
-        --button-color: #8f2c15;
+        --button-bg-color: var(--accent-color-dark);
       }
     }
   }

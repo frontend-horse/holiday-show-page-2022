@@ -1,12 +1,10 @@
 @layer components {
   button,
   .button {
-    --button-color: var(--black);
-
     align-items: center;
-    background: var(--button-color);
+    background: var(--button-bg-color);
     border-radius: 3rem;
-    color: var(--body-color);
+    color: var(--button-font-color);
     display: inline-flex;
     font-family: var(--body-font);
     gap: 1rem;
@@ -18,7 +16,7 @@
     transition: 0.2s ease;
     width: fit-content;
     &:hover {
-      --button-color: #333333;
+      --button-bg-color: var(--button-bg-hover-color);
     }
   }
 }

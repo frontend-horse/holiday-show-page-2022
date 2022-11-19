@@ -1,19 +1,11 @@
-@layer reset, global, typography, components, sections;
+@layer reset, global, typography, components, sections, theme;
 @layer global {
-  :root {
-    // Colors
-    --background-color: #0c2461;
-    --primary-color: #fed330;
-    --black: #282828;
-    --white: #ffffff;
-  }
-  
   html{
     scroll-behavior: smooth;
   }
 
   body {
-    background: var(--background-color);
+    background: var(--body-bg-color);
     overflow-x: hidden;
   }
   

@@ -4,11 +4,11 @@ layer(typography);
 @layer typography {
   :root {
     /*   Body   */
-    --body-color: var(--white);
+    
     --body-font: 'Poppins', sans-serif;
 
     /*   Headers   */
-    --header-color: var(--primary-color);
+    
     --header-font: 'Fraunces', serif;
 
     /*   Sizes   */
@@ -27,7 +27,7 @@ layer(typography);
   }
 
   body {
-    color: var(--body-color);
+    color: var(--body-font-color);
     font-family: var(--body-font);
   }
 
@@ -39,11 +39,11 @@ layer(typography);
 
   h1 {
     font-size: var(--step-5);
-    color: var(--header-color);
+    color: var(--header-font-color);
   }
   h2 {
     font-size: var(--step-4);
-    color: var(--header-color);
+    color: var(--header-font-color);
   }
   h3 {
     font-size: var(--step-2);

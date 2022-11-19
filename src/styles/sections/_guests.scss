@@ -26,7 +26,7 @@
         width: 100%;
       }
       h3 {
-        color: var(--body-color);
+        color: var(--body-font-color);
         font-family: var(--body-font);
         font-size: var(--step--1);
         text-align: center;
@@ -44,7 +44,7 @@
         }
       }
       p {
-        color: var(--header-color);
+        color: var(--header-font-color);
         text-align: center;
       }
     }
