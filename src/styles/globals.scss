@@ -1,6 +1,6 @@
 @layer reset, global, typography, components, sections, theme;
 @layer global {
-  html{
+  html {
     scroll-behavior: smooth;
   }
 
@@ -8,9 +8,12 @@
     background: var(--body-bg-color);
     overflow-x: hidden;
   }
-  
+
   main {
-    margin-block-start: 3rem;
+    margin-block-start: 7.25rem;
+    @media (min-width: 640px) {
+      margin-block-start: 3rem;
+    }
     > * + * {
       margin-block-start: 3rem;
     }

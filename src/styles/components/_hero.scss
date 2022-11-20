@@ -3,11 +3,7 @@
     display: grid;
     position: relative;
     grid-template-areas: 'stack';
-    margin-block-start: 7.25rem;
     width: 100%;
-    @media (min-width: 640px) {
-      margin-block-start: 0;
-    }
     .hero-bg {
       grid-area: stack;
       margin-inline: auto;
