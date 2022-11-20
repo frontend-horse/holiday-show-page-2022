@@ -4,15 +4,15 @@ export interface Props {
 }
 
 const { title } = Astro.props;
-
-import NavBar from "../components/NavBar.astro";
+import '../styles/main.scss';
+import NavBar from '../components/NavBar.astro';
 ---
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
@@ -23,9 +23,10 @@ import NavBar from "../components/NavBar.astro";
   </body>
 </html>
 <style is:global lang="scss">
-  @import "open-props/style";
-  @import "open-props/normalize";
-  @import "open-props/buttons";
+  /*
+  @import 'open-props/style';
+  @import 'open-props/normalize';
+  @import 'open-props/buttons';
 
   body {
     display: grid;
@@ -47,4 +48,14 @@ import NavBar from "../components/NavBar.astro";
     // temporary fix to space out sections. Remove later.
     margin: var(--size-fluid-7) 0;
   }
+
+  :where(.visually-hidden:not(:focus, :active, :focus-within, .not-visually-hidden)) {
+    clip-path: inset(50%) !important;
+    height: 1px !important;
+    width: 1px !important;
+    overflow: hidden !important;
+    position: absolute !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+  }*/
 </style>

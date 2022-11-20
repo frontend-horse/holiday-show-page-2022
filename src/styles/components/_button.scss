@@ -1,0 +1,22 @@
+@layer components {
+  button,
+  .button {
+    align-items: center;
+    background: var(--button-bg-color);
+    border-radius: 3rem;
+    color: var(--button-font-color);
+    display: inline-flex;
+    font-family: var(--body-font);
+    gap: 1rem;
+    justify-content: center;
+    line-height: 1;
+    padding-block: 0.75rem;
+    padding-inline: 1rem;
+    text-decoration: none;
+    transition: 0.2s ease;
+    width: fit-content;
+    &:hover {
+      --button-bg-color: var(--button-bg-hover-color);
+    }
+  }
+}

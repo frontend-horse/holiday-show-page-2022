@@ -6,7 +6,7 @@ const { heading, body, dateTime, showLink } = Astro.props.primary;
 const bodyHTML = prismicH.asHTML(body);
 ---
 
-<section>
+<section class="event">
   <h2>{heading}</h2>
 
   <Fragment set:html="bodyHTML" />

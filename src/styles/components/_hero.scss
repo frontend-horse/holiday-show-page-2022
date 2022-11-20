@@ -1,0 +1,73 @@
+@layer components {
+    .hero {
+    display: grid;
+    position: relative;
+    grid-template-areas: 'stack';
+    margin-block-start: 7.25rem;
+    width: 100%;
+    @media (min-width: 640px) {
+      margin-block-start: 0;
+    }
+    .hero-bg {
+      grid-area: stack;
+      margin-inline: auto;
+      overflow: hidden;
+      width: 100%;
+      z-index: 0;
+      svg {
+        aspect-ratio: 1;
+        position: absolute;
+        width: min(25%, 100% - 3rem);
+        &:first-child {
+          bottom: 0;
+        }
+        &:last-child {
+          right: 0;
+        }
+      }
+    }
+    .hero-fg {
+      --container-width: 60ch;
+  
+      font-family: var(--header-font);
+      grid-area: stack;
+      margin-inline: auto;
+      text-align: center;
+      width: min(var(--container-width), 100% - 3rem);
+      z-index: 1;
+      > * {
+        margin: 0;
+      }
+      > * + * {
+        margin-block-start: 1rem;
+      }
+      > p {
+        --width: 20ch;
+  
+        font-size: var(--step-1);
+        margin-inline: auto;
+        width: min(var(--width), 100%);
+      }
+      .cta {
+        align-items: center;
+        background: var(--hero-cta-background);
+        border-radius: 3rem;
+        color: var(--black);
+        display: none;
+        font-family: var(--body-font);
+        margin-inline: auto;
+        padding-block: 0.25rem;
+        padding-inline: 0.4rem;
+        padding-inline-start: 0.75rem;
+        width: fit-content;
+        @media (min-width: 640px) {
+          display: grid;
+          grid-template-columns: 1fr fit-content(20ch);
+        }
+        > p {
+          padding-inline: 1rem;
+        }
+      }
+    }
+  }
+}

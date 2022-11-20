@@ -1,0 +1,18 @@
+@layer reset, global, typography, components, sections, theme;
+@layer global {
+  html{
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--body-bg-color);
+    overflow-x: hidden;
+  }
+  
+  main {
+    margin-block-start: 3rem;
+    > * + * {
+      margin-block-start: 3rem;
+    }
+  }
+}

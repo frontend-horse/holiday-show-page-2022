@@ -1,0 +1,53 @@
+@layer theme {
+  //Darker theme
+  :root {
+    // Colors
+    --accent-color: #c23616;
+    --accent-color-dark: #8f2c15;
+
+    --white: #FFFFFF;
+    --black: #282828;
+
+    --body-bg-color: #0c2461;
+    --body-font-color: var(--white);
+
+    --header-font-color: var(--primary-color);
+    
+    --button-font-color: var(--white);
+    --button-bg-color: var(--black);
+    --button-bg-hover-color: #333333;
+
+    --primary-color: #fed330;
+
+    --feh-fill: var(--white);
+    --snowtacular-fill: var(--primary-color);
+
+    --hero-cta-background:#75c0f5;
+  }
+
+  // Lighter theme
+  // :root {
+    // Colors
+    // --accent-color: var(--black);
+    // --accent-color-dark: #333333;
+
+    // --white: #FFFFFF;
+    // --black: #282828;
+
+    // --body-bg-color: #FFF3E9;
+    // --body-font-color: #494545;
+
+    // --header-font-color: #54110E;
+    
+    // --button-font-color: var(--white);
+    // --button-bg-color: var(--black);
+    // --button-bg-hover-color: #333333;
+
+    // --primary-color: #54110E;
+
+    // --feh-fill: #494545;
+    // --snowtacular-fill: #54110E;
+
+    // --hero-cta-background:#CC9F77;
+  // }
+}
