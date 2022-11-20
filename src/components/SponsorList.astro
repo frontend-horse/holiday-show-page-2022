@@ -1,19 +1,15 @@
 ---
-import * as prismicH from "@prismicio/helpers";
-import { getAllSponsors } from "../lib/prismicio";
+import * as prismicH from '@prismicio/helpers';
+import { getAllSponsors } from '../lib/prismicio';
 
 const { heading, body } = Astro.props.primary;
 
 const allSponsors = await getAllSponsors();
-console.log("🚀 ~ file: SponsorList.astro ~ line 9 ~ allSponsors", allSponsors);
+console.log('🚀 ~ file: SponsorList.astro ~ line 9 ~ allSponsors', allSponsors);
 
-const companies = allSponsors.filter(
-  (sponsor) => sponsor.data.type === "Company"
-);
+const companies = allSponsors.filter((sponsor) => sponsor.data.type === 'Company');
 
-const communities = allSponsors.filter(
-  (sponsor) => sponsor.data.type === "Community"
-);
+const communities = allSponsors.filter((sponsor) => sponsor.data.type === 'Community');
 
 const bodyHTML = prismicH.asHTML(body);
 ---
@@ -22,34 +18,32 @@ const bodyHTML = prismicH.asHTML(body);
   <h2>{heading}</h2>
 
   <Fragment set:html="bodyHTML" />
-
   <h3>Companies</h3>
-  <div>
+  <ul class="sponsor-grid">
     {
       companies.map((sponsor) => (
-        <div>
+        <li class="sponsor">
           <a href={`/sponsor/${sponsor.uid}`}>
             <span class="sr-only">{sponsor.data.name}</span>
             <img src={sponsor.data.logo.url} alt={sponsor.data.name} />
           </a>
-        </div>
+        </li>
       ))
     }
-  </div>
-
+  </ul>
   <h3>Communities</h3>
-  <div>
+  <ul class="sponsor-grid">
     {
       communities.map((sponsor) => (
-        <div>
+        <li class="sponsor">
           <a href={`/sponsor/${sponsor.uid}`}>
             <h3 class="sr-only">{sponsor.data.name}</h3>
             <img src={sponsor.data.logo.url} alt={sponsor.data.name} />
           </a>
-        </div>
+        </li>
       ))
     }
-  </div>
+  </ul>
 </section>
 
 <style>

@@ -5,7 +5,7 @@
     margin-inline: auto;
     width: min(var(--container-width), 100% - 3rem);
     > * + * {
-      margin-block-start: 1.5rem;
+      margin-block-start: 1rem;
     }
   }
 }
