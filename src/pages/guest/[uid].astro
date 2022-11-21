@@ -1,9 +1,9 @@
 ---
-import * as prismicH from "@prismicio/helpers";
-import Layout from "../../layouts/Layout.astro";
-import SliceZone from "../../components/SliceZone.astro";
-import { getAllGuests } from "../../lib/prismicio";
-import GuestAvatar from "../../components/GuestAvatar.astro";
+import * as prismicH from '@prismicio/helpers';
+import Layout from '../../layouts/Layout.astro';
+import SliceZone from '../../components/SliceZone.astro';
+import { getAllGuests } from '../../lib/prismicio';
+import GuestAvatar from '../../components/GuestAvatar.astro';
 
 export async function getStaticPaths() {
   const allPages = await getAllGuests();
@@ -14,28 +14,20 @@ export async function getStaticPaths() {
   return paths;
 }
 
-const {
-  name,
-  avatar,
-  jobTitle,
-  company,
-  guestBio,
-  twitterUrl,
-  websiteUrl,
-  mastadonUrl,
-  topicTitle,
-  topicDescription,
-} = Astro.props.data;
+const { name, avatar, jobTitle, company, guestBio, twitterUrl, websiteUrl, mastadonUrl, topicTitle, topicDescription } = Astro.props.data;
 
 const guestBioHTML = prismicH.asHTML(guestBio);
 const topicDescriptionHTML = prismicH.asHTML(topicDescription);
 ---
 
 <Layout title={`${name} - Guest Speaker - Holiday Snowtacular`}>
-  <main>
+  <main id="guest-page">
     <h1>{name}</h1>
     <GuestAvatar avatar={avatar} guestName={name} />
-    <span>{jobTitle} @ {company}</span>
+    <div class="guest-details">
+      <span>{jobTitle}</span>
+      <span>{company}</span>
+    </div>
     <dl>
       <dt>Bio</dt>
       <dd>

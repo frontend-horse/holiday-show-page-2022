@@ -4,8 +4,49 @@
 
     margin-inline: auto;
     width: min(var(--container-width), 100% - 3rem);
+    
     > * + * {
-      margin-block-start: 1.5rem;
+      margin-block-start: 1rem;
+    }
+
+    .sponsor-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(10ch, 1fr));
+      grid-gap: 1rem;
+    }
+
+    h3{
+      margin-block-start: 3rem;
+    }
+
+    .sponsor {
+      position:relative;
+      background: rgba(0, 0, 0, 0.25);
+      padding-block: 0.5rem;
+      padding-inline: 1rem;
+      display:grid;
+      place-content: center;
+      transition: background 0.2s ease;
+      border-radius: 0.25rem;
+      &:hover{
+        background: rgba(0,0,0,0.30);
+      }
+      a{
+        &::before{
+          content: '';
+          position:absolute;
+          inset: 0;
+        }
+      }
+      img{
+        display: block;
+        max-width: 100%;
+        padding:0;
+        margin:0;
+        width: auto;
+        height: 100px;
+        object-fit: contain;
+      }
     }
   }
 }
