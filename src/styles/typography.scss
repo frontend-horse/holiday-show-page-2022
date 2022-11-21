@@ -1,17 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=Poppins&display=swap')
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=Poppins&display=swap")
 layer(typography);
 
 @font-face {
-  font-family: 'Recoleta';
-  src: local('Recoleta'), url('/fonts/Recoleta-RegularDEMO.otf') format('opentype');
+  font-family: "Recoleta-Bold";
+  src: url("/fonts/Recoleta-Bold/font.woff2") format("woff2"),
+    url("/fonts/Recoleta-Bold/font.woff") format("woff");
+}
+@font-face {
+  font-family: "Recoleta-Medium";
+  src: url("/fonts/Recoleta-Medium/font.woff2") format("woff2"),
+    url("/fonts/Recoleta-Medium/font.woff") format("woff");
 }
 
 @layer typography {
   :root {
     /*   Body   */
-    --body-font: 'Poppins', sans-serif;
+    --body-font: "Poppins", sans-serif;
     /*   Headers   */
-    --header-font: 'Recoleta', serif;
+    --header-font: "Recoleta", serif;
 
     /*   Sizes   */
     --step--2: clamp(0.91rem, calc(0.89rem + 0.1vw), 0.96rem);
@@ -25,15 +31,17 @@ layer(typography);
   }
 
   html {
-    font-size: var(--step-0);
+    font-size: 16px;
   }
 
   body {
+    // font-size: var(--step-0);
     color: var(--body-font-color);
     font-family: var(--body-font);
   }
 
   p {
+    font-size: var(--step-0);
     line-height: 1.6;
     letter-spacing: 0.75px;
   }
