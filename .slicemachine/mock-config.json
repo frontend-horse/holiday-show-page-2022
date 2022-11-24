@@ -38,6 +38,9 @@
           "blocks": 1
         }
       }
+    },
+    "communitySponsor": {
+      "organizers": {}
     }
   },
   "slices": {

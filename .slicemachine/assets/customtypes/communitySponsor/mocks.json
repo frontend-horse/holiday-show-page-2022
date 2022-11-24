@@ -1,7 +1,7 @@
 {
   "id": "mock-doc-id",
   "url": null,
-  "type": "sponsor",
+  "type": "communitySponsor",
   "href": null,
   "tags": [],
   "first_publication_date": "1970-01-01T00:00:01+0000",
@@ -11,7 +11,14 @@
   "lang": "en-us",
   "alternate_languages": [],
   "data": {
-    "name": "each",
+    "title": "pet",
+    "description": [
+      {
+        "type": "paragraph",
+        "text": "In aute ex quis laboris ut deserunt aliqua nostrud.",
+        "spans": []
+      }
+    ],
     "logo": {
       "dimensions": {
         "width": 900,
@@ -19,18 +26,20 @@
       },
       "alt": null,
       "copyright": null,
-      "url": "https://images.unsplash.com/photo-1560762484-813fc97650a0"
+      "url": "https://images.unsplash.com/photo-1448932223592-d1fc686e76ea"
     },
-    "description": [
-      {
-        "type": "paragraph",
-        "text": "Velit labore cupidatat quis minim et incididunt amet sit.",
-        "spans": []
-      }
-    ],
     "link": {
       "link_type": "Web",
       "url": "https://slicemachine.dev"
-    }
+    },
+    "organizers": [
+      {
+        "name": "young",
+        "link": {
+          "link_type": "Web",
+          "url": "https://prismic.io"
+        }
+      }
+    ]
   }
 }
