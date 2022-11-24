@@ -10,12 +10,12 @@
   }
 
   main {
-    margin-block-start: 7.25rem;
+    margin-block-start: var(--space-4xl);
     @media (min-width: 640px) {
-      margin-block-start: 3rem;
+      margin-block-start: var(--space-2xl);
     }
     > * + * {
-      margin-block-start: 3rem;
+      margin-block-start: var(--space-4xl);
     }
   }
 }
