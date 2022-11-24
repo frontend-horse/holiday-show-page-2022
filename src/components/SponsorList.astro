@@ -24,7 +24,7 @@ const bodyHTML = prismicH.asHTML(body);
       companies.map((sponsor) => (
         <li class="sponsor">
           <a href={`/sponsor/${sponsor.uid}`}>
-            <span class="sr-only">{sponsor.data.name}</span>
+            <span class="visually-hidden">{sponsor.data.name}</span>
             <img src={sponsor.data.logo.url} alt={sponsor.data.name} />
           </a>
         </li>
@@ -37,7 +37,7 @@ const bodyHTML = prismicH.asHTML(body);
       communities.map((sponsor) => (
         <li class="sponsor">
           <a href={`/sponsor/${sponsor.uid}`}>
-            <h3 class="sr-only">{sponsor.data.name}</h3>
+            <h3 class="visually-hidden">{sponsor.data.name}</h3>
             <img src={sponsor.data.logo.url} alt={sponsor.data.name} />
           </a>
         </li>
@@ -45,17 +45,3 @@ const bodyHTML = prismicH.asHTML(body);
     }
   </ul>
 </section>
-
-<style>
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border-width: 0;
-  }
-</style>
