@@ -95,6 +95,10 @@ export async function getAllSponsors() {
   return await client.getAllByType("sponsor");
 }
 
+export async function getAllCommunitySponsors() {
+  return await client.getAllByType("communitySponsor");
+}
+
 export async function getOrganizers() {
   return await client.getSingle("organizerTeam");
 }

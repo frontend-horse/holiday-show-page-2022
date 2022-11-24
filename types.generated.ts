@@ -6,6 +6,100 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = {
     [KeyType in keyof T]: T[KeyType];
 };
+/** Content for Community Sponsor documents */
+interface CommunitySponsorDocumentData {
+    /**
+     * Title field in *Community Sponsor*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: communitySponsor.title
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    title: prismicT.KeyTextField;
+    /**
+     * Description field in *Community Sponsor*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: communitySponsor.description
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    description: prismicT.RichTextField;
+    /**
+     * Logo field in *Community Sponsor*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: communitySponsor.logo
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    logo: prismicT.ImageField<never>;
+    /**
+     * Link field in *Community Sponsor*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: communitySponsor.link
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    link: prismicT.LinkField;
+    /**
+     * Organizers field in *Community Sponsor*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: communitySponsor.organizers[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/group
+     *
+     */
+    organizers: prismicT.GroupField<Simplify<CommunitySponsorDocumentDataOrganizersItem>>;
+}
+/**
+ * Item in Community Sponsor → Organizers
+ *
+ */
+export interface CommunitySponsorDocumentDataOrganizersItem {
+    /**
+     * Name field in *Community Sponsor → Organizers*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: communitySponsor.organizers[].name
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    name: prismicT.KeyTextField;
+    /**
+     * Link field in *Community Sponsor → Organizers*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: communitySponsor.organizers[].link
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    link: prismicT.LinkField;
+}
+/**
+ * Community Sponsor document from Prismic
+ *
+ * - **API ID**: `communitySponsor`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type CommunitySponsorDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<CommunitySponsorDocumentData>, "communitySponsor", Lang>;
 /** Content for Guest documents */
 interface GuestDocumentData {
     /**
@@ -181,16 +275,6 @@ export interface OrganizerTeamDocumentDataMemberItem {
      */
     name: prismicT.KeyTextField;
     /**
-     * Avatar field in *Organizer Team → Member*
-     *
-     * - **Field Type**: Image
-     * - **Placeholder**: *None*
-     * - **API ID Path**: organizerTeam.member[].avatar
-     * - **Documentation**: https://prismic.io/docs/core-concepts/image
-     *
-     */
-    avatar: prismicT.ImageField<never>;
-    /**
      * Website URL field in *Organizer Team → Member*
      *
      * - **Field Type**: Text
@@ -283,7 +367,7 @@ interface PageDocumentData {
  * Slice for *Page → Slice Zone*
  *
  */
-type PageDocumentDataSlicesSlice = HeroSlice | GuestListSlice | SponsorListSlice | EventDetailsSlice | CharityDetailsSlice | RegisterCtaSlice | LastYearRecapSlice | DonationLeaderboardSlice;
+type PageDocumentDataSlicesSlice = HeroSlice | GuestListSlice | SponsorListSlice | EventDetailsSlice | CharityDetailsSlice | RegisterCtaSlice | LastYearRecapSlice | DonationLeaderboardSlice | CommunityListSlice;
 /**
  * Page document from Prismic
  *
@@ -340,18 +424,6 @@ interface SponsorDocumentData {
      *
      */
     link: prismicT.LinkField;
-    /**
-     * Type field in *Sponsor*
-     *
-     * - **Field Type**: Select
-     * - **Placeholder**: *None*
-     * - **Default Value**: Company
-     * - **API ID Path**: sponsor.type
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/core-concepts/select
-     *
-     */
-    type: prismicT.SelectField<"Company" | "Community", "filled">;
 }
 /**
  * Sponsor document from Prismic
@@ -363,7 +435,7 @@ interface SponsorDocumentData {
  * @typeParam Lang - Language API ID of the document.
  */
 export type SponsorDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<SponsorDocumentData>, "sponsor", Lang>;
-export type AllDocumentTypes = GuestDocument | OrganizerTeamDocument | PageDocument | SponsorDocument;
+export type AllDocumentTypes = CommunitySponsorDocument | GuestDocument | OrganizerTeamDocument | PageDocument | SponsorDocument;
 /**
  * Primary content in CharityDetails → Primary
  *
@@ -423,6 +495,55 @@ type CharityDetailsSliceVariation = CharityDetailsSliceDefault;
  *
  */
 export type CharityDetailsSlice = prismicT.SharedSlice<"charity_details", CharityDetailsSliceVariation>;
+/**
+ * Primary content in CommunityList → Primary
+ *
+ */
+interface CommunityListSliceDefaultPrimary {
+    /**
+     * Heading field in *CommunityList → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: community_list.primary.heading
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    heading: prismicT.KeyTextField;
+    /**
+     * Body field in *CommunityList → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: community_list.primary.body
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    body: prismicT.RichTextField;
+}
+/**
+ * Default variation for CommunityList Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `CommunityList`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type CommunityListSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<CommunityListSliceDefaultPrimary>, never>;
+/**
+ * Slice variation for *CommunityList*
+ *
+ */
+type CommunityListSliceVariation = CommunityListSliceDefault;
+/**
+ * CommunityList Shared Slice
+ *
+ * - **API ID**: `community_list`
+ * - **Description**: `CommunityList`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type CommunityListSlice = prismicT.SharedSlice<"community_list", CommunityListSliceVariation>;
 /**
  * Primary content in DonationLeaderboard → Primary
  *
@@ -791,6 +912,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { GuestDocumentData, GuestDocument, OrganizerTeamDocumentData, OrganizerTeamDocumentDataMemberItem, OrganizerTeamDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, SponsorDocumentData, SponsorDocument, AllDocumentTypes, CharityDetailsSliceDefaultPrimary, CharityDetailsSliceDefault, CharityDetailsSliceVariation, CharityDetailsSlice, DonationLeaderboardSliceDefaultPrimary, DonationLeaderboardSliceDefault, DonationLeaderboardSliceVariation, DonationLeaderboardSlice, EventDetailsSliceDefaultPrimary, EventDetailsSliceDefault, EventDetailsSliceVariation, EventDetailsSlice, GuestListSliceDefaultPrimary, GuestListSliceDefault, GuestListSliceVariation, GuestListSlice, HeroSliceDefaultPrimary, HeroSliceDefault, HeroSliceVariation, HeroSlice, LastYearRecapSliceDefaultPrimary, LastYearRecapSliceDefault, LastYearRecapSliceVariation, LastYearRecapSlice, RegisterCtaSliceDefaultPrimary, RegisterCtaSliceDefault, RegisterCtaSliceVariation, RegisterCtaSlice, SponsorListSliceDefaultPrimary, SponsorListSliceDefault, SponsorListSliceVariation, SponsorListSlice };
+        export type { CommunitySponsorDocumentData, CommunitySponsorDocumentDataOrganizersItem, CommunitySponsorDocument, GuestDocumentData, GuestDocument, OrganizerTeamDocumentData, OrganizerTeamDocumentDataMemberItem, OrganizerTeamDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, SponsorDocumentData, SponsorDocument, AllDocumentTypes, CharityDetailsSliceDefaultPrimary, CharityDetailsSliceDefault, CharityDetailsSliceVariation, CharityDetailsSlice, CommunityListSliceDefaultPrimary, CommunityListSliceDefault, CommunityListSliceVariation, CommunityListSlice, DonationLeaderboardSliceDefaultPrimary, DonationLeaderboardSliceDefault, DonationLeaderboardSliceVariation, DonationLeaderboardSlice, EventDetailsSliceDefaultPrimary, EventDetailsSliceDefault, EventDetailsSliceVariation, EventDetailsSlice, GuestListSliceDefaultPrimary, GuestListSliceDefault, GuestListSliceVariation, GuestListSlice, HeroSliceDefaultPrimary, HeroSliceDefault, HeroSliceVariation, HeroSlice, LastYearRecapSliceDefaultPrimary, LastYearRecapSliceDefault, LastYearRecapSliceVariation, LastYearRecapSlice, RegisterCtaSliceDefaultPrimary, RegisterCtaSliceDefault, RegisterCtaSliceVariation, RegisterCtaSlice, SponsorListSliceDefaultPrimary, SponsorListSliceDefault, SponsorListSliceVariation, SponsorListSlice };
     }
 }

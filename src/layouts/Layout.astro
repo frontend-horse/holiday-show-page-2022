@@ -4,15 +4,15 @@ export interface Props {
 }
 
 const { title } = Astro.props;
-import '../styles/main.scss';
-import NavBar from '../components/NavBar.astro';
+import "../styles/main.scss";
+import NavBar from "../components/NavBar.astro";
 ---
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
@@ -24,9 +24,7 @@ import NavBar from '../components/NavBar.astro';
 </html>
 <style is:global lang="scss">
   /*
-  @import 'open-props/style';
-  @import 'open-props/normalize';
-  @import 'open-props/buttons';
+
 
   body {
     display: grid;

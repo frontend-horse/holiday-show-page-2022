@@ -40,7 +40,13 @@
       }
     },
     "communitySponsor": {
-      "organizers": {}
+      "organizers": {},
+      "description": {
+        "config": {
+          "patternType": "PARAGRAPH",
+          "blocks": 1
+        }
+      }
     }
   },
   "slices": {
@@ -129,6 +135,18 @@
       }
     },
     "DonationLeaderboard": {
+      "default": {
+        "primary": {
+          "body": {
+            "config": {
+              "patternType": "PARAGRAPH",
+              "blocks": 1
+            }
+          }
+        }
+      }
+    },
+    "CommunityList": {
       "default": {
         "primary": {
           "body": {

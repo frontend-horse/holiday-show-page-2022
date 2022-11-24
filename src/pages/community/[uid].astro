@@ -1,0 +1,50 @@
+---
+import * as prismicH from "@prismicio/helpers";
+import Layout from "../../layouts/Layout.astro";
+
+import { getAllCommunitySponsors } from "../../lib/prismicio";
+import { CommunitySponsorDocument } from "../../../types.generated";
+
+export async function getStaticPaths() {
+  const allPages = await getAllCommunitySponsors();
+
+  const paths = allPages.map((page) => ({
+    params: { uid: page.uid },
+    props: page,
+  }));
+  return paths;
+}
+
+const props = Astro.props as CommunitySponsorDocument;
+
+const { title, link, logo, description, organizers } = props.data;
+
+const descriptionHTML = prismicH.asHTML(description);
+---
+
+<Layout title={`${title} - Community Sponsor - Holiday Snowtacular`}>
+  <main>
+    <h1>{title}</h1>
+    <img src={logo.url} alt="" />
+    {
+      organizers.length ? (
+        <div>
+          <p>Run by:</p>
+          <ul>
+            {organizers.map((organizer) => (
+              <li>{organizer.name}</li>
+            ))}
+          </ul>
+        </div>
+      ) : (
+        ""
+      )
+    }
+    <Fragment set:html="descriptionHTML" />
+    <p>
+      <a href={link.url}>Visit Site</a>
+    </p>
+  </main>
+</Layout>
+
+<style></style>

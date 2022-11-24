@@ -17,7 +17,7 @@ export async function getStaticPaths() {
 
 const props = Astro.props as SponsorDocument;
 
-const { name, link, logo, description, type } = props.data;
+const { name, link, logo, description } = props.data;
 
 const descriptionHTML = prismicH.asHTML(description);
 ---

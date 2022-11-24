@@ -1,0 +1,20 @@
+[
+  {
+    "variation": "default",
+    "version": "sktwi1xtmkfgx8626",
+    "items": [
+      {}
+    ],
+    "primary": {
+      "heading": "safety",
+      "body": [
+        {
+          "type": "paragraph",
+          "text": "Est eu excepteur et id magna minim.",
+          "spans": []
+        }
+      ]
+    },
+    "slice_type": "community_list"
+  }
+]

@@ -47,6 +47,9 @@
             },
             "donation_leaderboard": {
               "type": "SharedSlice"
+            },
+            "community_list": {
+              "type": "SharedSlice"
             }
           }
         }

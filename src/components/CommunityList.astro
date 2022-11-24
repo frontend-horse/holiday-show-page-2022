@@ -1,0 +1,29 @@
+---
+import * as prismicH from "@prismicio/helpers";
+import { getAllCommunitySponsors } from "../lib/prismicio";
+
+const { heading, body } = Astro.props.primary;
+
+const communities = await getAllCommunitySponsors();
+
+const bodyHTML = prismicH.asHTML(body);
+---
+
+<section id="communities" class="communities">
+  <h2>{heading}</h2>
+
+  <Fragment set:html="bodyHTML" />
+
+  <ul class="community-grid">
+    {
+      communities.map((community) => (
+        <li class="community">
+          <a href={`/community/${community.uid}`}>
+            <span class="visually-hidden">{community.data.title}</span>
+            <img src={community.data.logo.url} alt={community.data.title} />
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</section>
