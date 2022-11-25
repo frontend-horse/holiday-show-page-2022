@@ -1,7 +1,7 @@
 ---
-import * as prismicH from "@prismicio/helpers";
-import { getAllGuests } from "../lib/prismicio";
-import GuestAvatar from "./GuestAvatar.astro";
+import * as prismicH from '@prismicio/helpers';
+import { getAllGuests } from '../lib/prismicio';
+import GuestAvatar from './GuestAvatar.astro';
 
 const { heading, body } = Astro.props.primary;
 
@@ -21,10 +21,108 @@ const bodyHTML = prismicH.asHTML(body);
       allGuests.map((guest) => (
         <div class="guest">
           <GuestAvatar avatar={guest.data.avatar} guestName={guest.data.name} />
-          <h3><a href={`/guest/${guest.uid}`}>{guest.data.name}</a></h3>
+          <h3>
+            <a href={`/guest/${guest.uid}`}>{guest.data.name}</a>
+          </h3>
           <p>{guest.data.company}</p>
         </div>
       ))
     }
   </div>
 </section>
+
+<style lang="scss">
+  @layer sections {
+    .guests {
+      > * {
+        margin-block-start: 1.5rem;
+      }
+      .guest-grid {
+        display: grid;
+        gap: 2rem;
+        grid-template-columns: repeat(auto-fit, minmax(25ch, 1fr));
+      }
+      .guest {
+        align-items: center;
+        display: flex;
+        flex-flow: column;
+        position: relative;
+        > * + * {
+          margin-block-start: 0.25rem;
+        }
+        img {
+          aspect-ratio: 1;
+          border-radius: 100%;
+          width: 100%;
+        }
+        h3 {
+          color: var(--body-font-color);
+          font-family: var(--body-font);
+          font-size: var(--step--1);
+          text-align: center;
+          a {
+            color: var(--body-color);
+            text-decoration: none;
+            &:hover {
+              text-decoration: underline;
+            }
+            &::before {
+              content: '';
+              position: absolute;
+              inset: 0;
+            }
+          }
+        }
+        p {
+          color: var(--header-font-color);
+          font-size: var(--step--1);
+          text-align: center;
+        }
+      }
+    }
+
+    #guest-page {
+      --container-width: 60ch;
+
+      margin-inline: auto;
+      width: min(var(--container-width), 100% - 3rem);
+      > * {
+        margin: 0;
+      }
+      > * + * {
+        margin-block-start: 1.5rem;
+      }
+      h1 {
+        text-align: center;
+      }
+
+      .guest-details {
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        span:last-child {
+          color: var(--header-font-color);
+        }
+      }
+
+      dl {
+        background: rgba(0, 0, 0, 0.25);
+        padding-inline: 1rem;
+        padding-block: 0.5rem;
+        border-radius: 0.25rem;
+        dt {
+          font-size: var(--step-1);
+          font-family: var(--header-font);
+          color: var(--header-font-color);
+          margin-block-start: 1.5rem;
+        }
+        dt:first-child {
+          margin-block-start: 0;
+        }
+        dd {
+          margin-block-start: 1rem;
+        }
+      }
+    }
+  }
+</style>

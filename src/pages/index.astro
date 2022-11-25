@@ -1,7 +1,7 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import SliceZone from "../components/SliceZone.astro";
-import { getHomepage } from "../lib/prismicio";
+import Layout from '../layouts/Layout.astro';
+import SliceZone from '../components/SliceZone.astro';
+import { getHomepage } from '../lib/prismicio';
 
 const page = await getHomepage();
 const title = page.data.title;
@@ -9,7 +9,9 @@ const title = page.data.title;
 
 <Layout title="Holiday Snowtacular - Web Dev Charity Fundraiser">
   <main>
-    <SliceZone slices={page.data.slices} />
+    <div class="container">
+      <SliceZone slices={page.data.slices} />
+    </div>
   </main>
 </Layout>
 

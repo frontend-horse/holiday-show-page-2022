@@ -4,8 +4,10 @@ export interface Props {
 }
 
 const { title } = Astro.props;
-import "../styles/main.scss";
-import NavBar from "../components/NavBar.astro";
+import '../styles/main.scss';
+import Snow from '../components/Snow.astro';
+import NavBar from '../components/NavBar.astro';
+import Footer from '../components/Footer.astro';
 ---
 
 <!DOCTYPE html>
@@ -18,8 +20,10 @@ import NavBar from "../components/NavBar.astro";
     <title>{title}</title>
   </head>
   <body>
+    <!-- <Snow /> -->
     <NavBar />
     <slot />
+    <Footer />
   </body>
 </html>
 <style is:global lang="scss">

@@ -13,3 +13,13 @@ const bodyHTML = prismicH.asHTML(body);
   <Fragment set:html="bodyHTML" />
   <RegistrationButton>Register</RegistrationButton>
 </section>
+
+<style lang="scss">
+  @layer sections {
+    .registration {
+      > * + * {
+        margin-block-start: 1rem;
+      }
+    }
+  }
+</style>

@@ -1,26 +1,15 @@
-<a
-  href="https://lu.ma/event/evt-pYYlW3M6j0e8eAB"
-  class="button"
-  data-luma-action="checkout"
-  data-luma-event-id="evt-pYYlW3M6j0e8eAB"
->
+<a href="https://lu.ma/event/evt-pYYlW3M6j0e8eAB" class="button" data-luma-action="checkout" data-luma-event-id="evt-pYYlW3M6j0e8eAB">
   <slot />
 </a>
 
 <style>
-  /* .button {
-    background-color: #4caf50;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-  } */
+  @layer sections {
+    .registration {
+      > * + * {
+        margin-block-start: 1rem;
+      }
+    }
+  }
 </style>
 
-<script id="luma-checkout" src="https://embed.lu.ma/checkout-button.js"
-></script>
+<script id="luma-checkout" src="https://embed.lu.ma/checkout-button.js"></script>

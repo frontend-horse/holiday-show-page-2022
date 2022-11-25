@@ -1,0 +1,12 @@
+.container {
+  --container-width: 120ch;
+
+  margin-inline: auto;
+  width: min(var(--container-width), 100% - 3rem);
+  > * {
+    margin: 0;
+  }
+  > * + * {
+    margin-block-start: 3rem;
+  }
+}

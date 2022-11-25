@@ -1,5 +1,5 @@
 ---
-import * as prismicH from "@prismicio/helpers";
+import * as prismicH from '@prismicio/helpers';
 
 const { heading, body } = Astro.props.primary;
 
@@ -11,3 +11,13 @@ const bodyHTML = prismicH.asHTML(body);
 
   <Fragment set:html="bodyHTML" />
 </section>
+
+<style class="scss">
+  @layer sections {
+    .recap {
+      > * + * {
+        margin-block-start: 1rem;
+      }
+    }
+  }
+</style>
