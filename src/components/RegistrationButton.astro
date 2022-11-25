@@ -1,15 +1,18 @@
-<a href="https://lu.ma/event/evt-pYYlW3M6j0e8eAB" class="button" data-luma-action="checkout" data-luma-event-id="evt-pYYlW3M6j0e8eAB">
+---
+const { color } = Astro.props;
+console.log(color);
+---
+
+<a
+  href="https://lu.ma/event/evt-pYYlW3M6j0e8eAB"
+  class="button"
+  data-luma-action="checkout"
+  data-luma-event-id="evt-pYYlW3M6j0e8eAB"
+  style={color ? `--button-bg-color: ${color}` : null}
+>
   <slot />
 </a>
 
-<style>
-  @layer sections {
-    .registration {
-      > * + * {
-        margin-block-start: 1rem;
-      }
-    }
-  }
-</style>
+<style lang="scss"></style>
 
 <script id="luma-checkout" src="https://embed.lu.ma/checkout-button.js"></script>

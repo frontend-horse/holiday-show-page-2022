@@ -78,7 +78,9 @@ const bodyHTML = prismicH.asHTML(body);
       </RegistrationButton>
     </div>
   </div>
-  <div class="hero-column">stuff</div>
+  <div class="hero-column">
+    <div class="box">placeholder</div>
+  </div>
 </section>
 
 <style lang="scss">
@@ -98,6 +100,8 @@ const bodyHTML = prismicH.asHTML(body);
 
       width: 100%;
       .hero-column {
+        display: grid;
+        place-content: center;
         font-family: var(--header-font);
         padding-block: var(--space-2xl);
         margin-inline: auto;
@@ -106,10 +110,6 @@ const bodyHTML = prismicH.asHTML(body);
         z-index: 1;
 
         > * {
-          margin: 0;
-        }
-
-        > * + * {
           margin-block-start: 1.5rem;
         }
 
@@ -145,6 +145,15 @@ const bodyHTML = prismicH.asHTML(body);
           }
         }
       }
+    }
+
+    .box {
+      display: grid;
+      place-content: center;
+      background: #efefef;
+      width: 300px;
+      aspect-ratio: 1;
+      color: black;
     }
   }
 </style>
