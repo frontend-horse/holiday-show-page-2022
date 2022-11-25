@@ -132,11 +132,11 @@
               {}
             ],
             "primary": {
-              "heading": "safety",
+              "heading": "man",
               "body": [
                 {
                   "type": "paragraph",
-                  "text": "Est eu excepteur et id magna minim.",
+                  "text": "Exercitation quis reprehenderit quis reprehenderit. Velit nostrud laborum proident veniam ex officia magna excepteur commodo anim non duis ipsum. Qui tempor qui aute sint aliqua amet esse qui.",
                   "spans": []
                 }
               ]
@@ -294,6 +294,98 @@
               }
             },
             "slice_type": "event_details"
+          }
+        },
+        "meta": {
+          "fileName": null,
+          "extension": null
+        },
+        "screenshotPaths": {}
+      },
+      "frequently_asked_questions": {
+        "library": "slices",
+        "id": "frequently_asked_questions",
+        "name": "FrequentlyAskedQuestions",
+        "description": "FrequentlyAskedQuestions",
+        "model": {
+          "id": "frequently_asked_questions",
+          "type": "SharedSlice",
+          "name": "FrequentlyAskedQuestions",
+          "description": "FrequentlyAskedQuestions",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "FrequentlyAskedQuestions",
+              "primary": {
+                "heading": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Heading",
+                    "placeholder": ""
+                  }
+                },
+                "body": {
+                  "type": "StructuredText",
+                  "config": {
+                    "label": "Body",
+                    "placeholder": "",
+                    "allowTargetBlank": true,
+                    "multi": "paragraph,preformatted,strong,em,hyperlink,o-list-item,rtl,list-item"
+                  }
+                }
+              },
+              "items": {
+                "heading": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Heading",
+                    "placeholder": ""
+                  }
+                },
+                "body": {
+                  "type": "StructuredText",
+                  "config": {
+                    "label": "Body",
+                    "placeholder": "",
+                    "allowTargetBlank": true,
+                    "multi": "paragraph,preformatted,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl,heading3,heading4,heading5,heading6"
+                  }
+                }
+              },
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "version": "sktwi1xtmkfgx8626",
+            "items": [
+              {
+                "heading": "walk",
+                "body": [
+                  {
+                    "type": "paragraph",
+                    "text": "Ea cupidatat tempor laboris.",
+                    "spans": []
+                  }
+                ]
+              }
+            ],
+            "primary": {
+              "heading": "clear",
+              "body": [
+                {
+                  "type": "paragraph",
+                  "text": "Adipisicing laboris nisi adipisicing occaecat anim sint cillum officia Lorem consequat aliquip sit amet do pariatur.",
+                  "spans": []
+                }
+              ]
+            },
+            "slice_type": "frequently_asked_questions"
           }
         },
         "meta": {

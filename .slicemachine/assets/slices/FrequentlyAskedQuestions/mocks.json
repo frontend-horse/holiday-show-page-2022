@@ -1,0 +1,29 @@
+[
+  {
+    "variation": "default",
+    "version": "sktwi1xtmkfgx8626",
+    "items": [
+      {
+        "heading": "walk",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "Ea cupidatat tempor laboris.",
+            "spans": []
+          }
+        ]
+      }
+    ],
+    "primary": {
+      "heading": "clear",
+      "body": [
+        {
+          "type": "paragraph",
+          "text": "Adipisicing laboris nisi adipisicing occaecat anim sint cillum officia Lorem consequat aliquip sit amet do pariatur.",
+          "spans": []
+        }
+      ]
+    },
+    "slice_type": "frequently_asked_questions"
+  }
+]

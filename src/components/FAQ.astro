@@ -1,0 +1,32 @@
+---
+import * as prismicH from "@prismicio/helpers";
+
+const { heading, body, items } = Astro.props.primary;
+
+const bodyHTML = prismicH.asHTML(body);
+
+const faqItems = items.map((item) => {
+  return {
+    heading: item.heading,
+    body: prismicH.asHTML(item.body),
+  };
+});
+---
+
+<section>
+  <div>
+    <h2>{heading}</h2>
+
+    <Fragment set:html="bodyHTML" />
+  </div>
+  <div>
+    {
+      faqItems.map((item) => (
+        <details>
+          <summary>{item.heading}</summary>
+          <Fragment set:html="item.body" />
+        </details>
+      ))
+    }
+  </div>
+</section>

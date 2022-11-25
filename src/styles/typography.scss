@@ -44,6 +44,7 @@ layer(typography);
     font-size: var(--step-0);
     line-height: 1.6;
     letter-spacing: 0.75px;
+    max-width: 55ch;
   }
 
   a {

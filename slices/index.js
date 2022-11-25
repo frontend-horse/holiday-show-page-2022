@@ -4,6 +4,7 @@ import CharityDetails from './CharityDetails';
 import CommunityList from './CommunityList';
 import DonationLeaderboard from './DonationLeaderboard';
 import EventDetails from './EventDetails';
+import FrequentlyAskedQuestions from './FrequentlyAskedQuestions';
 import GuestList from './GuestList';
 import Hero from './Hero';
 import LastYearRecap from './LastYearRecap';
@@ -15,6 +16,7 @@ export {
 	CommunityList,
 	DonationLeaderboard,
 	EventDetails,
+	FrequentlyAskedQuestions,
 	GuestList,
 	Hero,
 	LastYearRecap,
@@ -27,6 +29,7 @@ export const components = {
 	community_list: CommunityList,
 	donation_leaderboard: DonationLeaderboard,
 	event_details: EventDetails,
+	frequently_asked_questions: FrequentlyAskedQuestions,
 	guest_list: GuestList,
 	hero: Hero,
 	last_year_recap: LastYearRecap,
