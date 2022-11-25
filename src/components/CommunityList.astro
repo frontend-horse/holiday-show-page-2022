@@ -1,6 +1,6 @@
 ---
-import * as prismicH from "@prismicio/helpers";
-import { getAllCommunitySponsors } from "../lib/prismicio";
+import * as prismicH from '@prismicio/helpers';
+import { getAllCommunitySponsors } from '../lib/prismicio';
 
 const { heading, body } = Astro.props.primary;
 
@@ -27,3 +27,53 @@ const bodyHTML = prismicH.asHTML(body);
     }
   </ul>
 </section>
+
+<style lang="scss">
+  @layer sections {
+    .communities {
+      > * + * {
+        margin-block-start: 1rem;
+      }
+
+      .community-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(15ch, 1fr));
+        grid-gap: 1rem;
+      }
+
+      h3 {
+        margin-block-start: 3rem;
+      }
+
+      .community {
+        position: relative;
+        background: rgba(0, 0, 0, 0.25);
+        padding-block: 0.5rem;
+        padding-inline: 1rem;
+        display: grid;
+        place-content: center;
+        transition: background 0.2s ease;
+        border-radius: 0.25rem;
+        &:hover {
+          background: rgba(0, 0, 0, 0.3);
+        }
+        a {
+          &::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+          }
+        }
+        img {
+          display: block;
+          max-width: 100%;
+          padding: 0;
+          margin: 0;
+          width: auto;
+          height: 100px;
+          object-fit: contain;
+        }
+      }
+    }
+  }
+</style>

@@ -7,15 +7,16 @@
   body {
     background: var(--body-bg-color);
     overflow-x: hidden;
-  }
-
-  main {
-    margin-block-start: var(--space-4xl);
-    @media (min-width: 640px) {
-      margin-block-start: var(--space-2xl);
-    }
-    > * + * {
-      margin-block-start: var(--space-4xl);
-    }
+    background: linear-gradient(
+      180deg,
+      hsl(209deg 100% 6%) 0%,
+      hsl(290deg 40% 35%) 49%,
+      hsl(339deg 37% 57%) 70%,
+      hsl(7deg 60% 68%) 85%,
+      hsl(29deg 77% 73%) 100%
+    );
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 }
