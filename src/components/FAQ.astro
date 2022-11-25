@@ -1,7 +1,8 @@
 ---
 import * as prismicH from "@prismicio/helpers";
 
-const { heading, body, items } = Astro.props.primary;
+const { heading, body } = Astro.props.primary;
+const { items } = Astro.props;
 
 const bodyHTML = prismicH.asHTML(body);
 
@@ -13,7 +14,7 @@ const faqItems = items.map((item) => {
 });
 ---
 
-<section>
+<section class="faq">
   <div>
     <h2>{heading}</h2>
 

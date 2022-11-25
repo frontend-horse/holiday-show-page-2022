@@ -367,7 +367,7 @@ interface PageDocumentData {
  * Slice for *Page → Slice Zone*
  *
  */
-type PageDocumentDataSlicesSlice = HeroSlice | GuestListSlice | SponsorListSlice | EventDetailsSlice | CharityDetailsSlice | RegisterCtaSlice | LastYearRecapSlice | DonationLeaderboardSlice | CommunityListSlice;
+type PageDocumentDataSlicesSlice = HeroSlice | GuestListSlice | SponsorListSlice | EventDetailsSlice | CharityDetailsSlice | RegisterCtaSlice | LastYearRecapSlice | DonationLeaderboardSlice | CommunityListSlice | FrequentlyAskedQuestionsSlice;
 /**
  * Page document from Prismic
  *
