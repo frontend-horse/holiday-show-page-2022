@@ -1,9 +1,9 @@
 ---
-import * as prismicH from '@prismicio/helpers';
-import Layout from '../../layouts/Layout.astro';
-import SliceZone from '../../components/SliceZone.astro';
-import { getAllGuests } from '../../lib/prismicio';
-import GuestAvatar from '../../components/GuestAvatar.astro';
+import * as prismicH from "@prismicio/helpers";
+import Layout from "../../layouts/Layout.astro";
+import SliceZone from "../../components/SliceZone.astro";
+import { getAllGuests } from "../../lib/prismicio";
+import GuestAvatar from "../../components/GuestAvatar.astro";
 
 export async function getStaticPaths() {
   const allPages = await getAllGuests();
@@ -14,7 +14,18 @@ export async function getStaticPaths() {
   return paths;
 }
 
-const { name, avatar, jobTitle, company, guestBio, twitterUrl, websiteUrl, mastadonUrl, topicTitle, topicDescription } = Astro.props.data;
+const {
+  name,
+  avatar,
+  jobTitle,
+  company,
+  guestBio,
+  twitterUrl,
+  websiteUrl,
+  mastadonUrl,
+  topicTitle,
+  topicDescription,
+} = Astro.props.data;
 
 const guestBioHTML = prismicH.asHTML(guestBio);
 const topicDescriptionHTML = prismicH.asHTML(topicDescription);
@@ -42,4 +53,48 @@ const topicDescriptionHTML = prismicH.asHTML(topicDescription);
   </main>
 </Layout>
 
-<style></style>
+<style>
+  #guest-page {
+    --container-width: 60ch;
+
+    margin-inline: auto;
+    width: min(var(--container-width), 100% - 3rem);
+    > * {
+      margin: 0;
+    }
+    > * + * {
+      margin-block-start: 1.5rem;
+    }
+    h1 {
+      text-align: center;
+    }
+
+    .guest-details {
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      span:last-child {
+        color: var(--header-font-color);
+      }
+    }
+
+    dl {
+      background: rgba(0, 0, 0, 0.25);
+      padding-inline: 1rem;
+      padding-block: 0.5rem;
+      border-radius: 0.25rem;
+      dt {
+        font-size: var(--step-1);
+        font-family: var(--header-font);
+        color: var(--header-font-color);
+        margin-block-start: 1.5rem;
+      }
+      dt:first-child {
+        margin-block-start: 0;
+      }
+      dd {
+        margin-block-start: 1rem;
+      }
+    }
+  }
+</style>

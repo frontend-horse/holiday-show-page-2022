@@ -1,8 +1,11 @@
 ---
 import * as prismicH from "@prismicio/helpers";
 
-const { heading, body } = Astro.props.primary;
-const { items } = Astro.props;
+import { FrequentlyAskedQuestionsSlice } from "../../types.generated";
+
+const props = Astro.props as FrequentlyAskedQuestionsSlice;
+const { heading, body, eyebrow } = props.primary;
+const { items } = props;
 
 const bodyHTML = prismicH.asHTML(body);
 
@@ -16,6 +19,7 @@ const faqItems = items.map((item) => {
 
 <section class="faq">
   <div>
+    <span class="heading-eyebrow">{eyebrow}</span>
     <h2>{heading}</h2>
 
     <Fragment set:html="bodyHTML" />

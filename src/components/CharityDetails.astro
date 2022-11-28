@@ -1,15 +1,89 @@
 ---
 import * as prismicH from "@prismicio/helpers";
+import { CharityDetailsSlice } from "../../types.generated";
+const props = Astro.props as CharityDetailsSlice;
 
-const { heading, body, charityLogo } = Astro.props.primary;
+const {
+  heading,
+  body,
+  charityLogo,
+  eyebrow,
+  questionText,
+  fundraiserAmount,
+  subheading,
+} = props.primary;
+
+const { items } = props;
 
 const bodyHTML = prismicH.asHTML(body);
 ---
 
 <section class="charity">
+  <span class="heading-eyebrow">{eyebrow}</span>
   <h2>{heading}</h2>
-  
+  <img
+    src={charityLogo.url}
+    alt="Doctors without Borders"
+    class="charity-logo"
+  />
+
+  <p>{subheading}</p>
   <Fragment set:html="bodyHTML" />
 
-  <img src={charityLogo.url} alt="Doctors without Borders" />
+  <p>
+    {questionText}{" "}
+
+    <span class="fundraiser-amount">
+      {fundraiserAmount}
+    </span>
+  </p>
+
+  <div class="impact-container">
+    {
+      items.map(({ number, text }) => (
+        <div class="impact-item">
+          <p class="impact-text">
+            <span class="impact-number">{number}</span>
+            <span>{text}</span>
+          </p>
+        </div>
+      ))
+    }
+  </div>
 </section>
+
+<style>
+  .charity-logo {
+    max-width: 500px;
+  }
+  .fundraiser-amount {
+    display: block;
+    font-size: var(--step-4);
+    font-weight: 700;
+  }
+
+  .impact-container {
+    --min: 20ch;
+    --gap: var(--space-m);
+
+    display: grid;
+    grid-gap: var(--gap);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--min)), 1fr));
+
+    font-size: var(--step--1);
+  }
+
+  .impact-text {
+    font-size: var(--step--1);
+    display: flex;
+    gap: var(--space-xs);
+    > * {
+      display: block;
+    }
+  }
+
+  .impact-number {
+    font-size: var(--step-3);
+    font-weight: 900;
+  }
+</style>

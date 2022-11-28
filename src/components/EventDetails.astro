@@ -1,12 +1,16 @@
 ---
 import * as prismicH from "@prismicio/helpers";
+import { EventDetailsSlice } from "../../types.generated";
 
-const { heading, body, dateTime, showLink } = Astro.props.primary;
+const props = Astro.props as EventDetailsSlice;
+
+const { heading, body, dateTime, showLink, eyebrow } = props.primary;
 
 const bodyHTML = prismicH.asHTML(body);
 ---
 
 <section class="event">
+  <span class="heading-eyebrow">{eyebrow}</span>
   <h2>{heading}</h2>
 
   <Fragment set:html="bodyHTML" />

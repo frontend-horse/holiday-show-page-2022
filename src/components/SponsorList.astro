@@ -1,8 +1,11 @@
 ---
-import * as prismicH from '@prismicio/helpers';
-import { getAllSponsors } from '../lib/prismicio';
+import * as prismicH from "@prismicio/helpers";
+import { getAllSponsors } from "../lib/prismicio";
+import { SponsorListSlice } from "../../types.generated";
 
-const { heading, body } = Astro.props.primary;
+const props = Astro.props as SponsorListSlice;
+
+const { heading, body, eyebrow } = props.primary;
 
 const sponsors = await getAllSponsors();
 
@@ -10,6 +13,7 @@ const bodyHTML = prismicH.asHTML(body);
 ---
 
 <section id="sponsors" class="sponsors">
+  <span class="heading-eyebrow">{eyebrow}</span>
   <h2>{heading}</h2>
 
   <Fragment set:html="bodyHTML" />
@@ -31,10 +35,6 @@ const bodyHTML = prismicH.asHTML(body);
 <style lang="scss">
   @layer sections {
     .sponsors {
-      > * + * {
-        margin-block-start: 1rem;
-      }
-
       .sponsor-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(15ch, 1fr));
@@ -59,7 +59,7 @@ const bodyHTML = prismicH.asHTML(body);
         }
         a {
           &::before {
-            content: '';
+            content: "";
             position: absolute;
             inset: 0;
           }

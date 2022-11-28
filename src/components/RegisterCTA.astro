@@ -1,25 +1,43 @@
 ---
-import * as prismicH from '@prismicio/helpers';
-import RegistrationButton from './RegistrationButton.astro';
+import RegistrationButton from "./RegistrationButton.astro";
+import { RegisterCtaSlice } from "../../types.generated";
 
-const { heading, body } = Astro.props.primary;
+const props = Astro.props as RegisterCtaSlice;
 
-const bodyHTML = prismicH.asHTML(body);
+const { bottomText, buttontext, topText } = props.primary;
 ---
 
 <section class="registration">
-  <h2>{heading}</h2>
+  <h2>
+    <span>{topText}</span>
+    <span>{bottomText}</span>
+  </h2>
 
-  <Fragment set:html="bodyHTML" />
-  <RegistrationButton>Register</RegistrationButton>
+  <RegistrationButton>{buttontext}</RegistrationButton>
 </section>
 
 <style lang="scss">
-  @layer sections {
-    .registration {
-      > * + * {
-        margin-block-start: 1rem;
-      }
+  section {
+    background: linear-gradient(180deg, #ffffff 0%, var(--blue-1) 100%);
+    border-radius: var(--space-xs);
+    padding: var(--space-l) var(--space-m);
+    display: grid;
+    place-items: center;
+    gap: var(--space-m);
+  }
+
+  h2 {
+    font-size: var(--step-3);
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  h2 > span {
+    display: block;
+    color: var(--blue-11);
+
+    &:first-child {
+      color: var(--red-9);
     }
   }
 </style>

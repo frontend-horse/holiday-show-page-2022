@@ -68,4 +68,11 @@ layer(typography);
   h3 {
     font-size: var(--step-2);
   }
+
+  .heading-eyebrow {
+    display: block;
+    font-size: var(--step--1);
+    color: var(--header-font-color);
+    text-transform: uppercase;
+  }
 }

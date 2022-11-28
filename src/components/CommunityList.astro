@@ -1,8 +1,12 @@
 ---
-import * as prismicH from '@prismicio/helpers';
-import { getAllCommunitySponsors } from '../lib/prismicio';
+import * as prismicH from "@prismicio/helpers";
+import { getAllCommunitySponsors } from "../lib/prismicio";
 
-const { heading, body } = Astro.props.primary;
+import { CommunityListSlice } from "../../types.generated";
+
+const props = Astro.props as CommunityListSlice;
+
+const { heading, body, eyebrow } = props.primary;
 
 const communities = await getAllCommunitySponsors();
 
@@ -10,6 +14,7 @@ const bodyHTML = prismicH.asHTML(body);
 ---
 
 <section id="communities" class="communities">
+  <span class="heading-eyebrow">{eyebrow}</span>
   <h2>{heading}</h2>
 
   <Fragment set:html="bodyHTML" />
@@ -31,10 +36,6 @@ const bodyHTML = prismicH.asHTML(body);
 <style lang="scss">
   @layer sections {
     .communities {
-      > * + * {
-        margin-block-start: 1rem;
-      }
-
       .community-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(15ch, 1fr));
@@ -59,7 +60,7 @@ const bodyHTML = prismicH.asHTML(body);
         }
         a {
           &::before {
-            content: '';
+            content: "";
             position: absolute;
             inset: 0;
           }
