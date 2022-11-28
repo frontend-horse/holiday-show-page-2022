@@ -319,6 +319,50 @@ interface PageDocumentData {
      */
     title: prismicT.KeyTextField;
     /**
+     * Hero Body field in *Page*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: page.body
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    body: prismicT.RichTextField;
+    /**
+     * Hero Eyebrow field in *Page*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: page.heroEyebrow[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/group
+     *
+     */
+    heroEyebrow: prismicT.GroupField<Simplify<PageDocumentDataHeroEyebrowItem>>;
+    /**
+     * CTA Description field in *Page*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: page.ctaDescription
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    ctaDescription: prismicT.KeyTextField;
+    /**
+     * Button Text field in *Page*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: page.buttonText
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    buttonText: prismicT.KeyTextField;
+    /**
      * Slice Zone field in *Page*
      *
      * - **Field Type**: Slice Zone
@@ -364,10 +408,26 @@ interface PageDocumentData {
     ogImage: prismicT.ImageField<never>;
 }
 /**
+ * Item in Page → Hero Eyebrow
+ *
+ */
+export interface PageDocumentDataHeroEyebrowItem {
+    /**
+     * Text field in *Page → Hero Eyebrow*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: page.heroEyebrow[].text
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    text: prismicT.KeyTextField;
+}
+/**
  * Slice for *Page → Slice Zone*
  *
  */
-type PageDocumentDataSlicesSlice = HeroSlice | GuestListSlice | SponsorListSlice | EventDetailsSlice | CharityDetailsSlice | RegisterCtaSlice | LastYearRecapSlice | DonationLeaderboardSlice | CommunityListSlice;
+type PageDocumentDataSlicesSlice = GuestListSlice | SponsorListSlice | EventDetailsSlice | CharityDetailsSlice | RegisterCtaSlice | LastYearRecapSlice | DonationLeaderboardSlice | CommunityListSlice | FrequentlyAskedQuestionsSlice;
 /**
  * Page document from Prismic
  *
@@ -987,6 +1047,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { CommunitySponsorDocumentData, CommunitySponsorDocumentDataOrganizersItem, CommunitySponsorDocument, GuestDocumentData, GuestDocument, OrganizerTeamDocumentData, OrganizerTeamDocumentDataMemberItem, OrganizerTeamDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, SponsorDocumentData, SponsorDocument, AllDocumentTypes, CharityDetailsSliceDefaultPrimary, CharityDetailsSliceDefault, CharityDetailsSliceVariation, CharityDetailsSlice, CommunityListSliceDefaultPrimary, CommunityListSliceDefault, CommunityListSliceVariation, CommunityListSlice, DonationLeaderboardSliceDefaultPrimary, DonationLeaderboardSliceDefault, DonationLeaderboardSliceVariation, DonationLeaderboardSlice, EventDetailsSliceDefaultPrimary, EventDetailsSliceDefault, EventDetailsSliceVariation, EventDetailsSlice, FrequentlyAskedQuestionsSliceDefaultPrimary, FrequentlyAskedQuestionsSliceDefaultItem, FrequentlyAskedQuestionsSliceDefault, FrequentlyAskedQuestionsSliceVariation, FrequentlyAskedQuestionsSlice, GuestListSliceDefaultPrimary, GuestListSliceDefault, GuestListSliceVariation, GuestListSlice, HeroSliceDefaultPrimary, HeroSliceDefault, HeroSliceVariation, HeroSlice, LastYearRecapSliceDefaultPrimary, LastYearRecapSliceDefault, LastYearRecapSliceVariation, LastYearRecapSlice, RegisterCtaSliceDefaultPrimary, RegisterCtaSliceDefault, RegisterCtaSliceVariation, RegisterCtaSlice, SponsorListSliceDefaultPrimary, SponsorListSliceDefault, SponsorListSliceVariation, SponsorListSlice };
+        export type { CommunitySponsorDocumentData, CommunitySponsorDocumentDataOrganizersItem, CommunitySponsorDocument, GuestDocumentData, GuestDocument, OrganizerTeamDocumentData, OrganizerTeamDocumentDataMemberItem, OrganizerTeamDocument, PageDocumentData, PageDocumentDataHeroEyebrowItem, PageDocumentDataSlicesSlice, PageDocument, SponsorDocumentData, SponsorDocument, AllDocumentTypes, CharityDetailsSliceDefaultPrimary, CharityDetailsSliceDefault, CharityDetailsSliceVariation, CharityDetailsSlice, CommunityListSliceDefaultPrimary, CommunityListSliceDefault, CommunityListSliceVariation, CommunityListSlice, DonationLeaderboardSliceDefaultPrimary, DonationLeaderboardSliceDefault, DonationLeaderboardSliceVariation, DonationLeaderboardSlice, EventDetailsSliceDefaultPrimary, EventDetailsSliceDefault, EventDetailsSliceVariation, EventDetailsSlice, FrequentlyAskedQuestionsSliceDefaultPrimary, FrequentlyAskedQuestionsSliceDefaultItem, FrequentlyAskedQuestionsSliceDefault, FrequentlyAskedQuestionsSliceVariation, FrequentlyAskedQuestionsSlice, GuestListSliceDefaultPrimary, GuestListSliceDefault, GuestListSliceVariation, GuestListSlice, HeroSliceDefaultPrimary, HeroSliceDefault, HeroSliceVariation, HeroSlice, LastYearRecapSliceDefaultPrimary, LastYearRecapSliceDefault, LastYearRecapSliceVariation, LastYearRecapSlice, RegisterCtaSliceDefaultPrimary, RegisterCtaSliceDefault, RegisterCtaSliceVariation, RegisterCtaSlice, SponsorListSliceDefaultPrimary, SponsorListSliceDefault, SponsorListSliceVariation, SponsorListSlice };
     }
 }

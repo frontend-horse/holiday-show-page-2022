@@ -4,10 +4,10 @@ export interface Props {
 }
 
 const { title } = Astro.props;
-import '../styles/main.scss';
-import Snow from '../components/Snow.astro';
-import NavBar from '../components/NavBar.astro';
-import Footer from '../components/Footer.astro';
+import "../styles/main.scss";
+import Snow from "../components/Snow.astro";
+import NavBar from "../components/NavBar.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <!DOCTYPE html>
@@ -46,10 +46,7 @@ import Footer from '../components/Footer.astro';
     }
   }
 
-  section {
-    // temporary fix to space out sections. Remove later.
-    margin: var(--size-fluid-7) 0;
-  }
+
 
   :where(.visually-hidden:not(:focus, :active, :focus-within, .not-visually-hidden)) {
     clip-path: inset(50%) !important;

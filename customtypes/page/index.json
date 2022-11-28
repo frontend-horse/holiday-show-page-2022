@@ -19,14 +19,49 @@
           "placeholder": "Page title"
         }
       },
+      "body": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Hero Body",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,strong,em,hyperlink"
+        }
+      },
+      "heroEyebrow": {
+        "type": "Group",
+        "config": {
+          "label": "Hero Eyebrow",
+          "fields": {
+            "text": {
+              "type": "Text",
+              "config": {
+                "label": "Text",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
+      "ctaDescription": {
+        "type": "Text",
+        "config": {
+          "label": "CTA Description",
+          "placeholder": ""
+        }
+      },
+      "buttonText": {
+        "type": "Text",
+        "config": {
+          "label": "Button Text",
+          "placeholder": ""
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
-            "hero": {
-              "type": "SharedSlice"
-            },
             "guest_list": {
               "type": "SharedSlice"
             },
