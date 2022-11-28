@@ -6,11 +6,12 @@
       {}
     ],
     "primary": {
-      "heading": "herd",
+      "eyebrow": "salmon",
+      "heading": "mice",
       "body": [
         {
           "type": "paragraph",
-          "text": "Elit aute cillum ut qui tempor enim reprehenderit eiusmod nostrud minim consectetur ullamco enim. Dolor exercitation nostrud dolore consectetur est adipisicing velit reprehenderit voluptate et reprehenderit incididunt cillum. Voluptate aliquip sint cupidatat nisi.",
+          "text": "Veniam aliquip non cillum voluptate ut excepteur sint quis nulla irure esse laboris et velit. Ad mollit deserunt est incididunt eu eiusmod cillum esse exercitation. Occaecat qui duis mollit ullamco ipsum esse mollit magna enim laborum tempor.",
           "spans": []
         }
       ]

@@ -112,14 +112,7 @@
     },
     "RegisterCTA": {
       "default": {
-        "primary": {
-          "body": {
-            "config": {
-              "patternType": "PARAGRAPH",
-              "blocks": 1
-            }
-          }
-        }
+        "primary": {}
       }
     },
     "PreviousYearRecap": {},

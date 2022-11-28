@@ -11,6 +11,13 @@
       "version": "sktwi1xtmkfgx8626",
       "description": "EventDetails",
       "primary": {
+        "eyebrow": {
+          "type": "Text",
+          "config": {
+            "label": "Eyebrow",
+            "placeholder": ""
+          }
+        },
         "heading": {
           "type": "Text",
           "config": {

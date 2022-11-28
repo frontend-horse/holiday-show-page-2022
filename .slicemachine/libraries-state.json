@@ -19,10 +19,24 @@
               "version": "sktwi1xtmkfgx8626",
               "description": "CharityDetails",
               "primary": {
+                "eyebrow": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Eyebrow",
+                    "placeholder": ""
+                  }
+                },
                 "heading": {
                   "type": "Text",
                   "config": {
                     "label": "Heading",
+                    "placeholder": ""
+                  }
+                },
+                "subheading": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Subheading",
                     "placeholder": ""
                   }
                 },
@@ -42,9 +56,38 @@
                     "constraint": {},
                     "thumbnails": []
                   }
+                },
+                "questionText": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Question Text",
+                    "placeholder": ""
+                  }
+                },
+                "fundraiserAmount": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Fundraiser amount",
+                    "placeholder": ""
+                  }
                 }
               },
-              "items": {},
+              "items": {
+                "number": {
+                  "type": "Number",
+                  "config": {
+                    "label": "Number",
+                    "placeholder": ""
+                  }
+                },
+                "text": {
+                  "type": "Text",
+                  "config": {
+                    "label": "text",
+                    "placeholder": ""
+                  }
+                }
+              },
               "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
             }
           ]
@@ -54,14 +97,19 @@
             "variation": "default",
             "version": "sktwi1xtmkfgx8626",
             "items": [
-              {}
+              {
+                "number": 5,
+                "text": "properly"
+              }
             ],
             "primary": {
-              "heading": "son",
+              "eyebrow": "valuable",
+              "heading": "capital",
+              "subheading": "nearer",
               "body": [
                 {
                   "type": "paragraph",
-                  "text": "Exercitation voluptate esse ut ipsum.",
+                  "text": "Deserunt sunt dolore nostrud anim enim. Ipsum occaecat est exercitation ullamco in laborum. Exercitation tempor amet esse tempor deserunt commodo anim excepteur ea.",
                   "spans": []
                 }
               ],
@@ -72,8 +120,10 @@
                 },
                 "alt": null,
                 "copyright": null,
-                "url": "https://images.unsplash.com/photo-1587613865763-4b8b0d19e8ab"
-              }
+                "url": "https://images.unsplash.com/photo-1504198070170-4ca53bb1c1fa"
+              },
+              "questionText": "tonight",
+              "fundraiserAmount": "grew"
             },
             "slice_type": "charity_details"
           }
@@ -102,6 +152,13 @@
               "version": "sktwi1xtmkfgx8626",
               "description": "CommunityList",
               "primary": {
+                "eyebrow": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Eyebrow",
+                    "placeholder": ""
+                  }
+                },
                 "heading": {
                   "type": "Text",
                   "config": {
@@ -132,11 +189,12 @@
               {}
             ],
             "primary": {
-              "heading": "man",
+              "eyebrow": "guard",
+              "heading": "yet",
               "body": [
                 {
                   "type": "paragraph",
-                  "text": "Exercitation quis reprehenderit quis reprehenderit. Velit nostrud laborum proident veniam ex officia magna excepteur commodo anim non duis ipsum. Qui tempor qui aute sint aliqua amet esse qui.",
+                  "text": "Non anim culpa ullamco commodo ex. Tempor eiusmod et laboris dolore pariatur adipisicing ea velit est dolore dolore irure est aliqua elit.",
                   "spans": []
                 }
               ]
@@ -168,6 +226,13 @@
               "version": "sktwi1xtmkfgx8626",
               "description": "DonationLeaderboard",
               "primary": {
+                "eyebrow": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Eyebrow",
+                    "placeholder": ""
+                  }
+                },
                 "heading": {
                   "type": "Text",
                   "config": {
@@ -198,11 +263,12 @@
               {}
             ],
             "primary": {
-              "heading": "herd",
+              "eyebrow": "salmon",
+              "heading": "mice",
               "body": [
                 {
                   "type": "paragraph",
-                  "text": "Elit aute cillum ut qui tempor enim reprehenderit eiusmod nostrud minim consectetur ullamco enim. Dolor exercitation nostrud dolore consectetur est adipisicing velit reprehenderit voluptate et reprehenderit incididunt cillum. Voluptate aliquip sint cupidatat nisi.",
+                  "text": "Veniam aliquip non cillum voluptate ut excepteur sint quis nulla irure esse laboris et velit. Ad mollit deserunt est incididunt eu eiusmod cillum esse exercitation. Occaecat qui duis mollit ullamco ipsum esse mollit magna enim laborum tempor.",
                   "spans": []
                 }
               ]
@@ -234,6 +300,13 @@
               "version": "sktwi1xtmkfgx8626",
               "description": "EventDetails",
               "primary": {
+                "eyebrow": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Eyebrow",
+                    "placeholder": ""
+                  }
+                },
                 "heading": {
                   "type": "Text",
                   "config": {
@@ -279,18 +352,19 @@
               {}
             ],
             "primary": {
-              "heading": "on",
+              "eyebrow": "drew",
+              "heading": "hard",
               "body": [
                 {
                   "type": "paragraph",
-                  "text": "Aliquip eu culpa do ea sunt ea excepteur irure culpa magna elit culpa ea. Est in sit do. Quis laborum ipsum qui quis dolore consequat irure non magna commodo esse.",
+                  "text": "Reprehenderit sunt magna qui fugiat culpa eiusmod ullamco duis velit fugiat do proident.",
                   "spans": []
                 }
               ],
-              "dateTime": "2018-01-07T05:42:58+0000",
+              "dateTime": "2012-11-12T13:57:56+0000",
               "showLink": {
                 "link_type": "Web",
-                "url": "https://prismic.io"
+                "url": "https://slicemachine.dev"
               }
             },
             "slice_type": "event_details"
@@ -320,6 +394,13 @@
               "version": "sktwi1xtmkfgx8626",
               "description": "FrequentlyAskedQuestions",
               "primary": {
+                "eyebrow": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Eyebrow",
+                    "placeholder": ""
+                  }
+                },
                 "heading": {
                   "type": "Text",
                   "config": {
@@ -365,22 +446,23 @@
             "version": "sktwi1xtmkfgx8626",
             "items": [
               {
-                "heading": "walk",
+                "heading": "do",
                 "body": [
                   {
                     "type": "paragraph",
-                    "text": "Ea cupidatat tempor laboris.",
+                    "text": "Aliquip ullamco magna irure commodo minim duis laboris amet quis quis labore officia enim velit irure. Anim excepteur do minim exercitation dolor minim voluptate proident veniam est aute ut consectetur nostrud irure. Veniam aute amet occaecat nulla enim cillum in voluptate dolore.",
                     "spans": []
                   }
                 ]
               }
             ],
             "primary": {
-              "heading": "clear",
+              "eyebrow": "lie",
+              "heading": "everywhere",
               "body": [
                 {
                   "type": "paragraph",
-                  "text": "Adipisicing laboris nisi adipisicing occaecat anim sint cillum officia Lorem consequat aliquip sit amet do pariatur.",
+                  "text": "Elit commodo ut adipisicing elit irure nostrud pariatur enim esse mollit mollit irure cupidatat eiusmod cillum. Minim ex fugiat ad voluptate consequat aute cillum sit in duis qui sit minim.",
                   "spans": []
                 }
               ]
@@ -412,6 +494,13 @@
               "version": "sktwi1xtmkfgx8626",
               "description": "GuestList",
               "primary": {
+                "eyebrow": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Eyebrow",
+                    "placeholder": ""
+                  }
+                },
                 "heading": {
                   "type": "Text",
                   "config": {
@@ -442,11 +531,12 @@
               {}
             ],
             "primary": {
-              "heading": "will",
+              "eyebrow": "perfect",
+              "heading": "power",
               "body": [
                 {
                   "type": "paragraph",
-                  "text": "Minim eu proident quis est voluptate magna proident sint fugiat sint in quis irure voluptate.",
+                  "text": "Et officia reprehenderit est adipisicing aliquip aliqua duis nulla culpa ad ea incididunt amet.",
                   "spans": []
                 }
               ]
@@ -610,20 +700,25 @@
               "version": "sktwi1xtmkfgx8626",
               "description": "RegisterCTA",
               "primary": {
-                "heading": {
+                "topText": {
                   "type": "Text",
                   "config": {
-                    "label": "Heading",
+                    "label": "Top Text",
                     "placeholder": ""
                   }
                 },
-                "body": {
-                  "type": "StructuredText",
+                "bottomText": {
+                  "type": "Text",
                   "config": {
-                    "label": "Body",
-                    "placeholder": "",
-                    "allowTargetBlank": true,
-                    "multi": "paragraph,strong,em"
+                    "label": "Bottom Text",
+                    "placeholder": ""
+                  }
+                },
+                "buttontext": {
+                  "type": "Text",
+                  "config": {
+                    "label": "ButtonText",
+                    "placeholder": ""
                   }
                 }
               },
@@ -640,14 +735,9 @@
               {}
             ],
             "primary": {
-              "heading": "education",
-              "body": [
-                {
-                  "type": "paragraph",
-                  "text": "Ullamco fugiat excepteur officia labore.",
-                  "spans": []
-                }
-              ]
+              "topText": "explanation",
+              "bottomText": "instead",
+              "buttontext": "vowel"
             },
             "slice_type": "register_cta"
           }
@@ -676,6 +766,13 @@
               "version": "sktwi1xtmkfgx8626",
               "description": "SponsorList",
               "primary": {
+                "eyebrow": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Eyebrow",
+                    "placeholder": ""
+                  }
+                },
                 "heading": {
                   "type": "Text",
                   "config": {
@@ -706,11 +803,12 @@
               {}
             ],
             "primary": {
-              "heading": "sun",
+              "eyebrow": "standard",
+              "heading": "command",
               "body": [
                 {
                   "type": "paragraph",
-                  "text": "Amet elit aute commodo fugiat eiusmod. Fugiat aliquip enim tempor non anim sint reprehenderit eiusmod ullamco ut elit duis esse commodo. Exercitation occaecat do mollit eu.",
+                  "text": "Nulla ipsum elit proident aliquip minim incididunt enim pariatur excepteur dolore ex in enim mollit eu. Mollit exercitation adipisicing cillum Lorem voluptate ullamco ipsum occaecat anim. Commodo minim culpa sit ut anim veniam sunt eiusmod reprehenderit in.",
                   "spans": []
                 }
               ]

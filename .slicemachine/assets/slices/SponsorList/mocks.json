@@ -6,11 +6,12 @@
       {}
     ],
     "primary": {
-      "heading": "sun",
+      "eyebrow": "standard",
+      "heading": "command",
       "body": [
         {
           "type": "paragraph",
-          "text": "Amet elit aute commodo fugiat eiusmod. Fugiat aliquip enim tempor non anim sint reprehenderit eiusmod ullamco ut elit duis esse commodo. Exercitation occaecat do mollit eu.",
+          "text": "Nulla ipsum elit proident aliquip minim incididunt enim pariatur excepteur dolore ex in enim mollit eu. Mollit exercitation adipisicing cillum Lorem voluptate ullamco ipsum occaecat anim. Commodo minim culpa sit ut anim veniam sunt eiusmod reprehenderit in.",
           "spans": []
         }
       ]

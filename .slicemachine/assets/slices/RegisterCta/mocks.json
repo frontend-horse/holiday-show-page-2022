@@ -6,14 +6,9 @@
       {}
     ],
     "primary": {
-      "heading": "education",
-      "body": [
-        {
-          "type": "paragraph",
-          "text": "Ullamco fugiat excepteur officia labore.",
-          "spans": []
-        }
-      ]
+      "topText": "explanation",
+      "bottomText": "instead",
+      "buttontext": "vowel"
     },
     "slice_type": "register_cta"
   }

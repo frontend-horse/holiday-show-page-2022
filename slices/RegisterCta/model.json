@@ -11,20 +11,25 @@
       "version": "sktwi1xtmkfgx8626",
       "description": "RegisterCTA",
       "primary": {
-        "heading": {
+        "topText": {
           "type": "Text",
           "config": {
-            "label": "Heading",
+            "label": "Top Text",
             "placeholder": ""
           }
         },
-        "body": {
-          "type": "StructuredText",
+        "bottomText": {
+          "type": "Text",
           "config": {
-            "label": "Body",
-            "placeholder": "",
-            "allowTargetBlank": true,
-            "multi": "paragraph,strong,em"
+            "label": "Bottom Text",
+            "placeholder": ""
+          }
+        },
+        "buttontext": {
+          "type": "Text",
+          "config": {
+            "label": "ButtonText",
+            "placeholder": ""
           }
         }
       },

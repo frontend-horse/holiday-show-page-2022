@@ -11,10 +11,24 @@
       "version": "sktwi1xtmkfgx8626",
       "description": "CharityDetails",
       "primary": {
+        "eyebrow": {
+          "type": "Text",
+          "config": {
+            "label": "Eyebrow",
+            "placeholder": ""
+          }
+        },
         "heading": {
           "type": "Text",
           "config": {
             "label": "Heading",
+            "placeholder": ""
+          }
+        },
+        "subheading": {
+          "type": "Text",
+          "config": {
+            "label": "Subheading",
             "placeholder": ""
           }
         },
@@ -34,9 +48,38 @@
             "constraint": {},
             "thumbnails": []
           }
+        },
+        "questionText": {
+          "type": "Text",
+          "config": {
+            "label": "Question Text",
+            "placeholder": ""
+          }
+        },
+        "fundraiserAmount": {
+          "type": "Text",
+          "config": {
+            "label": "Fundraiser amount",
+            "placeholder": ""
+          }
         }
       },
-      "items": {},
+      "items": {
+        "number": {
+          "type": "Number",
+          "config": {
+            "label": "Number",
+            "placeholder": ""
+          }
+        },
+        "text": {
+          "type": "Text",
+          "config": {
+            "label": "text",
+            "placeholder": ""
+          }
+        }
+      },
       "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
     }
   ]

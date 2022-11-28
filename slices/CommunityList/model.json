@@ -11,6 +11,13 @@
       "version": "sktwi1xtmkfgx8626",
       "description": "CommunityList",
       "primary": {
+        "eyebrow": {
+          "type": "Text",
+          "config": {
+            "label": "Eyebrow",
+            "placeholder": ""
+          }
+        },
         "heading": {
           "type": "Text",
           "config": {

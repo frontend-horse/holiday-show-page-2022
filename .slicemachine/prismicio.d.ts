@@ -502,6 +502,16 @@ export type AllDocumentTypes = CommunitySponsorDocument | GuestDocument | Organi
  */
 interface CharityDetailsSliceDefaultPrimary {
     /**
+     * Eyebrow field in *CharityDetails → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: charity_details.primary.eyebrow
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    eyebrow: prismicT.KeyTextField;
+    /**
      * Heading field in *CharityDetails → Primary*
      *
      * - **Field Type**: Text
@@ -511,6 +521,16 @@ interface CharityDetailsSliceDefaultPrimary {
      *
      */
     heading: prismicT.KeyTextField;
+    /**
+     * Subheading field in *CharityDetails → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: charity_details.primary.subheading
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    subheading: prismicT.KeyTextField;
     /**
      * Body field in *CharityDetails → Primary*
      *
@@ -531,6 +551,52 @@ interface CharityDetailsSliceDefaultPrimary {
      *
      */
     charityLogo: prismicT.ImageField<never>;
+    /**
+     * Question Text field in *CharityDetails → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: charity_details.primary.questionText
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    questionText: prismicT.KeyTextField;
+    /**
+     * Fundraiser amount field in *CharityDetails → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: charity_details.primary.fundraiserAmount
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    fundraiserAmount: prismicT.KeyTextField;
+}
+/**
+ * Item in CharityDetails → Items
+ *
+ */
+export interface CharityDetailsSliceDefaultItem {
+    /**
+     * Number field in *CharityDetails → Items*
+     *
+     * - **Field Type**: Number
+     * - **Placeholder**: *None*
+     * - **API ID Path**: charity_details.items[].number
+     * - **Documentation**: https://prismic.io/docs/core-concepts/number
+     *
+     */
+    number: prismicT.NumberField;
+    /**
+     * text field in *CharityDetails → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: charity_details.items[].text
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    text: prismicT.KeyTextField;
 }
 /**
  * Default variation for CharityDetails Slice
@@ -540,7 +606,7 @@ interface CharityDetailsSliceDefaultPrimary {
  * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
  *
  */
-export type CharityDetailsSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<CharityDetailsSliceDefaultPrimary>, never>;
+export type CharityDetailsSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<CharityDetailsSliceDefaultPrimary>, Simplify<CharityDetailsSliceDefaultItem>>;
 /**
  * Slice variation for *CharityDetails*
  *
@@ -560,6 +626,16 @@ export type CharityDetailsSlice = prismicT.SharedSlice<"charity_details", Charit
  *
  */
 interface CommunityListSliceDefaultPrimary {
+    /**
+     * Eyebrow field in *CommunityList → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: community_list.primary.eyebrow
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    eyebrow: prismicT.KeyTextField;
     /**
      * Heading field in *CommunityList → Primary*
      *
@@ -610,6 +686,16 @@ export type CommunityListSlice = prismicT.SharedSlice<"community_list", Communit
  */
 interface DonationLeaderboardSliceDefaultPrimary {
     /**
+     * Eyebrow field in *DonationLeaderboard → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: donation_leaderboard.primary.eyebrow
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    eyebrow: prismicT.KeyTextField;
+    /**
      * Heading field in *DonationLeaderboard → Primary*
      *
      * - **Field Type**: Text
@@ -658,6 +744,16 @@ export type DonationLeaderboardSlice = prismicT.SharedSlice<"donation_leaderboar
  *
  */
 interface EventDetailsSliceDefaultPrimary {
+    /**
+     * Eyebrow field in *EventDetails → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: event_details.primary.eyebrow
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    eyebrow: prismicT.KeyTextField;
     /**
      * Heading field in *EventDetails → Primary*
      *
@@ -727,6 +823,16 @@ export type EventDetailsSlice = prismicT.SharedSlice<"event_details", EventDetai
  *
  */
 interface FrequentlyAskedQuestionsSliceDefaultPrimary {
+    /**
+     * Eyebrow field in *FrequentlyAskedQuestions → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: frequently_asked_questions.primary.eyebrow
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    eyebrow: prismicT.KeyTextField;
     /**
      * Heading field in *FrequentlyAskedQuestions → Primary*
      *
@@ -802,6 +908,16 @@ export type FrequentlyAskedQuestionsSlice = prismicT.SharedSlice<"frequently_ask
  *
  */
 interface GuestListSliceDefaultPrimary {
+    /**
+     * Eyebrow field in *GuestList → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: guest_list.primary.eyebrow
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    eyebrow: prismicT.KeyTextField;
     /**
      * Heading field in *GuestList → Primary*
      *
@@ -950,25 +1066,35 @@ export type LastYearRecapSlice = prismicT.SharedSlice<"last_year_recap", LastYea
  */
 interface RegisterCtaSliceDefaultPrimary {
     /**
-     * Heading field in *RegisterCTA → Primary*
+     * Top Text field in *RegisterCTA → Primary*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
-     * - **API ID Path**: register_cta.primary.heading
+     * - **API ID Path**: register_cta.primary.topText
      * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
      *
      */
-    heading: prismicT.KeyTextField;
+    topText: prismicT.KeyTextField;
     /**
-     * Body field in *RegisterCTA → Primary*
+     * Bottom Text field in *RegisterCTA → Primary*
      *
-     * - **Field Type**: Rich Text
+     * - **Field Type**: Text
      * - **Placeholder**: *None*
-     * - **API ID Path**: register_cta.primary.body
-     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     * - **API ID Path**: register_cta.primary.bottomText
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
      *
      */
-    body: prismicT.RichTextField;
+    bottomText: prismicT.KeyTextField;
+    /**
+     * ButtonText field in *RegisterCTA → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: register_cta.primary.buttontext
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    buttontext: prismicT.KeyTextField;
 }
 /**
  * Default variation for RegisterCTA Slice
@@ -998,6 +1124,16 @@ export type RegisterCtaSlice = prismicT.SharedSlice<"register_cta", RegisterCtaS
  *
  */
 interface SponsorListSliceDefaultPrimary {
+    /**
+     * Eyebrow field in *SponsorList → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: sponsor_list.primary.eyebrow
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    eyebrow: prismicT.KeyTextField;
     /**
      * Heading field in *SponsorList → Primary*
      *
@@ -1047,6 +1183,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { CommunitySponsorDocumentData, CommunitySponsorDocumentDataOrganizersItem, CommunitySponsorDocument, GuestDocumentData, GuestDocument, OrganizerTeamDocumentData, OrganizerTeamDocumentDataMemberItem, OrganizerTeamDocument, PageDocumentData, PageDocumentDataHeroEyebrowItem, PageDocumentDataSlicesSlice, PageDocument, SponsorDocumentData, SponsorDocument, AllDocumentTypes, CharityDetailsSliceDefaultPrimary, CharityDetailsSliceDefault, CharityDetailsSliceVariation, CharityDetailsSlice, CommunityListSliceDefaultPrimary, CommunityListSliceDefault, CommunityListSliceVariation, CommunityListSlice, DonationLeaderboardSliceDefaultPrimary, DonationLeaderboardSliceDefault, DonationLeaderboardSliceVariation, DonationLeaderboardSlice, EventDetailsSliceDefaultPrimary, EventDetailsSliceDefault, EventDetailsSliceVariation, EventDetailsSlice, FrequentlyAskedQuestionsSliceDefaultPrimary, FrequentlyAskedQuestionsSliceDefaultItem, FrequentlyAskedQuestionsSliceDefault, FrequentlyAskedQuestionsSliceVariation, FrequentlyAskedQuestionsSlice, GuestListSliceDefaultPrimary, GuestListSliceDefault, GuestListSliceVariation, GuestListSlice, HeroSliceDefaultPrimary, HeroSliceDefault, HeroSliceVariation, HeroSlice, LastYearRecapSliceDefaultPrimary, LastYearRecapSliceDefault, LastYearRecapSliceVariation, LastYearRecapSlice, RegisterCtaSliceDefaultPrimary, RegisterCtaSliceDefault, RegisterCtaSliceVariation, RegisterCtaSlice, SponsorListSliceDefaultPrimary, SponsorListSliceDefault, SponsorListSliceVariation, SponsorListSlice };
+        export type { CommunitySponsorDocumentData, CommunitySponsorDocumentDataOrganizersItem, CommunitySponsorDocument, GuestDocumentData, GuestDocument, OrganizerTeamDocumentData, OrganizerTeamDocumentDataMemberItem, OrganizerTeamDocument, PageDocumentData, PageDocumentDataHeroEyebrowItem, PageDocumentDataSlicesSlice, PageDocument, SponsorDocumentData, SponsorDocument, AllDocumentTypes, CharityDetailsSliceDefaultPrimary, CharityDetailsSliceDefaultItem, CharityDetailsSliceDefault, CharityDetailsSliceVariation, CharityDetailsSlice, CommunityListSliceDefaultPrimary, CommunityListSliceDefault, CommunityListSliceVariation, CommunityListSlice, DonationLeaderboardSliceDefaultPrimary, DonationLeaderboardSliceDefault, DonationLeaderboardSliceVariation, DonationLeaderboardSlice, EventDetailsSliceDefaultPrimary, EventDetailsSliceDefault, EventDetailsSliceVariation, EventDetailsSlice, FrequentlyAskedQuestionsSliceDefaultPrimary, FrequentlyAskedQuestionsSliceDefaultItem, FrequentlyAskedQuestionsSliceDefault, FrequentlyAskedQuestionsSliceVariation, FrequentlyAskedQuestionsSlice, GuestListSliceDefaultPrimary, GuestListSliceDefault, GuestListSliceVariation, GuestListSlice, HeroSliceDefaultPrimary, HeroSliceDefault, HeroSliceVariation, HeroSlice, LastYearRecapSliceDefaultPrimary, LastYearRecapSliceDefault, LastYearRecapSliceVariation, LastYearRecapSlice, RegisterCtaSliceDefaultPrimary, RegisterCtaSliceDefault, RegisterCtaSliceVariation, RegisterCtaSlice, SponsorListSliceDefaultPrimary, SponsorListSliceDefault, SponsorListSliceVariation, SponsorListSlice };
     }
 }

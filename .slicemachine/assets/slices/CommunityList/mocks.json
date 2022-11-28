@@ -6,11 +6,12 @@
       {}
     ],
     "primary": {
-      "heading": "man",
+      "eyebrow": "guard",
+      "heading": "yet",
       "body": [
         {
           "type": "paragraph",
-          "text": "Exercitation quis reprehenderit quis reprehenderit. Velit nostrud laborum proident veniam ex officia magna excepteur commodo anim non duis ipsum. Qui tempor qui aute sint aliqua amet esse qui.",
+          "text": "Non anim culpa ullamco commodo ex. Tempor eiusmod et laboris dolore pariatur adipisicing ea velit est dolore dolore irure est aliqua elit.",
           "spans": []
         }
       ]
