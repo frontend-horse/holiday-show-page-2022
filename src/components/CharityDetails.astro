@@ -18,9 +18,9 @@ const { items } = props;
 const bodyHTML = prismicH.asHTML(body);
 ---
 
-<section class="charity">
+<section aria-labelledby="charity-heading" class="charity">
   <span class="heading-eyebrow">{eyebrow}</span>
-  <h2>{heading}</h2>
+  <h2 id="charity-heading">{heading}</h2>
   <img
     src={charityLogo.url}
     alt="Doctors without Borders"
