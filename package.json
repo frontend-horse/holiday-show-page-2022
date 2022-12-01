@@ -32,5 +32,10 @@
     "netlify-cli": "^12.2.7",
     "prismic-ts-codegen": "^0.1.5",
     "slice-machine-ui": "^0.5.2"
-  }
+  },
+	"prettier": {
+		"useTabs": false,
+		"singleQuote": true,
+		"endOfLine": "lf"
+	}
 }
