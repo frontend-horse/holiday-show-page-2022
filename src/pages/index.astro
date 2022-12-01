@@ -130,15 +130,17 @@ const bodyHTML = prismicH.asHTML(body);
         line-height: var(--step-0);
         font-family: var(--body-font);
         font-weight: 400;
-        color: var(--color-white);
         max-width: 30ch;
       }
 
       .cta {
+				--cta-bg: var(--accent-constant-red);
+				--cta-text: var(--accent-constant-text);
+
+				background-color: var(--cta-bg);
+				color: var(--cta-text);
         align-items: center;
-        background: var(--hero-cta-background);
         border-radius: 3rem;
-        color: var(--black);
         font-size: var(--step--1);
         display: none;
         font-family: var(--body-font);
@@ -153,7 +155,6 @@ const bodyHTML = prismicH.asHTML(body);
         }
       }
       .cta-description {
-        color: var(--white);
         padding-inline: 0.65rem;
         font-size: var(--step--2);
         font-weight: 600;

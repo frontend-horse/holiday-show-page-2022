@@ -1,5 +1,8 @@
-button,
-.button {
+:where(button, .button) {
+  --button-font-color: var(--accent-constant-text);
+  --button-bg-color: var(--accent-constant-black);
+  --button-bg-hover-color: var(--accent-constant-black-hover);
+
   align-items: center;
   background: var(--button-bg-color);
   border-radius: 3rem;

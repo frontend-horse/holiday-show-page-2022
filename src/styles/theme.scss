@@ -1,26 +1,31 @@
 
-  //Darker theme
-  :root {
-    // Colors
-    --accent-color: #D03037;
-    --accent-color-dark: #951e24;
+@import "open-props/blue";
+@import "open-props/red";
 
-    --white: #ffffff;
-    --black: #282828;
+:root {
+  // main accent that should be used for headings and such.
+  --accent: hsl(37deg 100% 73%);
 
-    --body-bg-color: hsl(209deg 100% 6%);
-    --body-font-color: var(--white);
+  // constant accents that don't change between themes. can be used for buttons and ctas.
+  --accent-constant-red: hsl(357deg 63% 50%);
+  --accent-constant-red-hover: hsl(357 63% 54%);
+  --accent-constant-black: hsl(0 0% 16%);
+  --accent-constant-black-hover: hsl(0 0% 20%);
 
-    --header-font-color: #FFC973;
+  // should always be used as the foreground when using above accent-constants in backgrounds.
+  --accent-constant-text: #ffffff;
+  
+  // main page / body
+  --body--text: #ffffff;
+  --body--gradient-stop-1: hsl(209deg 100% 6%);
+  --body--gradient-stop-2: hsl(290deg 40% 35%);
+  --body--gradient-stop-3: hsl(339deg 37% 57%);
+  --body--gradient-stop-4: hsl(7deg 60% 68%);
+  --body--gradient-stop-5: hsl(29deg 77% 73%);
 
-    --button-font-color: var(--white);
-    --button-bg-color: var(--black);
-    --button-bg-hover-color: #333333;
-
-    --primary-color: #fed330;
-
-    --feh-fill: var(--white);
-    --snowtacular-fill: #DFCBAB;
-
-    --hero-cta-background: #D03037;
-  }
+  // call-to-action section ("don't miss the fun")
+  --cta-section--text-primary: var(--blue-11);
+  --cta-section--text-secondary: var(--red-9);
+  --cta-section--gradient-stop-1: #ffffff;
+  --cta-section--gradient-stop-2: var(--blue-1);
+}
