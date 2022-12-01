@@ -2,6 +2,7 @@
 import * as prismicH from "@prismicio/helpers";
 import { getAllGuests, getHomepage } from "../lib/prismicio";
 
+const imageUrl = new URL('/images/cover.png', Astro.url);
 const page = await getHomepage();
 const description = prismicH.asText(page.data.body);
 
@@ -52,7 +53,7 @@ const schema = {
 	"@type": "Event",
 	name: "2nd Annual Holiday Snowtacular",
 	description,
-	image: "https://cdn.discordapp.com/attachments/1043657872338341919/1047706115598721114/image.png",
+	image: imageUrl,
 	startDate: "2022-12-16T12:00-05:00",
 	endDate: "2022-12-16T16:00-05:00",
 	eventStatus: "https://schema.org/EventScheduled",

@@ -1,14 +1,16 @@
 ---
 export interface Props {
+  description: string;
   title: string;
 }
 
-const { title } = Astro.props;
+const { description, title } = Astro.props;
 import "../styles/main.scss";
 import Snow from "../components/Snow.astro";
 import NavBar from "../components/NavBar.astro";
 import Footer from "../components/Footer.astro";
 import StructuredData from "../components/StructuredData.astro";
+import OpenGraph from "../components/OpenGraph.astro";
 ---
 
 <!DOCTYPE html>
@@ -19,6 +21,7 @@ import StructuredData from "../components/StructuredData.astro";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+	<OpenGraph title={title} description={description} />
 	<StructuredData />
 	<script id="luma-checkout" src="https://embed.lu.ma/checkout-button.js"></script>
   </head>
