@@ -1,7 +1,7 @@
 ---
-import * as prismicH from "@prismicio/helpers";
-import { getAllSponsors } from "../lib/prismicio";
-import { SponsorListSlice } from "../../types.generated";
+import * as prismicH from '@prismicio/helpers';
+import { getAllSponsors } from '../lib/prismicio';
+import { SponsorListSlice } from '../../types.generated';
 
 const props = Astro.props as SponsorListSlice;
 
@@ -33,46 +33,44 @@ const bodyHTML = prismicH.asHTML(body);
 </section>
 
 <style lang="scss">
-  @layer sections {
-    .sponsors {
-      .sponsor-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(15ch, 1fr));
-        grid-gap: 1rem;
-      }
+  .sponsors {
+    .sponsor-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(15ch, 1fr));
+      grid-gap: 1rem;
+    }
 
-      h3 {
-        margin-block-start: 3rem;
-      }
+    h3 {
+      margin-block-start: 3rem;
+    }
 
-      .sponsor {
-        position: relative;
-        background: rgba(0, 0, 0, 0.25);
-        padding-block: 0.5rem;
-        padding-inline: 1rem;
-        display: grid;
-        place-content: center;
-        transition: background 0.2s ease;
-        border-radius: 0.25rem;
-        &:hover {
-          background: rgba(0, 0, 0, 0.3);
+    .sponsor {
+      position: relative;
+      background: rgba(0, 0, 0, 0.25);
+      padding-block: 0.5rem;
+      padding-inline: 1rem;
+      display: grid;
+      place-content: center;
+      transition: background 0.2s ease;
+      border-radius: 0.25rem;
+      &:hover {
+        background: rgba(0, 0, 0, 0.3);
+      }
+      a {
+        &::before {
+          content: '';
+          position: absolute;
+          inset: 0;
         }
-        a {
-          &::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-          }
-        }
-        img {
-          display: block;
-          max-width: 100%;
-          padding: 0;
-          margin: 0;
-          width: auto;
-          height: 100px;
-          object-fit: contain;
-        }
+      }
+      img {
+        display: block;
+        max-width: 100%;
+        padding: 0;
+        margin: 0;
+        width: auto;
+        height: 100px;
+        object-fit: contain;
       }
     }
   }

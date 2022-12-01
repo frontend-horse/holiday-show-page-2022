@@ -32,26 +32,24 @@ const { size } = Astro.props;
 </a>
 
 <style lang="scss">
-  @layer component {
-    .frontend-horse-logo {
-      path {
-        fill: var(--feh-fill);
-      }
+  .frontend-horse-logo {
+    path {
+      fill: #ffc973;
     }
-    .logo {
-      display: flex;
-      height: 100px;
-      order: 1;
-      width: 150px;
-      @media (min-width: 640px) {
-        height: 50px;
-        width: auto;
-        order: 2;
-        width: auto;
-      }
-      svg {
-        height: 100%;
-      }
+  }
+  .logo {
+    display: flex;
+    height: 100px;
+    order: 1;
+    width: 150px;
+    @media (min-width: 640px) {
+      height: 50px;
+      width: auto;
+      order: 2;
+      width: auto;
+    }
+    svg {
+      height: 100%;
     }
   }
 </style>
