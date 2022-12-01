@@ -8,6 +8,7 @@ import "../styles/main.scss";
 import Snow from "../components/Snow.astro";
 import NavBar from "../components/NavBar.astro";
 import Footer from "../components/Footer.astro";
+import StructuredData from "../components/StructuredData.astro";
 ---
 
 <!DOCTYPE html>
@@ -18,6 +19,7 @@ import Footer from "../components/Footer.astro";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+	<StructuredData />
 	<script id="luma-checkout" src="https://embed.lu.ma/checkout-button.js"></script>
   </head>
   <body>
