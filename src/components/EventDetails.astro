@@ -9,9 +9,9 @@ const { heading, body, dateTime, showLink, eyebrow } = props.primary;
 const bodyHTML = prismicH.asHTML(body);
 ---
 
-<section class="event">
+<section aria-labelledby="event-details-heading" class="event">
   <span class="heading-eyebrow">{eyebrow}</span>
-  <h2>{heading}</h2>
+  <h2 id="event-details-heading">{heading}</h2>
 
   <Fragment set:html="bodyHTML" />
 </section>

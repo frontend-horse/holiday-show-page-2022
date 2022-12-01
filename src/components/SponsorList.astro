@@ -12,9 +12,9 @@ const sponsors = await getAllSponsors();
 const bodyHTML = prismicH.asHTML(body);
 ---
 
-<section id="sponsors" class="sponsors">
+<section id="sponsors" aria-labelledby="sponsors-heading" class="sponsors">
   <span class="heading-eyebrow">{eyebrow}</span>
-  <h2>{heading}</h2>
+  <h2 id="sponsors-heading">{heading}</h2>
 
   <Fragment set:html="bodyHTML" />
 
@@ -23,7 +23,6 @@ const bodyHTML = prismicH.asHTML(body);
       sponsors.map((sponsor) => (
         <li class="sponsor">
           <a href={`/sponsor/${sponsor.uid}`}>
-            <span class="visually-hidden">{sponsor.data.name}</span>
             <img src={sponsor.data.logo.url} alt={sponsor.data.name} />
           </a>
         </li>

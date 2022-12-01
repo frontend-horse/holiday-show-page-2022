@@ -10,8 +10,8 @@ const { heading, body } = props.primary;
 const bodyHTML = prismicH.asHTML(body);
 ---
 
-<section class="recap">
-  <h2>{heading}</h2>
+<section aria-labelledby="recap-heading" class="recap">
+  <h2 id="recap-heading">{heading}</h2>
 
   <Fragment set:html="bodyHTML" />
 </section>

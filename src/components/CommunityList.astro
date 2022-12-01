@@ -13,9 +13,9 @@ const communities = await getAllCommunitySponsors();
 const bodyHTML = prismicH.asHTML(body);
 ---
 
-<section id="communities" class="communities">
+<section id="communities" aria-labelledby="communities-heading" class="communities">
   <span class="heading-eyebrow">{eyebrow}</span>
-  <h2>{heading}</h2>
+  <h2 id="communities-heading">{heading}</h2>
 
   <Fragment set:html="bodyHTML" />
 
@@ -24,7 +24,6 @@ const bodyHTML = prismicH.asHTML(body);
       communities.map((community) => (
         <li class="community">
           <a href={`/community/${community.uid}`}>
-            <span class="visually-hidden">{community.data.title}</span>
             <img src={community.data.logo.url} alt={community.data.title} />
           </a>
         </li>

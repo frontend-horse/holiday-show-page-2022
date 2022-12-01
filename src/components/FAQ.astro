@@ -17,10 +17,10 @@ const faqItems = items.map((item) => {
 });
 ---
 
-<section class="faq">
+<section aria-labelledby="faq-heading" class="faq">
   <div>
     <span class="heading-eyebrow">{eyebrow}</span>
-    <h2>{heading}</h2>
+    <h2 id="faq-heading">{heading}</h2>
 
     <Fragment set:html="bodyHTML" />
   </div>
