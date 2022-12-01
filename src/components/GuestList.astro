@@ -14,22 +14,22 @@ const allGuests = await getAllGuests();
 const bodyHTML = prismicH.asHTML(body);
 ---
 
-<section id="guests" class="guests">
+<section id="guests" aria-labelledby="guests-heading" class="guests">
   <span class="heading-eyebrow">{eyebrow}</span>
-  <h2>{heading}</h2>
+  <h2 id="guests-heading">{heading}</h2>
 
   <Fragment set:html="bodyHTML" />
 
   <div class="guest-grid">
     {
       allGuests.map((guest) => (
-        <div class="guest">
+        <article class="guest">
           <GuestAvatar avatar={guest.data.avatar} guestName={guest.data.name} />
-          <h3>
+          <p class="name">
             <a href={`/guest/${guest.uid}`}>{guest.data.name}</a>
-          </h3>
+          </p>
           <span class="company">{guest.data.company}</span>
-        </div>
+        </article>
       ))
     }
   </div>
@@ -55,9 +55,10 @@ const bodyHTML = prismicH.asHTML(body);
         border-radius: 100%;
         width: 100%;
       }
-      h3 {
+      .name {
         font-family: var(--body-font);
         font-size: var(--step--1);
+		font-weight: 700;
         text-align: center;
         a {
           color: var(--body-color);

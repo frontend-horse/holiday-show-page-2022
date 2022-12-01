@@ -1,20 +1,30 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @font-face {
-  font-family: 'Recoleta-Bold';
-  src: url('/fonts/Recoleta-Bold/font.woff2') format('woff2'), url('/fonts/Recoleta-Bold/font.woff') format('woff');
+  font-family: "Poppins";
+  src: url("../fonts/Poppins-Variable.woff2") format("woff2"),
+    url("../fonts/Poppins-Variable.woff") format("woff");
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: normal;
 }
 
 @font-face {
-  font-family: 'Recoleta-Medium';
-  src: url('/fonts/Recoleta-Medium/font.woff2') format('woff2'), url('/fonts/Recoleta-Medium/font.woff') format('woff');
+  font-family: "Recoleta-Bold";
+  src: url("/fonts/Recoleta-Bold/font.woff2") format("woff2"),
+    url("/fonts/Recoleta-Bold/font.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Recoleta-Medium";
+  src: url("/fonts/Recoleta-Medium/font.woff2") format("woff2"),
+    url("/fonts/Recoleta-Medium/font.woff") format("woff");
 }
 
 :root {
   /*   Body   */
-  --body-font: 'Poppins', sans-serif;
+  --body-font: "Poppins", sans-serif;
   /*   Headers   */
-  --header-font-bold: 'Recoleta-Bold', serif;
-  --header-font: 'Recoleta-Medium', serif;
+  --header-font-bold: "Recoleta-Bold", serif;
+  --header-font: "Recoleta-Medium", serif;
 }
 
 html {
