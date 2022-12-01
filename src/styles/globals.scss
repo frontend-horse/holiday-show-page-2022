@@ -5,13 +5,6 @@ html {
 body {
   block-size: unset;
   background-repeat: no-repeat;
-  background: linear-gradient(
-    180deg,
-    var(--body--gradient-stop-1) 0%,
-    var(--body--gradient-stop-2) 49%,
-    var(--body--gradient-stop-3) 70%,
-    var(--body--gradient-stop-4) 85%,
-    var(--body--gradient-stop-5) 100%
-  );
+  background: var(--body--background);
   overflow-x: hidden;
 }
