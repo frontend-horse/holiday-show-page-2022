@@ -24,7 +24,6 @@ const bodyHTML = prismicH.asHTML(body);
       communities.map((community) => (
         <li class="community">
           <a href={`/community/${community.uid}`}>
-            <span class="visually-hidden">{community.data.title}</span>
             <img src={community.data.logo.url} alt={community.data.title} />
           </a>
         </li>
