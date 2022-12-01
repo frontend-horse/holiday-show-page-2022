@@ -1,8 +1,8 @@
 ---
-import * as prismicH from "@prismicio/helpers";
-import { getAllGuests } from "../lib/prismicio";
-import GuestAvatar from "./GuestAvatar.astro";
-import { GuestListSlice } from "../../types.generated";
+import * as prismicH from '@prismicio/helpers';
+import { getAllGuests } from '../lib/prismicio';
+import GuestAvatar from './GuestAvatar.astro';
+import { GuestListSlice } from '../../types.generated';
 
 const props = Astro.props as GuestListSlice;
 
@@ -36,49 +36,47 @@ const bodyHTML = prismicH.asHTML(body);
 </section>
 
 <style lang="scss">
-  @layer sections {
-    .guests {
-      .guest-grid {
-        display: grid;
-        gap: 2rem;
-        grid-template-columns: repeat(auto-fit, minmax(25ch, 1fr));
+  .guests {
+    .guest-grid {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(20ch, 1fr));
+    }
+    .guest {
+      align-items: center;
+      display: flex;
+      flex-flow: column;
+      position: relative;
+      > * + * {
+        margin-block-start: var(--space-2xs);
       }
-      .guest {
-        align-items: center;
-        display: flex;
-        flex-flow: column;
-        position: relative;
-        > * + * {
-          margin-block-start: var(--space-2xs);
-        }
-        img {
-          aspect-ratio: 1;
-          border-radius: 100%;
-          width: 100%;
-        }
-        h3 {
-          color: var(--body-font-color);
-          font-family: var(--body-font);
-          font-size: var(--step--1);
-          text-align: center;
-          a {
-            color: var(--body-color);
-            text-decoration: none;
-            &:hover {
-              text-decoration: underline;
-            }
-            &::before {
-              content: "";
-              position: absolute;
-              inset: 0;
-            }
+      img {
+        aspect-ratio: 1;
+        border-radius: 100%;
+        width: 100%;
+      }
+      h3 {
+        color: var(--body-font-color);
+        font-family: var(--body-font);
+        font-size: var(--step--1);
+        text-align: center;
+        a {
+          color: var(--body-color);
+          text-decoration: none;
+          &:hover {
+            text-decoration: underline;
+          }
+          &::before {
+            content: '';
+            position: absolute;
+            inset: 0;
           }
         }
-        .company {
-          color: var(--header-font-color);
-          font-size: var(--step--1);
-          text-align: center;
-        }
+      }
+      .company {
+        color: var(--header-font-color);
+        font-size: var(--step--1);
+        text-align: center;
       }
     }
   }

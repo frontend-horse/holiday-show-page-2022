@@ -4,6 +4,5 @@
 @use "components";
 @use "theme";
 
-@import "open-props/colors";
-
 @import "@acab/reset.css" layer(reset);
+@import "open-props/colors";

@@ -1,78 +1,63 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap")
-layer(typography);
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@font-face {
+  font-family: 'Recoleta-Bold';
+  src: url('/fonts/Recoleta-Bold/font.woff2') format('woff2'), url('/fonts/Recoleta-Bold/font.woff') format('woff');
+}
 
-@layer typography {
-  @font-face {
-    font-family: "Recoleta-Bold";
-    src: url("/fonts/Recoleta-Bold/font.woff2") format("woff2"),
-      url("/fonts/Recoleta-Bold/font.woff") format("woff");
-  }
+@font-face {
+  font-family: 'Recoleta-Medium';
+  src: url('/fonts/Recoleta-Medium/font.woff2') format('woff2'), url('/fonts/Recoleta-Medium/font.woff') format('woff');
+}
 
-  @font-face {
-    font-family: "Recoleta-Medium";
-    src: url("/fonts/Recoleta-Medium/font.woff2") format("woff2"),
-      url("/fonts/Recoleta-Medium/font.woff") format("woff");
-  }
-  :root {
-    /*   Body   */
-    --body-font: "Poppins", sans-serif;
-    /*   Headers   */
-    --header-font-bold: "Recoleta-Bold", serif;
-    --header-font: "Recoleta-Medium", serif;
+:root {
+  /*   Body   */
+  --body-font: 'Poppins', sans-serif;
+  /*   Headers   */
+  --header-font-bold: 'Recoleta-Bold', serif;
+  --header-font: 'Recoleta-Medium', serif;
+}
 
-    // /*   Sizes   */
-    // --step--2: clamp(0.91rem, calc(0.89rem + 0.1vw), 0.96rem);
-    // --step--1: clamp(1.09rem, calc(1.05rem + 0.21vw), 1.2rem);
-    // --step-0: clamp(1.31rem, calc(1.24rem + 0.37vw), 1.5rem);
-    // --step-1: clamp(1.58rem, calc(1.46rem + 0.59vw), 1.88rem);
-    // --step-2: clamp(1.89rem, calc(1.71rem + 0.89vw), 2.34rem);
-    // --step-3: clamp(2.27rem, calc(2.01rem + 1.29vw), 2.93rem);
-    // --step-4: clamp(2.72rem, calc(2.36rem + 1.83vw), 3.66rem);
-    // --step-5: clamp(3.27rem, calc(2.75rem + 2.56vw), 4.58rem);
-  }
+html {
+  font-size: 16px;
+}
 
-  html {
-    font-size: 16px;
-  }
+body {
+  color: var(--body-font-color);
+  font-family: var(--body-font);
+}
 
-  body {
-    color: var(--body-font-color);
-    font-family: var(--body-font);
-  }
+p {
+  font-size: var(--step-0);
+  line-height: 1.6;
+  letter-spacing: 0.75px;
+  max-width: 55ch;
+}
 
-  p {
-    font-size: var(--step-0);
-    line-height: 1.6;
-    letter-spacing: 0.75px;
-    max-width: 55ch;
-  }
+a {
+  font-size: var(--step--1);
+}
 
-  a {
-    font-size: var(--step--1);
-  }
+h3 {
+  font-family: var(--header-font);
+}
 
-  h3 {
-    font-family: var(--header-font);
-  }
+h1 {
+  font-size: var(--step-5);
+  color: var(--header-font-color);
+  font-family: var(--header-font-bold);
+}
+h2 {
+  font-size: var(--step-4);
+  color: var(--header-font-color);
+  font-family: var(--header-font-bold);
+}
+h3 {
+  font-size: var(--step-2);
+}
 
-  h1 {
-    font-size: var(--step-5);
-    color: var(--header-font-color);
-    font-family: var(--header-font-bold);
-  }
-  h2 {
-    font-size: var(--step-4);
-    color: white;
-    font-family: var(--header-font-bold);
-  }
-  h3 {
-    font-size: var(--step-2);
-  }
-
-  .heading-eyebrow {
-    display: block;
-    font-size: var(--step--1);
-    color: var(--header-font-color);
-    text-transform: uppercase;
-  }
+.heading-eyebrow {
+  display: block;
+  font-size: var(--step--1);
+  color: var(--white);
+  text-transform: uppercase;
 }
