@@ -4,6 +4,6 @@ import image from "@astrojs/image";
 
 // https://astro.build/config
 export default defineConfig({
-  site: import.meta.env.URL || 'http://localhost:3000',
+  site: process.env.URL || 'http://localhost:3000',
   integrations: [svelte(),image()],
 });
