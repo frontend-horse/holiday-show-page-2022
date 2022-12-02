@@ -39,18 +39,14 @@ const bodyHTML = prismicH.asHTML(body)
 		.sponsor-grid {
 			display: grid;
 			grid-template-columns: repeat(auto-fit, minmax(15ch, 1fr));
-			grid-gap: 1rem;
-		}
-
-		h3 {
-			margin-block-start: 3rem;
+			grid-gap: var(--space-s);
 		}
 
 		.sponsor {
 			position: relative;
 			background: rgba(0, 0, 0, 0.25);
-			padding-block: 1rem;
-			padding-inline: 1.5rem;
+			padding-block: var(--space-s);
+			padding-inline: var(--space-s-m);
 			display: grid;
 			place-content: center;
 			transition: background 0.2s ease;

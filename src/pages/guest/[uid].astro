@@ -63,7 +63,7 @@ const topicDescriptionHTML = prismicH.asHTML(topicDescription)
 
 		margin-inline: auto;
 		padding-block-start: var(--space-l-xl);
-		width: min(var(--container-width), 100% - 3rem);
+		width: min(var(--container-width), 100% - var(--space-l));
 	}
 
 	h1 {
@@ -92,12 +92,12 @@ const topicDescriptionHTML = prismicH.asHTML(topicDescription)
 		font-size: var(--step-1);
 		font-family: var(--header-font);
 		color: var(--header-font-color);
-		margin-block-start: 1.5rem;
+		margin-block-start: var(--space-s-m);
 	}
 	dt:first-child {
 		margin-block-start: 0;
 	}
 	dd {
-		margin-block-start: 1rem;
+		margin-block-start: var(--space-s);
 	}
 </style>
