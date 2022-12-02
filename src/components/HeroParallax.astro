@@ -45,20 +45,7 @@ import Sock from '../../public/images/header_elements/sock.png'
 </script>
 
 <style lang='scss'>
-	@mixin mouseParallax($multiplier) {
-		@media (prefers-reduced-motion: no-preference) and (pointer: fine) {
-			transform: translate(
-				calc(#{$multiplier * 100px} * var(--mouseX)),
-				calc(
-					#{$multiplier * 100px} * var(--mouseY) + #{$multiplier * -1000px} *
-						var(--scroll)
-				)
-			);
-		}
-		@media (prefers-reduced-motion: no-preference) and (pointer: coarse) {
-			transform: translateY(calc(#{$multiplier * -1000px} * var(--scroll)));
-		}
-	}
+	@import '../lib/mixins.scss';
 
 	.header-composition {
 		width: 100%;
@@ -67,6 +54,7 @@ import Sock from '../../public/images/header_elements/sock.png'
 		position: relative;
 		> * {
 			position: absolute;
+			pointer-events: none;
 		}
 		.present {
 			top: 20.5%;

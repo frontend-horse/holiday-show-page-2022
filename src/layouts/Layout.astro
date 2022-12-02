@@ -1,38 +1,39 @@
 ---
 export interface Props {
-  title: string;
+	title: string
 }
 
-const { title } = Astro.props;
-import "../styles/main.scss";
-import Snow from "../components/Snow.astro";
-import NavBar from "../components/NavBar.astro";
-import Footer from "../components/Footer.astro";
+const { title } = Astro.props
+import '../styles/main.scss'
+import Snow from '../components/Snow.astro'
+import NavBar from '../components/NavBar.astro'
+import Footer from '../components/Footer.astro'
 ---
 
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-	<script id="luma-checkout" src="https://embed.lu.ma/checkout-button.js"></script>
-  </head>
-  <body>
-    <!-- <Snow /> -->
-    <NavBar />
-    <slot />
-    <Footer />
-  </body>
+<html lang='en'>
+	<head>
+		<meta charset='UTF-8' />
+		<meta name='viewport' content='width=device-width, initial-scale=1' />
+		<link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+		<meta name='generator' content={Astro.generator} />
+		<title>{title}</title>
+		<script id='luma-checkout' src='https://embed.lu.ma/checkout-button.js'
+		></script>
+	</head>
+	<body>
+		<!-- <Snow /> -->
+		<NavBar />
+		<slot />
+		<Footer />
+	</body>
 </html>
-<style is:global lang="scss">
-  body {
-    min-height: 100vh;
-  }
+<style is:global lang='scss'>
+	body {
+		min-height: 100vh;
+	}
 
-  /*
+	/*
 
 
   body {
