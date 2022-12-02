@@ -1,14 +1,41 @@
-	@mixin mouseParallax($multiplier) {
-		@media (prefers-reduced-motion: no-preference) and (pointer: fine) {
-			transform: translate(
-				calc(#{$multiplier * 100px} * var(--mouseX)),
-				calc(
-					#{$multiplier * 100px} * var(--mouseY) + #{$multiplier * -1000px} *
-						var(--scroll)
-				)
-			);
-		}
-		@media (prefers-reduced-motion: no-preference) and (pointer: coarse) {
-			transform: translateY(calc(#{$multiplier * -1000px} * var(--scroll)));
-		}
-	}
+@use "sass:math";
+
+$mouseMovementScale: 100px;
+$scrollScale: -1000px;
+$rotationMultiplier: 45;
+$baseRotation: 5;
+$scaleMultiplier: .25;
+$moveMultiplier: 200px;
+
+@mixin buildTransform($multiplier, $pointerLevel) {
+  $transformMouseY: #{$multiplier * $mouseMovementScale} #{"* var(--mouseY)"};
+  $transformMouseX: #{$multiplier * $mouseMovementScale} #{"* var(--mouseX)"};
+  $transformScroll: #{$multiplier - .1 * $scrollScale} #{"* var(--scroll)"};
+  $transformXonScroll: #{$multiplier * $moveMultiplier} #{"* var(--scroll)"};
+  $transformRotate: #{(math.random($rotationMultiplier)* $multiplier + $baseRotation) * 1deg} #{"* var(--scroll)"};
+  $transformScale: #{$multiplier * $scaleMultiplier} #{"* var(--scroll) + 1"};
+
+  @if $pointerLevel ==fine {
+    transform: translate(calc(#{$transformMouseX #{"+"} $transformXonScroll
+      }),
+    calc(#{$transformMouseY} + #{$transformScroll}),
+  ) rotate(calc(#{$transformRotate})) scale(calc(#{$transformScale}));
+}
+
+@else {
+  transform: translate(calc(#{$transformXonScroll}), calc(#{$transformScroll})) rotate(calc(#{$transformRotate})) scale(calc(#{$transformScale}));
+}
+}
+
+@mixin headerElementParallax($multiplier) {
+
+  // transform-origin: 20% 20%;
+
+  @media (prefers-reduced-motion: no-preference) and (pointer: fine) {
+    @include buildTransform($multiplier, fine);
+  }
+
+  @media (prefers-reduced-motion: no-preference) and (pointer: coarse) {
+    @include buildTransform($multiplier, coarse);
+  }
+}

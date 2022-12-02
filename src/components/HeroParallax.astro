@@ -54,7 +54,7 @@ import Sock from '../../public/images/header_elements/sock.png'
 </script>
 
 <style lang='scss'>
-	@import '../lib/mixins.scss';
+	@import 'src/lib/mixins.scss';
 
 	.parallax-container {
 		display: flex;
@@ -70,6 +70,7 @@ import Sock from '../../public/images/header_elements/sock.png'
 		margin: auto 0;
 		height: 48ch;
 		display: block;
+		margin: -15% 0 0 -15%;
 
 		position: relative;
 		> * {
@@ -80,33 +81,33 @@ import Sock from '../../public/images/header_elements/sock.png'
 			top: 14.5%;
 			left: 15%;
 			z-index: 1;
-			@include mouseParallax(0.5);
+			@include headerElementParallax(0.5);
 		}
 		.bell {
 			top: 65%;
 			left: 25%;
-			@include mouseParallax(0.25);
+			@include headerElementParallax(0.25);
 		}
 		.cursor {
 			top: 58%;
 			left: 61%;
 			z-index: 2;
-			@include mouseParallax(0.7);
+			@include headerElementParallax(0.8);
 		}
 		.hat {
 			top: 32%;
 			left: 64%;
-			@include mouseParallax(0.4);
+			@include headerElementParallax(0.3);
 		}
 		.keyboard {
-			top: 0;
+			top: -3%;
 			left: 40%;
-			@include mouseParallax(0.2);
+			@include headerElementParallax(0.6);
 		}
 		.sock {
 			top: 24%;
 			left: -2%;
-			@include mouseParallax(0.35);
+			@include headerElementParallax(0.4);
 		}
 	}
 </style>
