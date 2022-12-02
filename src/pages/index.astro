@@ -1,20 +1,13 @@
 ---
 import * as prismicH from '@prismicio/helpers'
-import { Image } from '@astrojs/image/components'
 
 import { getHomepage } from '../lib/prismicio'
-
-import Present from '../../public/images/header_elements/present.png'
-import Bell from '../../public/images/header_elements/bell.png'
-import Cursor from '../../public/images/header_elements/cursor.png'
-import Hat from '../../public/images/header_elements/hat.png'
-import Keyboard from '../../public/images/header_elements/keyboard.png'
-import Sock from '../../public/images/header_elements/sock.png'
 
 import Layout from '../layouts/Layout.astro'
 import SliceZone from '../components/SliceZone.astro'
 import HolidaySnowtacularLogo from '../components/HolidaySnowtacularLogo.astro'
 import RegistrationButton from '../components/RegistrationButton.astro'
+import HeroParallax from '../components/HeroParallax.astro'
 
 const page = await getHomepage()
 const {
@@ -69,13 +62,8 @@ const bodyHTML = prismicH.asHTML(body)
 					</RegistrationButton>
 				</div>
 			</div>
-			<div class='hero-column header-composition'>
-				<Image src={Present} class='present' alt='' height={306} />
-				<Image src={Bell} class='bell' alt='' height={120} />
-				<Image src={Cursor} class='cursor' alt='' height={125} />
-				<Image src={Hat} class='hat' alt='' height={113} />
-				<Image src={Keyboard} class='keyboard' alt='' height={170} />
-				<Image src={Sock} class='sock' alt='' height={190} />
+			<div class='hero-column'>
+				<HeroParallax />
 			</div>
 		</section>
 		<div class='slice-container'>
@@ -84,49 +72,7 @@ const bodyHTML = prismicH.asHTML(body)
 	</main>
 </Layout>
 
-<script>
-	window.addEventListener('DOMContentLoaded', () => {
-		const container = document.querySelector('.grid-container')
-		if (window.matchMedia('(prefers-reduced-motion: no-preference)')) {
-			if (window.matchMedia('(pointer:fine')) {
-				document.addEventListener('mousemove', event => {
-					container.style.setProperty(
-						'--mouseX',
-						event.pageX / window.innerWidth
-					)
-					container.style.setProperty(
-						'--mouseY',
-						event.pageY / window.innerHeight
-					)
-				})
-			}
-
-			document.addEventListener('scroll', () => {
-				container.style.setProperty(
-					'--scroll',
-					window.scrollY / window.innerHeight
-				)
-			})
-		}
-	})
-</script>
-
 <style lang='scss'>
-	@mixin mouseParallax($multiplier) {
-		@media (prefers-reduced-motion: no-preference) and (pointer: fine) {
-			transform: translate(
-				calc(#{$multiplier * 100px} * var(--mouseX)),
-				calc(
-					#{$multiplier * 100px} * var(--mouseY) + #{$multiplier * -1000px} *
-						var(--scroll)
-				)
-			);
-		}
-		@media (prefers-reduced-motion: no-preference) and (pointer: coarse) {
-			transform: translateY(calc(#{$multiplier * -1000px} * var(--scroll)));
-		}
-	}
-
 	.grid-container {
 		display: grid;
 		place-items: center;
@@ -155,7 +101,7 @@ const bodyHTML = prismicH.asHTML(body)
 		max-width: 1136px;
 		width: 100%;
 
-		.hero-column {
+		.hero-column:first-child {
 			display: grid;
 			gap: var(--space-xs);
 			place-content: center;
@@ -176,45 +122,6 @@ const bodyHTML = prismicH.asHTML(body)
 					margin-inline: var(--space-2xs);
 				}
 			}
-		}
-	}
-
-	.header-composition {
-		position: relative;
-		> * {
-			position: absolute;
-		}
-		.present {
-			top: 20.5%;
-			left: 19%;
-			z-index: 1;
-			@include mouseParallax(0.5);
-		}
-		.bell {
-			top: 58%;
-			left: 27%;
-			@include mouseParallax(0.25);
-		}
-		.cursor {
-			top: 55%;
-			left: 69%;
-			z-index: 2;
-			@include mouseParallax(0.7);
-		}
-		.hat {
-			top: 32%;
-			left: 69%;
-			@include mouseParallax(0.4);
-		}
-		.keyboard {
-			top: 6%;
-			left: 44%;
-			@include mouseParallax(0.2);
-		}
-		.sock {
-			top: 26%;
-			left: 0%;
-			@include mouseParallax(0.35);
 		}
 	}
 
