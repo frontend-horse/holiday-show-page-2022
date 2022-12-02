@@ -1,92 +1,92 @@
 ---
-import { Image } from '@astrojs/image/components'
-import Present from '../../public/images/header_elements/present.png'
-import Bell from '../../public/images/header_elements/bell.png'
-import Cursor from '../../public/images/header_elements/cursor.png'
-import Hat from '../../public/images/header_elements/hat.png'
-import Keyboard from '../../public/images/header_elements/keyboard.png'
-import Sock from '../../public/images/header_elements/sock.png'
+import { Image } from '@astrojs/image/components';
+import Present from '../../public/images/header_elements/present.png';
+import Bell from '../../public/images/header_elements/bell.png';
+import Cursor from '../../public/images/header_elements/cursor.png';
+import Hat from '../../public/images/header_elements/hat.png';
+import Keyboard from '../../public/images/header_elements/keyboard.png';
+import Sock from '../../public/images/header_elements/sock.png';
 ---
 
-<div class='header-composition'>
-	<Image src={Present} class='present' alt='' height={306} />
-	<Image src={Bell} class='bell' alt='' height={120} />
-	<Image src={Cursor} class='cursor' alt='' height={125} />
-	<Image src={Hat} class='hat' alt='' height={113} />
-	<Image src={Keyboard} class='keyboard' alt='' height={170} />
-	<Image src={Sock} class='sock' alt='' height={190} />
+<div class="header-composition">
+  <Image src={Present} class="present" alt="" height={306} />
+  <Image src={Bell} class="bell" alt="" height={120} />
+  <Image src={Cursor} class="cursor" alt="" height={125} />
+  <Image src={Hat} class="hat" alt="" height={113} />
+  <Image src={Keyboard} class="keyboard" alt="" height={170} />
+  <Image src={Sock} class="sock" alt="" height={190} />
 </div>
 
 <script>
-	window.addEventListener('DOMContentLoaded', () => {
-		const container = document.querySelector('.grid-container')
-		if (window.matchMedia('(prefers-reduced-motion: no-preference)')) {
-			if (window.matchMedia('(pointer:fine')) {
-				document.addEventListener('mousemove', event => {
-					container.style.setProperty(
-						'--mouseX',
-						event.pageX / window.innerWidth
-					)
-					container.style.setProperty(
-						'--mouseY',
-						event.pageY / window.innerHeight
-					)
-				})
-			}
+  window.addEventListener('DOMContentLoaded', () => {
+    const container = document.querySelector('.grid-container');
+    if (window.matchMedia('(prefers-reduced-motion: no-preference)')) {
+      if (window.matchMedia('(pointer:fine')) {
+        document.addEventListener('mousemove', (event) => {
+          container.style.setProperty(
+            '--mouseX',
+            event.pageX / window.innerWidth
+          );
+          container.style.setProperty(
+            '--mouseY',
+            event.pageY / window.innerHeight
+          );
+        });
+      }
 
-			document.addEventListener('scroll', () => {
-				container.style.setProperty(
-					'--scroll',
-					window.scrollY / window.innerHeight
-				)
-			})
-		}
-	})
+      document.addEventListener('scroll', () => {
+        container.style.setProperty(
+          '--scroll',
+          window.scrollY / window.innerHeight
+        );
+      });
+    }
+  });
 </script>
 
-<style lang='scss'>
-	@import '../lib/mixins.scss';
+<style lang="scss">
+  @import '../styles/mixins.scss';
 
-	.header-composition {
-		width: 100%;
-		height: 100%;
+  .header-composition {
+    width: 100%;
+    height: 100%;
 
-		position: relative;
-		> * {
-			position: absolute;
-			pointer-events: none;
-		}
-		.present {
-			top: 20.5%;
-			left: 19%;
-			z-index: 1;
-			@include mouseParallax(0.5);
-		}
-		.bell {
-			top: 58%;
-			left: 27%;
-			@include mouseParallax(0.25);
-		}
-		.cursor {
-			top: 55%;
-			left: 69%;
-			z-index: 2;
-			@include mouseParallax(0.7);
-		}
-		.hat {
-			top: 32%;
-			left: 69%;
-			@include mouseParallax(0.4);
-		}
-		.keyboard {
-			top: 6%;
-			left: 44%;
-			@include mouseParallax(0.2);
-		}
-		.sock {
-			top: 26%;
-			left: 0%;
-			@include mouseParallax(0.35);
-		}
-	}
+    position: relative;
+    > * {
+      position: absolute;
+      pointer-events: none;
+    }
+    .present {
+      top: 20.5%;
+      left: 19%;
+      z-index: 1;
+      @include mouseParallax(0.5);
+    }
+    .bell {
+      top: 58%;
+      left: 27%;
+      @include mouseParallax(0.25);
+    }
+    .cursor {
+      top: 55%;
+      left: 69%;
+      z-index: 2;
+      @include mouseParallax(0.7);
+    }
+    .hat {
+      top: 32%;
+      left: 69%;
+      @include mouseParallax(0.4);
+    }
+    .keyboard {
+      top: 6%;
+      left: 44%;
+      @include mouseParallax(0.2);
+    }
+    .sock {
+      top: 26%;
+      left: 0%;
+      @include mouseParallax(0.35);
+    }
+  }
 </style>
