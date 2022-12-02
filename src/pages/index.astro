@@ -3,11 +3,13 @@ import * as prismicH from '@prismicio/helpers'
 
 import { getHomepage } from '../lib/prismicio'
 
+import { Image } from '@astrojs/image/components'
+import placeholderImage from '../../public/images/header_elements/present.png'
+
 import Layout from '../layouts/Layout.astro'
 import SliceZone from '../components/SliceZone.astro'
 import HolidaySnowtacularLogo from '../components/HolidaySnowtacularLogo.astro'
 import RegistrationButton from '../components/RegistrationButton.astro'
-import HeroParallax from '../components/HeroParallax.astro'
 
 const page = await getHomepage()
 const {
@@ -63,7 +65,7 @@ const bodyHTML = prismicH.asHTML(body)
 				</div>
 			</div>
 			<div class='hero-column'>
-				<HeroParallax />
+				<Image src={placeholderImage} alt='' width={363} />
 			</div>
 		</section>
 		<div class='slice-container'>
@@ -76,9 +78,6 @@ const bodyHTML = prismicH.asHTML(body)
 	.grid-container {
 		display: grid;
 		place-items: center;
-		--mouseX: 0.5;
-		--mouseY: 0.5;
-		--scroll: 0;
 	}
 	.slice-container {
 		display: grid;
@@ -122,41 +121,40 @@ const bodyHTML = prismicH.asHTML(body)
 					margin-inline: var(--space-2xs);
 				}
 			}
-		}
-	}
 
-	.body-html {
-		font-size: var(--step-1);
-		line-height: var(--step-0);
-		font-family: var(--body-font);
-		font-weight: 400;
-		color: var(--color-white);
-		max-width: 30ch;
-	}
+			.body-html {
+				font-size: var(--step-1);
+				line-height: var(--step-0);
+				font-family: var(--body-font);
+				font-weight: 400;
+				color: var(--color-white);
+				max-width: 30ch;
+			}
 
-	.cta {
-		align-items: center;
-		background: var(--hero-cta-background);
-		border-radius: 3rem;
-		color: var(--black);
-		font-size: var(--step--1);
-		display: none;
-		font-family: var(--body-font);
-		margin-inline: auto;
-		padding-block: 0.25rem;
-		padding-inline: 0.4rem;
-		padding-inline-start: 0.75rem;
-		width: fit-content;
-		@media (min-width: 640px) {
-			display: grid;
-			grid-template-columns: 1fr fit-content(20ch);
+			.cta {
+				align-items: center;
+				background: var(--hero-cta-background);
+				border-radius: 3rem;
+				color: var(--black);
+				font-size: var(--step--1);
+				display: none;
+				font-family: var(--body-font);
+				margin-inline: auto;
+				padding-block: 0.25rem;
+				padding-inline: 0.4rem;
+				padding-inline-start: 0.75rem;
+				width: fit-content;
+				@media (min-width: 640px) {
+					display: grid;
+					grid-template-columns: 1fr fit-content(20ch);
+				}
+			}
+			.cta-description {
+				color: var(--white);
+				padding-inline: 0.65rem;
+				font-size: var(--step--2);
+				font-weight: 600;
+			}
 		}
-	}
-	p.cta-description {
-		color: var(--white);
-		padding-inline: 0.65rem;
-		font-size: var(--step--2);
-		font-weight: 600;
-		margin: 0;
 	}
 </style>
