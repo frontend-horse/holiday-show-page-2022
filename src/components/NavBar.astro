@@ -1,61 +1,61 @@
 ---
-import Logo from './Logo.astro'
-import RegistrationButton from './RegistrationButton.astro'
+import Logo from './Logo.astro';
+import RegistrationButton from './RegistrationButton.astro';
 ---
 
-<header role='banner'>
-	<nav>
-		<a href='/#sponsors'>Sponsors</a>
-		<a href='/#guests'>Guests</a>
-		<a href='/#contributors'>Team</a>
-	</nav>
-	<Logo />
-	<div class='actions'>
-		<RegistrationButton color='#c23616'>Register</RegistrationButton>
-	</div>
+<header role="banner">
+  <nav>
+    <a href="/#sponsors">Sponsors</a>
+    <a href="/#guests">Guests</a>
+    <a href="/#contributors">Team</a>
+  </nav>
+  <Logo />
+  <div class="actions">
+    <RegistrationButton variant="red">Register</RegistrationButton>
+  </div>
 </header>
 
-<style lang='scss'>
-	header[role='banner'] {
-		--container-width: 80ch;
+<style lang="scss">
+  header[role='banner'] {
+    --container-width: 80ch;
 
-		align-items: center;
-		display: flex;
-		flex-flow: column;
-		gap: var(--space-s);
-		// height: 100px;
-		justify-content: space-between;
-		margin-inline: auto;
-		padding-block: var(--space-s);
-		width: min(var(--container-width), 100% - var(--space-m-l));
-		@media (min-width: 640px) {
-			flex-flow: row;
-		}
-		nav {
-			display: flex;
-			flex: 1;
-			gap: var(--space-s);
-			order: 2;
-			@media (min-width: 640px) {
-				order: 1;
-			}
-			a {
-				color: var(--body-color);
-				text-decoration: none;
-				&:hover {
-					text-decoration: underline;
-				}
-			}
-		}
+    align-items: center;
+    display: flex;
+    flex-flow: column;
+    gap: var(--space-s);
+    // height: 100px;
+    justify-content: space-between;
+    margin-inline: auto;
+    padding-block: var(--space-s);
+    width: min(var(--container-width), 100% - var(--space-m-l));
+    @media (min-width: 640px) {
+      flex-flow: row;
+    }
+    nav {
+      display: flex;
+      flex: 1;
+      gap: var(--space-s);
+      order: 2;
+      @media (min-width: 640px) {
+        order: 1;
+      }
+      a {
+        color: var(--body-color);
+        text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
 
-		.actions {
-			display: flex;
-			flex: 1;
-			justify-content: flex-end;
-			order: 3;
-			@media (min-width: 640px) {
-				order: 3;
-			}
-		}
-	}
+    .actions {
+      display: flex;
+      flex: 1;
+      justify-content: flex-end;
+      order: 3;
+      @media (min-width: 640px) {
+        order: 3;
+      }
+    }
+  }
 </style>

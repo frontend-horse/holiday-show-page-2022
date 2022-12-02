@@ -24,9 +24,13 @@ const {
   slices,
 } = page.data;
 const bodyHTML = prismicH.asHTML(body);
+const bodyText = prismicH.asText(body);
 ---
 
-<Layout title="Holiday Snowtacular - Web Dev Charity Fundraiser">
+<Layout
+  title="Holiday Snowtacular - Web Dev Charity Fundraiser"
+  description={bodyText}
+>
   <main class="grid-container">
     <section class="hero">
       <div class="hero-column">

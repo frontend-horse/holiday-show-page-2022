@@ -1,0 +1,71 @@
+---
+import * as prismicH from "@prismicio/helpers";
+import { getAllGuests, getHomepage } from "../lib/prismicio";
+
+const imageUrl = new URL('/images/cover.png', Astro.url);
+const page = await getHomepage();
+const description = prismicH.asText(page.data.body);
+
+const alex = {
+	"@type": "Person",
+	name: "Alex Trost",
+	url: "https://frontend.horse",
+	image: "https://avatars.githubusercontent.com/u/19617280?v=4",
+	sameAs: [
+		"https://twitter.com/TrostCodes",
+		"https://notacult.social/@TrostCodes",
+		"https://trost.codes"
+	],
+	jobTitle: "Developer Experience Team Lead",
+	worksFor: {
+		"@type": "Organization",
+		name: "Prismic"
+	}
+};
+
+const allGuests = await getAllGuests();
+const guests = allGuests.map(guest => {
+	const socialLinks = [
+		guest.data.twitterUrl,
+		guest.data.mastadonUrl
+	].filter(url => !!url);
+
+	const structuredGuestData = {
+		"@type": "Person",
+		name: guest.data.name,
+		url: guest.data.websiteUrl,
+		image: guest.data.avatar?.url,
+		sameAs: socialLinks.length ? socialLinks : undefined,
+		jobTitle: guest.data.jobTitle,
+		worksFor: guest.data.company ?
+			{"@type": "Organization", name: guest.data.company} :
+			undefined
+	};
+
+	// Remove falsy values
+	Object.keys(structuredGuestData).forEach((key) => structuredGuestData[key] == null && delete structuredGuestData[key]);
+
+	return structuredGuestData;
+});
+
+const schema = {
+	"@context": "https://schema.org",
+	"@type": "Event",
+	name: "2nd Annual Holiday Snowtacular",
+	description,
+	image: imageUrl,
+	startDate: "2022-12-16T12:00-05:00",
+	endDate: "2022-12-16T16:00-05:00",
+	eventStatus: "https://schema.org/EventScheduled",
+	eventAttendanceMode: "https://schema.org/OnlineEventAttendanceMode",
+	location: {
+		"@type": "VirtualLocation",
+		url: "https://twitch.tv/TrostCodes",
+	},
+	organizer: alex,
+	performer: [alex, ...guests],
+	isAccessibleForFree: true
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)}></script>

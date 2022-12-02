@@ -32,7 +32,7 @@ html {
 }
 
 body {
-  color: var(--body-font-color);
+  color: var(--body--text);
   font-family: var(--body-font);
 }
 
@@ -53,13 +53,13 @@ h3 {
 
 h1 {
   font-size: var(--step-5);
-  color: var(--header-font-color);
+  color: var(--accent);
   font-family: var(--header-font-bold);
 }
 
 h2 {
   font-size: var(--step-4);
-  color: var(--header-font-color);
+  color: var(--accent);
   font-family: var(--header-font-bold);
 }
 
@@ -70,6 +70,5 @@ h3 {
 .heading-eyebrow {
   display: block;
   font-size: var(--step--1);
-  color: var(--white);
   text-transform: uppercase;
 }
