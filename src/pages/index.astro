@@ -88,11 +88,23 @@ const bodyHTML = prismicH.asHTML(body)
 	window.addEventListener('DOMContentLoaded', () => {
 		const container = document.querySelector('.grid-container')
 		if (window.matchMedia('(prefers-reduced-motion: no-preference)')) {
-			document.addEventListener('mousemove', event => {
-				container.style.setProperty('--mouseX', event.pageX / window.innerWidth)
+			if (window.matchMedia('(pointer:fine')) {
+				document.addEventListener('mousemove', event => {
+					container.style.setProperty(
+						'--mouseX',
+						event.pageX / window.innerWidth
+					)
+					container.style.setProperty(
+						'--mouseY',
+						event.pageY / window.innerHeight
+					)
+				})
+			}
+
+			document.addEventListener('scroll', () => {
 				container.style.setProperty(
-					'--mouseY',
-					event.pageY / window.innerHeight
+					'--scroll',
+					window.scrollY / window.innerHeight
 				)
 			})
 		}
@@ -101,11 +113,17 @@ const bodyHTML = prismicH.asHTML(body)
 
 <style lang='scss'>
 	@mixin mouseParallax($multiplier) {
-		@media screen and (prefers-reduced-motion: no-preference) {
+		@media (prefers-reduced-motion: no-preference) and (pointer: fine) {
 			transform: translate(
 				calc(#{$multiplier * 100px} * var(--mouseX)),
-				calc(#{$multiplier * 100px} * var(--mouseY))
+				calc(
+					#{$multiplier * 100px} * var(--mouseY) + #{$multiplier * -1000px} *
+						var(--scroll)
+				)
 			);
+		}
+		@media (prefers-reduced-motion: no-preference) and (pointer: coarse) {
+			transform: translateY(calc(#{$multiplier * -1000px} * var(--scroll)));
 		}
 	}
 
@@ -114,6 +132,7 @@ const bodyHTML = prismicH.asHTML(body)
 		place-items: center;
 		--mouseX: 0.5;
 		--mouseY: 0.5;
+		--scroll: 0;
 	}
 	.slice-container {
 		display: grid;
