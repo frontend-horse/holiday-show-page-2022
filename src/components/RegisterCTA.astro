@@ -18,7 +18,7 @@ const { bottomText, buttontext, topText } = props.primary;
 
 <style lang="scss">
   section {
-    background: linear-gradient(180deg, #ffffff 0%, var(--blue-1) 100%);
+    background: var(--cta-section--background);
     border-radius: var(--space-xs);
     padding: var(--space-l) var(--space-m);
     display: grid;
@@ -34,10 +34,10 @@ const { bottomText, buttontext, topText } = props.primary;
 
   h2 > span {
     display: block;
-    color: var(--blue-11);
+    color: var(--cta-section--text-primary);
 
     &:first-child {
-      color: var(--red-9);
+      color: var(--cta-section--text-secondary);
     }
   }
 </style>

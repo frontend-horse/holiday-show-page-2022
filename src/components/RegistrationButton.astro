@@ -1,15 +1,25 @@
 ---
-const { color } = Astro.props;
+export type Props = {
+  variant?: "black" | "red";
+};
+const { variant = "black" } = Astro.props;
 ---
 
 <a
   href="https://lu.ma/event/evt-pYYlW3M6j0e8eAB"
   class="button"
+  data-variant={variant}
   data-luma-action="checkout"
   data-luma-event-id="evt-pYYlW3M6j0e8eAB"
-  style={color ? `--button-bg-color: ${color}` : null}
 >
   <slot />
 </a>
 
-<style lang="scss"></style>
+<style lang="scss">
+  a[data-variant="red"] {
+    --button-bg-color: var(--accent-constant-red);
+    &:where(:hover) {
+      --button-bg-color: var(--accent-constant-red-hover);
+    }
+  }
+</style>
