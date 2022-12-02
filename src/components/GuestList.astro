@@ -1,84 +1,84 @@
 ---
-import * as prismicH from '@prismicio/helpers';
-import { getAllGuests } from '../lib/prismicio';
-import GuestAvatar from './GuestAvatar.astro';
-import { GuestListSlice } from '../../types.generated';
+import * as prismicH from '@prismicio/helpers'
+import { getAllGuests } from '../lib/prismicio'
+import GuestAvatar from './GuestAvatar.astro'
+import { GuestListSlice } from '../../types.generated'
 
-const props = Astro.props as GuestListSlice;
+const props = Astro.props as GuestListSlice
 
-const { heading, body, eyebrow } = props.primary;
+const { heading, body, eyebrow } = props.primary
 
 // Fetch guests and map to order from CMS
-const allGuests = await getAllGuests();
+const allGuests = await getAllGuests()
 
-const bodyHTML = prismicH.asHTML(body);
+const bodyHTML = prismicH.asHTML(body)
 ---
 
-<section id="guests" aria-labelledby="guests-heading" class="guests">
-  <span class="heading-eyebrow">{eyebrow}</span>
-  <h2 id="guests-heading">{heading}</h2>
+<section id='guests' aria-labelledby='guests-heading' class='guests'>
+	<header>
+		<span class='heading-eyebrow'>{eyebrow}</span>
+		<h2 id='guests-heading'>{heading}</h2>
+	</header>
 
-  <Fragment set:html="bodyHTML" />
-
-  <div class="guest-grid">
-    {
-      allGuests.map((guest) => (
-        <article class="guest">
-          <GuestAvatar avatar={guest.data.avatar} guestName={guest.data.name} />
-          <p class="name">
-            <a href={`/guest/${guest.uid}`}>{guest.data.name}</a>
-          </p>
-          <span class="company">{guest.data.company}</span>
-        </article>
-      ))
-    }
-  </div>
+	<main>
+		<Fragment set:html='bodyHTML' />
+		<div class='guest-grid'>
+			{
+				allGuests.map(guest => (
+					<article class='guest'>
+						<GuestAvatar
+							avatar={guest.data.avatar}
+							guestName={guest.data.name}
+						/>
+						<a class='name' accesskey='' href={`/guest/${guest.uid}`}>
+							{guest.data.name}
+						</a>
+						<span class='company'>{guest.data.company}</span>
+					</article>
+				))
+			}
+		</div>
+	</main>
 </section>
 
-<style lang="scss">
-  .guests {
-    .guest-grid {
-      display: grid;
-      gap: 2rem;
-      grid-template-columns: repeat(auto-fit, minmax(20ch, 1fr));
-    }
-    .guest {
-      align-items: center;
-      display: flex;
-      flex-flow: column;
-      position: relative;
-      > * + * {
-        margin-block-start: var(--space-2xs);
-      }
-      img {
-        aspect-ratio: 1;
-        border-radius: 100%;
-        width: 100%;
-      }
-      .name {
-        color: var(--body-font-color);
-        font-family: var(--body-font);
-        font-size: var(--step--1);
-		font-weight: 700;
-        text-align: center;
-        a {
-          color: var(--body-color);
-          text-decoration: none;
-          &:hover {
-            text-decoration: underline;
-          }
-          &::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-          }
-        }
-      }
-      .company {
-        color: var(--header-font-color);
-        font-size: var(--step--1);
-        text-align: center;
-      }
-    }
-  }
+<style lang='scss'>
+	.guests {
+		.guest-grid {
+			display: grid;
+			gap: 2rem;
+			grid-template-columns: repeat(auto-fit, minmax(20ch, 1fr));
+		}
+		.guest {
+			align-items: center;
+			display: flex;
+			flex-flow: column;
+			gap: var(--space-xs);
+			position: relative;
+			> * + * {
+				margin-block-start: var(--space-2xs);
+			}
+			img {
+				aspect-ratio: 1;
+				border-radius: 100%;
+				width: 100%;
+			}
+			.name {
+				font-family: var(--body-font);
+				font-size: var(--step--1);
+				font-weight: 700;
+				text-align: center;
+				color: var(--body-font-color);
+				text-decoration: none;
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+			.company {
+				color: var(--header-font-color);
+				font-size: var(--step--1);
+				text-align: center;
+				margin: 0;
+			}
+		}
+	}
 </style>

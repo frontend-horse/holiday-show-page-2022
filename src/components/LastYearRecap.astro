@@ -1,27 +1,29 @@
 ---
-import * as prismicH from "@prismicio/helpers";
+import * as prismicH from '@prismicio/helpers'
 
-import { LastYearRecapSlice } from "../../types.generated";
+import { LastYearRecapSlice } from '../../types.generated'
 
-const props = Astro.props as LastYearRecapSlice;
+const props = Astro.props as LastYearRecapSlice
 
-const { heading, body } = props.primary;
+const { heading, body } = props.primary
 
-const bodyHTML = prismicH.asHTML(body);
+const bodyHTML = prismicH.asHTML(body)
 ---
 
-<section aria-labelledby="recap-heading" class="recap">
-  <h2 id="recap-heading">{heading}</h2>
+<section aria-labelledby='recap-heading' class='recap'>
+	<header>
+		<h2 id='recap-heading'>{heading}</h2>
+	</header>
 
-  <Fragment set:html="bodyHTML" />
+	<main>
+		<Fragment set:html='bodyHTML' />
+	</main>
 </section>
 
-<style class="scss">
-
-    .recap {
-      > * + * {
-        margin-block-start: 1rem;
-      }
-    }
-
+<style class='scss'>
+	.recap {
+		> * + * {
+			margin-block-start: 1rem;
+		}
+	}
 </style>

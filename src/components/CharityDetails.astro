@@ -1,112 +1,116 @@
 ---
-import * as prismicH from "@prismicio/helpers";
-import { CharityDetailsSlice } from "../../types.generated";
-const props = Astro.props as CharityDetailsSlice;
+import * as prismicH from '@prismicio/helpers'
+import { CharityDetailsSlice } from '../../types.generated'
+const props = Astro.props as CharityDetailsSlice
 
 const {
-  heading,
-  body,
-  charityLogo,
-  eyebrow,
-  questionText,
-  fundraiserAmount,
-  subheading,
-} = props.primary;
+	heading,
+	body,
+	charityLogo,
+	eyebrow,
+	questionText,
+	fundraiserAmount,
+	subheading
+} = props.primary
 
-const { items } = props;
+const { items } = props
 
-const bodyHTML = prismicH.asHTML(body);
+const bodyHTML = prismicH.asHTML(body)
 ---
 
-<section aria-labelledby="charity-heading" class="charity">
-  <span class="heading-eyebrow">{eyebrow}</span>
-  <h2 id="charity-heading" class="charity-heading">{heading}</h2>
-  <img
-    src={charityLogo.url}
-    alt="Doctors without Borders"
-    class="charity-logo"
-  />
+<section aria-labelledby='charity-heading' class='charity'>
+	<header>
+		<span class='heading-eyebrow'>{eyebrow}</span>
+		<h2 id='charity-heading' class='charity-heading'>{heading}</h2>
+	</header>
 
-  <div class="description-area">
-    <p class="subheading">{subheading}</p>
-    <Fragment set:html="bodyHTML" />
-  </div>
+	<div class='description-area'>
+		<img
+			src={charityLogo.url}
+			alt='Doctors without Borders'
+			class='charity-logo'
+		/>
+		<p class='subheading'>{subheading}</p>
+		<Fragment set:html='bodyHTML' />
+	</div>
 
-  <div class="footer-container">
-    <p class="fundraiser-question">
-      {questionText}{" "}
-      <span class="fundraiser-amount">
-        {fundraiserAmount}
-      </span>
-    </p>
-    <div class="impact-container">
-      {
-        items.map(({ number, text }) => (
-          <div class="impact-item">
-            <p class="impact-text">
-              <span class="impact-number">{number}</span>
-              <span>{text}</span>
-            </p>
-          </div>
-        ))
-      }
-    </div>
-  </div>
+	<main>
+		<div class='footer-container'>
+			<p class='fundraiser-question'>
+				{questionText}{' '}
+				<span class='fundraiser-amount'>
+					{fundraiserAmount}
+				</span>
+			</p>
+			<div class='impact-container'>
+				{
+					items.map(({ number, text }) => (
+						<div class='impact-item'>
+							<p class='impact-text'>
+								<span class='impact-number'>{number}</span>
+								<span>{text}</span>
+							</p>
+						</div>
+					))
+				}
+			</div>
+		</div>
+	</main>
 </section>
 
 <style>
-  .charity-heading {
-    margin-bottom: var(--space-m);
-    display: block;
-  }
+	.charity-heading {
+		margin-bottom: var(--space-m);
+		display: block;
+	}
 
-  .charity-logo {
-    max-width: 500px;
-    margin-bottom: var(--space-l);
-  }
+	.charity-logo {
+		max-width: 500px;
+		margin-bottom: var(--space-l);
+	}
 
-  .description-area {
-    margin-bottom: var(--space-xl);
-  }
+	.description-area {
+		margin-bottom: var(--space-xl);
+	}
 
-  .subheading {
-    font-weight: 700;
-    margin-bottom: var(--space-2xs);
-  }
+	.subheading {
+		font-weight: 700;
+		margin-bottom: var(--space-2xs);
+	}
 
-  .footer-container {
-  }
+	.footer-container {
+	}
 
-  .fundraiser-amount {
-    display: block;
-    font-size: var(--step-5);
-    font-weight: 700;
-    margin-bottom: var(--space-s);
-  }
+	.fundraiser-amount {
+		display: block;
+		font-size: var(--step-5);
+		font-weight: 700;
+		margin-bottom: var(--space-s);
+	}
 
-  .impact-container {
-    --min: 20ch;
-    --gap: var(--space-m);
+	.impact-container {
+		--min: 20ch;
+		--gap: var(--space-m);
 
-    display: grid;
-    grid-gap: var(--gap);
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--min)), 1fr));
+		display: grid;
+		grid-gap: var(--gap);
+		grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--min)), 1fr));
 
-    font-size: var(--step--1);
-  }
+		font-size: var(--step--1);
+	}
 
-  .impact-text {
-    font-size: var(--step--1);
-    display: flex;
-    gap: var(--space-xs);
-    font-weight: 500;
-    > * {
-      display: block;
-    }
-  }
+	.impact-text {
+		font-size: var(--step--1);
+		display: flex;
+		gap: var(--space-xs);
+		font-weight: 500;
+		> * {
+			display: block;
+		}
+	}
 
-  .impact-number {
-    font-size: var(--step-3);
-    font-weight: 700;
-  }
+	.impact-number {
+		font-size: var(--step-3);
+		font-weight: 700;
+	}
 </style>

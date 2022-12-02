@@ -29,8 +29,22 @@ import Footer from '../components/Footer.astro'
 	</body>
 </html>
 <style is:global lang='scss'>
+	:root {
+		--box-color: hsla(223, 81%, 9%, 75%);
+	}
+
 	body {
 		min-height: 100vh;
+	}
+
+	section {
+		header {
+			margin-bottom: var(--space-s-m);
+		}
+
+		p {
+			margin-bottom: var(--space-xs-s);
+		}
 	}
 
 	/*
