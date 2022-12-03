@@ -15,37 +15,44 @@ const bodyHTML = prismicH.asHTML(body);
 ---
 
 <section id="guests" aria-labelledby="guests-heading" class="guests">
-  <span class="heading-eyebrow">{eyebrow}</span>
-  <h2 id="guests-heading">{heading}</h2>
+  <header>
+    <span class="heading-eyebrow">{eyebrow}</span>
+    <h2 id="guests-heading">{heading}</h2>
+  </header>
 
-  <Fragment set:html="bodyHTML" />
-
-  <div class="guest-grid">
-    {
-      allGuests.map((guest) => (
-        <article class="guest">
-          <GuestAvatar avatar={guest.data.avatar} guestName={guest.data.name} />
-          <p class="name">
-            <a href={`/guest/${guest.uid}`}>{guest.data.name}</a>
-          </p>
-          <span class="company">{guest.data.company}</span>
-        </article>
-      ))
-    }
-  </div>
+  <main>
+    <Fragment set:html="bodyHTML" />
+    <div class="guest-grid">
+      {
+        allGuests.map((guest) => (
+          <article class="guest">
+            <GuestAvatar
+              avatar={guest.data.avatar}
+              guestName={guest.data.name}
+            />
+            <a class="name" accesskey="" href={`/guest/${guest.uid}`}>
+              {guest.data.name}
+            </a>
+            <span class="company">{guest.data.company}</span>
+          </article>
+        ))
+      }
+    </div>
+  </main>
 </section>
 
 <style lang="scss">
   .guests {
     .guest-grid {
       display: grid;
-      gap: 2rem;
+      gap: var(--space-m);
       grid-template-columns: repeat(auto-fit, minmax(20ch, 1fr));
     }
     .guest {
       align-items: center;
       display: flex;
       flex-flow: column;
+      gap: var(--space-xs);
       position: relative;
       > * + * {
         margin-block-start: var(--space-2xs);
@@ -58,25 +65,19 @@ const bodyHTML = prismicH.asHTML(body);
       .name {
         font-family: var(--body-font);
         font-size: var(--step--1);
-		font-weight: 700;
+        font-weight: 700;
         text-align: center;
-        a {
-          color: var(--body-color);
-          text-decoration: none;
-          &:hover {
-            text-decoration: underline;
-          }
-          &::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-          }
+        color: var(--body-font-color);
+        text-decoration: none;
+        &:hover {
+          text-decoration: underline;
         }
       }
       .company {
-        color: var(--accent);
+        color: var(--header-font-color);
         font-size: var(--step--1);
         text-align: center;
+        margin: 0;
       }
     }
   }

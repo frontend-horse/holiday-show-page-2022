@@ -1,15 +1,15 @@
 ---
-import * as prismicH from "@prismicio/helpers";
-import { Image } from "@astrojs/image/components";
+import * as prismicH from '@prismicio/helpers';
 
-import { getHomepage } from "../lib/prismicio";
+import { getHomepage } from '../lib/prismicio';
 
-import placeholderImage from "../../public/images/placeholderimage.png";
+import { Image } from '@astrojs/image/components';
+import placeholderImage from '../../public/images/header_elements/present.png';
 
-import Layout from "../layouts/Layout.astro";
-import SliceZone from "../components/SliceZone.astro";
-import HolidaySnowtacularLogo from "../components/HolidaySnowtacularLogo.astro";
-import RegistrationButton from "../components/RegistrationButton.astro";
+import Layout from '../layouts/Layout.astro';
+import SliceZone from '../components/SliceZone.astro';
+import HolidaySnowtacularLogo from '../components/HolidaySnowtacularLogo.astro';
+import RegistrationButton from '../components/RegistrationButton.astro';
 
 const page = await getHomepage();
 const {
@@ -27,7 +27,10 @@ const bodyHTML = prismicH.asHTML(body);
 const bodyText = prismicH.asText(body);
 ---
 
-<Layout title="Holiday Snowtacular - Web Dev Charity Fundraiser" description={bodyText}>
+<Layout
+  title="Holiday Snowtacular - Web Dev Charity Fundraiser"
+  description={bodyText}
+>
   <main class="grid-container">
     <section class="hero">
       <div class="hero-column">
@@ -35,7 +38,7 @@ const bodyText = prismicH.asText(body);
           {
             heroEyebrow.map((item, i) => (
               <>
-                {i > 0 ? <span class="spacer"> | </span> : ""}
+                {i > 0 ? <span class="spacer"> | </span> : ''}
 
                 <span>{item.text}</span>
               </>
@@ -57,15 +60,16 @@ const bodyText = prismicH.asText(body);
             <span class="icon">
               <svg viewBox="0 0 17 16" fill="none" role="presentation">
                 <path
-                  d="M8.0124 14.8813C7.82907 14.698 7.73307 14.4647 7.7244 14.1813C7.7164 13.898 7.80407 13.6647 7.9874 13.4813L12.8874 8.58135H1.7124C1.42907 8.58135 1.1914 8.48535 0.999403 8.29335C0.808069 8.10201 0.712402 7.86468 0.712402 7.58135C0.712402 7.29801 0.808069 7.06035 0.999403 6.86835C1.1914 6.67701 1.42907 6.58135 1.7124 6.58135H12.8874L7.9874 1.68135C7.80407 1.49801 7.7164 1.26468 7.7244 0.981348C7.73307 0.698014 7.82907 0.464681 8.0124 0.281347C8.19574 0.0980139 8.42907 0.00634766 8.7124 0.00634766C8.99574 0.00634766 9.22907 0.0980139 9.4124 0.281347L16.0124 6.88135C16.1124 6.96468 16.1834 7.06868 16.2254 7.19335C16.2667 7.31868 16.2874 7.44801 16.2874 7.58135C16.2874 7.71468 16.2667 7.83968 16.2254 7.95635C16.1834 8.07301 16.1124 8.18135 16.0124 8.28135L9.4124 14.8813C9.22907 15.0647 8.99574 15.1563 8.7124 15.1563C8.42907 15.1563 8.19574 15.0647 8.0124 14.8813Z"
-                  fill="white"></path>
+                  fill="#fff"
+                  d="M8 14.9a1 1 0 0 1-.3-.7c0-.3.1-.5.3-.7l4.9-5H1.7a1 1 0 0 1-.7-.2 1 1 0 0 1-.3-.7c0-.3.1-.5.3-.7.2-.2.4-.3.7-.3H13l-5-5a1 1 0 0 1-.2-.6c0-.3.1-.5.3-.7.2-.2.4-.3.7-.3.3 0 .5.1.7.3L16 6.9l.2.3a1.2 1.2 0 0 1 0 .8s0 .2-.2.3l-6.6 6.6a1 1 0 0 1-.7.3 1 1 0 0 1-.7-.3Z"
+                ></path>
               </svg>
             </span>
           </RegistrationButton>
         </div>
       </div>
       <div class="hero-column">
-        <Image src={placeholderImage} alt="" height={332} width={363} />
+        <Image src={placeholderImage} alt="" width={363} />
       </div>
     </section>
     <div class="slice-container">
@@ -81,7 +85,7 @@ const bodyText = prismicH.asText(body);
   }
   .slice-container {
     display: grid;
-    background-color: hsla(223, 81%, 9%, 75%);
+    background-color: var(--box-color);
     padding: var(--space-m-xl);
     margin: var(--space-xs-s);
     gap: var(--space-2xl-3xl);
@@ -92,69 +96,74 @@ const bodyText = prismicH.asText(body);
 
   .hero {
     --min: 50ch;
-    --gap: 1rem;
+    --gap: var(--space-s);
 
     display: grid;
     grid-gap: var(--gap);
     grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--min)), 1fr));
     max-width: 1136px;
     width: 100%;
+  }
 
-    .hero-column {
+  .cta-description {
+    color: var(--white);
+    padding-inline: var(--space-xs-s);
+    font-size: var(--step--2);
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .hero-column {
+    display: grid;
+    gap: var(--space-xs);
+    place-content: center;
+    font-family: var(--header-font);
+    padding-block: var(--space-2xl);
+    margin-inline: auto;
+    text-align: center;
+    width: 100%;
+    z-index: 1;
+
+    > * {
+      margin-block-start: var(--space-s-m);
+    }
+
+    .kicker {
+      font-size: var(--step-0);
+      margin-top: 0;
+
+      .spacer {
+        margin-inline: var(--space-2xs);
+      }
+    }
+  }
+
+  .body-html {
+    font-size: var(--step-1);
+    line-height: var(--step-0);
+    font-family: var(--body-font);
+    font-weight: 400;
+    color: var(--color-white);
+    max-width: 30ch;
+  }
+
+  .cta {
+    --cta-bg: var(--accent-constant-red);
+    --cta-text: var(--accent-constant-text);
+    background-color: var(--cta-bg);
+    color: var(--cta-text);
+    align-items: center;
+    border-radius: 3rem;
+    font-size: var(--step--1);
+    font-family: var(--body-font);
+    margin-inline: auto;
+    padding-block: var(--space-3xs);
+    padding-inline: var(--space-3xs);
+    padding-inline-start: var(--space-xs-s);
+    width: fit-content;
+    @media (min-width: 640px) {
       display: grid;
-      gap: var(--space-xs);
-      place-content: center;
-      font-family: var(--header-font);
-      padding-block: var(--space-2xl);
-      margin-inline: auto;
-      text-align: center;
-      width: 100%;
-      z-index: 1;
-      > * {
-        margin-block-start: 1.5rem;
-      }
-      .kicker {
-        font-size: var(--step-0);
-        margin-top: 0;
-
-        .spacer {
-          margin-inline: var(--space-2xs);
-        }
-      }
-      .body-html {
-        font-size: var(--step-1);
-        line-height: var(--step-0);
-        font-family: var(--body-font);
-        font-weight: 400;
-        max-width: 30ch;
-      }
-
-      .cta {
-				--cta-bg: var(--accent-constant-red);
-				--cta-text: var(--accent-constant-text);
-
-				background-color: var(--cta-bg);
-				color: var(--cta-text);
-        align-items: center;
-        border-radius: 3rem;
-        font-size: var(--step--1);
-        display: none;
-        font-family: var(--body-font);
-        margin-inline: auto;
-        padding-block: 0.25rem;
-        padding-inline: 0.4rem;
-        padding-inline-start: 0.75rem;
-        width: fit-content;
-        @media (min-width: 640px) {
-          display: grid;
-          grid-template-columns: 1fr fit-content(20ch);
-        }
-      }
-      .cta-description {
-        padding-inline: 0.65rem;
-        font-size: var(--step--2);
-        font-weight: 600;
-      }
+      grid-template-columns: 1fr fit-content(20ch);
     }
   }
 </style>

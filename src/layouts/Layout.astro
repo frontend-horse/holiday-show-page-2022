@@ -5,12 +5,12 @@ export interface Props {
 }
 
 const { description, title } = Astro.props;
-import "../styles/main.scss";
-import Snow from "../components/Snow.astro";
-import NavBar from "../components/NavBar.astro";
-import Footer from "../components/Footer.astro";
-import StructuredData from "../components/StructuredData.astro";
-import OpenGraph from "../components/OpenGraph.astro";
+import '../styles/main.scss';
+import Snow from '../components/Snow.astro';
+import NavBar from '../components/NavBar.astro';
+import Footer from '../components/Footer.astro';
+import StructuredData from '../components/StructuredData.astro';
+import OpenGraph from '../components/OpenGraph.astro';
 ---
 
 <!DOCTYPE html>
@@ -23,17 +23,34 @@ import OpenGraph from "../components/OpenGraph.astro";
     <title>{title}</title>
     <OpenGraph title={title} description={description} />
     <StructuredData />
-    <script id="luma-checkout" src="https://embed.lu.ma/checkout-button.js"></script>
+    <script id="luma-checkout" src="https://embed.lu.ma/checkout-button.js"
+    ></script>
   </head>
   <body>
     <!-- <Snow /> -->
     <NavBar />
     <slot />
     <Footer />
-  </body>
-</html>
-<style is:global lang="scss">
-  /*
+    <style is:global lang="scss">
+      :root {
+        --box-color: hsla(223, 81%, 9%, 75%);
+      }
+
+      body {
+        min-height: 100vh;
+      }
+
+      section {
+        header {
+          margin-bottom: var(--space-s-m);
+        }
+
+        p {
+          margin-bottom: var(--space-xs-s);
+        }
+      }
+
+      /*
 
 
   body {
@@ -63,4 +80,6 @@ import OpenGraph from "../components/OpenGraph.astro";
     white-space: nowrap !important;
     border: 0 !important;
   }*/
-</style>
+    </style>
+  </body>
+</html>

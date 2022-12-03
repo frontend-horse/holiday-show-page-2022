@@ -1,37 +1,50 @@
 ---
-import * as prismicH from "@prismicio/helpers";
+import * as prismicH from '@prismicio/helpers'
 
-import { FrequentlyAskedQuestionsSlice } from "../../types.generated";
+import { FrequentlyAskedQuestionsSlice } from '../../types.generated'
 
-const props = Astro.props as FrequentlyAskedQuestionsSlice;
-const { heading, body, eyebrow } = props.primary;
-const { items } = props;
+const props = Astro.props as FrequentlyAskedQuestionsSlice
+const { heading, body, eyebrow } = props.primary
+const { items } = props
 
-const bodyHTML = prismicH.asHTML(body);
+const bodyHTML = prismicH.asHTML(body)
 
-const faqItems = items.map((item) => {
-  return {
-    heading: item.heading,
-    body: prismicH.asHTML(item.body),
-  };
-});
+const faqItems = items.map(item => {
+	return {
+		heading: item.heading,
+		body: prismicH.asHTML(item.body)
+	}
+})
 ---
 
-<section aria-labelledby="faq-heading" class="faq">
-  <div>
-    <span class="heading-eyebrow">{eyebrow}</span>
-    <h2 id="faq-heading">{heading}</h2>
-
-    <Fragment set:html="bodyHTML" />
-  </div>
-  <div>
-    {
-      faqItems.map((item) => (
-        <details>
-          <summary>{item.heading}</summary>
-          <Fragment set:html="item.body" />
-        </details>
-      ))
-    }
-  </div>
+<section aria-labelledby='faq-heading' class='faq'>
+	<header>
+		<span class='heading-eyebrow'>{eyebrow}</span>
+		<h2 id='faq-heading'>{heading}</h2>
+	</header>
+	<main>
+		<Fragment set:html='bodyHTML' />
+		<div class='items'>
+			{
+				faqItems.map(item => (
+					<details>
+						<summary>{item.heading}</summary>
+						<Fragment set:html='item.body' />
+					</details>
+				))
+			}
+		</div>
+	</main>
 </section>
+
+<style lang='scss'>
+	.items {
+		display: grid;
+		gap: var(--space-xs);
+	}
+	details {
+		summary {
+			margin-bottom: var(--space-2xs);
+		}
+	}
+</style>
