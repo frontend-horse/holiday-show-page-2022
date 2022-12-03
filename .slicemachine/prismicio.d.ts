@@ -6,10 +6,10 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = {
     [KeyType in keyof T]: T[KeyType];
 };
-/** Content for Community Sponsor documents */
+/** Content for Community Partner documents */
 interface CommunitySponsorDocumentData {
     /**
-     * Title field in *Community Sponsor*
+     * Title field in *Community Partner*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
@@ -20,7 +20,7 @@ interface CommunitySponsorDocumentData {
      */
     title: prismicT.KeyTextField;
     /**
-     * Description field in *Community Sponsor*
+     * Description field in *Community Partner*
      *
      * - **Field Type**: Rich Text
      * - **Placeholder**: *None*
@@ -31,7 +31,7 @@ interface CommunitySponsorDocumentData {
      */
     description: prismicT.RichTextField;
     /**
-     * Logo field in *Community Sponsor*
+     * Logo field in *Community Partner*
      *
      * - **Field Type**: Image
      * - **Placeholder**: *None*
@@ -42,7 +42,7 @@ interface CommunitySponsorDocumentData {
      */
     logo: prismicT.ImageField<never>;
     /**
-     * Link field in *Community Sponsor*
+     * Link field in *Community Partner*
      *
      * - **Field Type**: Link
      * - **Placeholder**: *None*
@@ -53,7 +53,7 @@ interface CommunitySponsorDocumentData {
      */
     link: prismicT.LinkField;
     /**
-     * Organizers field in *Community Sponsor*
+     * Organizers field in *Community Partner*
      *
      * - **Field Type**: Group
      * - **Placeholder**: *None*
@@ -65,12 +65,12 @@ interface CommunitySponsorDocumentData {
     organizers: prismicT.GroupField<Simplify<CommunitySponsorDocumentDataOrganizersItem>>;
 }
 /**
- * Item in Community Sponsor → Organizers
+ * Item in Community Partner → Organizers
  *
  */
 export interface CommunitySponsorDocumentDataOrganizersItem {
     /**
-     * Name field in *Community Sponsor → Organizers*
+     * Name field in *Community Partner → Organizers*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
@@ -80,7 +80,7 @@ export interface CommunitySponsorDocumentDataOrganizersItem {
      */
     name: prismicT.KeyTextField;
     /**
-     * Link field in *Community Sponsor → Organizers*
+     * Link field in *Community Partner → Organizers*
      *
      * - **Field Type**: Link
      * - **Placeholder**: *None*
@@ -91,7 +91,7 @@ export interface CommunitySponsorDocumentDataOrganizersItem {
     link: prismicT.LinkField;
 }
 /**
- * Community Sponsor document from Prismic
+ * Community Partner document from Prismic
  *
  * - **API ID**: `communitySponsor`
  * - **Repeatable**: `true`
