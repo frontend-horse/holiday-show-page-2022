@@ -37,7 +37,7 @@ const topicDescriptionHTML = prismicH.asHTML(topicDescription);
       <GuestAvatar avatar={avatar} guestName={name} />
       <h1>{name}</h1>
     </header>
-    <main>
+    <div>
       <div class="guest-details">
         <span>{jobTitle}</span>
         <span>{company}</span>
@@ -53,7 +53,7 @@ const topicDescriptionHTML = prismicH.asHTML(topicDescription);
           <Fragment set:html="topicDescriptionHTML" />
         </dd>
       </dl>
-    </main>
+    </div>
   </article>
 </Layout>
 

@@ -23,7 +23,7 @@ const bodyHTML = prismicH.asHTML(body)
 		<h2 id='communities-heading'>{heading}</h2>
 	</header>
 
-	<main>
+	<div>
 		<Fragment set:html='bodyHTML' />
 		<ul class='community-grid'>
 			{
@@ -36,7 +36,7 @@ const bodyHTML = prismicH.asHTML(body)
 				))
 			}
 		</ul>
-	</main>
+	</div>
 </section>
 
 <style lang='scss'>

@@ -20,7 +20,7 @@ const bodyHTML = prismicH.asHTML(body);
     <h2 id="guests-heading">{heading}</h2>
   </header>
 
-  <main>
+  <div>
     <Fragment set:html="bodyHTML" />
     <div class="guest-grid">
       {
@@ -38,7 +38,7 @@ const bodyHTML = prismicH.asHTML(body);
         ))
       }
     </div>
-  </main>
+  </div>
 </section>
 
 <style lang="scss">
