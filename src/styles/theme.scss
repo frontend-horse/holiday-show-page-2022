@@ -25,6 +25,8 @@
     hsl(7deg 60% 68%) 85%,
     hsl(29deg 77% 73%) 100%
   );
+  --body--link: var(--accent);
+  --body--link-underline: var(--accent-constant-red-hover);
 
   // call-to-action section ("don't miss the fun")
   --cta-section--text-primary: var(--blue-11);
