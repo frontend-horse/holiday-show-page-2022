@@ -132,7 +132,13 @@
           "fileName": null,
           "extension": null
         },
-        "screenshotPaths": {}
+        "screenshotPaths": {
+          "default": {
+            "path": "/mnt/c/Users/alexr/repos/holiday-snowtacular-2022/slices/CharityDetails/default/preview.png",
+            "width": 1755,
+            "height": 1274
+          }
+        }
       },
       "community_list": {
         "library": "slices",
@@ -374,7 +380,13 @@
           "fileName": null,
           "extension": null
         },
-        "screenshotPaths": {}
+        "screenshotPaths": {
+          "default": {
+            "path": "/mnt/c/Users/alexr/repos/holiday-snowtacular-2022/slices/EventDetails/default/preview.png",
+            "width": 1725,
+            "height": 1209
+          }
+        }
       },
       "frequently_asked_questions": {
         "library": "slices",
@@ -474,7 +486,13 @@
           "fileName": null,
           "extension": null
         },
-        "screenshotPaths": {}
+        "screenshotPaths": {
+          "default": {
+            "path": "/mnt/c/Users/alexr/repos/holiday-snowtacular-2022/slices/FrequentlyAskedQuestions/default/preview.png",
+            "width": 1771,
+            "height": 834
+          }
+        }
       },
       "guest_list": {
         "library": "slices",
@@ -548,7 +566,13 @@
           "fileName": null,
           "extension": null
         },
-        "screenshotPaths": {}
+        "screenshotPaths": {
+          "default": {
+            "path": "/mnt/c/Users/alexr/repos/holiday-snowtacular-2022/slices/GuestList/default/preview.png",
+            "width": 1336,
+            "height": 1772
+          }
+        }
       },
       "hero": {
         "library": "slices",
@@ -614,7 +638,13 @@
           "fileName": null,
           "extension": null
         },
-        "screenshotPaths": {}
+        "screenshotPaths": {
+          "default": {
+            "path": "/mnt/c/Users/alexr/repos/holiday-snowtacular-2022/slices/Hero/default/preview.png",
+            "width": 2025,
+            "height": 972
+          }
+        }
       },
       "last_year_recap": {
         "library": "slices",
@@ -746,7 +776,13 @@
           "fileName": null,
           "extension": null
         },
-        "screenshotPaths": {}
+        "screenshotPaths": {
+          "default": {
+            "path": "/mnt/c/Users/alexr/repos/holiday-snowtacular-2022/slices/RegisterCta/default/preview.png",
+            "width": 1734,
+            "height": 536
+          }
+        }
       },
       "sponsor_list": {
         "library": "slices",
@@ -820,7 +856,13 @@
           "fileName": null,
           "extension": null
         },
-        "screenshotPaths": {}
+        "screenshotPaths": {
+          "default": {
+            "path": "/mnt/c/Users/alexr/repos/holiday-snowtacular-2022/slices/SponsorList/default/preview.png",
+            "width": 1638,
+            "height": 1061
+          }
+        }
       }
     }
   }
