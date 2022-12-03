@@ -20,7 +20,7 @@ const bodyHTML = prismicH.asHTML(body);
     <h2 id="guests-heading">{heading}</h2>
   </header>
 
-  <main>
+  <div>
     <Fragment set:html="bodyHTML" />
     <div class="guest-grid">
       {
@@ -30,7 +30,7 @@ const bodyHTML = prismicH.asHTML(body);
               avatar={guest.data.avatar}
               guestName={guest.data.name}
             />
-            <a class="name" accesskey="" href={`/guest/${guest.uid}`}>
+            <a class="name" href={`/guest/${guest.uid}`}>
               {guest.data.name}
             </a>
             <span class="company">{guest.data.company}</span>
@@ -38,7 +38,7 @@ const bodyHTML = prismicH.asHTML(body);
         ))
       }
     </div>
-  </main>
+  </div>
 </section>
 
 <style lang="scss">

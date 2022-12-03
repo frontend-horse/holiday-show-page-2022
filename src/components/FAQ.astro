@@ -22,7 +22,7 @@ const faqItems = items.map(item => {
 		<span class='heading-eyebrow'>{eyebrow}</span>
 		<h2 id='faq-heading'>{heading}</h2>
 	</header>
-	<main>
+	<div>
 		<Fragment set:html='bodyHTML' />
 		<div class='items'>
 			{
@@ -34,7 +34,7 @@ const faqItems = items.map(item => {
 				))
 			}
 		</div>
-	</main>
+	</div>
 </section>
 
 <style lang='scss'>
