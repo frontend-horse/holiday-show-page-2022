@@ -6,6 +6,7 @@ import Cursor from '../../public/images/header_elements/cursor.png'
 import Hat from '../../public/images/header_elements/hat.png'
 import Keyboard from '../../public/images/header_elements/keyboard.png'
 import Sock from '../../public/images/header_elements/sock.png'
+import Sleigh from '../../public/images/header_elements/sleigh.png'
 // import Orientation from '../../public/images/header_elements/untitled.png'
 ---
 
@@ -17,6 +18,7 @@ import Sock from '../../public/images/header_elements/sock.png'
 		style='position: absolute; z-index:5; opacity: .3; scale: 1.2; translate: 0% 0%;'
 	/> -->
 	<div class='header-composition'>
+		<Image src={Sleigh} class='sleigh' alt='' width={420} />
 		<Image src={Present} class='present' alt='' height={306} />
 		<Image src={Bell} class='bell' alt='' height={120} />
 		<Image src={Cursor} class='cursor' alt='' height={125} />
@@ -76,6 +78,11 @@ import Sock from '../../public/images/header_elements/sock.png'
 		> * {
 			position: absolute;
 			pointer-events: none;
+		}
+		.sleigh {
+			left: -10vw;
+			top: -20%;
+			@include headerElementParallax(-0.7);
 		}
 		.present {
 			top: 14.5%;
