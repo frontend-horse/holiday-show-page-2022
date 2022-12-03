@@ -1,13 +1,15 @@
-<div class="snow"></div>
+<div class='snow'></div>
 
-<style lang="scss">
-  .snow {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100%;
-    background-image: url('images/foreground-snow.svg');
-    pointer-events: none;
-  }
+<style lang='scss'>
+	.snow {
+		position: absolute;
+		top: 0;
+		left: 0;
+		min-width: 100vw;
+		min-height: 100%;
+		background: url('/images/foreground-snow.svg') top center repeat;
+		background-size: 400px 400px;
+		pointer-events: none;
+		z-index: 100;
+	}
 </style>

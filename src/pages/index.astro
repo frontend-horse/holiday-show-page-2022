@@ -107,7 +107,7 @@ const bodyHTML = prismicH.asHTML(body)
 			gap: var(--space-xs);
 			place-content: center;
 			font-family: var(--header-font);
-			padding-block: var(--space-2xl);
+			padding-block-end: var(--space-2xl);
 			margin-inline: auto;
 			text-align: center;
 			width: 100%;
@@ -122,6 +122,10 @@ const bodyHTML = prismicH.asHTML(body)
 				.spacer {
 					margin-inline: var(--space-2xs);
 				}
+			}
+
+			@media (min-width: 640px) {
+				padding-block: var(--space-2xl);
 			}
 		}
 	}

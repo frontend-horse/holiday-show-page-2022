@@ -72,17 +72,21 @@ import Sleigh from '../../public/images/header_elements/sleigh.png'
 		margin: auto 0;
 		height: 48ch;
 		display: block;
-		margin: -15% 0 0 -15%;
+		margin: -15%;
 
 		position: relative;
 		> * {
 			position: absolute;
 			pointer-events: none;
+
+			@media (max-width: 640px) {
+				scale: 75%;
+			}
 		}
 		.sleigh {
-			left: -10vw;
+			left: -12vw;
 			top: -20%;
-			@include headerElementParallax(-0.7);
+			@include headerElementParallax(-0.5);
 		}
 		.present {
 			top: 14.5%;

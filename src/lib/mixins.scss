@@ -4,7 +4,7 @@ $mouseMovementScale: 100px;
 $scrollScale: -1000px;
 $rotationMultiplier: 45;
 $baseRotation: 5;
-$scaleMultiplier: .25;
+$scaleMultiplier: .5;
 $moveMultiplier: 200px;
 
 @mixin buildTransform($multiplier, $pointerLevel) {
