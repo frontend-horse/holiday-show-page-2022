@@ -1,20 +1,18 @@
 ---
-import * as prismicH from '@prismicio/helpers'
-import { EventDetailsSlice } from '../../types.generated'
+import * as prismicH from '@prismicio/helpers';
+import { EventDetailsSlice } from '../../types.generated';
 
-const props = Astro.props as EventDetailsSlice
+const slice = Astro.props.slice as EventDetailsSlice;
 
-const { heading, body, dateTime, showLink, eyebrow } = props.primary
-
-const bodyHTML = prismicH.asHTML(body)
+const bodyHTML = prismicH.asHTML(slice.primary.body);
 ---
 
-<section aria-labelledby='event-details-heading' class='event'>
-	<header>
-		<span class='heading-eyebrow'>{eyebrow}</span>
-		<h2 id='event-details-heading'>{heading}</h2>
-	</header>
-	<div>
-		<Fragment set:html='bodyHTML' />
-	</div>
+<section aria-labelledby="event-details-heading" class="event">
+  <header>
+    <span class="heading-eyebrow">{slice.primary.eyebrow}</span>
+    <h2 id="event-details-heading">{slice.primary.heading}</h2>
+  </header>
+  <div>
+    <Fragment set:html="bodyHTML" />
+  </div>
 </section>

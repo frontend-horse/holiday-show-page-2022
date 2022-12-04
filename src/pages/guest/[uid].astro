@@ -1,9 +1,9 @@
 ---
 import * as prismicH from '@prismicio/helpers';
 import Layout from '../../layouts/Layout.astro';
-import SliceZone from '../../components/SliceZone.astro';
 import { getAllGuests } from '../../lib/prismicio';
 import GuestAvatar from '../../components/GuestAvatar.astro';
+import { GuestDocument } from '../../../types.generated';
 
 export async function getStaticPaths() {
   const allPages = await getAllGuests();
@@ -14,33 +14,25 @@ export async function getStaticPaths() {
   return paths;
 }
 
-const {
-  name,
-  avatar,
-  jobTitle,
-  company,
-  guestBio,
-  twitterUrl,
-  websiteUrl,
-  mastadonUrl,
-  topicTitle,
-  topicDescription,
-} = Astro.props.data;
+const guest = Astro.props as GuestDocument;
 
-const guestBioHTML = prismicH.asHTML(guestBio);
-const topicDescriptionHTML = prismicH.asHTML(topicDescription);
+const guestBioHTML = prismicH.asHTML(guest.data.guestBio);
+const topicDescriptionHTML = prismicH.asHTML(guest.data.topicDescription);
 ---
 
-<Layout title={`${name} - Guest Speaker - Holiday Snowtacular`}>
+<Layout
+  title={`${guest.data.name} - Guest Speaker - Holiday Snowtacular`}
+  description={`${guest.data.name} is a guest speaker at the 2022 Holiday Snowtacular`}
+>
   <article id="guest-page">
     <header>
-      <GuestAvatar avatar={avatar} guestName={name} />
-      <h1>{name}</h1>
+      <GuestAvatar guest={guest} />
+      <h1>{guest.data.name}</h1>
     </header>
     <div>
       <div class="guest-details">
-        <span>{jobTitle}</span>
-        <span>{company}</span>
+        <span>{guest.data.jobTitle}</span>
+        <span>{guest.data.company}</span>
       </div>
       <dl>
         <dt>Bio</dt>
@@ -48,7 +40,7 @@ const topicDescriptionHTML = prismicH.asHTML(topicDescription);
           <Fragment set:html="guestBioHTML" />
         </dd>
         <dt>Topic</dt>
-        <dd>{topicTitle}</dd>
+        <dd>{guest.data.topicTitle}</dd>
         <dd>
           <Fragment set:html="topicDescriptionHTML" />
         </dd>
