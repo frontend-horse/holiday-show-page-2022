@@ -8,6 +8,20 @@ import Layout from '../layouts/Layout.astro';
   title="Donations - Holiday Snowtacular - Web Dev Charity Fundraiser"
   description={`The full list of donations from the 2022 Holiday Snowtacular.`}
 >
-  <h1>Donations</h1>
-  <DonationGrid client:load />
+  <main>
+    <h1>Donations</h1>
+    <DonationGrid client:load />
+  </main>
 </Layout>
+
+<style>
+  main {
+    max-width: 1136px;
+    /* display: grid; */
+    margin: 0 auto;
+  }
+
+  h1 {
+    margin-bottom: var(--space-l);
+  }
+</style>

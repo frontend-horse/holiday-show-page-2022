@@ -43,6 +43,7 @@
     color: #333;
     grid-template-rows: min-content auto;
     gap: var(--space-xs);
+    max-width: 500px;
   }
 
   .heading {

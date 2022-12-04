@@ -5,14 +5,12 @@ import { GuestDocument } from '../../types.generated';
 // on the homepage or on the Guest's individual page.
 
 const guest = Astro.props.guest as GuestDocument;
-console.log('🚀 ~ file: GuestAvatar.astro:8 ~ guest', guest);
 
 const avatarURL = prismicH.asImageSrc(guest.data.avatar, {
   w: 300,
   h: 300,
   fit: 'crop',
 });
-// console.log('🚀 ~ file: GuestAvatar.astro ~ line 14 ~ avatarURL', avatarURL);
 ---
 
 <div class="guest-avatar">
