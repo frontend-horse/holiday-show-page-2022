@@ -6,10 +6,10 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = {
     [KeyType in keyof T]: T[KeyType];
 };
-/** Content for Community Sponsor documents */
+/** Content for Community Partner documents */
 interface CommunitySponsorDocumentData {
     /**
-     * Title field in *Community Sponsor*
+     * Title field in *Community Partner*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
@@ -20,7 +20,7 @@ interface CommunitySponsorDocumentData {
      */
     title: prismicT.KeyTextField;
     /**
-     * Description field in *Community Sponsor*
+     * Description field in *Community Partner*
      *
      * - **Field Type**: Rich Text
      * - **Placeholder**: *None*
@@ -31,7 +31,7 @@ interface CommunitySponsorDocumentData {
      */
     description: prismicT.RichTextField;
     /**
-     * Logo field in *Community Sponsor*
+     * Logo field in *Community Partner*
      *
      * - **Field Type**: Image
      * - **Placeholder**: *None*
@@ -42,7 +42,7 @@ interface CommunitySponsorDocumentData {
      */
     logo: prismicT.ImageField<never>;
     /**
-     * Link field in *Community Sponsor*
+     * Link field in *Community Partner*
      *
      * - **Field Type**: Link
      * - **Placeholder**: *None*
@@ -53,7 +53,7 @@ interface CommunitySponsorDocumentData {
      */
     link: prismicT.LinkField;
     /**
-     * Organizers field in *Community Sponsor*
+     * Organizers field in *Community Partner*
      *
      * - **Field Type**: Group
      * - **Placeholder**: *None*
@@ -65,12 +65,12 @@ interface CommunitySponsorDocumentData {
     organizers: prismicT.GroupField<Simplify<CommunitySponsorDocumentDataOrganizersItem>>;
 }
 /**
- * Item in Community Sponsor → Organizers
+ * Item in Community Partner → Organizers
  *
  */
 export interface CommunitySponsorDocumentDataOrganizersItem {
     /**
-     * Name field in *Community Sponsor → Organizers*
+     * Name field in *Community Partner → Organizers*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
@@ -80,7 +80,7 @@ export interface CommunitySponsorDocumentDataOrganizersItem {
      */
     name: prismicT.KeyTextField;
     /**
-     * Link field in *Community Sponsor → Organizers*
+     * Link field in *Community Partner → Organizers*
      *
      * - **Field Type**: Link
      * - **Placeholder**: *None*
@@ -91,7 +91,7 @@ export interface CommunitySponsorDocumentDataOrganizersItem {
     link: prismicT.LinkField;
 }
 /**
- * Community Sponsor document from Prismic
+ * Community Partner document from Prismic
  *
  * - **API ID**: `communitySponsor`
  * - **Repeatable**: `true`
@@ -294,6 +294,16 @@ export interface OrganizerTeamDocumentDataMemberItem {
      *
      */
     contributions: prismicT.KeyTextField;
+    /**
+     * Avatar field in *Organizer Team → Member*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: organizerTeam.member[].avatar
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    avatar: prismicT.ImageField<never>;
 }
 /**
  * Organizer Team document from Prismic
@@ -305,10 +315,10 @@ export interface OrganizerTeamDocumentDataMemberItem {
  * @typeParam Lang - Language API ID of the document.
  */
 export type OrganizerTeamDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<OrganizerTeamDocumentData>, "organizerTeam", Lang>;
-/** Content for Page documents */
+/** Content for Home Page documents */
 interface PageDocumentData {
     /**
-     * Title field in *Page*
+     * Title field in *Home Page*
      *
      * - **Field Type**: Text
      * - **Placeholder**: Page title
@@ -319,7 +329,7 @@ interface PageDocumentData {
      */
     title: prismicT.KeyTextField;
     /**
-     * Hero Body field in *Page*
+     * Hero Body field in *Home Page*
      *
      * - **Field Type**: Rich Text
      * - **Placeholder**: *None*
@@ -330,7 +340,7 @@ interface PageDocumentData {
      */
     body: prismicT.RichTextField;
     /**
-     * Hero Eyebrow field in *Page*
+     * Hero Eyebrow field in *Home Page*
      *
      * - **Field Type**: Group
      * - **Placeholder**: *None*
@@ -341,7 +351,7 @@ interface PageDocumentData {
      */
     heroEyebrow: prismicT.GroupField<Simplify<PageDocumentDataHeroEyebrowItem>>;
     /**
-     * CTA Description field in *Page*
+     * CTA Description field in *Home Page*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
@@ -352,7 +362,7 @@ interface PageDocumentData {
      */
     ctaDescription: prismicT.KeyTextField;
     /**
-     * Button Text field in *Page*
+     * Button Text field in *Home Page*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
@@ -363,7 +373,7 @@ interface PageDocumentData {
      */
     buttonText: prismicT.KeyTextField;
     /**
-     * Slice Zone field in *Page*
+     * Slice Zone field in *Home Page*
      *
      * - **Field Type**: Slice Zone
      * - **Placeholder**: *None*
@@ -374,7 +384,7 @@ interface PageDocumentData {
      */
     slices: prismicT.SliceZone<PageDocumentDataSlicesSlice>;
     /**
-     * Metatitle field in *Page*
+     * Metatitle field in *Home Page*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
@@ -385,7 +395,7 @@ interface PageDocumentData {
      */
     metatitle: prismicT.KeyTextField;
     /**
-     * Metadescription field in *Page*
+     * Metadescription field in *Home Page*
      *
      * - **Field Type**: Rich Text
      * - **Placeholder**: *None*
@@ -396,7 +406,7 @@ interface PageDocumentData {
      */
     metadescription: prismicT.RichTextField;
     /**
-     * OG Image field in *Page*
+     * OG Image field in *Home Page*
      *
      * - **Field Type**: Image
      * - **Placeholder**: *None*
@@ -408,12 +418,12 @@ interface PageDocumentData {
     ogImage: prismicT.ImageField<never>;
 }
 /**
- * Item in Page → Hero Eyebrow
+ * Item in Home Page → Hero Eyebrow
  *
  */
 export interface PageDocumentDataHeroEyebrowItem {
     /**
-     * Text field in *Page → Hero Eyebrow*
+     * Text field in *Home Page → Hero Eyebrow*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
@@ -424,12 +434,12 @@ export interface PageDocumentDataHeroEyebrowItem {
     text: prismicT.KeyTextField;
 }
 /**
- * Slice for *Page → Slice Zone*
+ * Slice for *Home Page → Slice Zone*
  *
  */
 type PageDocumentDataSlicesSlice = GuestListSlice | SponsorListSlice | EventDetailsSlice | CharityDetailsSlice | RegisterCtaSlice | LastYearRecapSlice | DonationLeaderboardSlice | CommunityListSlice | FrequentlyAskedQuestionsSlice;
 /**
- * Page document from Prismic
+ * Home Page document from Prismic
  *
  * - **API ID**: `page`
  * - **Repeatable**: `true`
@@ -438,6 +448,41 @@ type PageDocumentDataSlicesSlice = GuestListSlice | SponsorListSlice | EventDeta
  * @typeParam Lang - Language API ID of the document.
  */
 export type PageDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
+/** Content for Page documents */
+interface SecondarypageDocumentData {
+    /**
+     * Heading field in *Page*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: secondarypage.heading
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    heading: prismicT.KeyTextField;
+    /**
+     * Body field in *Page*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: secondarypage.body
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    body: prismicT.RichTextField;
+}
+/**
+ * Page document from Prismic
+ *
+ * - **API ID**: `secondarypage`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type SecondarypageDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<SecondarypageDocumentData>, "secondarypage", Lang>;
 /** Content for Sponsor documents */
 interface SponsorDocumentData {
     /**
@@ -495,7 +540,7 @@ interface SponsorDocumentData {
  * @typeParam Lang - Language API ID of the document.
  */
 export type SponsorDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<SponsorDocumentData>, "sponsor", Lang>;
-export type AllDocumentTypes = CommunitySponsorDocument | GuestDocument | OrganizerTeamDocument | PageDocument | SponsorDocument;
+export type AllDocumentTypes = CommunitySponsorDocument | GuestDocument | OrganizerTeamDocument | PageDocument | SecondarypageDocument | SponsorDocument;
 /**
  * Primary content in CharityDetails → Primary
  *
@@ -1183,6 +1228,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { CommunitySponsorDocumentData, CommunitySponsorDocumentDataOrganizersItem, CommunitySponsorDocument, GuestDocumentData, GuestDocument, OrganizerTeamDocumentData, OrganizerTeamDocumentDataMemberItem, OrganizerTeamDocument, PageDocumentData, PageDocumentDataHeroEyebrowItem, PageDocumentDataSlicesSlice, PageDocument, SponsorDocumentData, SponsorDocument, AllDocumentTypes, CharityDetailsSliceDefaultPrimary, CharityDetailsSliceDefaultItem, CharityDetailsSliceDefault, CharityDetailsSliceVariation, CharityDetailsSlice, CommunityListSliceDefaultPrimary, CommunityListSliceDefault, CommunityListSliceVariation, CommunityListSlice, DonationLeaderboardSliceDefaultPrimary, DonationLeaderboardSliceDefault, DonationLeaderboardSliceVariation, DonationLeaderboardSlice, EventDetailsSliceDefaultPrimary, EventDetailsSliceDefault, EventDetailsSliceVariation, EventDetailsSlice, FrequentlyAskedQuestionsSliceDefaultPrimary, FrequentlyAskedQuestionsSliceDefaultItem, FrequentlyAskedQuestionsSliceDefault, FrequentlyAskedQuestionsSliceVariation, FrequentlyAskedQuestionsSlice, GuestListSliceDefaultPrimary, GuestListSliceDefault, GuestListSliceVariation, GuestListSlice, HeroSliceDefaultPrimary, HeroSliceDefault, HeroSliceVariation, HeroSlice, LastYearRecapSliceDefaultPrimary, LastYearRecapSliceDefault, LastYearRecapSliceVariation, LastYearRecapSlice, RegisterCtaSliceDefaultPrimary, RegisterCtaSliceDefault, RegisterCtaSliceVariation, RegisterCtaSlice, SponsorListSliceDefaultPrimary, SponsorListSliceDefault, SponsorListSliceVariation, SponsorListSlice };
+        export type { CommunitySponsorDocumentData, CommunitySponsorDocumentDataOrganizersItem, CommunitySponsorDocument, GuestDocumentData, GuestDocument, OrganizerTeamDocumentData, OrganizerTeamDocumentDataMemberItem, OrganizerTeamDocument, PageDocumentData, PageDocumentDataHeroEyebrowItem, PageDocumentDataSlicesSlice, PageDocument, SecondarypageDocumentData, SecondarypageDocument, SponsorDocumentData, SponsorDocument, AllDocumentTypes, CharityDetailsSliceDefaultPrimary, CharityDetailsSliceDefaultItem, CharityDetailsSliceDefault, CharityDetailsSliceVariation, CharityDetailsSlice, CommunityListSliceDefaultPrimary, CommunityListSliceDefault, CommunityListSliceVariation, CommunityListSlice, DonationLeaderboardSliceDefaultPrimary, DonationLeaderboardSliceDefault, DonationLeaderboardSliceVariation, DonationLeaderboardSlice, EventDetailsSliceDefaultPrimary, EventDetailsSliceDefault, EventDetailsSliceVariation, EventDetailsSlice, FrequentlyAskedQuestionsSliceDefaultPrimary, FrequentlyAskedQuestionsSliceDefaultItem, FrequentlyAskedQuestionsSliceDefault, FrequentlyAskedQuestionsSliceVariation, FrequentlyAskedQuestionsSlice, GuestListSliceDefaultPrimary, GuestListSliceDefault, GuestListSliceVariation, GuestListSlice, HeroSliceDefaultPrimary, HeroSliceDefault, HeroSliceVariation, HeroSlice, LastYearRecapSliceDefaultPrimary, LastYearRecapSliceDefault, LastYearRecapSliceVariation, LastYearRecapSlice, RegisterCtaSliceDefaultPrimary, RegisterCtaSliceDefault, RegisterCtaSliceVariation, RegisterCtaSlice, SponsorListSliceDefaultPrimary, SponsorListSliceDefault, SponsorListSliceVariation, SponsorListSlice };
     }
 }
