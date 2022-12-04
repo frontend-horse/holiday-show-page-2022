@@ -1,29 +1,123 @@
 ---
+import { Image } from '@astrojs/image/components';
 import Layout from '../layouts/Layout.astro';
 import { getOrganizers } from '../lib/prismicio';
 import * as prismicH from '@prismicio/helpers';
 import { OrganizerTeamDocumentDataMemberItem } from '../../types.generated';
 
 const organizers = await getOrganizers();
+console.log(
+  '🚀 ~ file: contributors.astro:9 ~ organizers',
+  organizers.data.member[0].avatar.url
+);
 
 const bodyHTML = prismicH.asHTML(organizers.data.body);
 ---
 
 <Layout
-  title="Donations - Holiday Snowtacular - Web Dev Charity Fundraiser"
+  title="Contributors - Holiday Snowtacular - Web Dev Charity Fundraiser"
   description={`A list of the wonderful organizers for the 2022 Holiday Snowtacular!`}
 >
-  <h1>{organizers.data.heading}</h1>
-  <Fragment set:html="bodyHTML" />
-  {
-    organizers.data.member.map(
-      (member: OrganizerTeamDocumentDataMemberItem) => (
-        <div>
-          <p>{member.name}</p>
-          <p>{member.contributions}</p>
-          <a href={member.websiteURL}>Website</a>
-        </div>
-      )
-    )
-  }
+  <main>
+    <header>
+      <h1>{organizers.data.heading}</h1>
+      <Fragment set:html="bodyHTML" />
+    </header>
+    <div class="smol-grid">
+      {
+        organizers.data.member.map(
+          (member: OrganizerTeamDocumentDataMemberItem) => (
+            <div class="member">
+              <Image
+                class="member-avatar"
+                src={member.avatar.url}
+                alt=""
+                width={200}
+                height={200}
+                format={'webp'}
+              />
+              <p class="member-name">{member.name}</p>
+              <p class="member-contributions">{member.contributions}</p>
+              <a class="member-website" href={member.websiteURL}>
+                <svg
+                  width="1em"
+                  height="1em"
+                  viewBox="0 0 20 21"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="m18.4 10-3 3a5.5 5.5 0 0 1-7.8 0 1.2 1.2 0 1 1 1.6-1.7 3.2 3.2 0 0 0 4.5 0l3-3a3.2 3.2 0 1 0-4.5-4.5l-1 1A1.2 1.2 0 0 1 9.7 3l1-1a5.5 5.5 0 1 1 7.8 7.8Zm-9.7 6.2-1 1a3.2 3.2 0 1 1-4.4-4.5l3-3a3.2 3.2 0 0 1 4.5 0 1.2 1.2 0 0 0 1.6-1.6 5.5 5.5 0 0 0-7.8 0l-3 3a5.5 5.5 0 1 0 7.8 7.8l1-1a1.2 1.2 0 0 0-1.7-1.7Z"
+                    fill="#FFC973"
+                  />
+                </svg>{' '}
+                Website
+              </a>
+            </div>
+          )
+        )
+      }
+    </div>
+  </main>
 </Layout>
+
+<style>
+  main {
+    max-width: 1136px;
+    display: grid;
+
+    margin: 0 auto;
+    min-height: 70vh;
+  }
+
+  header {
+    margin-bottom: var(--space-xl);
+  }
+
+  .smol-grid {
+    --min: 30ch;
+    --gap: var(--space-s);
+    display: grid;
+    grid-gap: var(--gap);
+    /* min() with 100% prevents overflow
+  in extra narrow spaces */
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--min)), 1fr));
+
+    width: 100%;
+  }
+
+  .member {
+    display: grid;
+    padding: var(--space-l);
+    background: #0008;
+    border-radius: var(--space-xs);
+  }
+
+  .member-avatar {
+    border-radius: 50%;
+    margin: 0 auto;
+    margin-bottom: var(--space-m);
+  }
+
+  .member-name {
+    font-size: var(--step-1);
+    font-weight: 600;
+    margin-bottom: 0;
+  }
+
+  .member-contributions {
+    font-size: var(--step--1);
+    margin-bottom: var(--space-2xs);
+  }
+
+  .member-website {
+    display: inline-flex;
+    font-size: var(--step--2);
+    font-weight: 600;
+    gap: var(--space-3xs);
+    align-items: center;
+    padding: var(--space-xs) 0;
+    margin-bottom: calc(-1 * var(--space-xs));
+    width: fit-content;
+  }
+</style>
