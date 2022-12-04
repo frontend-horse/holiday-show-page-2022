@@ -12,19 +12,9 @@ import HolidaySnowtacularLogo from '../components/HolidaySnowtacularLogo.astro';
 import RegistrationButton from '../components/RegistrationButton.astro';
 
 const page = await getHomepage();
-const {
-  body,
-  title,
-  buttonText,
-  ctaDescription,
-  heroEyebrow,
-  metadescription,
-  metatitle,
-  ogImage,
-  slices,
-} = page.data;
-const bodyHTML = prismicH.asHTML(body);
-const bodyText = prismicH.asText(body);
+
+const bodyHTML = prismicH.asHTML(page.data.body);
+const bodyText = prismicH.asText(page.data.body);
 ---
 
 <Layout
@@ -36,7 +26,7 @@ const bodyText = prismicH.asText(body);
       <div class="hero-column">
         <div class="kicker">
           {
-            heroEyebrow.map((item, i) => (
+            page.data.heroEyebrow.map((item, i) => (
               <>
                 {i > 0 ? <span class="spacer"> | </span> : ''}
 
@@ -54,9 +44,9 @@ const bodyText = prismicH.asText(body);
         </div>
 
         <div class="cta">
-          <p class="cta-description">{ctaDescription}</p>
+          <p class="cta-description">{page.data.ctaDescription}</p>
           <RegistrationButton>
-            {buttonText}
+            {page.data.buttonText}
             <span class="icon">
               <svg viewBox="0 0 17 16" fill="none" role="presentation">
                 <path
@@ -69,11 +59,17 @@ const bodyText = prismicH.asText(body);
         </div>
       </div>
       <div class="hero-column">
-        <Image src={placeholderImage} alt="" width={363} loading="eager" fetchpriority="high" />
+        <Image
+          src={placeholderImage}
+          alt=""
+          width={363}
+          loading="eager"
+          fetchpriority="high"
+        />
       </div>
     </section>
     <div class="slice-container">
-      <SliceZone slices={slices} />
+      <SliceZone slices={page.data.slices} />
     </div>
   </main>
 </Layout>

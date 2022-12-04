@@ -4,20 +4,18 @@ import { getAllGuests } from '../lib/prismicio';
 import GuestAvatar from './GuestAvatar.astro';
 import { GuestListSlice } from '../../types.generated';
 
-const props = Astro.props as GuestListSlice;
-
-const { heading, body, eyebrow } = props.primary;
+const slice = Astro.props.slice as GuestListSlice;
 
 // Fetch guests and map to order from CMS
 const allGuests = await getAllGuests();
 
-const bodyHTML = prismicH.asHTML(body);
+const bodyHTML = prismicH.asHTML(slice.primary.body);
 ---
 
 <section id="guests" aria-labelledby="guests-heading" class="guests">
   <header>
-    <span class="heading-eyebrow">{eyebrow}</span>
-    <h2 id="guests-heading">{heading}</h2>
+    <span class="heading-eyebrow">{slice.primary.eyebrow}</span>
+    <h2 id="guests-heading">{slice.primary.heading}</h2>
   </header>
 
   <div>
@@ -26,10 +24,7 @@ const bodyHTML = prismicH.asHTML(body);
       {
         allGuests.map((guest) => (
           <article class="guest">
-            <GuestAvatar
-              avatar={guest.data.avatar}
-              guestName={guest.data.name}
-            />
+            <GuestAvatar guest={guest} />
             <a class="name" href={`/guest/${guest.uid}`}>
               {guest.data.name}
             </a>

@@ -1,75 +1,73 @@
 ---
-import * as prismicH from '@prismicio/helpers'
-import { getAllSponsors } from '../lib/prismicio'
-import { SponsorListSlice } from '../../types.generated'
+import * as prismicH from '@prismicio/helpers';
+import { getAllSponsors } from '../lib/prismicio';
+import { SponsorListSlice } from '../../types.generated';
 
-const props = Astro.props as SponsorListSlice
+const slice = Astro.props.slice as SponsorListSlice;
 
-const { heading, body, eyebrow } = props.primary
+const sponsors = await getAllSponsors();
 
-const sponsors = await getAllSponsors()
-
-const bodyHTML = prismicH.asHTML(body)
+const bodyHTML = prismicH.asHTML(slice.primary.body);
 ---
 
-<section id='sponsors' aria-labelledby='sponsors-heading' class='sponsors'>
-	<header>
-		<span class='heading-eyebrow'>{eyebrow}</span>
-		<h2 id='sponsors-heading'>{heading}</h2>
-	</header>
+<section id="sponsors" aria-labelledby="sponsors-heading" class="sponsors">
+  <header>
+    <span class="heading-eyebrow">{slice.primary.eyebrow}</span>
+    <h2 id="sponsors-heading">{slice.primary.heading}</h2>
+  </header>
 
-	<div>
-		<Fragment set:html='bodyHTML' />
-		<ul class='sponsor-grid'>
-			{
-				sponsors.map(sponsor => (
-					<li class='sponsor'>
-						<a href={`/sponsor/${sponsor.uid}`}>
-							<img src={sponsor.data.logo.url} alt={sponsor.data.name} />
-						</a>
-					</li>
-				))
-			}
-		</ul>
-	</div>
+  <div>
+    <Fragment set:html="bodyHTML" />
+    <ul class="sponsor-grid">
+      {
+        sponsors.map((sponsor) => (
+          <li class="sponsor">
+            <a href={`/sponsor/${sponsor.uid}`}>
+              <img src={sponsor.data.logo.url} alt={sponsor.data.name} />
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
 </section>
 
-<style lang='scss'>
-	.sponsors {
-		.sponsor-grid {
-			display: grid;
-			grid-template-columns: repeat(auto-fit, minmax(15ch, 1fr));
-			grid-gap: var(--space-s);
-		}
+<style lang="scss">
+  .sponsors {
+    .sponsor-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(15ch, 1fr));
+      grid-gap: var(--space-s);
+    }
 
-		.sponsor {
-			position: relative;
-			background: rgba(0, 0, 0, 0.25);
-			padding-block: var(--space-s);
-			padding-inline: var(--space-s-m);
-			display: grid;
-			place-content: center;
-			transition: background 0.2s ease;
-			border-radius: 0.5rem;
-			&:hover {
-				background: rgba(0, 0, 0, 0.3);
-			}
-			a {
-				&::before {
-					content: '';
-					position: absolute;
-					inset: 0;
-				}
-			}
-			img {
-				display: block;
-				max-width: 100%;
-				padding: 0;
-				margin: 0;
-				width: auto;
-				height: 100px;
-				object-fit: contain;
-			}
-		}
-	}
+    .sponsor {
+      position: relative;
+      background: rgba(0, 0, 0, 0.25);
+      padding-block: var(--space-s);
+      padding-inline: var(--space-s-m);
+      display: grid;
+      place-content: center;
+      transition: background 0.2s ease;
+      border-radius: 0.5rem;
+      &:hover {
+        background: rgba(0, 0, 0, 0.3);
+      }
+      a {
+        &::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+        }
+      }
+      img {
+        display: block;
+        max-width: 100%;
+        padding: 0;
+        margin: 0;
+        width: auto;
+        height: 100px;
+        object-fit: contain;
+      }
+    }
+  }
 </style>

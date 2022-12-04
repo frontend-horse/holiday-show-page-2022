@@ -1,10 +1,13 @@
 ---
-import DonationGrid from "../components/DonationGrid.svelte";
-import Layout from "../layouts/Layout.astro";
+import DonationGrid from '../components/DonationGrid.svelte';
+import Layout from '../layouts/Layout.astro';
 // Fetch Donations from API
 ---
 
-<Layout title="Donations - Holiday Snowtacular - Web Dev Charity Fundraiser">
+<Layout
+  title="Donations - Holiday Snowtacular - Web Dev Charity Fundraiser"
+  description={`The full list of donations from the 2022 Holiday Snowtacular.`}
+>
   <h1>Donations</h1>
   <DonationGrid client:load />
 </Layout>

@@ -1,19 +1,17 @@
 ---
-import RegistrationButton from "./RegistrationButton.astro";
-import { RegisterCtaSlice } from "../../types.generated";
+import RegistrationButton from './RegistrationButton.astro';
+import { RegisterCtaSlice } from '../../types.generated';
 
-const props = Astro.props as RegisterCtaSlice;
-
-const { bottomText, buttontext, topText } = props.primary;
+const slice = Astro.props.slice as RegisterCtaSlice;
 ---
 
 <section class="registration">
   <h2>
-    <span>{topText}</span>
-    <span>{bottomText}</span>
+    <span>{slice.primary.topText}</span>
+    <span>{slice.primary.bottomText}</span>
   </h2>
 
-  <RegistrationButton>{buttontext}</RegistrationButton>
+  <RegistrationButton>{slice.primary.buttontext}</RegistrationButton>
 </section>
 
 <style lang="scss">

@@ -1,9 +1,9 @@
 ---
-import * as prismicH from "@prismicio/helpers";
-import Layout from "../../layouts/Layout.astro";
+import * as prismicH from '@prismicio/helpers';
+import Layout from '../../layouts/Layout.astro';
 
-import { getAllSponsors } from "../../lib/prismicio";
-import { SponsorDocument } from "../../../types.generated";
+import { getAllSponsors } from '../../lib/prismicio';
+import { SponsorDocument } from '../../../types.generated';
 
 export async function getStaticPaths() {
   const allPages = await getAllSponsors();
@@ -15,21 +15,27 @@ export async function getStaticPaths() {
   return paths;
 }
 
-const props = Astro.props as SponsorDocument;
+const sponsor = Astro.props as SponsorDocument;
 
-const { name, link, logo, description } = props.data;
-
-const descriptionHTML = prismicH.asHTML(description);
+const descriptionHTML = prismicH.asHTML(sponsor.data.description);
 ---
 
-<Layout title={`${name} - Guest Speaker - Holiday Snowtacular`}>
+<Layout
+  title={`${sponsor.data.name} - Guest Speaker - Holiday Snowtacular`}
+  description={`${sponsor.data.name} is sponsoring the 2022 Holiday Snowtacular in an effort to raise $20,000 for Doctors Without Borders!`}
+>
   <main>
-    <h1>{name}</h1>
-    <img src={logo.url} alt="" />
+    <h1>{sponsor.data.name}</h1>
+    <img src={sponsor.data.logo.url} alt="" />
     <Fragment set:html="descriptionHTML" />
-    <p>
-      <a href={link.url}>Visit Site</a>
-    </p>
+
+    {
+      prismicH.isFilled.link(sponsor.data.link) && (
+        <p>
+          <a href={sponsor.data.link.url}>Visit Site</a>
+        </p>
+      )
+    }
   </main>
 </Layout>
 

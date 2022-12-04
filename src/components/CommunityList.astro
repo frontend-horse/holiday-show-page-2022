@@ -1,80 +1,77 @@
 ---
-import * as prismicH from '@prismicio/helpers'
-import { getAllCommunitySponsors } from '../lib/prismicio'
+import * as prismicH from '@prismicio/helpers';
+import { getAllCommunitySponsors } from '../lib/prismicio';
+import { CommunityListSlice } from '../../types.generated';
 
-import { CommunityListSlice } from '../../types.generated'
+const slice = Astro.props.slice as CommunityListSlice;
 
-const props = Astro.props as CommunityListSlice
+const communities = await getAllCommunitySponsors();
 
-const { heading, body, eyebrow } = props.primary
-
-const communities = await getAllCommunitySponsors()
-
-const bodyHTML = prismicH.asHTML(body)
+const bodyHTML = prismicH.asHTML(slice.primary.body);
 ---
 
 <section
-	id='communities'
-	aria-labelledby='communities-heading'
-	class='communities'
+  id="communities"
+  aria-labelledby="communities-heading"
+  class="communities"
 >
-	<header>
-		<span class='heading-eyebrow'>{eyebrow}</span>
-		<h2 id='communities-heading'>{heading}</h2>
-	</header>
+  <header>
+    <span class="heading-eyebrow">{slice.primary.eyebrow}</span>
+    <h2 id="communities-heading">{slice.primary.heading}</h2>
+  </header>
 
-	<div>
-		<Fragment set:html='bodyHTML' />
-		<ul class='community-grid'>
-			{
-				communities.map(community => (
-					<li class='community'>
-						<a href={`/community/${community.uid}`}>
-							<img src={community.data.logo.url} alt={community.data.title} />
-						</a>
-					</li>
-				))
-			}
-		</ul>
-	</div>
+  <div>
+    <Fragment set:html="bodyHTML" />
+    <ul class="community-grid">
+      {
+        communities.map((community) => (
+          <li class="community">
+            <a href={`/community/${community.uid}`}>
+              <img src={community.data.logo.url} alt={community.data.title} />
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
 </section>
 
-<style lang='scss'>
-	.communities {
-		.community-grid {
-			display: grid;
-			grid-template-columns: repeat(auto-fit, minmax(20ch, 1fr));
-			grid-gap: var(--space-s);
-		}
+<style lang="scss">
+  .communities {
+    .community-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(20ch, 1fr));
+      grid-gap: var(--space-s);
+    }
 
-		.community {
-			position: relative;
-			background: rgba(0, 0, 0, 0.25);
-			padding-block: var(--space-xs);
-			padding-inline: var(--space-s);
-			display: grid;
-			place-content: center;
-			transition: background 0.2s ease;
-			border-radius: 0.5rem;
-			&:hover {
-				background: rgba(0, 0, 0, 0.3);
-			}
-			a {
-				&::before {
-					content: '';
-					position: absolute;
-					inset: 0;
-				}
-			}
-			img {
-				display: block;
-				max-width: 100%;
-				padding: 0;
-				margin: 0;
-				width: auto;
-				height: 100px;
-				object-fit: contain;
-			}
-		}
-	}
+    .community {
+      position: relative;
+      background: rgba(0, 0, 0, 0.25);
+      padding-block: var(--space-xs);
+      padding-inline: var(--space-s);
+      display: grid;
+      place-content: center;
+      transition: background 0.2s ease;
+      border-radius: 0.5rem;
+      &:hover {
+        background: rgba(0, 0, 0, 0.3);
+      }
+      a {
+        &::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+        }
+      }
+      img {
+        display: block;
+        max-width: 100%;
+        padding: 0;
+        margin: 0;
+        width: auto;
+        height: 100px;
+        object-fit: contain;
+      }
+    }
+  }
 </style>

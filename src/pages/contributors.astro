@@ -1,23 +1,29 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import { getOrganizers } from "../lib/prismicio";
-import * as prismicH from "@prismicio/helpers";
+import Layout from '../layouts/Layout.astro';
+import { getOrganizers } from '../lib/prismicio';
+import * as prismicH from '@prismicio/helpers';
+import { OrganizerTeamDocumentDataMemberItem } from '../../types.generated';
 
 const organizers = await getOrganizers();
 
 const bodyHTML = prismicH.asHTML(organizers.data.body);
 ---
 
-<Layout title="Donations - Holiday Snowtacular - Web Dev Charity Fundraiser">
+<Layout
+  title="Donations - Holiday Snowtacular - Web Dev Charity Fundraiser"
+  description={`A list of the wonderful organizers for the 2022 Holiday Snowtacular!`}
+>
   <h1>{organizers.data.heading}</h1>
   <Fragment set:html="bodyHTML" />
   {
-    organizers.data.member.map((member) => (
-      <div>
-        <p>{member.name}</p>
-        <p>{member.contributions}</p>
-        <a href={member.websiteURL}>Website</a>
-      </div>
-    ))
+    organizers.data.member.map(
+      (member: OrganizerTeamDocumentDataMemberItem) => (
+        <div>
+          <p>{member.name}</p>
+          <p>{member.contributions}</p>
+          <a href={member.websiteURL}>Website</a>
+        </div>
+      )
+    )
   }
 </Layout>

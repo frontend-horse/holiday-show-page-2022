@@ -1,21 +1,27 @@
 ---
 import * as prismicH from '@prismicio/helpers';
+import { GuestDocument } from '../../types.generated';
 // We might want to take certain props for when it's
 // on the homepage or on the Guest's individual page.
 
-const props = Astro.props;
+const guest = Astro.props.guest as GuestDocument;
+console.log('🚀 ~ file: GuestAvatar.astro:8 ~ guest', guest);
 
-const avatarURL = prismicH.asImageSrc(props.avatar, {
+const avatarURL = prismicH.asImageSrc(guest.data.avatar, {
   w: 300,
   h: 300,
   fit: 'crop',
-  crop: 'faces',
 });
 // console.log('🚀 ~ file: GuestAvatar.astro ~ line 14 ~ avatarURL', avatarURL);
 ---
 
 <div class="guest-avatar">
-  <img src={avatarURL} alt={`Headshot of ${props.guestName}`} width={300} height={300} />
+  <img
+    src={avatarURL}
+    alt={`Headshot of ${guest.data.name}`}
+    width={300}
+    height={300}
+  />
 </div>
 
 <style lang="scss">
