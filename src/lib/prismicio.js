@@ -1,5 +1,5 @@
-import * as prismic from "@prismicio/client";
-import sm from "../../sm.json";
+import * as prismic from '@prismicio/client';
+import sm from '../../sm.json';
 
 /**
  * The project's Prismic repository name.
@@ -10,8 +10,8 @@ export const repositoryName = prismic.getRepositoryName(sm.apiEndpoint);
 /** @type {prismic.ClientConfig['routes']} **/
 const routes = [
   {
-    type: "page",
-    path: "/:uid",
+    type: 'page',
+    path: '/:uid',
   },
 ];
 
@@ -63,42 +63,46 @@ const client = prismic.createClient(sm.apiEndpoint, {
  */
 
 export async function getSettings() {
-  return await client.getSingle("settings");
+  return await client.getSingle('settings');
 }
 
 export async function getMenu() {
-  return await client.getSingle("menu");
+  return await client.getSingle('menu');
 }
 
 export async function getAllPages() {
-  return await client.getAllByType("page");
+  return await client.getAllByType('page');
 }
 
 export async function getPageByUID(uid) {
-  return await client.getByUID("page", uid);
+  return await client.getByUID('page', uid);
 }
 
 export async function getHomepage() {
-  return await client.getSingle("page", { uid: "home" });
+  return await client.getSingle('page', { uid: 'home' });
 }
 
 export async function getAllGuests() {
-  return await client.getAllByType("guest", {
+  return await client.getAllByType('guest', {
     orderings: {
-      field: "my.guest.name",
-      direction: "asc",
+      field: 'my.guest.name',
+      direction: 'asc',
     },
   });
 }
 
 export async function getAllSponsors() {
-  return await client.getAllByType("sponsor");
+  return await client.getAllByType('sponsor');
 }
 
 export async function getAllCommunitySponsors() {
-  return await client.getAllByType("communitySponsor");
+  return await client.getAllByType('communitySponsor');
 }
 
 export async function getOrganizers() {
-  return await client.getSingle("organizerTeam");
+  return await client.getSingle('organizerTeam');
+}
+
+export async function getSecondaryPageByUID(uid) {
+  return await client.getByUID('secondarypage', uid);
 }

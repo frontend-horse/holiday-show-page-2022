@@ -53,6 +53,14 @@
           "blocks": 1
         }
       }
+    },
+    "secondarypage": {
+      "body": {
+        "config": {
+          "patternType": "PARAGRAPH",
+          "blocks": 1
+        }
+      }
     }
   },
   "slices": {

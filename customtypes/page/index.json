@@ -1,6 +1,6 @@
 {
   "id": "page",
-  "label": "Page",
+  "label": "Home Page",
   "repeatable": true,
   "status": true,
   "json": {
