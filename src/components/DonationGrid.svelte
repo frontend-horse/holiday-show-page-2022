@@ -33,7 +33,7 @@
   .smol-grid {
     --min: 30ch;
     --gap: var(--space-l) var(--space-m);
-    max-width: 1024px;
+
     display: grid;
     grid-gap: var(--gap);
     /* min() with 100% prevents overflow
