@@ -22,7 +22,7 @@ const bodyHTML = prismicH.asHTML(slice.primary.body);
       {
         sponsors.map((sponsor) => (
           <li class="sponsor">
-            <a href={`/sponsor/${sponsor.uid}`} rel="sponsored">
+            <a href={`/sponsor/${sponsor.uid}`}>
               <img src={sponsor.data.logo.url} alt={sponsor.data.name} />
             </a>
           </li>
