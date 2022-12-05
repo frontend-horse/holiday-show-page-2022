@@ -36,23 +36,10 @@ const bodyHTML = prismicH.asHTML(organizers.data.body);
                 height={200}
                 format={'webp'}
               />
-              <p class="member-name">{member.name}</p>
+              <p class="member-name">
+                <a class="member-website" href={member.websiteURL}>{member.name}</a>
+              </p>
               <p class="member-contributions">{member.contributions}</p>
-              <a class="member-website" href={member.websiteURL}>
-                <svg
-                  width="1em"
-                  height="1em"
-                  viewBox="0 0 20 21"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="m18.4 10-3 3a5.5 5.5 0 0 1-7.8 0 1.2 1.2 0 1 1 1.6-1.7 3.2 3.2 0 0 0 4.5 0l3-3a3.2 3.2 0 1 0-4.5-4.5l-1 1A1.2 1.2 0 0 1 9.7 3l1-1a5.5 5.5 0 1 1 7.8 7.8Zm-9.7 6.2-1 1a3.2 3.2 0 1 1-4.4-4.5l3-3a3.2 3.2 0 0 1 4.5 0 1.2 1.2 0 0 0 1.6-1.6 5.5 5.5 0 0 0-7.8 0l-3 3a5.5 5.5 0 1 0 7.8 7.8l1-1a1.2 1.2 0 0 0-1.7-1.7Z"
-                    fill="#FFC973"
-                  />
-                </svg>{' '}
-                Website
-              </a>
             </div>
           )
         )
@@ -87,10 +74,21 @@ const bodyHTML = prismicH.asHTML(organizers.data.body);
   }
 
   .member {
+    position: relative;
     display: grid;
     padding: var(--space-l);
     background: #0008;
     border-radius: var(--space-xs);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .member {
+      transition: background 0.2s ease;
+    }
+  }
+
+  .member:hover {
+    background: #000a;
   }
 
   .member-avatar {
@@ -110,14 +108,9 @@ const bodyHTML = prismicH.asHTML(organizers.data.body);
     margin-bottom: var(--space-2xs);
   }
 
-  .member-website {
-    display: inline-flex;
-    font-size: var(--step--2);
-    font-weight: 600;
-    gap: var(--space-3xs);
-    align-items: center;
-    padding: var(--space-xs) 0;
-    margin-bottom: calc(-1 * var(--space-xs));
-    width: fit-content;
+  .member-website::after {
+    content: '';
+    inset: 0;
+    position: absolute;
   }
 </style>
