@@ -519,12 +519,71 @@ interface SponsorDocumentData {
      */
     description: prismicT.RichTextField;
     /**
-     * Link field in *Sponsor*
+     * CTALabel field in *Sponsor*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: sponsor.ctalabel
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    ctalabel: prismicT.KeyTextField;
+    /**
+     * CTALink field in *Sponsor*
      *
      * - **Field Type**: Link
      * - **Placeholder**: *None*
-     * - **API ID Path**: sponsor.link
+     * - **API ID Path**: sponsor.ctalink
      * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    ctalink: prismicT.LinkField;
+    /**
+     * YouTubeID field in *Sponsor*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: sponsor.youtubeid
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    youtubeid: prismicT.KeyTextField;
+    /**
+     * Links field in *Sponsor*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: sponsor.links[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/group
+     *
+     */
+    links: prismicT.GroupField<Simplify<SponsorDocumentDataLinksItem>>;
+}
+/**
+ * Item in Sponsor → Links
+ *
+ */
+export interface SponsorDocumentDataLinksItem {
+    /**
+     * Label field in *Sponsor → Links*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: sponsor.links[].label
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    label: prismicT.KeyTextField;
+    /**
+     * Link field in *Sponsor → Links*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: sponsor.links[].link
      * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
      *
      */
@@ -1228,6 +1287,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { CommunitySponsorDocumentData, CommunitySponsorDocumentDataOrganizersItem, CommunitySponsorDocument, GuestDocumentData, GuestDocument, OrganizerTeamDocumentData, OrganizerTeamDocumentDataMemberItem, OrganizerTeamDocument, PageDocumentData, PageDocumentDataHeroEyebrowItem, PageDocumentDataSlicesSlice, PageDocument, SecondarypageDocumentData, SecondarypageDocument, SponsorDocumentData, SponsorDocument, AllDocumentTypes, CharityDetailsSliceDefaultPrimary, CharityDetailsSliceDefaultItem, CharityDetailsSliceDefault, CharityDetailsSliceVariation, CharityDetailsSlice, CommunityListSliceDefaultPrimary, CommunityListSliceDefault, CommunityListSliceVariation, CommunityListSlice, DonationLeaderboardSliceDefaultPrimary, DonationLeaderboardSliceDefault, DonationLeaderboardSliceVariation, DonationLeaderboardSlice, EventDetailsSliceDefaultPrimary, EventDetailsSliceDefault, EventDetailsSliceVariation, EventDetailsSlice, FrequentlyAskedQuestionsSliceDefaultPrimary, FrequentlyAskedQuestionsSliceDefaultItem, FrequentlyAskedQuestionsSliceDefault, FrequentlyAskedQuestionsSliceVariation, FrequentlyAskedQuestionsSlice, GuestListSliceDefaultPrimary, GuestListSliceDefault, GuestListSliceVariation, GuestListSlice, HeroSliceDefaultPrimary, HeroSliceDefault, HeroSliceVariation, HeroSlice, LastYearRecapSliceDefaultPrimary, LastYearRecapSliceDefault, LastYearRecapSliceVariation, LastYearRecapSlice, RegisterCtaSliceDefaultPrimary, RegisterCtaSliceDefault, RegisterCtaSliceVariation, RegisterCtaSlice, SponsorListSliceDefaultPrimary, SponsorListSliceDefault, SponsorListSliceVariation, SponsorListSlice };
+        export type { CommunitySponsorDocumentData, CommunitySponsorDocumentDataOrganizersItem, CommunitySponsorDocument, GuestDocumentData, GuestDocument, OrganizerTeamDocumentData, OrganizerTeamDocumentDataMemberItem, OrganizerTeamDocument, PageDocumentData, PageDocumentDataHeroEyebrowItem, PageDocumentDataSlicesSlice, PageDocument, SecondarypageDocumentData, SecondarypageDocument, SponsorDocumentData, SponsorDocumentDataLinksItem, SponsorDocument, AllDocumentTypes, CharityDetailsSliceDefaultPrimary, CharityDetailsSliceDefaultItem, CharityDetailsSliceDefault, CharityDetailsSliceVariation, CharityDetailsSlice, CommunityListSliceDefaultPrimary, CommunityListSliceDefault, CommunityListSliceVariation, CommunityListSlice, DonationLeaderboardSliceDefaultPrimary, DonationLeaderboardSliceDefault, DonationLeaderboardSliceVariation, DonationLeaderboardSlice, EventDetailsSliceDefaultPrimary, EventDetailsSliceDefault, EventDetailsSliceVariation, EventDetailsSlice, FrequentlyAskedQuestionsSliceDefaultPrimary, FrequentlyAskedQuestionsSliceDefaultItem, FrequentlyAskedQuestionsSliceDefault, FrequentlyAskedQuestionsSliceVariation, FrequentlyAskedQuestionsSlice, GuestListSliceDefaultPrimary, GuestListSliceDefault, GuestListSliceVariation, GuestListSlice, HeroSliceDefaultPrimary, HeroSliceDefault, HeroSliceVariation, HeroSlice, LastYearRecapSliceDefaultPrimary, LastYearRecapSliceDefault, LastYearRecapSliceVariation, LastYearRecapSlice, RegisterCtaSliceDefaultPrimary, RegisterCtaSliceDefault, RegisterCtaSliceVariation, RegisterCtaSlice, SponsorListSliceDefaultPrimary, SponsorListSliceDefault, SponsorListSliceVariation, SponsorListSlice };
     }
 }
