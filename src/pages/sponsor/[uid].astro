@@ -1,6 +1,7 @@
 ---
 import * as prismicH from '@prismicio/helpers';
 import Layout from '../../layouts/Layout.astro';
+import { Icon } from 'astro-icon';
 
 import { getAllSponsors } from '../../lib/prismicio';
 import { SponsorDocument } from '../../../types.generated';
@@ -21,22 +22,157 @@ const descriptionHTML = prismicH.asHTML(sponsor.data.description);
 ---
 
 <Layout
-  title={`${sponsor.data.name} - Guest Speaker - Holiday Snowtacular`}
+  title={`${sponsor.data.name} - Sponsor - Holiday Snowtacular`}
   description={`${sponsor.data.name} is sponsoring the 2022 Holiday Snowtacular in an effort to raise $20,000 for Doctors Without Borders!`}
 >
-  <main>
-    <h1>{sponsor.data.name}</h1>
-    <img src={sponsor.data.logo.url} alt="" />
-    <Fragment set:html="descriptionHTML" />
+  <main class="holiday-supporter">
+    <div class="holiday-supporter-heading">
+      <span class="holiday-supporter-eyebrow">Sponsor</span>
+      <h1 class="holiday-supporter-name">{sponsor.data.name}</h1>
+    </div>
+    <div class="holiday-supporter-logo-container">
+      <img src={sponsor.data.logo.url} alt={`${sponsor.data.name} logo`} />
+    </div>
+    <div class="holiday-supporter-description">
+      <Fragment set:html="descriptionHTML" />
+    </div>
 
     {
-      prismicH.isFilled.link(sponsor.data.link) && (
-        <p>
-          <a href={sponsor.data.link.url}>Visit Site</a>
-        </p>
+      prismicH.isFilled.link(sponsor.data.ctalink) && (
+        <div class="holiday-supporter-cta">
+          <a class="button" data-variant="red" href={sponsor.data.ctalink.url}>
+            {sponsor.data.ctalabel}
+          </a>
+        </div>
       )
     }
+
+    {
+      prismicH.isFilled.group(sponsor.data.links) && (
+        <div class="holiday-supporter-links">
+          <h2>Links</h2>
+          <ul>
+            {sponsor.data.links.map(({ label, link }) => (
+              <>
+                {prismicH.isFilled.link(link) && (
+                  <li>
+                    <a href={link.url} class="holiday-supporter-link">
+                      <Icon name="mdi:link-variant" class="link-icon" />
+                      <span>{label}</span>
+                    </a>
+                  </li>
+                )}
+              </>
+            ))}
+          </ul>
+        </div>
+      )
+    }
+
+    <div class="holiday-supporter-video">
+      {
+        prismicH.isFilled.keyText(sponsor.data.youtubeid) && (
+          <iframe
+            class="holiday-supporter-video-iframe"
+            src={`https://www.youtube.com/embed/${sponsor.data.youtubeid}`}
+            title={sponsor.data.name}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            style="border:none;"
+          />
+        )
+      }
+    </div>
   </main>
 </Layout>
 
-<style></style>
+<style lang="scss">
+  .holiday-supporter {
+    display: grid;
+    grid-template-areas: 'logo' 'heading' 'description' 'cta' 'links' 'video';
+    max-width: 1136px;
+    gap: var(--space-xs);
+    margin: 0 auto;
+    padding: 0 var(--space-s);
+  }
+
+  .holiday-supporter-heading {
+    grid-area: heading;
+  }
+
+  .holiday-supporter-eyebrow {
+    text-transform: uppercase;
+  }
+
+  .holiday-supporter-logo-container {
+    background: #0006;
+    padding: var(--space-l-xl);
+    border-radius: var(--space-2xs);
+    width: fit-content;
+    margin: 0 auto;
+    grid-area: logo;
+  }
+
+  .holiday-supporter-video {
+    grid-area: video;
+  }
+
+  .holiday-supporter-video-iframe {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 16 / 9;
+  }
+
+  .holiday-supporter-logo-container > img {
+    max-width: 500px;
+    max-height: 300px;
+    width: 100%;
+    height: auto;
+  }
+
+  .holiday-supporter-cta {
+    grid-area: cta;
+  }
+
+  .holiday-supporter-description {
+    grid-area: description;
+  }
+
+  .holiday-supporter-links {
+    grid-area: links;
+
+    ul {
+      display: grid;
+      gap: var(--space-2xs);
+    }
+  }
+
+  .holiday-supporter-link {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-3xs);
+    color: white;
+    font-weight: 400;
+    text-decoration-line: none;
+    font-size: var(--step--1);
+  }
+
+  .holiday-supporter-link:hover {
+    text-decoration-line: underline;
+  }
+  .link-icon {
+    width: var(--step-0);
+    color: var(--accent);
+  }
+  h2 {
+    font-size: var(--step-1);
+  }
+
+  @media screen and (min-width: 768px) {
+    .holiday-supporter {
+      grid-template-areas: 'logo heading' 'logo description' 'links description' 'links cta' 'links video';
+      grid-template-columns: 1fr 2fr;
+      gap: var(--space-s-m);
+    }
+  }
+</style>
