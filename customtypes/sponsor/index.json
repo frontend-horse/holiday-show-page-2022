@@ -36,51 +36,12 @@
           "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
         }
       },
-      "ctalabel": {
-        "type": "Text",
-        "config": {
-          "label": "CTALabel",
-          "placeholder": ""
-        }
-      },
-      "ctalink": {
+      "link": {
         "type": "Link",
         "config": {
-          "label": "CTALink",
+          "label": "Link",
           "placeholder": "",
-          "allowTargetBlank": true,
           "select": null
-        }
-      },
-      "youtubeid": {
-        "type": "Text",
-        "config": {
-          "label": "YouTubeID",
-          "placeholder": ""
-        }
-      },
-      "links": {
-        "type": "Group",
-        "config": {
-          "label": "Links",
-          "fields": {
-            "label": {
-              "type": "Text",
-              "config": {
-                "label": "Label",
-                "placeholder": ""
-              }
-            },
-            "link": {
-              "type": "Link",
-              "config": {
-                "label": "Link",
-                "placeholder": "",
-                "allowTargetBlank": true,
-                "select": null
-              }
-            }
-          }
         }
       }
     }

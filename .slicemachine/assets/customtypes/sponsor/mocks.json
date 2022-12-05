@@ -11,7 +11,7 @@
   "lang": "en-us",
   "alternate_languages": [],
   "data": {
-    "name": "shoe",
+    "name": "each",
     "logo": {
       "dimensions": {
         "width": 900,
@@ -19,29 +19,18 @@
       },
       "alt": null,
       "copyright": null,
-      "url": "https://images.unsplash.com/photo-1537498425277-c283d32ef9db"
+      "url": "https://images.unsplash.com/photo-1560762484-813fc97650a0"
     },
     "description": [
       {
         "type": "paragraph",
-        "text": "Aliqua laborum nisi non deserunt tempor mollit nulla enim aute ad commodo. Nisi sit proident ex occaecat aliquip.",
+        "text": "Velit labore cupidatat quis minim et incididunt amet sit.",
         "spans": []
       }
     ],
-    "ctalabel": "shore",
-    "ctalink": {
+    "link": {
       "link_type": "Web",
       "url": "https://slicemachine.dev"
-    },
-    "youtubeid": "because",
-    "links": [
-      {
-        "label": "bite",
-        "link": {
-          "link_type": "Web",
-          "url": "http://google.com"
-        }
-      }
-    ]
+    }
   }
 }
