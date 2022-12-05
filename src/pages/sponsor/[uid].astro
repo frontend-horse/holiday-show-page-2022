@@ -32,7 +32,7 @@ const descriptionHTML = prismicH.asHTML(sponsor.data.description);
     {
       prismicH.isFilled.link(sponsor.data.link) && (
         <p>
-          <a href={sponsor.data.link.url}>Visit Site</a>
+          <a href={sponsor.data.link.url} rel="sponsored">Visit Site</a>
         </p>
       )
     }
