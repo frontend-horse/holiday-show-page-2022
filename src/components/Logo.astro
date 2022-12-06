@@ -82,7 +82,6 @@ console.log('🚀 ~ file: Logo.astro:8 ~ isHomepage', isHomepage);
   .frontend-horse-logo {
     path {
       fill: var(--accent);
-      @include forced-colors-fill-current-color();
     }
   }
   .logo {
@@ -98,6 +97,9 @@ console.log('🚀 ~ file: Logo.astro:8 ~ isHomepage', isHomepage);
     }
     svg {
       height: 100%;
+      path {
+        @include forced-colors-fill-current-color();
+	  }
     }
   }
 </style>
