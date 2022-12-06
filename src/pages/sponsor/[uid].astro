@@ -5,6 +5,7 @@ import { Icon } from 'astro-icon';
 
 import { getAllSponsors } from '../../lib/prismicio';
 import { SponsorDocument } from '../../../types.generated';
+import YouTubeLazyLoad from '../../components/YouTubeLazyLoad.svelte';
 
 export async function getStaticPaths() {
   const allPages = await getAllSponsors();
@@ -72,14 +73,7 @@ const descriptionHTML = prismicH.asHTML(sponsor.data.description);
     <div class="holiday-supporter-video">
       {
         prismicH.isFilled.keyText(sponsor.data.youtubeid) && (
-          <iframe
-            class="holiday-supporter-video-iframe"
-            src={`https://www.youtube.com/embed/${sponsor.data.youtubeid}`}
-            title={sponsor.data.name}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-            style="border:none;"
-          />
+          <YouTubeLazyLoad youTubeId={sponsor.data.youtubeid} client:idle />
         )
       }
     </div>
@@ -176,7 +170,7 @@ const descriptionHTML = prismicH.asHTML(sponsor.data.description);
     .holiday-supporter {
       grid-template-areas: 'logo heading' 'logo description' 'links description' 'links cta' 'links video';
       grid-template-columns: 1fr 2fr;
-      gap: var(--space-s-m);
+      gap: var(--space-s-m) var(--space-l-xl);
     }
   }
 </style>
