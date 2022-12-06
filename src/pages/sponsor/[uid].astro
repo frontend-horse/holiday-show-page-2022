@@ -110,6 +110,10 @@ const descriptionHTML = prismicH.asHTML(sponsor.data.description);
     justify-content: center;
     align-items: center;
     max-width: 500px;
+
+    @media (forced-colors: active) {
+      padding-block: 0;
+    } 
   }
 
   .holiday-supporter-logo-container > img {
@@ -160,7 +164,9 @@ const descriptionHTML = prismicH.asHTML(sponsor.data.description);
   }
   .link-icon {
     width: var(--step-0);
-    color: var(--accent);
+    @media (forced-colors: none) {
+      color: var(--accent);
+    }
   }
   h2 {
     font-size: var(--step-1);
