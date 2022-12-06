@@ -77,12 +77,12 @@ console.log('🚀 ~ file: Logo.astro:8 ~ isHomepage', isHomepage);
 </a>
 
 <style lang="scss">
+  @import '../styles/mixins.scss';
+
   .frontend-horse-logo {
     path {
       fill: var(--accent);
-      @media (forced-colors: active) {
-        fill: currentColor;
-      }
+      @include forced-colors-fill-current-color();
     }
   }
   .logo {

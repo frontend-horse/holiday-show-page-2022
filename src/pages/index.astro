@@ -75,6 +75,8 @@ const bodyText = prismicH.asText(page.data.body);
 </Layout>
 
 <style lang="scss">
+  @import '../styles/mixins.scss';
+
   .grid-container {
     display: grid;
     place-items: center;
@@ -144,6 +146,8 @@ const bodyText = prismicH.asText(page.data.body);
   }
 
   .cta {
+    @include forced-colors-outline();
+    
     --cta-bg: var(--accent-constant-red);
     --cta-text: var(--accent-constant-text);
     background-color: var(--cta-bg);
@@ -160,6 +164,12 @@ const bodyText = prismicH.asText(page.data.body);
     @media (min-width: 640px) {
       display: grid;
       grid-template-columns: 1fr fit-content(20ch);
+    }
+  }
+
+  .icon {
+    path {
+      @include forced-colors-fill-current-color();
     }
   }
 </style>
