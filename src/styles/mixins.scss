@@ -24,3 +24,11 @@
 		outline: 2px solid currentColor;
 	}
 }
+
+// USE WITH CARE!! Only use if you know something must be a light color and can't be forced to a system color, and you need a background so it will stand out
+@mixin forced-colors-background {
+	@media (forced-colors: active) {
+		forced-color-adjust: none;
+		background: rgba(0, 0, 0, 0.6) !important;
+	}
+}

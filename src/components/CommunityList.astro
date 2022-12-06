@@ -37,6 +37,8 @@ const bodyHTML = prismicH.asHTML(slice.primary.body);
 </section>
 
 <style lang="scss">
+  @import '../styles/mixins.scss';
+
   .communities {
     .community-grid {
       display: grid;
@@ -54,8 +56,13 @@ const bodyHTML = prismicH.asHTML(slice.primary.body);
       transition: background 0.2s ease;
       border-radius: 0.5rem;
       &:hover {
-        background: rgba(0, 0, 0, 0.3);
+        @media (forced-colors: none) {
+		  background: rgba(0, 0, 0, 0.3);
+		}
       }
+
+	  @include forced-colors-background();
+
       a {
         &::before {
           content: '';

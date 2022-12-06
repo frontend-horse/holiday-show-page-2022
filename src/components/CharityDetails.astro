@@ -49,7 +49,9 @@ const bodyHTML = prismicH.asHTML(slice.primary.body);
   </div>
 </section>
 
-<style>
+<style lang="scss">
+  @import '../styles/mixins.scss';
+
   .charity-heading {
     margin-bottom: var(--space-m);
     display: block;
@@ -58,6 +60,7 @@ const bodyHTML = prismicH.asHTML(slice.primary.body);
   .charity-logo {
     max-width: 500px;
     margin-bottom: var(--space-l);
+    @include forced-colors-background();
   }
 
   .description-area {
