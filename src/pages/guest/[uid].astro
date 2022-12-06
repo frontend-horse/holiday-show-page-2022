@@ -1,4 +1,5 @@
 ---
+import { Icon } from 'astro-icon';
 import * as prismicH from '@prismicio/helpers';
 import Layout from '../../layouts/Layout.astro';
 import { getAllGuests } from '../../lib/prismicio';
@@ -39,6 +40,12 @@ for (let j = 1; j < 5; j++) {
 
 const guestBioHTML = prismicH.asHTML(guest.data.guestBio);
 const topicDescriptionHTML = prismicH.asHTML(guest.data.topicDescription);
+
+// regex to turn https://alextrost.com/ or https://www.alextrost.com/ into alextrost.com and remove a trailing slash
+const guestWebsite = guest.data.websiteUrl?.replace(
+  /(https?:\/\/)?(www\.)?([^\/]+)\/?/,
+  '$3'
+);
 ---
 
 <Layout
@@ -84,6 +91,20 @@ const topicDescriptionHTML = prismicH.asHTML(guest.data.topicDescription);
           </dl>
         )
       }
+      <div class="guest-links">
+        <a href={guest.data.websiteUrl} class="guest-link">
+          <Icon name="mdi:link-variant" class="link-icon" />
+          <span>
+            {guestWebsite}
+          </span>
+        </a>
+        <a href={guest.data.twitterUrl} class="guest-link">
+          <Icon name="mdi:twitter" class="link-icon" />
+          <span>
+            {guest.data.name}'s Twitter
+          </span>
+        </a>
+      </div>
     </div>
 
     <div class="other-guests-container">
@@ -142,8 +163,31 @@ const topicDescriptionHTML = prismicH.asHTML(guest.data.topicDescription);
     margin-block-start: 0;
   }
   dd {
-    margin-block-start: var(--space-s);
+    margin-block-start: var(--space-2xs);
     font-size: var(--step-0);
+  }
+
+  .guest-links {
+    display: flex;
+    flex-flow: row;
+    gap: var(--space-s);
+    border-block-start: 1px solid var(--accent);
+    margin-block-start: var(--space-s);
+    padding-block-start: var(--space-2xs);
+  }
+
+  .guest-link {
+    display: flex;
+    color: var(--body-font-color);
+    gap: var(--space-2xs);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: var(--step-0);
+  }
+
+  .link-icon {
+    width: var(--step-0);
+    color: var(--accent);
   }
 
   .other-guests-container {
