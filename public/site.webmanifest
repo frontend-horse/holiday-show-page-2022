@@ -1,5 +1,5 @@
 {
-    "name": "Snowtacular",
+    "name": "Holiday Snowtacular 2022",
     "short_name": "Snowtacular",
     "icons": [
         {
@@ -13,7 +13,7 @@
             "type": "image/png"
         }
     ],
-    "theme_color": "#ffffff",
-    "background_color": "#ffffff",
+    "theme_color": "#111649",
+    "background_color": "#111649",
     "display": "standalone"
 }
