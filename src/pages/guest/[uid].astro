@@ -169,7 +169,7 @@ const guestWebsite = guest.data.websiteUrl?.replace(
 
   .guest-links {
     display: flex;
-    flex-flow: row;
+    flex-flow: column;
     gap: var(--space-s);
     border-block-start: 1px solid var(--accent);
     margin-block-start: var(--space-s);
@@ -246,6 +246,9 @@ const guestWebsite = guest.data.websiteUrl?.replace(
     }
     .other-guests-container {
       grid-column: 1 / span 2;
+    }
+    .guest-links {
+      flex-flow: row;
     }
   }
 </style>
