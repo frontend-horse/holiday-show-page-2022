@@ -4,17 +4,38 @@ import Layout from '../../layouts/Layout.astro';
 import { getAllGuests } from '../../lib/prismicio';
 import GuestAvatar from '../../components/GuestAvatar.astro';
 import { GuestDocument } from '../../../types.generated';
+import gsap from 'gsap';
 
 export async function getStaticPaths() {
   const allPages = await getAllGuests();
-  const paths = allPages.map((page) => ({
+  const paths = allPages.map((page, i) => ({
     params: { uid: page.uid },
-    props: page,
+    props: { guest: page, allGuests: allPages, index: i },
   }));
   return paths;
 }
 
-const guest = Astro.props as GuestDocument;
+interface Props {
+  guest: GuestDocument;
+  allGuests: GuestDocument[];
+  index: number;
+}
+
+const { guest, allGuests, index } = Astro.props;
+
+// Wraps back to the start if we go past the end of the array
+function wrapArray(arr, index) {
+  if (index >= arr.length) {
+    return arr[index - arr.length];
+  } else {
+    return arr[index];
+  }
+}
+
+let nextGuests = [] as GuestDocument[];
+for (let j = 1; j < 5; j++) {
+  nextGuests.push(wrapArray(allGuests, index + j));
+}
 
 const guestBioHTML = prismicH.asHTML(guest.data.guestBio);
 const topicDescriptionHTML = prismicH.asHTML(guest.data.topicDescription);
@@ -24,72 +45,163 @@ const topicDescriptionHTML = prismicH.asHTML(guest.data.topicDescription);
   title={`${guest.data.name} - Guest Speaker - Holiday Snowtacular`}
   description={`${guest.data.name} is a guest speaker at the 2022 Holiday Snowtacular`}
 >
-  <article id="guest-page">
-    <header>
-      <GuestAvatar guest={guest} />
-      <h1>{guest.data.name}</h1>
-    </header>
+  <article id="guest-page" class="guest-page">
+    <GuestAvatar guest={guest} />
     <div>
-      <div class="guest-details">
-        <span>{guest.data.jobTitle}</span>
-        <span>{guest.data.company}</span>
+      <span class="heading-eyebrow">Speaker</span>
+      <h1>{guest.data.name}</h1>
+      <div>
+        {
+          !!guest.data.jobTitle?.length && (
+            <div class="guest-details">
+              <span>{guest.data.jobTitle}</span>
+              {!!guest.data.company && <span> @ {guest.data.company}</span>}
+            </div>
+          )
+        }
       </div>
-      <dl>
-        <dt>Bio</dt>
-        <dd>
-          <Fragment set:html="guestBioHTML" />
-        </dd>
-        <dt>Topic</dt>
-        <dd>{guest.data.topicTitle}</dd>
-        <dd>
-          <Fragment set:html="topicDescriptionHTML" />
-        </dd>
-      </dl>
+
+      {
+        (!!guest.data.guestBio?.length || !!guest.data.topicTitle) && (
+          <dl>
+            {!!guest.data.guestBio?.length && (
+              <>
+                <dt>Bio</dt>
+                <dd>
+                  <Fragment set:html="guestBioHTML" />
+                </dd>{' '}
+              </>
+            )}
+            {guest.data.topicTitle?.length && (
+              <>
+                <dt>Topic</dt>
+                <dd>{guest.data.topicTitle}</dd>
+                <dd>
+                  <Fragment set:html="topicDescriptionHTML" />
+                </dd>
+              </>
+            )}
+          </dl>
+        )
+      }
+    </div>
+
+    <div class="other-guests-container">
+      <h2>Other Speakers</h2>
+      <div class="other-guests-inner">
+        {
+          nextGuests.map((guest) => (
+            <div class="other-guest">
+              <GuestAvatar guest={guest} />
+              <a class="other-guest-name" href={`/guest/${guest.uid}`}>
+                {guest.data.name}
+              </a>
+            </div>
+          ))
+        }
+      </div>
     </div>
   </article>
 </Layout>
 
 <style>
-  #guest-page {
-    --container-width: 60ch;
+  .guest-page {
+    --container-width: 1136px;
 
     margin-inline: auto;
     padding-block-start: var(--space-l-xl);
     width: min(var(--container-width), 100% - var(--space-l));
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: var(--space-l) var(--space-l);
   }
 
   h1 {
-    text-align: center;
     margin-bottom: var(--space-s);
   }
 
   .guest-details {
     display: flex;
-    flex-flow: column;
-    align-items: center;
-    gap: var(--space-2xs);
-    span:last-child {
-      color: var(--header-font-color);
-    }
+    flex-flow: row;
+    gap: 0.5ch;
+    font-size: var(--step-0);
+    text-transform: uppercase;
   }
 
   dl {
-    background: var(--box-color);
-    padding-inline: var(--space-m);
-    padding-block: var(--space-s);
-    border-radius: 0.5rem;
-    margin-top: var(--space-m);
   }
   dt {
     font-size: var(--step-1);
     font-family: var(--header-font);
-    color: var(--header-font-color);
+    color: var(--accent);
     margin-block-start: var(--space-s-m);
+    font-weight: 700;
   }
   dt:first-child {
     margin-block-start: 0;
   }
   dd {
     margin-block-start: var(--space-s);
+    font-size: var(--step-0);
+  }
+
+  .other-guests-container {
+    margin-block-start: var(--space-3xl);
+    gap: var(--space-l);
+    display: grid;
+  }
+
+  .other-guests-inner {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-xl) var(--space-l);
+  }
+
+  .other-guest {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-s);
+    align-items: center;
+    position: relative;
+  }
+
+  .other-guest-name {
+    font-family: var(--body-font);
+    font-size: var(--step-0);
+    font-weight: 700;
+    text-align: center;
+
+    color: var(--body-font-color);
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .other-guest-name::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .other-guest {
+      transition: transform 0.2s ease-in-out;
+    }
+  }
+
+  .other-guest:hover {
+    transform: scale(1.07);
+  }
+
+  @media (min-width: 768px) {
+    .guest-page {
+      grid-template-columns: 1fr 2fr;
+    }
+    .other-guests-container {
+      grid-column: 1 / span 2;
+    }
   }
 </style>
