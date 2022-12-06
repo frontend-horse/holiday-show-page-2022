@@ -6,11 +6,44 @@ export interface Props {
 
 const { description, title } = Astro.props;
 import '../styles/main.scss';
-import Snow from '../components/Snow.astro';
+// import Snow from '../components/Snow.astro';
 import NavBar from '../components/NavBar.astro';
 import Footer from '../components/Footer.astro';
 import StructuredData from '../components/StructuredData.astro';
 import OpenGraph from '../components/OpenGraph.astro';
+
+const isHomepage = Astro.url.pathname === '/';
+
+const longPageBackground = `linear-gradient(
+    180deg,
+    hsl(209deg 100% 6%) 0%,
+    hsl(290deg 40% 35%) 49%,
+    hsl(339deg 37% 57%) 70%,
+    hsl(7deg 60% 68%) 85%,
+    hsl(29deg 77% 73%) 100%
+  );`;
+
+const shortPageBackground = `linear-gradient(
+    180deg,
+    hsl(209deg 100% 9%) 0%,
+    hsl(218deg 93% 12%) 11%,
+    hsl(226deg 87% 15%) 22%,
+    hsl(236deg 60% 18%) 33%,
+    hsl(245deg 63% 21%) 44%,
+    hsl(253deg 67% 24%) 56%,
+    hsl(263deg 60% 26%) 67%,
+    hsl(272deg 53% 29%) 78%,
+    hsl(281deg 46% 32%) 89%,
+    hsl(290deg 40% 35%) 100%
+  );`;
+
+let pageBackground;
+
+if (isHomepage) {
+  pageBackground = longPageBackground;
+} else {
+  pageBackground = shortPageBackground;
+}
 ---
 
 <!DOCTYPE html>
@@ -31,13 +64,14 @@ import OpenGraph from '../components/OpenGraph.astro';
     <NavBar />
     <slot />
     <Footer />
-    <style is:global lang="scss">
+    <style is:global lang="scss" define:vars={{ pageBackground }}>
       :root {
         --box-color: hsla(223, 81%, 9%, 75%);
       }
 
       body {
         min-height: 100vh;
+        background: var(--pageBackground);
       }
 
       section {
@@ -49,37 +83,6 @@ import OpenGraph from '../components/OpenGraph.astro';
           margin-bottom: var(--space-xs-s);
         }
       }
-
-      /*
-
-
-  body {
-    display: grid;
-    grid-template-rows: max-content;
-    grid-template-columns:
-      1fr
-      min(1024px, 100%)
-      1fr;
-
-    > * {
-      grid-column: 2;
-    }
-    > astro-island > * {
-      grid-column: 2;
-    }
-  }
-
-
-
-  :where(.visually-hidden:not(:focus, :active, :focus-within, .not-visually-hidden)) {
-    clip-path: inset(50%) !important;
-    height: 1px !important;
-    width: 1px !important;
-    overflow: hidden !important;
-    position: absolute !important;
-    white-space: nowrap !important;
-    border: 0 !important;
-  }*/
     </style>
   </body>
 </html>
