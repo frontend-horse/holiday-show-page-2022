@@ -80,6 +80,9 @@ console.log('🚀 ~ file: Logo.astro:8 ~ isHomepage', isHomepage);
   .frontend-horse-logo {
     path {
       fill: var(--accent);
+      @media (forced-colors: active) {
+        fill: currentColor;
+      }
     }
   }
   .logo {
