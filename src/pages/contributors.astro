@@ -48,7 +48,9 @@ const bodyHTML = prismicH.asHTML(organizers.data.body);
   </main>
 </Layout>
 
-<style>
+<style lang="scss">
+  @import '../styles/mixins.scss';
+
   main {
     max-width: 1136px;
     display: grid;
@@ -75,6 +77,7 @@ const bodyHTML = prismicH.asHTML(organizers.data.body);
   }
 
   .member {
+    @include forced-colors-outline();
     position: relative;
     display: grid;
     padding: var(--space-l);

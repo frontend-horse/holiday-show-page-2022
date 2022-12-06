@@ -1,14 +1,34 @@
-	@mixin mouseParallax($multiplier) {
-		@media (prefers-reduced-motion: no-preference) and (pointer: fine) {
-			transform: translate(
-				calc(#{$multiplier * 100px} * var(--mouseX)),
-				calc(
-					#{$multiplier * 100px} * var(--mouseY) + #{$multiplier * -1000px} *
-						var(--scroll)
-				)
-			);
-		}
-		@media (prefers-reduced-motion: no-preference) and (pointer: coarse) {
-			transform: translateY(calc(#{$multiplier * -1000px} * var(--scroll)));
-		}
+@mixin mouseParallax($multiplier) {
+	@media (prefers-reduced-motion: no-preference) and (pointer: fine) {
+		transform: translate(
+			calc(#{$multiplier * 100px} * var(--mouseX)),
+			calc(
+				#{$multiplier * 100px} * var(--mouseY) + #{$multiplier * -1000px} *
+					var(--scroll)
+			)
+		);
 	}
+	@media (prefers-reduced-motion: no-preference) and (pointer: coarse) {
+		transform: translateY(calc(#{$multiplier * -1000px} * var(--scroll)));
+	}
+}
+
+@mixin forced-colors-fill-current-color {
+	@media (forced-colors: active) {
+		fill: currentColor;
+	}
+}
+
+@mixin forced-colors-outline {
+	@media (forced-colors: active) {
+		outline: 2px solid currentColor;
+	}
+}
+
+// USE WITH CARE!! Only use if you know something must be a light color and can't be forced to a system color, and you need a background so it will stand out
+@mixin forced-colors-background {
+	@media (forced-colors: active) {
+		forced-color-adjust: none;
+		background: rgba(0, 0, 0, 0.6) !important;
+	}
+}

@@ -125,7 +125,9 @@ const guestWebsite = guest.data.websiteUrl?.replace(
   </article>
 </Layout>
 
-<style>
+<style lang="scss">
+  @import '../../styles/mixins.scss';
+
   .guest-page {
     --container-width: 1136px;
 
@@ -187,7 +189,9 @@ const guestWebsite = guest.data.websiteUrl?.replace(
 
   .link-icon {
     width: var(--step-0);
-    color: var(--accent);
+    @media (forced-colors: none) {
+      color: var(--accent);
+	}
   }
 
   .other-guests-container {

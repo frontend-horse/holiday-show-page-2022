@@ -77,6 +77,8 @@ console.log('🚀 ~ file: Logo.astro:8 ~ isHomepage', isHomepage);
 </a>
 
 <style lang="scss">
+  @import '../styles/mixins.scss';
+
   .frontend-horse-logo {
     path {
       fill: var(--accent);
@@ -95,6 +97,9 @@ console.log('🚀 ~ file: Logo.astro:8 ~ isHomepage', isHomepage);
     }
     svg {
       height: 100%;
+      path {
+        @include forced-colors-fill-current-color();
+	  }
     }
   }
 </style>

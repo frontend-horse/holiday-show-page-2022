@@ -1,4 +1,8 @@
+@import '../mixins.scss';
+
 :where(button, .button) {
+  @include forced-colors-outline();
+
   --button-font-color: var(--accent-constant-text);
   --button-bg-color: var(--accent-constant-black);
   --button-bg-hover-color: var(--accent-constant-black-hover);

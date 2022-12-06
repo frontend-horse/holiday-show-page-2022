@@ -81,6 +81,8 @@ const descriptionHTML = prismicH.asHTML(sponsor.data.description);
 </Layout>
 
 <style lang="scss">
+  @import '../../styles/mixins.scss';
+
   .holiday-supporter {
     display: grid;
     grid-template-areas: 'logo' 'heading' 'description' 'cta' 'links' 'video';
@@ -110,6 +112,8 @@ const descriptionHTML = prismicH.asHTML(sponsor.data.description);
     justify-content: center;
     align-items: center;
     max-width: 500px;
+
+    @include forced-colors-background();
   }
 
   .holiday-supporter-logo-container > img {
@@ -160,7 +164,9 @@ const descriptionHTML = prismicH.asHTML(sponsor.data.description);
   }
   .link-icon {
     width: var(--step-0);
-    color: var(--accent);
+    @media (forced-colors: none) {
+      color: var(--accent);
+    }
   }
   h2 {
     font-size: var(--step-1);
