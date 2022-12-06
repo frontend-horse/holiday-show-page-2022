@@ -11,6 +11,7 @@ import NavBar from '../components/NavBar.astro';
 import Footer from '../components/Footer.astro';
 import StructuredData from '../components/StructuredData.astro';
 import OpenGraph from '../components/OpenGraph.astro';
+import FaviconLinks from '../components/FaviconLinks.astro';
 
 const isHomepage = Astro.url.pathname === '/';
 
@@ -51,7 +52,7 @@ if (isHomepage) {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <FaviconLinks />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <OpenGraph title={title} description={description} />
