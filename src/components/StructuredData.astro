@@ -1,5 +1,5 @@
 ---
-import type {Event, Organization, Person, WithContext} from "schema-dts";
+import type {DonateAction, Event, NGO, Organization, Person, WithContext} from "schema-dts";
 import * as prismicH from "@prismicio/helpers";
 import { getAllGuests, getAllSponsors, getHomepage } from "../lib/prismicio";
 
@@ -66,6 +66,27 @@ const sponsors = allSponsors.map(sponsor => {
 	return structuredSponsorData;
 });
 
+const doctorsWithoutBorders: NGO = {
+	"@type": "NGO",
+	legalName: "Médecins Sans Frontières",
+	name: "Doctors Without Borders",
+	logo: "https://upload.wikimedia.org/wikipedia/en/thumb/b/bd/Msf_logo.svg/2880px-Msf_logo.svg.png",
+	url: "https://www.doctorswithoutborders.org/",
+	taxID: "13-3433452",
+	sameAs: [
+		"https://twitter.com/msf_usa",
+		"http://www.facebook.com/msf.english",
+		"http://www.youtube.com/msf",
+		"http://www.instagram.com/doctorswithoutborders"
+	],
+	email: "program_inquiries@newyork.msf.org"
+}
+
+const donateAction: DonateAction = {
+	"@type": "DonateAction",
+	recipient: doctorsWithoutBorders
+};
+
 const schema: WithContext<Event> = {
 	"@context": "https://schema.org",
 	"@type": "Event",
@@ -83,7 +104,8 @@ const schema: WithContext<Event> = {
 	organizer: alex,
 	performer: [alex, ...guests],
 	sponsor: sponsors,
-	isAccessibleForFree: true
+	isAccessibleForFree: true,
+	potentialAction: donateAction
 };
 ---
 
