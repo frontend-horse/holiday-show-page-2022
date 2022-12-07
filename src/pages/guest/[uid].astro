@@ -191,7 +191,7 @@ const guestWebsite = guest.data.websiteUrl?.replace(
     width: var(--step-0);
     @media (forced-colors: none) {
       color: var(--accent);
-	}
+    }
   }
 
   .other-guests-container {
@@ -210,7 +210,7 @@ const guestWebsite = guest.data.websiteUrl?.replace(
   .other-guest {
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--space-s);
+    gap: var(--space-3xs);
     align-items: center;
     position: relative;
   }
@@ -225,6 +225,9 @@ const guestWebsite = guest.data.websiteUrl?.replace(
     text-decoration: none;
     &:hover {
       text-decoration: underline;
+      text-decoration-color: var(--body--link-underline);
+      text-decoration-style: underline;
+      text-decoration-thickness: 3px;
     }
   }
 
