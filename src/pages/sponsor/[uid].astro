@@ -41,7 +41,7 @@ const descriptionHTML = prismicH.asHTML(sponsor.data.description);
     {
       prismicH.isFilled.link(sponsor.data.ctalink) && (
         <div class="holiday-supporter-cta">
-          <a class="button" data-variant="red" href={sponsor.data.ctalink.url}>
+          <a class="button" href={sponsor.data.ctalink.url}>
             {sponsor.data.ctalabel}
           </a>
         </div>
@@ -178,5 +178,9 @@ const descriptionHTML = prismicH.asHTML(sponsor.data.description);
       grid-template-columns: 1fr 2fr;
       gap: var(--space-s-m) var(--space-l-xl);
     }
+  }
+
+  .button {
+    outline: 2px solid var(--gray-6);
   }
 </style>
