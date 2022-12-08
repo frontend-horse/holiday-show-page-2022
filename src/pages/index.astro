@@ -60,15 +60,16 @@ const bodyText = prismicH.asText(page.data.body);
           </RegistrationButton>
         </div>
       </div>
-      <div class="hero-column">
-        <Image
-          src={placeholderImage}
-          alt=""
-          width={363}
-          loading="eager"
-          fetchpriority="high"
-        />
-      </div>
+      <!-- <div class="hero-column"> -->
+      <Image
+        src={placeholderImage}
+        alt=""
+        width={363}
+        loading="eager"
+        fetchpriority="high"
+        style={{ margin: '0 auto' }}
+      />
+      <!-- </div> -->
     </section>
     <div class="slice-container">
       <SliceZone slices={page.data.slices} />
@@ -142,6 +143,11 @@ const bodyText = prismicH.asText(page.data.body);
     margin: 0 auto;
   }
 
+  .snowtacular-logo {
+    width: 80%;
+    margin: 0 auto;
+  }
+
   .body-html {
     font-size: var(--step-1);
     line-height: var(--step-0);
@@ -154,7 +160,7 @@ const bodyText = prismicH.asText(page.data.body);
 
   .cta {
     @include forced-colors-outline();
-    
+
     --cta-bg: var(--accent-constant-red);
     --cta-text: var(--accent-constant-text);
     background-color: var(--cta-bg);
