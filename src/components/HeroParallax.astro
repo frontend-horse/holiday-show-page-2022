@@ -11,6 +11,7 @@ import Sleigh from '../../public/images/header_elements/sleigh.png'
 ---
 
 <div class='parallax-container'>
+	<!-- This is just to be able to approximate the layout of the elements -->
 	<!-- <Image
 		src={Orientation}
 		class='sock'
@@ -30,25 +31,24 @@ import Sleigh from '../../public/images/header_elements/sleigh.png'
 
 <script>
 	window.addEventListener('DOMContentLoaded', () => {
-		const container = document.querySelector('.grid-container')
 		if (window.matchMedia('(prefers-reduced-motion: no-preference)')) {
 			if (window.matchMedia('(pointer:fine')) {
 				document.addEventListener('mousemove', event => {
-					container.style.setProperty(
+					document.documentElement.style.setProperty(
 						'--mouseX',
-						event.pageX / window.innerWidth - 0.25
+						(event.pageX / window.innerWidth - 0.25).toString()
 					)
-					container.style.setProperty(
+					document.documentElement.style.setProperty(
 						'--mouseY',
-						event.pageY / window.innerHeight - 0.25
+						(event.pageY / window.innerHeight - 0.25).toString()
 					)
 				})
 			}
 
 			document.addEventListener('scroll', () => {
-				container.style.setProperty(
+				document.documentElement.style.setProperty(
 					'--scroll',
-					window.scrollY / window.innerHeight
+					(window.scrollY / window.innerHeight).toString()
 				)
 			})
 		}
@@ -56,7 +56,7 @@ import Sleigh from '../../public/images/header_elements/sleigh.png'
 </script>
 
 <style lang='scss'>
-	@import 'src/lib/mixins.scss';
+	@import 'src/styles/mixins.scss';
 
 	.parallax-container {
 		display: flex;

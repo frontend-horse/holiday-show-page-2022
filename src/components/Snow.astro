@@ -1,15 +1,20 @@
-<div class='snow'></div>
+---
+export interface Props {
+	className: string
+}
+const { className } = Astro.props
+---
+
+<div class={`snow ${className}`}></div>
 
 <style lang='scss'>
 	.snow {
-		position: absolute;
+		position: fixed;
 		top: 0;
 		left: 0;
-		min-width: 100vw;
-		min-height: 100%;
+		width: 100%;
+		height: 100%;
 		background: url('/images/foreground-snow.svg') top center repeat;
-		background-size: 400px 400px;
 		pointer-events: none;
-		z-index: 100;
 	}
 </style>

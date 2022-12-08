@@ -28,7 +28,6 @@ $moveMultiplier: 200px;
 }
 
 @mixin headerElementParallax($multiplier) {
-
   // transform-origin: 20% 20%;
 
   @media (prefers-reduced-motion: no-preference) and (pointer: fine) {
@@ -37,5 +36,13 @@ $moveMultiplier: 200px;
 
   @media (prefers-reduced-motion: no-preference) and (pointer: coarse) {
     @include buildTransform($multiplier, coarse);
+  }
+}
+
+@mixin snow($multiplier) {
+  opacity: ($multiplier * .5) + .2;
+
+  @media (prefers-reduced-motion: no-preference) {
+    background-position-y: calc(#{$multiplier * $scrollScale} #{"* var(--scroll)"});
   }
 }
