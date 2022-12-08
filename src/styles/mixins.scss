@@ -16,14 +16,15 @@ $moveMultiplier: 200px;
   $transformScale: #{$multiplier * $scaleMultiplier} #{"* var(--scroll) + 1"};
 
   @if $pointerLevel ==fine {
-    transform: translate(calc(#{$transformMouseX #{"+"} $transformXonScroll}),
-      calc(#{$transformMouseY} + #{$transformScroll}),
-    ) rotate(calc(#{$transformRotate})) scale(calc(#{$transformScale}));
-  }
+    transform: translate(calc(#{$transformMouseX #{"+"} $transformXonScroll
+      }),
+    calc(#{$transformMouseY} + #{$transformScroll}),
+  ) rotate(calc(#{$transformRotate})) scale(calc(#{$transformScale}));
+}
 
-  @else {
-    transform: translate(calc(#{$transformXonScroll}), calc(#{$transformScroll})) rotate(calc(#{$transformRotate})) scale(calc(#{$transformScale}));
-  }
+@else {
+  transform: translate(calc(#{$transformXonScroll}), calc(#{$transformScroll})) rotate(calc(#{$transformRotate})) scale(calc(#{$transformScale}));
+}
 }
 
 @mixin headerElementParallax($multiplier) {
@@ -52,6 +53,7 @@ $moveMultiplier: 200px;
   }
 }
 
+
 @mixin forced-colors-outline {
   @media (forced-colors: active) {
     outline: 2px solid currentColor;
@@ -63,5 +65,11 @@ $moveMultiplier: 200px;
   @media (forced-colors: active) {
     forced-color-adjust: none;
     background: rgba(0, 0, 0, 0.6) !important;
+  }
+}
+
+@mixin forced-colors-hidden {
+  @media (forced-colors: active) {
+    display: none;
   }
 }
