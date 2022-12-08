@@ -1,29 +1,28 @@
 ---
-import RegistrationButton from "./RegistrationButton.astro";
-import { RegisterCtaSlice } from "../../types.generated";
+import RegistrationButton from './RegistrationButton.astro';
+import { RegisterCtaSlice } from '../../types.generated';
 
-const props = Astro.props as RegisterCtaSlice;
-
-const { bottomText, buttontext, topText } = props.primary;
+const slice = Astro.props.slice as RegisterCtaSlice;
 ---
 
 <section class="registration">
   <h2>
-    <span>{topText}</span>
-    <span>{bottomText}</span>
+    <span>{slice.primary.topText}</span>
+    <span>{slice.primary.bottomText}</span>
   </h2>
 
-  <RegistrationButton>{buttontext}</RegistrationButton>
+  <RegistrationButton>{slice.primary.buttontext}</RegistrationButton>
 </section>
 
 <style lang="scss">
   section {
-    background: linear-gradient(180deg, #ffffff 0%, var(--blue-1) 100%);
+    background: var(--cta-section--background);
     border-radius: var(--space-xs);
     padding: var(--space-l) var(--space-m);
     display: grid;
     place-items: center;
     gap: var(--space-m);
+    color-scheme: light;
   }
 
   h2 {
@@ -34,10 +33,10 @@ const { bottomText, buttontext, topText } = props.primary;
 
   h2 > span {
     display: block;
-    color: var(--blue-11);
+    color: var(--cta-section--text-primary);
 
     &:first-child {
-      color: var(--red-9);
+      color: var(--cta-section--text-secondary);
     }
   }
 </style>

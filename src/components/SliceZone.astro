@@ -1,14 +1,14 @@
 ---
-import GuestList from "./GuestList.astro";
+import GuestList from './GuestList.astro';
 
-import SponsorList from "./SponsorList.astro";
-import RegisterCTA from "./RegisterCTA.astro";
-import CharityDetails from "./CharityDetails.astro";
-import EventDetails from "./EventDetails.astro";
-import LastYearRecap from "./LastYearRecap.astro";
-import DonationLeaderboard from "./DonationLeaderboard.astro";
-import CommunityList from "./CommunityList.astro";
-import FAQ from "./FAQ.astro";
+import SponsorList from './SponsorList.astro';
+import RegisterCTA from './RegisterCTA.astro';
+import CharityDetails from './CharityDetails.astro';
+import EventDetails from './EventDetails.astro';
+import LastYearRecap from './LastYearRecap.astro';
+import DonationLeaderboard from './DonationLeaderboard.astro';
+import CommunityList from './CommunityList.astro';
+import FAQ from './FAQ.astro';
 
 const components = {
   guest_list: GuestList,
@@ -31,7 +31,7 @@ const { slices } = Astro.props;
   {
     slices.map((slice, index) => {
       const Component = components[slice.slice_type];
-      return <Component key={index} {...slice} />;
+      return <Component key={index} slice={slice} />;
     })
   }
 </>

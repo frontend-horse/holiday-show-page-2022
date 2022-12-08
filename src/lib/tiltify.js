@@ -1,4 +1,4 @@
-import { faker } from "@faker-js/faker";
+import { faker } from '@faker-js/faker';
 
 function createFakeDonation() {
   return {
@@ -32,22 +32,22 @@ function createFakeCampaignData() {
 }
 
 export async function getCampaignData() {
-  // return fetchData() // uncomment this line to fetch real data
-  return createFakeCampaignData();
+  return fetchData();
+  // return createFakeCampaignData();
 }
 
 export async function fetchData() {
-  const url = "/.netlify/functions/fetch-tiltify-donations";
+  const url = '/.netlify/functions/fetch-tiltify-donations';
 
   return await fetch(url, {
-    method: "GET",
-    cache: "no-cache",
+    method: 'GET',
+    cache: 'no-cache',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
   })
     .then((response) => response.json())
     .catch((error) => {
-      console.error("Error:", error);
+      console.error('Error:', error);
     });
 }

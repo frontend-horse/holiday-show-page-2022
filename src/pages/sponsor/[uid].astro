@@ -1,9 +1,11 @@
 ---
-import * as prismicH from "@prismicio/helpers";
-import Layout from "../../layouts/Layout.astro";
+import * as prismicH from '@prismicio/helpers';
+import Layout from '../../layouts/Layout.astro';
+import { Icon } from 'astro-icon';
 
-import { getAllSponsors } from "../../lib/prismicio";
-import { SponsorDocument } from "../../../types.generated";
+import { getAllSponsors } from '../../lib/prismicio';
+import { SponsorDocument } from '../../../types.generated';
+import YouTubeLazyLoad from '../../components/YouTubeLazyLoad.svelte';
 
 export async function getStaticPaths() {
   const allPages = await getAllSponsors();
@@ -15,22 +17,170 @@ export async function getStaticPaths() {
   return paths;
 }
 
-const props = Astro.props as SponsorDocument;
+const sponsor = Astro.props as SponsorDocument;
 
-const { name, link, logo, description } = props.data;
-
-const descriptionHTML = prismicH.asHTML(description);
+const descriptionHTML = prismicH.asHTML(sponsor.data.description);
 ---
 
-<Layout title={`${name} - Guest Speaker - Holiday Snowtacular`}>
-  <main>
-    <h1>{name}</h1>
-    <img src={logo.url} alt="" />
-    <Fragment set:html="descriptionHTML" />
-    <p>
-      <a href={link.url}>Visit Site</a>
-    </p>
+<Layout
+  title={`${sponsor.data.name} - Sponsor - Holiday Snowtacular`}
+  description={`${sponsor.data.name} is sponsoring the 2022 Holiday Snowtacular in an effort to raise $20,000 for Doctors Without Borders!`}
+>
+  <main class="holiday-supporter">
+    <div class="holiday-supporter-heading">
+      <span class="holiday-supporter-eyebrow">Sponsor</span>
+      <h1 class="holiday-supporter-name">{sponsor.data.name}</h1>
+    </div>
+    <div class="holiday-supporter-logo-container">
+      <img src={sponsor.data.logo.url} alt={`${sponsor.data.name} logo`} />
+    </div>
+    <div class="holiday-supporter-description">
+      <Fragment set:html="descriptionHTML" />
+    </div>
+
+    {
+      prismicH.isFilled.link(sponsor.data.ctalink) && (
+        <div class="holiday-supporter-cta">
+          <a class="button" href={sponsor.data.ctalink.url}>
+            {sponsor.data.ctalabel}
+          </a>
+        </div>
+      )
+    }
+
+    {
+      prismicH.isFilled.group(sponsor.data.links) && (
+        <div class="holiday-supporter-links">
+          <h2>Links</h2>
+          <ul>
+            {sponsor.data.links.map(({ label, link }) => (
+              <>
+                {prismicH.isFilled.link(link) && (
+                  <li>
+                    <a href={link.url} class="holiday-supporter-link">
+                      <Icon name="mdi:link-variant" class="link-icon" />
+                      <span>{label}</span>
+                    </a>
+                  </li>
+                )}
+              </>
+            ))}
+          </ul>
+        </div>
+      )
+    }
+
+    <div class="holiday-supporter-video">
+      {
+        prismicH.isFilled.keyText(sponsor.data.youtubeid) && (
+          <YouTubeLazyLoad youTubeId={sponsor.data.youtubeid} client:idle />
+        )
+      }
+    </div>
   </main>
 </Layout>
 
-<style></style>
+<style lang="scss">
+  @import '../../styles/mixins.scss';
+
+  .holiday-supporter {
+    display: grid;
+    grid-template-areas: 'logo' 'heading' 'description' 'cta' 'links' 'video';
+    max-width: 1136px;
+    gap: var(--space-xs);
+    margin: var(--space-m) auto 0;
+    padding: 0 var(--space-s);
+  }
+
+  .holiday-supporter-heading {
+    grid-area: heading;
+  }
+
+  .holiday-supporter-eyebrow {
+    text-transform: uppercase;
+  }
+
+  .holiday-supporter-logo-container {
+    background: #0006;
+    padding: var(--space-l-xl);
+    border-radius: var(--space-2xs);
+    width: fit-content;
+    margin: 0 auto;
+    grid-area: logo;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    max-width: 500px;
+
+    @include forced-colors-background();
+  }
+
+  .holiday-supporter-logo-container > img {
+    max-height: 300px;
+    width: 100%;
+    height: auto;
+  }
+
+  .holiday-supporter-video {
+    grid-area: video;
+  }
+
+  .holiday-supporter-video-iframe {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 16 / 9;
+  }
+
+  .holiday-supporter-cta {
+    grid-area: cta;
+  }
+
+  .holiday-supporter-description {
+    grid-area: description;
+  }
+
+  .holiday-supporter-links {
+    grid-area: links;
+
+    ul {
+      display: grid;
+      gap: var(--space-2xs);
+    }
+  }
+
+  .holiday-supporter-link {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-3xs);
+    color: white;
+    font-weight: 400;
+    text-decoration-line: none;
+    font-size: var(--step--1);
+  }
+
+  .holiday-supporter-link:hover {
+    text-decoration-line: underline;
+  }
+  .link-icon {
+    width: var(--step-0);
+    @media (forced-colors: none) {
+      color: var(--accent);
+    }
+  }
+  h2 {
+    font-size: var(--step-1);
+  }
+
+  @media screen and (min-width: 768px) {
+    .holiday-supporter {
+      grid-template-areas: 'logo heading' 'logo description' 'links description' 'links cta' 'links video';
+      grid-template-columns: 1fr 2fr;
+      gap: var(--space-s-m) var(--space-l-xl);
+    }
+  }
+
+  .button {
+    outline: 2px solid var(--gray-6);
+  }
+</style>

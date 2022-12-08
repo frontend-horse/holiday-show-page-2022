@@ -1,6 +1,7 @@
 <script>
-  import { onMount } from "svelte";
-  import { getCampaignData } from "../lib/tiltify";
+  import { onMount } from 'svelte';
+  import { getCampaignData } from '../lib/tiltify';
+  import DonationCard from './DonationCard.svelte';
 
   let donations = [];
   let fundraiserGoalAmount, totalAmountRaised;
@@ -18,18 +19,7 @@
 <ul class="smol-grid">
   {#each donations as donation}
     <li>
-      <span>
-        {donation.name}
-      </span>
-      <span>
-        ${donation.amount}
-      </span>
-      <span>
-        {donation.completedAt}
-      </span>
-      <span>
-        {donation.comment}
-      </span>
+      <DonationCard {donation} />
     </li>
   {/each}
 </ul>
@@ -42,13 +32,14 @@
 
   .smol-grid {
     --min: 30ch;
-    --gap: 1rem;
+    --gap: var(--space-l) var(--space-m);
 
     display: grid;
     grid-gap: var(--gap);
     /* min() with 100% prevents overflow
   in extra narrow spaces */
     grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--min)), 1fr));
+    align-items: stretch;
   }
 
   li {
@@ -57,6 +48,8 @@
     border: var(--border-size-1) solid var(--surface-3);
     border-radius: var(--radius-conditional-2);
     box-shadow: var(--shadow-4);
+    /* align-self: stretch; */
+    display: flex;
   }
 
   li > span {

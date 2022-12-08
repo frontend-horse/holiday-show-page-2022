@@ -1,30 +1,30 @@
 @font-face {
-  font-family: "Poppins";
-  src: url("/fonts/Poppins/Poppins-Variable.woff2") format("woff2"),
-    url("/fonts/Poppins/Poppins-Variable.woff") format("woff");
+  font-family: 'Poppins';
+  src: url('/fonts/Poppins/Poppins-Variable.woff2') format('woff2'),
+    url('/fonts/Poppins/Poppins-Variable.woff') format('woff');
   font-weight: 100 900;
   font-display: swap;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Recoleta-Bold";
-  src: url("/fonts/Recoleta-Bold/font.woff2") format("woff2"),
-    url("/fonts/Recoleta-Bold/font.woff") format("woff");
+  font-family: 'Recoleta-Bold';
+  src: url('/fonts/Recoleta-Bold/font.woff2') format('woff2'),
+    url('/fonts/Recoleta-Bold/font.woff') format('woff');
 }
 
 @font-face {
-  font-family: "Recoleta-Medium";
-  src: url("/fonts/Recoleta-Medium/font.woff2") format("woff2"),
-    url("/fonts/Recoleta-Medium/font.woff") format("woff");
+  font-family: 'Recoleta-Medium';
+  src: url('/fonts/Recoleta-Medium/font.woff2') format('woff2'),
+    url('/fonts/Recoleta-Medium/font.woff') format('woff');
 }
 
 :root {
   /*   Body   */
-  --body-font: "Poppins", sans-serif;
+  --body-font: 'Poppins', sans-serif;
   /*   Headers   */
-  --header-font-bold: "Recoleta-Bold", serif;
-  --header-font: "Recoleta-Medium", serif;
+  --header-font-bold: 'Recoleta-Bold', serif;
+  --header-font: 'Recoleta-Medium', serif;
 }
 
 html {
@@ -32,19 +32,23 @@ html {
 }
 
 body {
-  color: var(--body-font-color);
+  color: var(--body--text);
   font-family: var(--body-font);
 }
 
 p {
   font-size: var(--step-0);
   line-height: 1.6;
-  letter-spacing: 0.75px;
   max-width: 55ch;
 }
 
-a {
-  font-size: var(--step--1);
+a:where(:not(.button)) {
+  font-size: var(--step-0);
+  color: var(--body--link);
+  text-decoration-color: var(--body--link-underline);
+  text-decoration-style: underline;
+  text-decoration-thickness: 3px;
+  font-weight: 600;
 }
 
 h3 {
@@ -53,14 +57,16 @@ h3 {
 
 h1 {
   font-size: var(--step-5);
-  color: var(--header-font-color);
+  color: var(--accent);
   font-family: var(--header-font-bold);
 }
+
 h2 {
   font-size: var(--step-4);
-  color: var(--header-font-color);
+  color: var(--accent);
   font-family: var(--header-font-bold);
 }
+
 h3 {
   font-size: var(--step-2);
 }
@@ -68,6 +74,5 @@ h3 {
 .heading-eyebrow {
   display: block;
   font-size: var(--step--1);
-  color: var(--white);
   text-transform: uppercase;
 }

@@ -46,6 +46,14 @@
                 "label": "Contributions",
                 "placeholder": "Design, organization, development.."
               }
+            },
+            "avatar": {
+              "type": "Image",
+              "config": {
+                "label": "Avatar",
+                "constraint": {},
+                "thumbnails": []
+              }
             }
           }
         }

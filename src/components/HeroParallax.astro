@@ -1,124 +1,124 @@
 ---
-import { Image } from '@astrojs/image/components'
-import Present from '../../public/images/header_elements/present.png'
-import Bell from '../../public/images/header_elements/bell.png'
-import Cursor from '../../public/images/header_elements/cursor.png'
-import Hat from '../../public/images/header_elements/hat.png'
-import Keyboard from '../../public/images/header_elements/keyboard.png'
-import Sock from '../../public/images/header_elements/sock.png'
-import Sleigh from '../../public/images/header_elements/sleigh.png'
+import { Image } from '@astrojs/image/components';
+import Present from '../../public/images/header_elements/present.png';
+import Bell from '../../public/images/header_elements/bell.png';
+import Cursor from '../../public/images/header_elements/cursor.png';
+import Hat from '../../public/images/header_elements/hat.png';
+import Keyboard from '../../public/images/header_elements/keyboard.png';
+import Sock from '../../public/images/header_elements/sock.png';
+import Sleigh from '../../public/images/header_elements/sleigh.png';
 // import Orientation from '../../public/images/header_elements/untitled.png'
 ---
 
-<div class='parallax-container'>
-	<!-- This is just to be able to approximate the layout of the elements -->
-	<!-- <Image
+<div class="parallax-container">
+  <!-- This is just to be able to approximate the layout of the elements -->
+  <!-- <Image
 		src={Orientation}
 		class='sock'
 		alt=''
 		style='position: absolute; z-index:5; opacity: .3; scale: 1.2; translate: 0% 0%;'
 	/> -->
-	<div class='header-composition'>
-		<Image src={Sleigh} class='sleigh' alt='' width={420} />
-		<Image src={Present} class='present' alt='' height={306} />
-		<Image src={Bell} class='bell' alt='' height={120} />
-		<Image src={Cursor} class='cursor' alt='' height={125} />
-		<Image src={Hat} class='hat' alt='' height={113} />
-		<Image src={Keyboard} class='keyboard' alt='' height={170} />
-		<Image src={Sock} class='sock' alt='' height={190} />
-	</div>
+  <div class="header-composition">
+    <Image src={Sleigh} class="sleigh" alt="" width={420} />
+    <Image src={Present} class="present" alt="" height={306} />
+    <Image src={Bell} class="bell" alt="" height={120} />
+    <Image src={Cursor} class="cursor" alt="" height={125} />
+    <Image src={Hat} class="hat" alt="" height={113} />
+    <Image src={Keyboard} class="keyboard" alt="" height={170} />
+    <Image src={Sock} class="sock" alt="" height={190} />
+  </div>
 </div>
 
 <script>
-	window.addEventListener('DOMContentLoaded', () => {
-		if (window.matchMedia('(prefers-reduced-motion: no-preference)')) {
-			if (window.matchMedia('(pointer:fine')) {
-				document.addEventListener('mousemove', event => {
-					document.documentElement.style.setProperty(
-						'--mouseX',
-						(event.pageX / window.innerWidth - 0.25).toString()
-					)
-					document.documentElement.style.setProperty(
-						'--mouseY',
-						(event.pageY / window.innerHeight - 0.25).toString()
-					)
-				})
-			}
+  window.addEventListener('DOMContentLoaded', () => {
+    if (window.matchMedia('(prefers-reduced-motion: no-preference)')) {
+      if (window.matchMedia('(pointer:fine')) {
+        document.addEventListener('mousemove', (event) => {
+          document.documentElement.style.setProperty(
+            '--mouseX',
+            (event.pageX / window.innerWidth - 0.25).toString()
+          );
+          document.documentElement.style.setProperty(
+            '--mouseY',
+            (event.pageY / window.innerHeight - 0.25).toString()
+          );
+        });
+      }
 
-			document.addEventListener('scroll', () => {
-				document.documentElement.style.setProperty(
-					'--scroll',
-					(window.scrollY / window.innerHeight).toString()
-				)
-			})
-		}
-	})
+      document.addEventListener('scroll', () => {
+        document.documentElement.style.setProperty(
+          '--scroll',
+          (window.scrollY / window.innerHeight).toString()
+        );
+      });
+    }
+  });
 </script>
 
-<style lang='scss'>
-	@import 'src/styles/mixins.scss';
+<style lang="scss">
+  @import 'src/styles/mixins.scss';
 
-	.parallax-container {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		position: relative;
-		height: 100%;
-	}
+  .parallax-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 100%;
+  }
 
-	.header-composition {
-		// outline: 1px solid red;
-		width: 100%;
-		margin: auto 0;
-		height: 48ch;
-		display: block;
-		margin: -15%;
+  .header-composition {
+    // outline: 1px solid red;
+    width: 100%;
+    margin: auto 0;
+    height: 48ch;
+    display: block;
+    margin: -15%;
 
-		position: relative;
-		> * {
-			position: absolute;
-			pointer-events: none;
+    position: relative;
+    > * {
+      position: absolute;
+      pointer-events: none;
 
-			@media (max-width: 640px) {
-				scale: 75%;
-			}
-		}
-		.sleigh {
-			left: -12vw;
-			top: -20%;
-			@include headerElementParallax(-0.5);
-		}
-		.present {
-			top: 14.5%;
-			left: 15%;
-			z-index: 1;
-			@include headerElementParallax(0.5);
-		}
-		.bell {
-			top: 65%;
-			left: 25%;
-			@include headerElementParallax(0.25);
-		}
-		.cursor {
-			top: 58%;
-			left: 61%;
-			z-index: 2;
-			@include headerElementParallax(0.8);
-		}
-		.hat {
-			top: 32%;
-			left: 64%;
-			@include headerElementParallax(0.3);
-		}
-		.keyboard {
-			top: -3%;
-			left: 40%;
-			@include headerElementParallax(0.6);
-		}
-		.sock {
-			top: 24%;
-			left: -2%;
-			@include headerElementParallax(0.4);
-		}
-	}
+      @media (max-width: 640px) {
+        scale: 75%;
+      }
+    }
+    .sleigh {
+      left: -12vw;
+      top: -20%;
+      @include headerElementParallax(-0.5);
+    }
+    .present {
+      top: 14.5%;
+      left: 15%;
+      z-index: 1;
+      @include headerElementParallax(0.5);
+    }
+    .bell {
+      top: 65%;
+      left: 25%;
+      @include headerElementParallax(0.25);
+    }
+    .cursor {
+      top: 58%;
+      left: 61%;
+      z-index: 2;
+      @include headerElementParallax(0.8);
+    }
+    .hat {
+      top: 32%;
+      left: 64%;
+      @include headerElementParallax(0.3);
+    }
+    .keyboard {
+      top: -3%;
+      left: 40%;
+      @include headerElementParallax(0.6);
+    }
+    .sock {
+      top: 24%;
+      left: -2%;
+      @include headerElementParallax(0.4);
+    }
+  }
 </style>

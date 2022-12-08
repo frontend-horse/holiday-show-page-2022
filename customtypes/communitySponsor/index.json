@@ -1,6 +1,6 @@
 {
   "id": "communitySponsor",
-  "label": "Community Sponsor",
+  "label": "Community Partner",
   "repeatable": true,
   "status": true,
   "json": {

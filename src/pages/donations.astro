@@ -1,10 +1,36 @@
 ---
-import DonationGrid from "../components/DonationGrid.svelte";
-import Layout from "../layouts/Layout.astro";
-// Fetch Donations from API
+import * as prismicH from '@prismicio/helpers';
+import DonationGrid from '../components/DonationGrid.svelte';
+import Layout from '../layouts/Layout.astro';
+import { getSecondaryPageByUID } from '../lib/prismicio';
+
+const page = await getSecondaryPageByUID('donations');
+
+const bodyHTML = prismicH.asHTML(page.data.body);
 ---
 
-<Layout title="Donations - Holiday Snowtacular - Web Dev Charity Fundraiser">
-  <h1>Donations</h1>
-  <DonationGrid client:load />
+<Layout
+  title="Donations - Holiday Snowtacular - Web Dev Charity Fundraiser"
+  description={`The full list of donations from the 2022 Holiday Snowtacular.`}
+>
+  <main>
+    <header>
+      <h1>{page.data.heading}</h1>
+      <Fragment set:html="bodyHTML" />
+    </header>
+    <DonationGrid client:load />
+  </main>
 </Layout>
+
+<style>
+  main {
+    max-width: 1136px;
+    /* display: grid; */
+    margin: 0 auto;
+    min-height: 70vh;
+  }
+
+  header {
+    margin-bottom: var(--space-xl);
+  }
+</style>

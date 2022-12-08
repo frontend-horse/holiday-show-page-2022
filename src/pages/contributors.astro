@@ -1,23 +1,120 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import { getOrganizers } from "../lib/prismicio";
-import * as prismicH from "@prismicio/helpers";
+import { Image } from '@astrojs/image/components';
+import Layout from '../layouts/Layout.astro';
+import { getOrganizers } from '../lib/prismicio';
+import * as prismicH from '@prismicio/helpers';
+import { OrganizerTeamDocumentDataMemberItem } from '../../types.generated';
 
 const organizers = await getOrganizers();
+console.log(
+  '🚀 ~ file: contributors.astro:9 ~ organizers',
+  organizers.data.member[0].avatar.url
+);
 
 const bodyHTML = prismicH.asHTML(organizers.data.body);
 ---
 
-<Layout title="Donations - Holiday Snowtacular - Web Dev Charity Fundraiser">
-  <h1>{organizers.data.heading}</h1>
-  <Fragment set:html="bodyHTML" />
-  {
-    organizers.data.member.map((member) => (
-      <div>
-        <p>{member.name}</p>
-        <p>{member.contributions}</p>
-        <a href={member.websiteURL}>Website</a>
-      </div>
-    ))
-  }
+<Layout
+  title="Contributors - Holiday Snowtacular - Web Dev Charity Fundraiser"
+  description={`A list of the wonderful organizers for the 2022 Holiday Snowtacular!`}
+>
+  <main>
+    <header>
+      <h1>{organizers.data.heading}</h1>
+      <Fragment set:html="bodyHTML" />
+    </header>
+    <div class="smol-grid">
+      {
+        organizers.data.member.map(
+          (member: OrganizerTeamDocumentDataMemberItem) => (
+            <div class="member">
+              <Image
+                class="member-avatar"
+                src={member.avatar.url}
+                alt=""
+                width={200}
+                height={200}
+                format={'webp'}
+              />
+              <p class="member-name">
+                <a class="member-website" href={member.websiteURL}>{member.name}</a>
+              </p>
+              <p class="member-contributions">{member.contributions}</p>
+            </div>
+          )
+        )
+      }
+    </div>
+  </main>
 </Layout>
+
+<style lang="scss">
+  @import '../styles/mixins.scss';
+
+  main {
+    max-width: 1136px;
+    display: grid;
+
+    margin: 0 auto;
+    min-height: 70vh;
+  }
+
+  header {
+    margin-top: var(--space-l);
+    margin-bottom: var(--space-xl);
+  }
+
+  .smol-grid {
+    --min: 30ch;
+    --gap: var(--space-s);
+    display: grid;
+    grid-gap: var(--gap);
+    /* min() with 100% prevents overflow
+  in extra narrow spaces */
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--min)), 1fr));
+
+    width: 100%;
+  }
+
+  .member {
+    @include forced-colors-outline();
+    position: relative;
+    display: grid;
+    padding: var(--space-l);
+    background: #0008;
+    border-radius: var(--space-xs);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .member {
+      transition: background 0.2s ease;
+    }
+  }
+
+  .member:hover {
+    background: #000a;
+  }
+
+  .member-avatar {
+    border-radius: 50%;
+    margin: 0 auto;
+    margin-bottom: var(--space-m);
+  }
+
+  .member-name {
+    font-size: var(--step-1);
+    font-weight: 600;
+    margin-bottom: 0;
+  }
+
+  .member-contributions {
+    font-size: var(--step--1);
+    margin-bottom: var(--space-2xs);
+  }
+
+  .member-website::after {
+    content: '';
+    inset: 0;
+    position: absolute;
+  }
+</style>
