@@ -87,6 +87,8 @@ import Sleigh from '../../public/images/header_elements/sleigh.png';
       left: -12vw;
       top: -20%;
       @include headerElementParallax(-0.5);
+      filter: blur(calc(var(--scroll) * 4px));
+      opacity: calc(1 - var(--scroll) / 2);
     }
     .present {
       top: 14.5%;
