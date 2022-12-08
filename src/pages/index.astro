@@ -10,6 +10,7 @@ import Layout from '../layouts/Layout.astro';
 import SliceZone from '../components/SliceZone.astro';
 import HolidaySnowtacularLogo from '../components/HolidaySnowtacularLogo.astro';
 import RegistrationButton from '../components/RegistrationButton.astro';
+import HeroParallax from '../components/HeroParallax.astro';
 
 const page = await getHomepage();
 
@@ -58,15 +59,7 @@ const bodyText = prismicH.asText(page.data.body);
           </RegistrationButton>
         </div>
       </div>
-      <div class="hero-column">
-        <Image
-          src={placeholderImage}
-          alt=""
-          width={363}
-          loading="eager"
-          fetchpriority="high"
-        />
-      </div>
+      <HeroParallax />
     </section>
     <div class="slice-container">
       <SliceZone slices={page.data.slices} />
