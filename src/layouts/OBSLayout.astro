@@ -1,0 +1,25 @@
+---
+export interface Props {
+  description: string;
+  title: string;
+}
+import '../styles/obs/main.scss';
+
+const { description, title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+
+    <style is:global lang="scss"></style>
+  </body>
+</html>

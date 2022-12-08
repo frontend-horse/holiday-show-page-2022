@@ -1,0 +1,12 @@
+---
+import NameTag from '../../components/obs/NameTag.svelte';
+import SponsorRotation from '../../components/obs/SponsorRotation.svelte';
+import OBSLayout from '../../layouts/OBSLayout.astro';
+---
+
+<OBSLayout title="Solo Camera" description="">
+  <h1>Home</h1>
+  <p>My first Astro page!</p>
+  <SponsorRotation client:load />
+  <NameTag client:load />
+</OBSLayout>
