@@ -23,6 +23,7 @@
   text-decoration: none;
   transition: 0.2s ease;
   width: fit-content;
+
   &:hover {
     --button-bg-color: var(--button-bg-hover-color);
   }
