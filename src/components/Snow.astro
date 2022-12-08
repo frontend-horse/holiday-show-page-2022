@@ -1,43 +1,56 @@
-<!-- 
-  Copyright (c) 2022 by Calle (https://codepen.io/Calleb/pen/dyVRvyW)
-  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-  The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- -->
-<div class="snow">
-  <div></div>
-</div>
+<div class="snow-fg"></div>
+<div class="snow-bg"></div>
 
 <style lang="scss">
-  .snow {
+  /* 
+    Copyright (c) 2022 by Calle (https://codepen.io/Calleb/pen/dyVRvyW)
+    Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+    The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  */
+  .snow-fg {
     position: fixed;
     width: 100vw;
     height: 100%;
     pointer-events: none;
     z-index: -1;
-    background-image: url("data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 50 50' style='enable-background:new 0 0 50 50%3B' xml:space='preserve'%3E%3Cstyle type='text/css'%3E.st1%7Bopacity:0.3%3Bfill:%23FFFFFF%3B%7D.st3%7Bopacity:0.1%3Bfill:%23FFFFFF%3B%7D%3C/style%3E%3Ccircle class='st1' cx='5' cy='8' r='1'/%3E%3Ccircle class='st1' cx='38' cy='3' r='1'/%3E%3Ccircle class='st1' cx='12' cy='4' r='1'/%3E%3Ccircle class='st1' cx='16' cy='16' r='1'/%3E%3Ccircle class='st1' cx='47' cy='46' r='1'/%3E%3Ccircle class='st1' cx='32' cy='10' r='1'/%3E%3Ccircle class='st1' cx='3' cy='46' r='1'/%3E%3Ccircle class='st1' cx='45' cy='13' r='1'/%3E%3Ccircle class='st1' cx='10' cy='28' r='1'/%3E%3Ccircle class='st1' cx='22' cy='35' r='1'/%3E%3Ccircle class='st1' cx='3' cy='21' r='1'/%3E%3Ccircle class='st1' cx='26' cy='20' r='1'/%3E%3Ccircle class='st1' cx='30' cy='45' r='1'/%3E%3Ccircle class='st1' cx='15' cy='45' r='1'/%3E%3Ccircle class='st1' cx='34' cy='36' r='1'/%3E%3Ccircle class='st1' cx='41' cy='32' r='1'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg width='300' height='300' viewBox='0 0 300 300' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath opacity='0.3' d='M228 24C231.314 24 234 21.3137 234 18C234 14.6863 231.314 12 228 12C224.686 12 222 14.6863 222 18C222 21.3137 224.686 24 228 24Z' fill='white'/%3E%3Cpath opacity='0.3' d='M72 30C75.3137 30 78 27.3137 78 24C78 20.6863 75.3137 18 72 18C68.6863 18 66 20.6863 66 24C66 27.3137 68.6863 30 72 30Z' fill='white'/%3E%3Cpath opacity='0.3' d='M282 282C285.314 282 288 279.314 288 276C288 272.686 285.314 270 282 270C278.686 270 276 272.686 276 276C276 279.314 278.686 282 282 282Z' fill='white'/%3E%3Cpath opacity='0.3' d='M192 66C195.314 66 198 63.3137 198 60C198 56.6863 195.314 54 192 54C188.686 54 186 56.6863 186 60C186 63.3137 188.686 66 192 66Z' fill='white'/%3E%3Cpath opacity='0.3' d='M18 282C21.3137 282 24 279.314 24 276C24 272.686 21.3137 270 18 270C14.6863 270 12 272.686 12 276C12 279.314 14.6863 282 18 282Z' fill='white'/%3E%3Cpath opacity='0.3' d='M270 84C273.314 84 276 81.3137 276 78C276 74.6863 273.314 72 270 72C266.686 72 264 74.6863 264 78C264 81.3137 266.686 84 270 84Z' fill='white'/%3E%3Cpath opacity='0.3' d='M60 174C63.3137 174 66 171.314 66 168C66 164.686 63.3137 162 60 162C56.6863 162 54 164.686 54 168C54 171.314 56.6863 174 60 174Z' fill='white'/%3E%3Cpath opacity='0.3' d='M18 132C21.3137 132 24 129.314 24 126C24 122.686 21.3137 120 18 120C14.6863 120 12 122.686 12 126C12 129.314 14.6863 132 18 132Z' fill='white'/%3E%3Cpath opacity='0.3' d='M90 276C93.3137 276 96 273.314 96 270C96 266.686 93.3137 264 90 264C86.6863 264 84 266.686 84 270C84 273.314 86.6863 276 90 276Z' fill='white'/%3E%3Cpath opacity='0.3' d='M204 222C207.314 222 210 219.314 210 216C210 212.686 207.314 210 204 210C200.686 210 198 212.686 198 216C198 219.314 200.686 222 204 222Z' fill='white'/%3E%3C/svg%3E%0A");
     background-position: 0px 0px;
     @media (prefers-reduced-motion: no-preference) {
-      animation: animatedBackground 45s linear infinite;
+      opacity: 0;
+      animation: animatedBackground 35s linear infinite;
     }
   }
 
-  .snow div {
-    width: 100%;
+  .snow-bg {
+    position: fixed;
+    width: 100vw;
     height: 100%;
-    background-image: url("data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 50 50' style='enable-background:new 0 0 50 50%3B' xml:space='preserve'%3E%3Cstyle type='text/css'%3E.st1%7Bopacity:0.7%3Bfill:%23FFFFFF%3B%7D.st3%7Bopacity:0.1%3Bfill:%23FFFFFF%3B%7D%3C/style%3E%3Ccircle class='st3' cx='4' cy='14' r='1'/%3E%3Ccircle class='st3' cx='43' cy='3' r='1'/%3E%3Ccircle class='st3' cx='31' cy='30' r='2'/%3E%3Ccircle class='st3' cx='19' cy='23' r='1'/%3E%3Ccircle class='st3' cx='37' cy='22' r='1'/%3E%3Ccircle class='st3' cx='43' cy='16' r='1'/%3E%3Ccircle class='st3' cx='8' cy='45' r='1'/%3E%3Ccircle class='st3' cx='29' cy='39' r='1'/%3E%3Ccircle class='st3' cx='13' cy='37' r='1'/%3E%3Ccircle class='st3' cx='47' cy='32' r='1'/%3E%3Ccircle class='st3' cx='15' cy='4' r='2'/%3E%3Ccircle class='st3' cx='9' cy='27' r='1'/%3E%3Ccircle class='st3' cx='30' cy='9' r='1'/%3E%3Ccircle class='st3' cx='25' cy='15' r='1'/%3E%3Ccircle class='st3' cx='21' cy='45' r='2'/%3E%3Ccircle class='st3' cx='42' cy='45' r='1'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: -1;
+    background-image: url("data:image/svg+xml,%3Csvg width='300' height='300' viewBox='0 0 300 300' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath opacity='0.1' d='M24 90C27.3137 90 30 87.3137 30 84C30 80.6863 27.3137 78 24 78C20.6863 78 18 80.6863 18 84C18 87.3137 20.6863 90 24 90Z' fill='white'/%3E%3Cpath opacity='0.1' d='M258 24C261.314 24 264 21.3137 264 18C264 14.6863 261.314 12 258 12C254.686 12 252 14.6863 252 18C252 21.3137 254.686 24 258 24Z' fill='white'/%3E%3Cpath opacity='0.1' d='M186 192C192.627 192 198 186.627 198 180C198 173.373 192.627 168 186 168C179.373 168 174 173.373 174 180C174 186.627 179.373 192 186 192Z' fill='white'/%3E%3Cpath opacity='0.1' d='M114 144C117.314 144 120 141.314 120 138C120 134.686 117.314 132 114 132C110.686 132 108 134.686 108 138C108 141.314 110.686 144 114 144Z' fill='white'/%3E%3Cpath opacity='0.1' d='M222 138C225.314 138 228 135.314 228 132C228 128.686 225.314 126 222 126C218.686 126 216 128.686 216 132C216 135.314 218.686 138 222 138Z' fill='white'/%3E%3Cpath opacity='0.1' d='M258 102C261.314 102 264 99.3137 264 96C264 92.6863 261.314 90 258 90C254.686 90 252 92.6863 252 96C252 99.3137 254.686 102 258 102Z' fill='white'/%3E%3Cpath opacity='0.1' d='M48 276C51.3137 276 54 273.314 54 270C54 266.686 51.3137 264 48 264C44.6863 264 42 266.686 42 270C42 273.314 44.6863 276 48 276Z' fill='white'/%3E%3Cpath opacity='0.1' d='M174 240C177.314 240 180 237.314 180 234C180 230.686 177.314 228 174 228C170.686 228 168 230.686 168 234C168 237.314 170.686 240 174 240Z' fill='white'/%3E%3Cpath opacity='0.1' d='M78 228C81.3137 228 84 225.314 84 222C84 218.686 81.3137 216 78 216C74.6863 216 72 218.686 72 222C72 225.314 74.6863 228 78 228Z' fill='white'/%3E%3Cpath opacity='0.1' d='M282 198C285.314 198 288 195.314 288 192C288 188.686 285.314 186 282 186C278.686 186 276 188.686 276 192C276 195.314 278.686 198 282 198Z' fill='white'/%3E%3Cpath opacity='0.1' d='M90 36C96.6274 36 102 30.6274 102 24C102 17.3726 96.6274 12 90 12C83.3726 12 78 17.3726 78 24C78 30.6274 83.3726 36 90 36Z' fill='white'/%3E%3Cpath opacity='0.1' d='M54 168C57.3137 168 60 165.314 60 162C60 158.686 57.3137 156 54 156C50.6863 156 48 158.686 48 162C48 165.314 50.6863 168 54 168Z' fill='white'/%3E%3Cpath opacity='0.1' d='M180 60C183.314 60 186 57.3137 186 54C186 50.6863 183.314 48 180 48C176.686 48 174 50.6863 174 54C174 57.3137 176.686 60 180 60Z' fill='white'/%3E%3Cpath opacity='0.1' d='M150 96C153.314 96 156 93.3137 156 90C156 86.6863 153.314 84 150 84C146.686 84 144 86.6863 144 90C144 93.3137 146.686 96 150 96Z' fill='white'/%3E%3Cpath opacity='0.1' d='M126 282C132.627 282 138 276.627 138 270C138 263.373 132.627 258 126 258C119.373 258 114 263.373 114 270C114 276.627 119.373 282 126 282Z' fill='white'/%3E%3Cpath opacity='0.1' d='M252 276C255.314 276 258 273.314 258 270C258 266.686 255.314 264 252 264C248.686 264 246 266.686 246 270C246 273.314 248.686 276 252 276Z' fill='white'/%3E%3C/svg%3E%0A");
     background-position: 0px 0px;
     @media (prefers-reduced-motion: no-preference) {
-      animation: animatedBackground 60s linear infinite;
+      opacity: 0;
+      animation: animatedBackground 45s linear infinite;
+      animation-delay: 3s;
     }
   }
 
   @keyframes animatedBackground {
     0% {
       background-position: 0 0;
+      opacity: 0;
+    }
+    5% {
+      opacity: 1;
+    }
+    95% {
+      opacity: 1;
     }
     100% {
       background-position: 0px 100vh;
+      opacity: 0;
     }
   }
 </style>
