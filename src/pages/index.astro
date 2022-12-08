@@ -37,7 +37,9 @@ const bodyText = prismicH.asText(page.data.body);
         </div>
 
         <h1 class="visually-hidden">Holiday Snowtacular</h1>
-        <HolidaySnowtacularLogo />
+        <div class="snowtacular-logo">
+          <HolidaySnowtacularLogo />
+        </div>
 
         <div class="body-html">
           <Fragment set:html="bodyHTML" />
@@ -103,17 +105,8 @@ const bodyText = prismicH.asText(page.data.body);
     width: 100%;
   }
 
-  .cta-description {
-    color: var(--white);
-    padding-inline: var(--space-xs-s);
-    font-size: var(--step--2);
-    font-weight: 600;
-    margin: 0;
-  }
-
   .hero-column {
     display: grid;
-    gap: var(--space-xs);
     place-content: center;
     font-family: var(--header-font);
     padding-block: var(--space-2xl);
@@ -122,6 +115,10 @@ const bodyText = prismicH.asText(page.data.body);
     width: 100%;
     z-index: 1;
 
+    @media (min-width: 840px) {
+      gap: var(--space-s);
+    }
+
     > * {
       margin-block-start: var(--space-s-m);
     }
@@ -129,11 +126,20 @@ const bodyText = prismicH.asText(page.data.body);
     .kicker {
       font-size: var(--step-0);
       margin-top: 0;
+      order: 1;
+      @media (min-width: 640px) {
+        order: 0;
+      }
 
       .spacer {
         margin-inline: var(--space-2xs);
       }
     }
+  }
+
+  .snowtacular-logo {
+    width: 80%;
+    margin: 0 auto;
   }
 
   .body-html {
@@ -143,6 +149,7 @@ const bodyText = prismicH.asText(page.data.body);
     font-weight: 400;
     color: var(--color-white);
     max-width: 30ch;
+    order: 3;
   }
 
   .cta {
@@ -153,18 +160,25 @@ const bodyText = prismicH.asText(page.data.body);
     background-color: var(--cta-bg);
     color: var(--cta-text);
     align-items: center;
-    border-radius: 3rem;
+    border-radius: 1rem;
     font-size: var(--step--1);
     font-family: var(--body-font);
     margin-inline: auto;
-    padding-block: var(--space-3xs);
-    padding-inline: var(--space-3xs);
-    padding-inline-start: var(--space-xs-s);
-    width: fit-content;
+    padding: var(--space-3xs) var(--space-xs) var(--space-xs);
+    order: 3;
     @media (min-width: 640px) {
       display: grid;
       grid-template-columns: 1fr fit-content(20ch);
+      padding: var(--space-3xs) var(--space-3xs-2xs);
+      border-radius: 3rem;
     }
+  }
+
+  .cta-description {
+    color: var(--white);
+    font-size: var(--step--3);
+    font-weight: 600;
+    margin: var(--space-2xs);
   }
 
   .icon {
