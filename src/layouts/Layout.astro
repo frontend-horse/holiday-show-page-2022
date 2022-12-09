@@ -6,7 +6,7 @@ export interface Props {
 
 const { description, title } = Astro.props;
 import '../styles/main.scss';
-// import Snow from '../components/Snow.astro';
+import Snow from '../components/Snow.astro';
 import NavBar from '../components/NavBar.astro';
 import Footer from '../components/Footer.astro';
 import StructuredData from '../components/StructuredData.astro';
@@ -61,7 +61,7 @@ if (isHomepage) {
     ></script>
   </head>
   <body>
-    <!-- <Snow /> -->
+    <Snow />
     <NavBar />
     <slot />
     <Footer />
