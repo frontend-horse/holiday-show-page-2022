@@ -39,12 +39,18 @@ p {
 }
 
 a:where(:not(.button)) {
+  font-family: var(--body-font);
   font-size: var(--step-0);
-  color: var(--body--link);
-  text-decoration-color: var(--body--link-underline);
-  text-decoration-style: underline;
-  text-decoration-thickness: 3px;
-  font-weight: 600;
+  font-weight: 700;
+  text-align: center;
+  color: var(--body-font-color);
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--body--link-underline);
+    text-decoration-style: underline;
+    text-decoration-thickness: 3px;
+  }
 }
 
 h3 {
