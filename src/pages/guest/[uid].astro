@@ -1,5 +1,6 @@
 ---
 import { Icon } from 'astro-icon';
+import normalizeUrl from 'normalize-url';
 import * as prismicH from '@prismicio/helpers';
 import Layout from '../../layouts/Layout.astro';
 import { getAllGuests } from '../../lib/prismicio';
@@ -42,10 +43,9 @@ const guestBioHTML = prismicH.asHTML(guest.data.guestBio);
 const topicDescriptionHTML = prismicH.asHTML(guest.data.topicDescription);
 
 // regex to turn https://alextrost.com/ or https://www.alextrost.com/ into alextrost.com and remove a trailing slash
-const guestWebsite = guest.data.websiteUrl?.replace(
-  /(https?:\/\/)?(www\.)?([^\/]+)\/?/,
-  '$3'
-);
+const guestWebsite = guest.data.websiteUrl ?
+	normalizeUrl(guest.data.websiteUrl, {stripProtocol: true}) :
+	'';
 ---
 
 <Layout
