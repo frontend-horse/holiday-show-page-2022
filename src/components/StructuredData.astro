@@ -1,12 +1,13 @@
 ---
+import type {DonateAction, Event, NGO, Organization, Person, WithContext} from "schema-dts";
 import * as prismicH from "@prismicio/helpers";
-import { getAllGuests, getHomepage } from "../lib/prismicio";
+import { getAllGuests, getAllSponsors, getHomepage } from "../lib/prismicio";
 
 const imageUrl = new URL('/images/cover.png', Astro.url);
 const page = await getHomepage();
 const description = prismicH.asText(page.data.body);
 
-const alex = {
+const alex: Person = {
 	"@type": "Person",
 	name: "Alex Trost",
 	url: "https://frontend.horse",
@@ -30,7 +31,7 @@ const guests = allGuests.map(guest => {
 		guest.data.mastadonUrl
 	].filter(url => !!url);
 
-	const structuredGuestData = {
+	const structuredGuestData: Person = {
 		"@type": "Person",
 		name: guest.data.name,
 		url: guest.data.websiteUrl,
@@ -48,12 +49,50 @@ const guests = allGuests.map(guest => {
 	return structuredGuestData;
 });
 
-const schema = {
+const allSponsors = await getAllSponsors();
+const sponsors = allSponsors.map(sponsor => {
+	const structuredSponsorData: Organization = {
+		"@type": "Organization",
+		name: sponsor.data.name,
+		logo: sponsor.data.logo?.url,
+		description: prismicH.asText(sponsor.data.description),
+		url: prismicH.isFilled.link(sponsor.data.ctalink) ?
+			sponsor.data.ctalink?.url :
+			undefined
+	};
+
+	Object.keys(structuredSponsorData).forEach((key) => structuredSponsorData[key] == null && delete structuredSponsorData[key]);
+
+	return structuredSponsorData;
+});
+
+const doctorsWithoutBorders: NGO = {
+	"@type": "NGO",
+	legalName: "Médecins Sans Frontières",
+	name: "Doctors Without Borders",
+	logo: "https://upload.wikimedia.org/wikipedia/en/thumb/b/bd/Msf_logo.svg/2880px-Msf_logo.svg.png",
+	url: "https://www.doctorswithoutborders.org/",
+	taxID: "13-3433452",
+	sameAs: [
+		"https://twitter.com/msf_usa",
+		"http://www.facebook.com/msf.english",
+		"http://www.youtube.com/msf",
+		"http://www.instagram.com/doctorswithoutborders"
+	],
+	email: "program_inquiries@newyork.msf.org"
+}
+
+const donateAction: DonateAction = {
+	"@type": "DonateAction",
+	recipient: doctorsWithoutBorders
+};
+
+const schema: WithContext<Event> = {
 	"@context": "https://schema.org",
 	"@type": "Event",
 	name: "2nd Annual Holiday Snowtacular",
 	description,
-	image: imageUrl,
+	image: imageUrl.toString(),
 	startDate: "2022-12-16T12:00-05:00",
 	endDate: "2022-12-16T16:00-05:00",
 	eventStatus: "https://schema.org/EventScheduled",
@@ -64,7 +103,9 @@ const schema = {
 	},
 	organizer: alex,
 	performer: [alex, ...guests],
-	isAccessibleForFree: true
+	sponsor: sponsors,
+	isAccessibleForFree: true,
+	potentialAction: donateAction
 };
 ---
 
