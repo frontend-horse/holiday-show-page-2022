@@ -98,12 +98,14 @@ const guestWebsite = guest.data.websiteUrl ?
             {guestWebsite}
           </span>
         </a>
-        <a href={guest.data.twitterUrl} class="guest-link">
-          <Icon name="mdi:twitter" class="link-icon" />
-          <span>
-            {guest.data.name}'s Twitter
-          </span>
-        </a>
+        {!!guest.data.twitterUrl && (
+          <a href={guest.data.twitterUrl} class="guest-link">
+            <Icon name="mdi:twitter" class="link-icon" />
+            <span>
+              {guest.data.name}'s Twitter
+            </span>
+          </a>
+        )}
       </div>
     </div>
 
