@@ -1,5 +1,5 @@
 ---
-import * as prismicH from "@prismicio/helpers";
+import * as prismicH from '@prismicio/helpers';
 
 const { heading, body } = Astro.props.primary;
 
@@ -15,5 +15,5 @@ const bodyHTML = prismicH.asHTML(body);
   <Fragment set:html="bodyHTML" />
   <!-- Display donation progress -->
   <!-- Display Donations -->
-  <a href="/donations">View all donations</a>
+  <a href="/donations" rel="prefetch">View all donations</a>
 </section>

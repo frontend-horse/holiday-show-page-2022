@@ -26,7 +26,7 @@ const bodyHTML = prismicH.asHTML(slice.primary.body);
       {
         communities.map((community) => (
           <li class="community">
-            <a href={`/community/${community.uid}`}>
+            <a href={`/community/${community.uid}`} rel="prefetch">
               <img src={community.data.logo.url} alt={community.data.title} />
             </a>
           </li>
