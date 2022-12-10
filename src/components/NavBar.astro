@@ -46,8 +46,8 @@ import RegistrationButton from './RegistrationButton.astro';
       flex: 1;
       justify-content: flex-end;
       order: 3;
-      @media (min-width: 640px) {
-        order: 3;
+      @media (max-width: 640px) {
+        display: none;
       }
     }
   }
