@@ -6,7 +6,6 @@ import Layout from '../../layouts/Layout.astro';
 import { getAllGuests } from '../../lib/prismicio';
 import GuestAvatar from '../../components/GuestAvatar.astro';
 import { GuestDocument } from '../../../types.generated';
-import gsap from 'gsap';
 
 export async function getStaticPaths() {
   const allPages = await getAllGuests();
