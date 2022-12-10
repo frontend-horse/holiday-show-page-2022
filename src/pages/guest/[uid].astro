@@ -42,7 +42,7 @@ for (let j = 1; j < 5; j++) {
 const guestBioHTML = prismicH.asHTML(guest.data.guestBio);
 const topicDescriptionHTML = prismicH.asHTML(guest.data.topicDescription);
 
-// regex to turn https://alextrost.com/ or https://www.alextrost.com/ into alextrost.com and remove a trailing slash
+// Turn https://alextrost.com/ or https://www.alextrost.com/ into alextrost.com and remove a trailing slash
 const guestWebsite = guest.data.websiteUrl ?
 	normalizeUrl(guest.data.websiteUrl, {stripProtocol: true}) :
 	'';
