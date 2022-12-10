@@ -1,13 +1,21 @@
 ---
 import Logo from './Logo.astro';
 import RegistrationButton from './RegistrationButton.astro';
+
+const {pathname} = Astro.url;
 ---
 
 <header role="banner">
   <nav>
     <a href="/#sponsors">Sponsors</a>
     <a href="/#guests">Guests</a>
-    <a href="/contributors" rel="prefetch">Team</a>
+    <a
+      href="/contributors"
+      rel="prefetch"
+      aria-current={pathname === '/contributors' ? 'page' : undefined}
+    >
+      Team
+    </a>
   </nav>
   <Logo />
   <div class="actions">
