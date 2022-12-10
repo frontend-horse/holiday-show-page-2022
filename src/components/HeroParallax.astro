@@ -19,17 +19,40 @@ import Sleigh from '../../public/images/header_elements/sleigh.png';
 		style='position: absolute; z-index:5; opacity: .3; scale: 1.2; translate: 0% 0%;'
 	/> -->
   <div class="header-composition">
-    <Image src={Sleigh} class="sleigh" alt="" width={420} />
-    <Image src={Present} class="present" alt="" height={306} />
-    <Image src={Bell} class="bell" alt="" height={120} />
-    <Image src={Cursor} class="cursor" alt="" height={125} />
-    <Image src={Hat} class="hat" alt="" height={113} />
-    <Image src={Keyboard} class="keyboard" alt="" height={170} />
-    <Image src={Sock} class="sock" alt="" height={190} />
+    <Image src={Sleigh} class="sleigh parallax-asset" alt="" width={420} />
+    <Image src={Present} class="present parallax-asset" alt="" height={306} />
+    <Image src={Bell} class="bell parallax-asset" alt="" height={120} />
+    <Image src={Cursor} class="cursor parallax-asset" alt="" height={125} />
+    <Image src={Hat} class="hat parallax-asset" alt="" height={113} />
+    <Image src={Keyboard} class="keyboard parallax-asset" alt="" height={170} />
+    <Image src={Sock} class="sock parallax-asset" alt="" height={190} />
   </div>
 </div>
 
 <script>
+  import { timeline } from 'motion';
+
+  var images = document.querySelectorAll('.parallax-asset');
+  // turn node list 'images' to an array
+  var imagesArr = Array.prototype.slice.call(images);
+
+  function checkLoaded() {
+    if (imagesArr.every((img) => img.complete)) {
+      const sequence = [
+        [
+          '.parallax-asset',
+          { visibility: 'visible', opacity: 1 },
+          { duration: 0.6 },
+        ],
+        ['.sleigh', { opacity: 'calc(1 - var(--scroll) / 2)' }],
+      ];
+      timeline(sequence);
+    }
+  }
+
+  checkLoaded();
+  imagesArr.forEach((img) => img.addEventListener('load', checkLoaded));
+
   window.addEventListener('DOMContentLoaded', () => {
     if (window.matchMedia('(prefers-reduced-motion: no-preference)')) {
       if (window.matchMedia('(pointer:fine')) {
@@ -51,6 +74,9 @@ import Sleigh from '../../public/images/header_elements/sleigh.png';
           (window.scrollY / window.innerHeight).toString()
         );
       });
+
+      // Set initial value or it doesn't work until you scroll
+      document.documentElement.style.setProperty('--scroll', '0');
     }
   });
 </script>
@@ -64,6 +90,11 @@ import Sleigh from '../../public/images/header_elements/sleigh.png';
     justify-content: center;
     position: relative;
     height: 100%;
+  }
+
+  .parallax-asset {
+    opacity: 0;
+    visibility: hidden;
   }
 
   .header-composition {
@@ -88,7 +119,7 @@ import Sleigh from '../../public/images/header_elements/sleigh.png';
       top: -20%;
       @include headerElementParallax(-0.5);
       filter: blur(calc(var(--scroll) * 4px));
-      opacity: calc(1 - var(--scroll) / 2);
+      // opacity: calc(1 - var(--scroll) / 2); //Moved this to timeline
     }
     .present {
       top: 14.5%;
