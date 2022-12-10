@@ -1,5 +1,6 @@
 ---
 import { Icon } from 'astro-icon';
+import normalizeUrl from 'normalize-url';
 import * as prismicH from '@prismicio/helpers';
 import Layout from '../../layouts/Layout.astro';
 import { getAllGuests } from '../../lib/prismicio';
@@ -41,11 +42,12 @@ for (let j = 1; j < 5; j++) {
 const guestBioHTML = prismicH.asHTML(guest.data.guestBio);
 const topicDescriptionHTML = prismicH.asHTML(guest.data.topicDescription);
 
-// regex to turn https://alextrost.com/ or https://www.alextrost.com/ into alextrost.com and remove a trailing slash
-const guestWebsite = guest.data.websiteUrl?.replace(
-  /(https?:\/\/)?(www\.)?([^\/]+)\/?/,
-  '$3'
-);
+// Turn https://alextrost.com/ or https://www.alextrost.com/ into alextrost.com and remove a trailing slash
+const guestWebsite = guest.data.websiteUrl ?
+  normalizeUrl(guest.data.websiteUrl, {
+    stripProtocol: true, // remove "https://"
+    removeTrailingSlash: false // keeps trailing slash for subpaths (but removes it for root routes)
+  }) : '';
 ---
 
 <Layout
@@ -98,12 +100,14 @@ const guestWebsite = guest.data.websiteUrl?.replace(
             {guestWebsite}
           </span>
         </a>
-        <a href={guest.data.twitterUrl} class="guest-link">
-          <Icon name="mdi:twitter" class="link-icon" />
-          <span>
-            {guest.data.name}'s Twitter
-          </span>
-        </a>
+        {!!guest.data.twitterUrl && (
+          <a href={guest.data.twitterUrl} class="guest-link">
+            <Icon name="mdi:twitter" class="link-icon" />
+            <span>
+              {guest.data.name}'s Twitter
+            </span>
+          </a>
+        )}
       </div>
     </div>
 
