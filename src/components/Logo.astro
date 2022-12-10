@@ -1,8 +1,6 @@
 ---
-const pathname = new URL(Astro.request.url).pathname;
-const ariaCurrent = pathname === '/' ? 'page' : false;
-
 const isHomepage = Astro.url.pathname === '/';
+const ariaCurrent = isHomepage ? 'page' : false;
 
 /*
  There are two logos here.
@@ -36,7 +34,7 @@ const isHomepage = Astro.url.pathname === '/';
       </>
     ) : (
       <>
-        <span class="visually-hidden">Frontend Horse home</span>
+        <span class="visually-hidden">Holiday Snowtacular home</span>
 
         <svg
           width="618"
