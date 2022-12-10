@@ -25,7 +25,7 @@ const bodyHTML = prismicH.asHTML(slice.primary.body);
         allGuests.map((guest) => (
           <article class="guest">
             <GuestAvatar guest={guest} />
-            <a class="name" href={`/guest/${guest.uid}`}>
+            <a class="name" href={`/guest/${guest.uid}`} rel="prefetch">
               {guest.data.name}
             </a>
           </article>

@@ -5,7 +5,7 @@ const ariaCurrent = pathname === '/' ? 'page' : false;
 const { size } = Astro.props;
 ---
 
-<a href="/" class="logo" aria-current={ariaCurrent}>
+<a href="/" class="logo" aria-current={ariaCurrent} rel="prefetch">
   <span class="visually-hidden">Frontend Horse home</span>
   <svg
     aria-hidden="true"

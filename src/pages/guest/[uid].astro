@@ -43,11 +43,12 @@ const guestBioHTML = prismicH.asHTML(guest.data.guestBio);
 const topicDescriptionHTML = prismicH.asHTML(guest.data.topicDescription);
 
 // Turn https://alextrost.com/ or https://www.alextrost.com/ into alextrost.com and remove a trailing slash
-const guestWebsite = guest.data.websiteUrl ?
-  normalizeUrl(guest.data.websiteUrl, {
-    stripProtocol: true, // remove "https://"
-    removeTrailingSlash: false // keeps trailing slash for subpaths (but removes it for root routes)
-  }) : '';
+const guestWebsite = guest.data.websiteUrl
+  ? normalizeUrl(guest.data.websiteUrl, {
+      stripProtocol: true, // remove "https://"
+      removeTrailingSlash: false, // keeps trailing slash for subpaths (but removes it for root routes)
+    })
+  : '';
 ---
 
 <Layout
@@ -100,14 +101,14 @@ const guestWebsite = guest.data.websiteUrl ?
             {guestWebsite}
           </span>
         </a>
-        {!!guest.data.twitterUrl && (
-          <a href={guest.data.twitterUrl} class="guest-link">
-            <Icon name="mdi:twitter" class="link-icon" />
-            <span>
-              {guest.data.name}'s Twitter
-            </span>
-          </a>
-        )}
+        {
+          !!guest.data.twitterUrl && (
+            <a href={guest.data.twitterUrl} class="guest-link">
+              <Icon name="mdi:twitter" class="link-icon" />
+              <span>{guest.data.name}'s Twitter</span>
+            </a>
+          )
+        }
       </div>
     </div>
 
@@ -118,7 +119,11 @@ const guestWebsite = guest.data.websiteUrl ?
           nextGuests.map((guest) => (
             <div class="other-guest">
               <GuestAvatar guest={guest} />
-              <a class="other-guest-name" href={`/guest/${guest.uid}`}>
+              <a
+                class="other-guest-name"
+                href={`/guest/${guest.uid}`}
+                rel="prefetch"
+              >
                 {guest.data.name}
               </a>
             </div>
@@ -195,7 +200,7 @@ const guestWebsite = guest.data.websiteUrl ?
     width: var(--step-0);
     @media (forced-colors: none) {
       color: var(--accent);
-	}
+    }
   }
 
   .other-guests-container {
