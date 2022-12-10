@@ -44,8 +44,10 @@ const topicDescriptionHTML = prismicH.asHTML(guest.data.topicDescription);
 
 // Turn https://alextrost.com/ or https://www.alextrost.com/ into alextrost.com and remove a trailing slash
 const guestWebsite = guest.data.websiteUrl ?
-	normalizeUrl(guest.data.websiteUrl, {stripProtocol: true}) :
-	'';
+  normalizeUrl(guest.data.websiteUrl, {
+    stripProtocol: true, // remove "https://"
+    removeTrailingSlash: false // keeps trailing slash for subpaths (but removes it for root routes)
+  }) : '';
 ---
 
 <Layout
