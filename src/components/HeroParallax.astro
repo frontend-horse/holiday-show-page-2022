@@ -54,7 +54,7 @@ import Sleigh from '../../public/images/header_elements/sleigh.png';
   imagesArr.forEach((img) => img.addEventListener('load', checkLoaded));
 
   window.addEventListener('DOMContentLoaded', () => {
-    if (window.matchMedia('(prefers-reduced-motion: no-preference)')) {
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       if (window.matchMedia('(pointer:fine')) {
         document.addEventListener('mousemove', (event) => {
           document.documentElement.style.setProperty(
@@ -66,14 +66,13 @@ import Sleigh from '../../public/images/header_elements/sleigh.png';
             (event.pageY / window.innerHeight - 0.25).toString()
           );
         });
+        document.addEventListener('scroll', () => {
+          document.documentElement.style.setProperty(
+            '--scroll',
+            (window.scrollY / window.innerHeight).toString()
+          );
+        });
       }
-
-      document.addEventListener('scroll', () => {
-        document.documentElement.style.setProperty(
-          '--scroll',
-          (window.scrollY / window.innerHeight).toString()
-        );
-      });
 
       // Set initial value or it doesn't work until you scroll
       document.documentElement.style.setProperty('--scroll', '0');
@@ -99,12 +98,24 @@ import Sleigh from '../../public/images/header_elements/sleigh.png';
   }
 
   .header-composition {
-    // outline: 1px solid red;
-    width: 100%;
-    margin: auto 0;
-    height: 48ch;
+    width: calc(100% + 2 * var(--space-s));
+    height: 54ch;
     display: block;
-    margin: -15%;
+    margin: -5vh 0 -4vh;
+    translate: -10% 0;
+
+    @media (min-width: 640px) {
+      translate: none;
+    }
+
+    @media (min-width: 1024px) {
+      margin-top: 0;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      translate: none;
+      margin: -15% 0;
+    }
 
     position: relative;
     > * {
@@ -112,7 +123,8 @@ import Sleigh from '../../public/images/header_elements/sleigh.png';
       pointer-events: none;
 
       @media (max-width: 640px) {
-        scale: 75%;
+        overflow-x: auto;
+        scale: 70%;
       }
     }
     .sleigh {

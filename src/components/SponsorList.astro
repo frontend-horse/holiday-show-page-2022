@@ -35,42 +35,46 @@ const bodyHTML = prismicH.asHTML(slice.primary.body);
 <style lang="scss">
   @import '../styles/mixins.scss';
 
-  .sponsor-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    grid-gap: var(--space-s);
-  }
-
-  .sponsor {
-    background: rgba(0, 0, 0, 0.25);
-    padding-block: var(--space-s);
-    padding-inline: var(--space-s-m);
-    display: grid;
-    place-content: center;
-    transition: background 0.2s ease;
-    border-radius: 0.5rem;
-    &:hover {
-      @media (forced-colors: none) {
-        background: rgba(0, 0, 0, 0.3);
-      }
+  .sponsors {
+    .sponsor-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-gap: var(--space-s);
     }
 
-    @include forced-colors-background();
-
-    a {
-      &::before {
-        content: '';
-        position: absolute;
-        inset: 0;
+    .sponsor {
+      position: relative;
+      background: rgba(0, 0, 0, 0.25);
+      padding-block: var(--space-s);
+      padding-inline: var(--space-s-m);
+      display: grid;
+      place-content: center;
+      transition: background 0.2s ease;
+      border-radius: 0.5rem;
+      &:hover {
+        @media (forced-colors: none) {
+          background: rgba(0, 0, 0, 0.3);
+        }
       }
-    }
-    img {
-      display: block;
-      max-width: 100%;
-      padding: 0;
-      margin: 0;
-      height: 100px;
-      object-fit: contain;
+
+      @include forced-colors-background();
+
+      a {
+        &::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+        }
+      }
+      img {
+        display: block;
+        max-width: 100%;
+        padding: 0;
+        margin: 0;
+        width: auto;
+        height: 100px;
+        object-fit: contain;
+      }
     }
   }
 </style>
