@@ -6,87 +6,153 @@ import Cursor from '../../public/images/header_elements/cursor.png';
 import Hat from '../../public/images/header_elements/hat.png';
 import Keyboard from '../../public/images/header_elements/keyboard.png';
 import Sock from '../../public/images/header_elements/sock.png';
+import Sleigh from '../../public/images/header_elements/sleigh.png';
+// import Orientation from '../../public/images/header_elements/untitled.png'
 ---
 
-<div class="header-composition">
-  <Image src={Present} class="present" alt="" height={306} />
-  <Image src={Bell} class="bell" alt="" height={120} />
-  <Image src={Cursor} class="cursor" alt="" height={125} />
-  <Image src={Hat} class="hat" alt="" height={113} />
-  <Image src={Keyboard} class="keyboard" alt="" height={170} />
-  <Image src={Sock} class="sock" alt="" height={190} />
+<div class="parallax-container">
+  <!-- This is just to be able to approximate the layout of the elements -->
+  <!-- <Image
+		src={Orientation}
+		class='sock'
+		alt=''
+		style='position: absolute; z-index:5; opacity: .3; scale: 1.2; translate: 0% 0%;'
+	/> -->
+  <div class="header-composition">
+    <Image src={Sleigh} class="sleigh parallax-asset" alt="" width={420} />
+    <Image src={Present} class="present parallax-asset" alt="" height={306} />
+    <Image src={Bell} class="bell parallax-asset" alt="" height={120} />
+    <Image src={Cursor} class="cursor parallax-asset" alt="" height={125} />
+    <Image src={Hat} class="hat parallax-asset" alt="" height={113} />
+    <Image src={Keyboard} class="keyboard parallax-asset" alt="" height={170} />
+    <Image src={Sock} class="sock parallax-asset" alt="" height={190} />
+  </div>
 </div>
 
 <script>
+  import { timeline } from 'motion';
+
+  var images = document.querySelectorAll('.parallax-asset');
+  // turn node list 'images' to an array
+  var imagesArr = Array.prototype.slice.call(images);
+
+  function checkLoaded() {
+    if (imagesArr.every((img) => img.complete)) {
+      const sequence = [
+        [
+          '.parallax-asset',
+          { visibility: 'visible', opacity: 1 },
+          { duration: 0.6 },
+        ],
+        ['.sleigh', { opacity: 'calc(1 - var(--scroll) / 2)' }],
+      ];
+      timeline(sequence);
+    }
+  }
+
+  checkLoaded();
+  imagesArr.forEach((img) => img.addEventListener('load', checkLoaded));
+
   window.addEventListener('DOMContentLoaded', () => {
-    const container = document.querySelector('.grid-container');
     if (window.matchMedia('(prefers-reduced-motion: no-preference)')) {
       if (window.matchMedia('(pointer:fine')) {
         document.addEventListener('mousemove', (event) => {
-          container.style.setProperty(
+          document.documentElement.style.setProperty(
             '--mouseX',
-            event.pageX / window.innerWidth
+            (event.pageX / window.innerWidth - 0.25).toString()
           );
-          container.style.setProperty(
+          document.documentElement.style.setProperty(
             '--mouseY',
-            event.pageY / window.innerHeight
+            (event.pageY / window.innerHeight - 0.25).toString()
           );
         });
       }
 
       document.addEventListener('scroll', () => {
-        container.style.setProperty(
+        document.documentElement.style.setProperty(
           '--scroll',
-          window.scrollY / window.innerHeight
+          (window.scrollY / window.innerHeight).toString()
         );
       });
+
+      // Set initial value or it doesn't work until you scroll
+      document.documentElement.style.setProperty('--scroll', '0');
     }
   });
 </script>
 
 <style lang="scss">
-  @import '../styles/mixins.scss';
+  @import 'src/styles/mixins.scss';
+
+  .parallax-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 100%;
+    max-width: 100%;
+  }
+
+  .parallax-asset {
+    opacity: 0;
+    visibility: hidden;
+  }
 
   .header-composition {
+    // outline: 1px solid red;
     width: 100%;
-    height: 100%;
+    margin: auto 0;
+    height: 48ch;
+    display: block;
+    margin: -15%;
 
     position: relative;
     > * {
       position: absolute;
       pointer-events: none;
+
+      @media (max-width: 640px) {
+        scale: 75%;
+      }
+    }
+    .sleigh {
+      left: -12vw;
+      top: -20%;
+      @include headerElementParallax(-0.5);
+      filter: blur(calc(var(--scroll) * 4px));
+      // opacity: calc(1 - var(--scroll) / 2); //Moved this to timeline
     }
     .present {
-      top: 20.5%;
-      left: 19%;
+      top: 14.5%;
+      left: 15%;
       z-index: 1;
-      @include mouseParallax(0.5);
+      @include headerElementParallax(0.5);
     }
     .bell {
-      top: 58%;
-      left: 27%;
-      @include mouseParallax(0.25);
+      top: 65%;
+      left: 25%;
+      @include headerElementParallax(0.25);
     }
     .cursor {
-      top: 55%;
-      left: 69%;
+      top: 58%;
+      left: 61%;
       z-index: 2;
-      @include mouseParallax(0.7);
+      @include headerElementParallax(0.8);
     }
     .hat {
       top: 32%;
-      left: 69%;
-      @include mouseParallax(0.4);
+      left: 64%;
+      @include headerElementParallax(0.3);
     }
     .keyboard {
-      top: 6%;
-      left: 44%;
-      @include mouseParallax(0.2);
+      top: -3%;
+      left: 40%;
+      @include headerElementParallax(0.6);
     }
     .sock {
-      top: 26%;
-      left: 0%;
-      @include mouseParallax(0.35);
+      top: 24%;
+      left: -2%;
+      @include headerElementParallax(0.4);
     }
   }
 </style>

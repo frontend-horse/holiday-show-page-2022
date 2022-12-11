@@ -1,13 +1,21 @@
 ---
 import Logo from './Logo.astro';
 import RegistrationButton from './RegistrationButton.astro';
+
+const {pathname} = Astro.url;
 ---
 
 <header role="banner">
   <nav>
     <a href="/#sponsors">Sponsors</a>
     <a href="/#guests">Guests</a>
-    <a href="/contributors">Team</a>
+    <a
+      href="/contributors"
+      rel="prefetch"
+      aria-current={pathname === '/contributors' ? 'page' : undefined}
+    >
+      Team
+    </a>
   </nav>
   <Logo />
   <div class="actions">
@@ -39,13 +47,6 @@ import RegistrationButton from './RegistrationButton.astro';
       @media (min-width: 640px) {
         order: 1;
       }
-      a {
-        color: var(--body-color);
-        text-decoration: none;
-        &:hover {
-          text-decoration: underline;
-        }
-      }
     }
 
     .actions {
@@ -53,8 +54,8 @@ import RegistrationButton from './RegistrationButton.astro';
       flex: 1;
       justify-content: flex-end;
       order: 3;
-      @media (min-width: 640px) {
-        order: 3;
+      @media (max-width: 640px) {
+        display: none;
       }
     }
   }

@@ -47,7 +47,7 @@
           "label": "Guest Bio",
           "placeholder": "",
           "allowTargetBlank": true,
-          "single": "paragraph,strong,em,hyperlink"
+          "multi": "paragraph,strong,em,hyperlink"
         }
       },
       "twitterUrl": {

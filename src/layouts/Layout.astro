@@ -6,7 +6,7 @@ export interface Props {
 
 const { description, title } = Astro.props;
 import '../styles/main.scss';
-// import Snow from '../components/Snow.astro';
+import Snow from '../components/Snow.astro';
 import NavBar from '../components/NavBar.astro';
 import Footer from '../components/Footer.astro';
 import StructuredData from '../components/StructuredData.astro';
@@ -61,11 +61,14 @@ if (isHomepage) {
     ></script>
   </head>
   <body>
-    <!-- <Snow /> -->
+    <!-- <Snow className="back" />
+    <Snow className="middle" />
+    <Snow className="front" /> -->
     <NavBar />
     <slot />
     <Footer />
     <style is:global lang="scss" define:vars={{ pageBackground }}>
+      @import 'src/styles/mixins.scss';
       :root {
         --box-color: hsla(223, 81%, 9%, 75%);
       }
@@ -83,6 +86,23 @@ if (isHomepage) {
         p {
           margin-bottom: var(--space-xs-s);
         }
+      }
+
+      .back {
+        background-size: 4.8rem 4.8rem;
+        @include snow(0.2);
+        z-index: -1;
+      }
+      .middle {
+        background-size: 12rem 12rem;
+        z-index: 2;
+        @include snow(0.5);
+      }
+      .front {
+        background-size: 24rem 24rem;
+        z-index: 5;
+        filter: blur(3px);
+        @include snow(1);
       }
     </style>
   </body>

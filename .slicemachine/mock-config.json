@@ -1,13 +1,13 @@
 {
   "_cts": {
     "guest": {
-      "topicDescription": {
+      "guestBio": {
         "config": {
           "patternType": "PARAGRAPH",
           "blocks": 1
         }
       },
-      "guestBio": {
+      "topicDescription": {
         "config": {
           "patternType": "PARAGRAPH",
           "blocks": 1

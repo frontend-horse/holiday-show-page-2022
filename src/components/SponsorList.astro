@@ -22,7 +22,7 @@ const bodyHTML = prismicH.asHTML(slice.primary.body);
       {
         sponsors.map((sponsor) => (
           <li class="sponsor">
-            <a href={`/sponsor/${sponsor.uid}`}>
+            <a href={`/sponsor/${sponsor.uid}`} rel="prefetch">
               <img src={sponsor.data.logo.url} alt={sponsor.data.name} />
             </a>
           </li>
@@ -35,46 +35,42 @@ const bodyHTML = prismicH.asHTML(slice.primary.body);
 <style lang="scss">
   @import '../styles/mixins.scss';
 
-  .sponsors {
-    .sponsor-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(15ch, 1fr));
-      grid-gap: var(--space-s);
+  .sponsor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: var(--space-s);
+  }
+
+  .sponsor {
+    background: rgba(0, 0, 0, 0.25);
+    padding-block: var(--space-s);
+    padding-inline: var(--space-s-m);
+    display: grid;
+    place-content: center;
+    transition: background 0.2s ease;
+    border-radius: 0.5rem;
+    &:hover {
+      @media (forced-colors: none) {
+        background: rgba(0, 0, 0, 0.3);
+      }
     }
 
-    .sponsor {
-      position: relative;
-      background: rgba(0, 0, 0, 0.25);
-      padding-block: var(--space-s);
-      padding-inline: var(--space-s-m);
-      display: grid;
-      place-content: center;
-      transition: background 0.2s ease;
-      border-radius: 0.5rem;
-      &:hover {
-        @media (forced-colors: none) {
-          background: rgba(0, 0, 0, 0.3);
-		}
-      }
+    @include forced-colors-background();
 
-	  @include forced-colors-background();
-
-      a {
-        &::before {
-          content: '';
-          position: absolute;
-          inset: 0;
-        }
+    a {
+      &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
       }
-      img {
-        display: block;
-        max-width: 100%;
-        padding: 0;
-        margin: 0;
-        width: auto;
-        height: 100px;
-        object-fit: contain;
-      }
+    }
+    img {
+      display: block;
+      max-width: 100%;
+      padding: 0;
+      margin: 0;
+      height: 100px;
+      object-fit: contain;
     }
   }
 </style>

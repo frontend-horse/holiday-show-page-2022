@@ -1,11 +1,11 @@
 ---
 import { Icon } from 'astro-icon';
+import normalizeUrl from 'normalize-url';
 import * as prismicH from '@prismicio/helpers';
 import Layout from '../../layouts/Layout.astro';
 import { getAllGuests } from '../../lib/prismicio';
 import GuestAvatar from '../../components/GuestAvatar.astro';
 import { GuestDocument } from '../../../types.generated';
-import gsap from 'gsap';
 
 export async function getStaticPaths() {
   const allPages = await getAllGuests();
@@ -41,11 +41,13 @@ for (let j = 1; j < 5; j++) {
 const guestBioHTML = prismicH.asHTML(guest.data.guestBio);
 const topicDescriptionHTML = prismicH.asHTML(guest.data.topicDescription);
 
-// regex to turn https://alextrost.com/ or https://www.alextrost.com/ into alextrost.com and remove a trailing slash
-const guestWebsite = guest.data.websiteUrl?.replace(
-  /(https?:\/\/)?(www\.)?([^\/]+)\/?/,
-  '$3'
-);
+// Turn https://alextrost.com/ or https://www.alextrost.com/ into alextrost.com and remove a trailing slash
+const guestWebsite = guest.data.websiteUrl
+  ? normalizeUrl(guest.data.websiteUrl, {
+      stripProtocol: true, // remove "https://"
+      removeTrailingSlash: false, // keeps trailing slash for subpaths (but removes it for root routes)
+    })
+  : '';
 ---
 
 <Layout
@@ -98,12 +100,14 @@ const guestWebsite = guest.data.websiteUrl?.replace(
             {guestWebsite}
           </span>
         </a>
-        <a href={guest.data.twitterUrl} class="guest-link">
-          <Icon name="mdi:twitter" class="link-icon" />
-          <span>
-            {guest.data.name}'s Twitter
-          </span>
-        </a>
+        {
+          !!guest.data.twitterUrl && (
+            <a href={guest.data.twitterUrl} class="guest-link">
+              <Icon name="mdi:twitter" class="link-icon" />
+              <span>{guest.data.name}'s Twitter</span>
+            </a>
+          )
+        }
       </div>
     </div>
 
@@ -114,7 +118,11 @@ const guestWebsite = guest.data.websiteUrl?.replace(
           nextGuests.map((guest) => (
             <div class="other-guest">
               <GuestAvatar guest={guest} />
-              <a class="other-guest-name" href={`/guest/${guest.uid}`}>
+              <a
+                class="other-guest-name"
+                href={`/guest/${guest.uid}`}
+                rel="prefetch"
+              >
                 {guest.data.name}
               </a>
             </div>
@@ -191,7 +199,7 @@ const guestWebsite = guest.data.websiteUrl?.replace(
     width: var(--step-0);
     @media (forced-colors: none) {
       color: var(--accent);
-	}
+    }
   }
 
   .other-guests-container {
@@ -213,19 +221,6 @@ const guestWebsite = guest.data.websiteUrl?.replace(
     gap: var(--space-s);
     align-items: center;
     position: relative;
-  }
-
-  .other-guest-name {
-    font-family: var(--body-font);
-    font-size: var(--step-0);
-    font-weight: 700;
-    text-align: center;
-
-    color: var(--body-font-color);
-    text-decoration: none;
-    &:hover {
-      text-decoration: underline;
-    }
   }
 
   .other-guest-name::after {
