@@ -3,3 +3,23 @@
 // @use '../theme';
 
 @import '@acab/reset.css' layer(reset);
+
+.obs-slide {
+  height: 1080px;
+  width: 1920px;
+  background-image: linear-gradient(
+    185deg,
+    hsl(266deg 42% 29%) 0%,
+    hsl(276deg 38% 32%) 9%,
+    hsl(285deg 34% 34%) 18%,
+    hsl(294deg 31% 37%) 27%,
+    hsl(310deg 31% 41%) 36%,
+    hsl(329deg 37% 49%) 45%,
+    hsl(342deg 47% 56%) 55%,
+    hsl(355deg 60% 62%) 64%,
+    hsl(7deg 68% 66%) 73%,
+    hsl(15deg 74% 68%) 82%,
+    hsl(23deg 77% 70%) 91%,
+    hsl(29deg 79% 74%) 100%
+  );
+}

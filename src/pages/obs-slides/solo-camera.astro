@@ -1,14 +1,29 @@
 ---
-import ChristmasTree from '../../components/obs/ChristmasTree.svelte';
-import NameTag from '../../components/obs/NameTag.svelte';
 import ProgressBar from '../../components/obs/ProgressBar.svelte';
+import NameTag from '../../components/obs/NameTag.svelte';
+import BottomCornerSnowbank from '../../components/obs/BottomCornerSnowbank.svelte';
 import SponsorRotation from '../../components/obs/SponsorRotation.svelte';
 import OBSLayout from '../../layouts/OBSLayout.astro';
+import Position from '../../components/obs/Position.astro';
+import Screen from '../../components/obs/Screen.astro';
 ---
 
 <OBSLayout title="Solo Camera" description="">
-  <ChristmasTree client:load index={0} />
-  <ProgressBar client:load />
-  <SponsorRotation client:load />
+  <Position xPos={0} yPos={1001}>
+    <BottomCornerSnowbank />
+  </Position>
+
+  <Position xPos={16} yPos={16} w={1555}>
+    <Screen />
+  </Position>
+
+  <Position xPos={16} yPos={910}>
+    <ProgressBar client:load />
+  </Position>
+
+  <Position xPos={830} yPos={910}>
+    <SponsorRotation client:load />
+  </Position>
+
   <NameTag client:load />
 </OBSLayout>

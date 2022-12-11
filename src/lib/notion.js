@@ -9,6 +9,14 @@ export async function fetchNotionData() {
     },
   })
     .then((response) => response.json())
+    .then((data) =>
+      data.results.map((speaker) => {
+        return {
+          complete: speaker.properties.Checkbox.checkbox,
+          name: speaker.properties.Name.title[0].text.content,
+        };
+      })
+    )
     .catch((error) => {
       console.error('Error:', error);
     });

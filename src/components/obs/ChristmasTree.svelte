@@ -1,81 +1,22 @@
 <script>
-  import { onMount } from 'svelte';
-  import { campaignData } from './stores.js';
-  import gsap from 'gsap';
-
   export let index;
-
-  onMount(() => {
-    const tl = gsap.timeline({ defaults: { ease: 'elastic.out(1, 0.3)' } });
-
-    gsap.set(`.tree-${index}.christmastree`, {
-      transformOrigin: 'bottom center',
-      scale: 0,
-    });
-
-    gsap.set(
-      `.tree-${index}.ball-1,.tree-${index}.ball-2,.tree-${index}.ball-3,.tree-${index}.ball-4,.tree-${index}.ball-5,.tree-${index}.ball-6`,
-      {
-        opacity: 1,
-        transformOrigin: 'top center',
-        scale: 0,
-      }
-    );
-    gsap.set(`.tree-${index}.star`, {
-      transformOrigin: 'bottom center',
-      scale: 0,
-    });
-    gsap.set(`.tree-${index}.present`, {
-      transformOrigin: 'bottom center',
-      scale: 0,
-      y: 1,
-      x: 9,
-    });
-    gsap.set(`.tree-${index}.present-2`, {
-      transformOrigin: 'bottom center',
-      scale: 0,
-      x: 20,
-    });
-    gsap.set(`.tree-${index}.present-3`, {
-      transformOrigin: 'bottom center',
-      scale: 0,
-      x: 38,
-    });
-
-    tl.to(`.tree-${index}.christmastree`, { scale: 1, duration: 3 });
-    tl.to(`.tree-${index}.ball-1`, { scale: 1, duration: 1 });
-    tl.to(`.tree-${index}.ball-2`, { scale: 1, duration: 1 });
-    tl.to(`.tree-${index}.ball-3`, { scale: 1, duration: 1 });
-    tl.to(`.tree-${index}.ball-4`, { scale: 1, duration: 1 });
-    tl.to(`.tree-${index}.ball-5`, { scale: 1, duration: 1 });
-    tl.to(`.tree-${index}.ball-6`, { scale: 1, duration: 1 });
-    tl.to(`.tree-${index}.present`, { scale: 1, duration: 1 });
-    tl.to(`.tree-${index}.present-3`, { scale: 0.85, duration: 1 });
-    tl.to(`.tree-${index}.present-2`, { scale: 1.2, duration: 1 });
-    tl.to(`.tree-${index}.star`, {
-      scale: 1,
-      duration: 1,
-      y: -6,
-      rotation: '360deg',
-      transformOrigin: 'center',
-    });
-
-    tl.pause();
-    tl.progress(0.8);
-
-    // TODO: Write a function to update the progress of the timeline based on the donation and index
-    // TODO: Add gsap labels between the tweens to determine where the progress should be
-  });
 </script>
 
 <svg
   viewBox="0 0 81 117"
   fill="none"
-  xmlns="http://www.w3.org/2000/svg"
   style="overflow:visible;"
+  id="christmas-tree"
+  class={`tree-${index}`}
   height="115px"
 >
-  <g class={`tree-${index} christmastree`} clip-path="url(#clip0_515_7377)">
+  <path
+    class="tree-placeholder"
+    d="M34.3 23.5a6.2 6.2 0 0 1 10.8 0l10.6 19.3a5.3 5.3 0 0 1-4.6 8H50c3.8 0 7 1.5 9.9 4.8l.3.4a18 18 0 0 1 4.3 9c.3 5.4-2.4 8-7 8h-2.2c8.1.1 11.5 1.4 16 6.1 2.7 3.3 5.4 7 5.1 13.5-.4 7.9-5 11.8-14.3 11.8h-7.4L56 112c.4 2.6-1.2 5.1-3.4 5.1h-26c-2.1 0-3.8-2.5-3.3-5.1l1.4-7.5h-7.4c-9.4 0-14-4-14.4-11.8C2.7 86 5.4 82.4 8.2 79c4.4-4.7 7.8-6 16-6h-2.4c-4.6 0-7.2-2.7-7-8.1a18 18 0 0 1 4.3-9l.4-.4a13 13 0 0 1 9.5-4.9h-.6a5.3 5.3 0 0 1-4.7-7.9l10.6-19.3Z"
+    fill="#88888844"
+  />
+
+  <g class={` christmastree`} clip-path="url(#clip0_515_7377)">
     <path
       id="Vector"
       d="M52.7 117h-26c-2.1 0-3.8-2.5-3.3-5.1l2.1-11.3H54l2 11.3c.5 2.6-1.1 5.1-3.3 5.1Z"
@@ -246,7 +187,7 @@
         fill="url(#paint30_linear_515_7377)"
       />
     </g>
-    <g class={`tree-${index} ball-6`}>
+    <g class={` ball-6`}>
       <g id="Group_6" filter="url(#filter5_f_515_7377)">
         <path
           id="Vector_33"
@@ -259,7 +200,7 @@
         fill="url(#paint31_radial_515_7377)"
       />
     </g>
-    <g class={`tree-${index} ball-5`}>
+    <g class={` ball-5`}>
       <g id="Group_7" filter="url(#filter6_f_515_7377)">
         <path
           id="Vector_34"
@@ -272,7 +213,7 @@
         fill="url(#paint32_radial_515_7377)"
       />
     </g>
-    <g class={`tree-${index} ball-4`}>
+    <g class={` ball-4`}>
       <g id="Group_8" filter="url(#filter7_f_515_7377)">
         <path
           id="Vector_35"
@@ -285,7 +226,7 @@
         fill="url(#paint33_radial_515_7377)"
       />
     </g>
-    <g class={`tree-${index} ball-3`}>
+    <g class={` ball-3`}>
       <g id="Group_9" filter="url(#filter8_f_515_7377)">
         <path
           id="Vector_36"
@@ -298,7 +239,7 @@
         fill="url(#paint34_radial_515_7377)"
       />
     </g>
-    <g class={`tree-${index} ball-2`}>
+    <g class={` ball-2`}>
       <g id="Group_10" filter="url(#filter9_f_515_7377)">
         <path
           id="Vector_37"
@@ -311,7 +252,7 @@
         fill="url(#paint35_radial_515_7377)"
       />
     </g>
-    <g class={`tree-${index} ball-1`}>
+    <g class={` ball-1`}>
       <g id="Group_11" filter="url(#filter10_f_515_7377)">
         <path
           id="Vector_38"
@@ -325,7 +266,7 @@
         fill="url(#paint36_radial_515_7377)"
       />
     </g>
-    <g class={`tree-${index} star`} filter="url(#filter11_d_515_7377)">
+    <g class={` star`} filter="url(#filter11_d_515_7377)">
       <path
         id="Vector_39"
         d="m43.9 7 3 .4c1.5.2 2 2 1 3l-2.2 2.2a1.8 1.8 0 0 0-.5 1.6l.5 3A1.8 1.8 0 0 1 43 19l-2.6-1.4a1.8 1.8 0 0 0-1.7 0L36 19a1.8 1.8 0 0 1-2.6-2l.5-3a1.8 1.8 0 0 0-.6-1.5l-2.1-2.1a1.8 1.8 0 0 1 1-3.1l3-.5a1.8 1.8 0 0 0 1.4-1l1.3-2.6a1.8 1.8 0 0 1 3.3 0L42.5 6c.3.4.8.8 1.4 1Z"
@@ -348,7 +289,7 @@
       />
     </g>
   </g>
-  <g class={`tree-${index} present`} id="present">
+  <g class={` present`} id="present">
     <g id="Group_12" filter="url(#filter12_d_515_7377)">
       <path
         id="Vector_43"
@@ -469,8 +410,8 @@
       />
     </g>
   </g>
-  <use href="#present" class={`tree-${index} present-2`} />
-  <use href="#present" class={`tree-${index} present-3`} />
+  <use href="#present" class={`present-2`} />
+  <use href="#present" class={`present-3`} />
 
   <defs>
     <radialGradient

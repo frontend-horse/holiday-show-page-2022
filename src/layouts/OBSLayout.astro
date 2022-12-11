@@ -17,9 +17,12 @@ const { description, title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body>
+  <body class="obs-slide">
     <slot />
-
-    <style is:global lang="scss"></style>
+    <style lang="scss">
+      body {
+        position: relative;
+      }
+    </style>
   </body>
 </html>

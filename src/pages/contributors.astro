@@ -6,10 +6,6 @@ import * as prismicH from '@prismicio/helpers';
 import { OrganizerTeamDocumentDataMemberItem } from '../../types.generated';
 
 const organizers = await getOrganizers();
-console.log(
-  '🚀 ~ file: contributors.astro:9 ~ organizers',
-  organizers.data.member[0].avatar.url
-);
 
 const bodyHTML = prismicH.asHTML(organizers.data.body);
 ---
@@ -37,7 +33,9 @@ const bodyHTML = prismicH.asHTML(organizers.data.body);
                 format={'webp'}
               />
               <p class="member-name">
-                <a class="member-website" href={member.websiteURL}>{member.name}</a>
+                <a class="member-website" href={member.websiteURL}>
+                  {member.name}
+                </a>
               </p>
               <p class="member-contributions">{member.contributions}</p>
             </div>
