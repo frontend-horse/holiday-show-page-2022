@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker';
 
-function createFakeDonation() {
+export function createFakeDonation() {
   return {
     id: faker.datatype.number(),
     amount: faker.datatype.number(),
@@ -36,7 +36,7 @@ export async function getCampaignData() {
   // return createFakeCampaignData();
 }
 
-export async function fetchData() {
+async function fetchData() {
   const url = '/.netlify/functions/fetch-tiltify-donations';
 
   return await fetch(url, {

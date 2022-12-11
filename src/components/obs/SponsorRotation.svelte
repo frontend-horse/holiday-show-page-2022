@@ -16,3 +16,10 @@
     {/await}
   </div>
 </div>
+
+<style>
+  img {
+    height: 100px;
+    width: 100px;
+  }
+</style>

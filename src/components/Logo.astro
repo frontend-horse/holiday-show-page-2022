@@ -5,7 +5,6 @@ const ariaCurrent = pathname === '/' ? 'page' : false;
 const { size } = Astro.props;
 
 const isHomepage = Astro.url.pathname === '/';
-console.log('🚀 ~ file: Logo.astro:8 ~ isHomepage', isHomepage);
 ---
 
 <a href="/" class="logo" aria-current={ariaCurrent}>
@@ -99,7 +98,7 @@ console.log('🚀 ~ file: Logo.astro:8 ~ isHomepage', isHomepage);
       height: 100%;
       path {
         @include forced-colors-fill-current-color();
-	  }
+      }
     }
   }
 </style>
