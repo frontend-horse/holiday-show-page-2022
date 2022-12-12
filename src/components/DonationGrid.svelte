@@ -51,8 +51,4 @@
     /* align-self: stretch; */
     display: flex;
   }
-
-  li > span {
-    display: block;
-  }
 </style>
