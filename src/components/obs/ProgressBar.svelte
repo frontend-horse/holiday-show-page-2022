@@ -1,11 +1,9 @@
 <script>
   import { onMount } from 'svelte';
   import { campaignData } from './stores.js';
-
-  console.log($campaignData);
-
   import gsap from 'gsap';
   import ChristmasTree from './ChristmasTree.svelte';
+  console.log($campaignData);
 
   let totalRaised = 0;
   let mainTl, totalDuration, percentComplete;
