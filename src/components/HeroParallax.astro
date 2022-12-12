@@ -1,5 +1,5 @@
 ---
-import { Image } from '@astrojs/image/components';
+import { Image, Picture } from '@astrojs/image/components';
 import Present from '../../public/images/header_elements/present.png';
 import Bell from '../../public/images/header_elements/bell.png';
 import Cursor from '../../public/images/header_elements/cursor.png';
@@ -7,7 +7,20 @@ import Hat from '../../public/images/header_elements/hat.png';
 import Keyboard from '../../public/images/header_elements/keyboard.png';
 import Sock from '../../public/images/header_elements/sock.png';
 import Sleigh from '../../public/images/header_elements/sleigh.png';
+import { getPicture } from '@astrojs/image';
+import { OutputFormat } from '@astrojs/image/dist/loaders';
 // import Orientation from '../../public/images/header_elements/untitled.png'
+
+const formats: OutputFormat[] = ['avif', 'webp'];
+const sleighProps = await getPicture({src: Sleigh, formats, widths: [420]});
+const presentProps = await getPicture({src: Present, formats, widths: [306]});
+const bellProps = await getPicture({src: Bell, formats, widths: [120]});
+const cursorProps = await getPicture({src: Cursor, formats, widths: [125]});
+const hatProps = await getPicture({src: Hat, formats, widths: [113]});
+const keyboardProps = await getPicture({src: Keyboard, formats, widths: [170]});
+const sockProps = await getPicture({src: Sock, formats, widths: [190]});
+
+console.log(await sleighProps);
 ---
 
 <div class="parallax-container">
@@ -19,20 +32,41 @@ import Sleigh from '../../public/images/header_elements/sleigh.png';
 		style='position: absolute; z-index:5; opacity: .3; scale: 1.2; translate: 0% 0%;'
 	/> -->
   <div class="header-composition">
-    <Image src={Sleigh} class="sleigh parallax-asset" alt="" width={420} format="webp" loading="eager" />
-    <Image src={Present} class="present parallax-asset" alt="" height={306} format="webp" loading="eager" />
-    <Image src={Bell} class="bell parallax-asset" alt="" height={120} format="webp" loading="eager" />
-    <Image src={Cursor} class="cursor parallax-asset" alt="" height={125} format="webp" loading="eager" />
-    <Image src={Hat} class="hat parallax-asset" alt="" height={113} format="webp" loading="eager" />
-    <Image src={Keyboard} class="keyboard parallax-asset" alt="" height={170} format="webp" loading="eager" />
-    <Image src={Sock} class="sock parallax-asset" alt="" height={190} format="webp" loading="eager" />
+	<picture class="sleigh parallax-asset">
+		{sleighProps.sources.map(source => <source srcset={source.srcset} type={source.type} />)}
+		<Image src={Sleigh} alt="" width={420} loading="eager" />
+	</picture>
+	<picture class="present parallax-asset">
+		{presentProps.sources.map(source => <source srcset={source.srcset} type={source.type} />)}
+		<Image src={Present} alt="" height={306} loading="eager" />
+	</picture>
+	<picture class="bell parallax-asset">
+		{bellProps.sources.map(source => <source srcset={source.srcset} type={source.type} />)}
+		<Image src={Bell} alt="" height={120} loading="eager" />
+	</picture>
+	<picture class="cursor parallax-asset">
+		{cursorProps.sources.map(source => <source srcset={source.srcset} type={source.type} />)}
+		<Image src={Cursor} alt="" height={125} loading="eager" />
+	</picture>
+	<picture class="hat parallax-asset">
+		{hatProps.sources.map(source => <source srcset={source.srcset} type={source.type} />)}
+		<Image src={Hat} alt="" height={113} loading="eager" />
+	</picture>
+	<picture class="keyboard parallax-asset">
+		{keyboardProps.sources.map(source => <source srcset={source.srcset} type={source.type} />)}
+		<Image src={Keyboard} alt="" height={170} loading="eager" />
+	</picture>
+	<picture class="sock parallax-asset">
+		{sockProps.sources.map(source => <source srcset={source.srcset} type={source.type} />)}
+		<Image src={Sock} alt="" height={190} loading="eager" />
+	</picture>
   </div>
 </div>
 
 <script>
   import { timeline } from 'motion';
 
-  var images = document.querySelectorAll('.parallax-asset');
+  var images = document.querySelectorAll('.parallax-asset img');
   // turn node list 'images' to an array
   var imagesArr = Array.prototype.slice.call(images);
 
