@@ -1,0 +1,26 @@
+---
+interface Props {
+  h: number;
+  w: number;
+}
+
+const props = Astro.props;
+---
+
+<div
+  class="cameraBox"
+  style={`--height: ${props.h}px;  --width: ${props.w}px; 
+`}
+>
+</div>
+
+<style>
+  .cameraBox {
+    position: absolute;
+    height: var(--height);
+    width: var(--width);
+    border-radius: 10px;
+    border: 1px solid black;
+    background-color: rgba(0, 0, 0, 1);
+  }
+</style>

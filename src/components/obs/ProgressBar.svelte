@@ -68,7 +68,11 @@
       createTreeTimeline(i);
     }
 
-    // mainTl.pause();
+    const totalDuration = 13 * 10;
+    const percentComplete = 0.12;
+    mainTl.pause();
+    mainTl.tweenTo(totalDuration * percentComplete);
+
     // mainTl.timeScale(4);
     // mainTl.progress(0.67);
 

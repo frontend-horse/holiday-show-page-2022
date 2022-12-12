@@ -1,0 +1,47 @@
+---
+import ProgressBar from '../../components/obs/ProgressBar.svelte';
+import NameTag from '../../components/obs/NameTag.svelte';
+import BottomCornerSnowbank from '../../components/obs/BottomCornerSnowbank.svelte';
+import SponsorRotation from '../../components/obs/SponsorRotation.svelte';
+import OBSLayout from '../../layouts/OBSLayout.astro';
+import Position from '../../components/obs/Position.astro';
+import CameraBox from '../../components/obs/CameraBox.astro';
+import Screen from '../../components/obs/Screen.astro';
+---
+
+<OBSLayout title="Solo Camera" description="">
+  <Position xPos={0} yPos={1001}>
+    <BottomCornerSnowbank />
+  </Position>
+
+  <Position xPos={16} yPos={9} w={1555}>
+    <Screen />
+  </Position>
+
+  <Position xPos={16} yPos={910}>
+    <ProgressBar client:load />
+  </Position>
+
+  <Position xPos={830} yPos={910}>
+    <SponsorRotation client:load />
+  </Position>
+
+  <!-- Host Camera and Name tag -->
+
+  <Position xPos={1590} yPos={9}>
+    <CameraBox h={311} w={320} />
+  </Position>
+
+  <Position xPos={1560} yPos={260}>
+    <NameTag client:load host={true} />
+  </Position>
+
+  <!-- Guest Camera and Name tag -->
+  <Position xPos={1590} yPos={339}>
+    <CameraBox h={311} w={320} />
+  </Position>
+
+  <Position xPos={1560} yPos={610}>
+    <NameTag client:load />
+  </Position>
+</OBSLayout>

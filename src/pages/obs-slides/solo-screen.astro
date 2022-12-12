@@ -5,6 +5,7 @@ import BottomCornerSnowbank from '../../components/obs/BottomCornerSnowbank.svel
 import SponsorRotation from '../../components/obs/SponsorRotation.svelte';
 import OBSLayout from '../../layouts/OBSLayout.astro';
 import Position from '../../components/obs/Position.astro';
+import CameraBox from '../../components/obs/CameraBox.astro';
 import Screen from '../../components/obs/Screen.astro';
 ---
 
@@ -13,7 +14,7 @@ import Screen from '../../components/obs/Screen.astro';
     <BottomCornerSnowbank />
   </Position>
 
-  <Position xPos={16} yPos={16} w={1555}>
+  <Position xPos={16} yPos={9} w={1555}>
     <Screen />
   </Position>
 
@@ -25,5 +26,13 @@ import Screen from '../../components/obs/Screen.astro';
     <SponsorRotation client:load />
   </Position>
 
-  <NameTag client:load />
+  <!-- Host Camera and Name tag -->
+
+  <Position xPos={1590} yPos={9}>
+    <CameraBox h={311} w={320} />
+  </Position>
+
+  <Position xPos={1560} yPos={260}>
+    <NameTag client:load host={true} />
+  </Position>
 </OBSLayout>
