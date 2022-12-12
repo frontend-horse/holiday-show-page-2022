@@ -66,13 +66,13 @@ import Sleigh from '../../public/images/header_elements/sleigh.png';
             (event.pageY / window.innerHeight - 0.25).toString()
           );
         });
-        document.addEventListener('scroll', () => {
-          document.documentElement.style.setProperty(
-            '--scroll',
-            (window.scrollY / window.innerHeight).toString()
-          );
-        });
       }
+      document.addEventListener('scroll', () => {
+        document.documentElement.style.setProperty(
+          '--scroll',
+          (window.scrollY / window.innerHeight).toString()
+        );
+      });
 
       // Set initial value or it doesn't work until you scroll
       document.documentElement.style.setProperty('--scroll', '0');
