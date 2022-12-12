@@ -2,7 +2,7 @@
   import { onMount } from 'svelte';
   import { campaignData } from './stores.js';
 
-  // console.log($campaignData);
+  console.log($campaignData);
 
   import gsap from 'gsap';
   import ChristmasTree from './ChristmasTree.svelte';
@@ -74,15 +74,10 @@
     mainTl.tweenTo(totalDuration * percentComplete);
 
     // mainTl.timeScale(4);
-    // mainTl.progress(0.67);
 
     // TODO: Write a function to update the progress of the timeline based on the donation and index
-    // TODO: Add gsap labels between the tweens to determine where the progress should be
   });
 </script>
-
-<!-- Create an instance of the svg #christmas-tree with 'use' -->
-<!-- loop through and make 9 divs -->
 
 <div class="progress-bar">
   <div class="header-row">
