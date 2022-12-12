@@ -1,9 +1,10 @@
 ---
-import * as prismicH from "@prismicio/helpers";
-import Layout from "../../layouts/Layout.astro";
+import * as prismicH from '@prismicio/helpers';
+import Layout from '../../layouts/Layout.astro';
+import { Icon } from 'astro-icon';
 
-import { getAllCommunitySponsors } from "../../lib/prismicio";
-import { CommunitySponsorDocument } from "../../../types.generated";
+import { getAllCommunitySponsors } from '../../lib/prismicio';
+import { CommunitySponsorDocument } from '../../../types.generated';
 
 export async function getStaticPaths() {
   const allPages = await getAllCommunitySponsors();
@@ -21,30 +22,138 @@ const { title, link, logo, description, organizers } = props.data;
 
 const descriptionHTML = prismicH.asHTML(description);
 ---
+<Layout
+  title={`${title} - Community - Holiday Snowtacular`}
+  description={`${title} is a community sponsoring the 2022 Holiday Snowtacular in an effort to raise $20,000 for Doctors Without Borders!`}
+>
+  <main class="community-supporter">
+    <div class="community-supporter-heading">
+      <span class="community-supporter-eyebrow">Community</span>
+      <h1 class="community-supporter-name">{title}</h1>
+    </div>
+    <div class="community-supporter-logo-container">
+      <img src={logo.url} alt={`${title} logo`} />
+    </div>
+    <div class="community-supporter-description">
+      <Fragment set:html="descriptionHTML" />
+    </div>
 
-<Layout title={`${title} - Community Sponsor - Holiday Snowtacular`}>
-  <main>
-    <h1>{title}</h1>
-    <img src={logo.url} alt="" />
-    {
-      organizers.length ? (
-        <div>
-          <p>Run by:</p>
-          <ul>
-            {organizers.map((organizer) => (
-              <li>{organizer.name}</li>
-            ))}
-          </ul>
-        </div>
-      ) : (
-        ""
-      )
-    }
-    <Fragment set:html="descriptionHTML" />
-    <p>
-      <a href={link.url}>Visit Site</a>
-    </p>
+    <div class="community-supporter-links">
+      <h2>Links</h2>
+      <ul>
+        <li>
+          <a href={link.url} class="community-supporter-link">
+            <Icon name="mdi:link-variant" class="link-icon" />
+            <span>Join Discord</span>
+          </a>
+        </li>
+      </ul>
+    </div>
   </main>
-</Layout>
 
-<style></style>
+  <style lang="scss">
+    @import '../../styles/mixins.scss';
+
+    .community-supporter {
+      display: grid;
+      grid-template-areas: 'logo' 'heading' 'description' 'cta' 'links' 'video';
+      max-width: 1136px;
+      gap: var(--space-xs);
+      margin: var(--space-m) auto 0;
+      padding: 0 var(--space-s);
+    }
+
+    .community-supporter-heading {
+      grid-area: heading;
+    }
+
+    .community-supporter-eyebrow {
+      text-transform: uppercase;
+    }
+
+    .community-supporter-logo-container {
+      background: #0006;
+      padding: var(--space-l-xl);
+      border-radius: var(--space-2xs);
+      width: fit-content;
+      margin: 0 auto;
+      grid-area: logo;
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      max-width: 500px;
+
+      @include forced-colors-background();
+    }
+
+    .community-supporter-logo-container > img {
+      max-height: 300px;
+      width: 100%;
+      height: auto;
+    }
+
+    .community-supporter-video {
+      grid-area: video;
+    }
+
+    .community-supporter-video-iframe {
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 16 / 9;
+    }
+
+    .community-supporter-cta {
+      grid-area: cta;
+    }
+
+    .community-supporter-description {
+      grid-area: description;
+    }
+
+    .community-supporter-links {
+      grid-area: links;
+
+      ul {
+        display: grid;
+        gap: var(--space-2xs);
+      }
+    }
+
+    .community-supporter-link {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: var(--space-3xs);
+      color: white;
+      font-weight: 400;
+      text-decoration-line: none;
+      font-size: var(--step--1);
+      text-align: left;
+    }
+
+    .community-supporter-link:hover {
+      text-decoration-line: underline;
+    }
+    .link-icon {
+      width: var(--step-0);
+      @media (forced-colors: none) {
+        color: var(--accent);
+      }
+    }
+    h2 {
+      font-size: var(--step-1);
+    }
+
+    @media screen and (min-width: 768px) {
+      .community-supporter {
+        grid-template-areas: 'logo heading' 'logo description' 'links description' 'links cta' 'links video';
+        grid-template-columns: 1fr 2fr;
+        gap: var(--space-s-m) var(--space-l-xl);
+      }
+    }
+
+    .button {
+      outline: 2px solid var(--gray-6);
+    }
+  </style>
+</Layout>
