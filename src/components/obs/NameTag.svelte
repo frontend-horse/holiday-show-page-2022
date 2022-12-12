@@ -3,7 +3,7 @@
   import { currentGuest } from './stores.js';
 
   $: displayName = host ? 'Alex Trost' : $currentGuest?.name;
-  $: fontSize = displayName?.length > 17 ? '24px' : '32px';
+  $: fontSize = displayName?.length > 16 ? '24px' : '32px';
 </script>
 
 <div class="nametag">
