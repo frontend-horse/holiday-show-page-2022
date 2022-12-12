@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'Poppins';
-  src: url('/fonts/Poppins/Poppins-Variable.woff2') format('woff2'),
-    url('/fonts/Poppins/Poppins-Variable.woff') format('woff');
+  src: url('/fonts/Poppins/Poppins-Variable-latin.woff2') format('woff2'),
+    url('/fonts/Poppins/Poppins-Variable-latin.woff') format('woff');
   font-weight: 100 900;
   font-display: swap;
   font-style: normal;
@@ -9,14 +9,14 @@
 
 @font-face {
   font-family: 'Recoleta-Bold';
-  src: url('/fonts/Recoleta-Bold/font.woff2') format('woff2'),
-    url('/fonts/Recoleta-Bold/font.woff') format('woff');
+  src: url('/fonts/Recoleta-Bold/Recoleta-Bold-latin.woff2') format('woff2'),
+    url('/fonts/Recoleta-Bold/Recoleta-Bold-latin.woff') format('woff');
 }
 
 @font-face {
   font-family: 'Recoleta-Medium';
-  src: url('/fonts/Recoleta-Medium/font.woff2') format('woff2'),
-    url('/fonts/Recoleta-Medium/font.woff') format('woff');
+  src: url('/fonts/Recoleta-Medium/Recoleta-Medium-latin.woff2') format('woff2'),
+    url('/fonts/Recoleta-Medium/Recoleta-Medium-latin.woff') format('woff');
 }
 
 :root {
