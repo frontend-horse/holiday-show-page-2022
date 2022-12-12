@@ -7,5 +7,12 @@ import sitemap from "@astrojs/sitemap";
 // https://astro.build/config
 export default defineConfig({
   site: process.env.URL || 'http://localhost:3000',
-  integrations: [svelte(), image(), prefetch(), sitemap()]
+  integrations: [
+    svelte(),
+    image(),
+    prefetch(),
+    sitemap({
+      filter: (page) => !page.includes('obs-scenes')
+    })
+  ]
 });
