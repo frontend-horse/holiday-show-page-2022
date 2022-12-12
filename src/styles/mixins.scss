@@ -29,8 +29,14 @@ $moveMultiplier: 200px;
 
 @mixin headerElementParallax($multiplier) {
   // transform-origin: 20% 20%;
-  @include buildTransform($multiplier, fine);
-  @include buildTransform($multiplier, coarse);
+
+  @media (pointer: fine) {
+    @include buildTransform($multiplier, fine);
+  }
+
+  @media (pointer: coarse) {
+    @include buildTransform($multiplier, coarse);
+  }
 }
 
 // @mixin snow($multiplier) {

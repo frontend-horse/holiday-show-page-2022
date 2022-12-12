@@ -55,7 +55,7 @@ import Sleigh from '../../public/images/header_elements/sleigh.png';
 
   window.addEventListener('DOMContentLoaded', () => {
     if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      if (window.matchMedia('(pointer:fine').matches) {
+      if (window.matchMedia('(pointer:fine)').matches) {
         document.addEventListener('mousemove', (event) => {
           document.documentElement.style.setProperty(
             '--mouseX',
