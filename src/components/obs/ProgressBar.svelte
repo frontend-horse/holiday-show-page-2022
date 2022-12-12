@@ -95,7 +95,7 @@
     if (!mainTl) return;
     gsap.to(mainTl, {
       progress: percentComplete,
-      duration: 1,
+      duration: 2,
     });
   }
 
