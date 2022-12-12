@@ -91,12 +91,16 @@
     );
   }, 5000);
 
-  $: percentComplete = totalRaised / 20000;
-  $: totalRaised,
+  function updateProgressBarAnimation(percentComplete) {
+    if (!mainTl) return;
     gsap.to(mainTl, {
       progress: percentComplete,
       duration: 1,
     });
+  }
+
+  $: percentComplete = totalRaised / 20000;
+  $: totalRaised, updateProgressBarAnimation(percentComplete);
 </script>
 
 <div class="progress-bar">
