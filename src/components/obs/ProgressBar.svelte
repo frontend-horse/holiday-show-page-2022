@@ -7,8 +7,11 @@
   import gsap from 'gsap';
   import ChristmasTree from './ChristmasTree.svelte';
 
+  let totalRaised = 0;
+  let mainTl, totalDuration, percentComplete;
+
   onMount(() => {
-    const mainTl = gsap.timeline({ defaults: { ease: 'none' } });
+    mainTl = gsap.timeline({ defaults: { ease: 'none' } });
 
     gsap.set(`.christmastree`, {
       transformOrigin: 'bottom center',
@@ -43,7 +46,11 @@
 
     function createTreeTimeline(i) {
       const tl = gsap.timeline({ defaults: { ease: 'elastic.out(1, 0.3)' } });
-      tl.to(`.tree-${i} .christmastree`, { scale: 1, duration: 3 });
+      tl.to(`.tree-${i} .christmastree`, {
+        scale: 1,
+        duration: 3,
+        ease: 'none',
+      });
       tl.to(`.tree-${i} .tree-placeholder`, { opacity: 0, duration: 1 }, '-=3');
       tl.to(`.tree-${i} .ball-1`, { scale: 1, duration: 1 });
       tl.to(`.tree-${i} .ball-2`, { scale: 1, duration: 1 });
@@ -68,21 +75,40 @@
       createTreeTimeline(i);
     }
 
-    const totalDuration = 13 * 10;
-    const percentComplete = 0.12;
     mainTl.pause();
-    mainTl.tweenTo(totalDuration * percentComplete);
 
     // mainTl.timeScale(4);
 
     // TODO: Write a function to update the progress of the timeline based on the donation and index
   });
+
+  totalDuration = 13 * 10; // Seconds x trees
+  totalRaised = 0;
+
+  setInterval((mainTl) => {
+    totalRaised += 500;
+    console.log(
+      '🚀 ~ file: ProgressBar.svelte:80 ~ setInterval ~ percentComplete',
+      percentComplete
+    );
+  }, 5000);
+
+  $: percentComplete = totalRaised / 20000;
+  $: totalRaised,
+    gsap.to(mainTl, {
+      progress: percentComplete,
+      duration: 1,
+    });
 </script>
 
 <div class="progress-bar">
   <div class="header-row">
     <div class="header">Fundraiser Progress</div>
-    <div class="header">$5,500 / $20,000</div>
+    <!-- use the Intl API to show totalRaised like $1,000 -->
+
+    <div class="header">
+      ${Intl.NumberFormat().format(totalRaised)} / $20,000
+    </div>
   </div>
   <div class="christmastree-container">
     {#each [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] as i}
