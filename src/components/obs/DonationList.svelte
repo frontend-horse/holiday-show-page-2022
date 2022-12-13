@@ -1,0 +1,153 @@
+<script>
+  import { useMachine } from '@xstate/svelte';
+  import { createMachine } from 'xstate';
+
+  // import { faker } from '@faker-js/faker';
+  // const container = document.querySelector('.letters');
+
+  // let latestDonors = [];
+  // const genDom = (donor) => `<div class="letter">
+  //         <div class="name">${donor.name}</div>
+  //         <div class="amount">${donor.amount}$</div>
+  //       </div>`;
+  // const addPerson = () => {
+  //   latestDonors.push({
+  //     name: faker.name.fullName(),
+  //     amount: faker.finance.amount(1, 9999),
+  //     message: faker.lorem.text(),
+  //   });
+  // };
+  // for (let index = 0; index < 10; index++) {
+  //   addPerson();
+  // }
+  // for (const donor of latestDonors) {
+  //   container.innerHTML += genDom(donor);
+  // }
+  // function onNewDonor(donor) {
+  //   latestDonors.push(donor);
+  // }
+
+  const toggleMachine = createMachine({
+    id: 'toggle',
+    initial: 'inactive',
+    states: {
+      inactive: {
+        on: { TOGGLE: 'active' },
+      },
+      active: {
+        on: { TOGGLE: 'inactive' },
+      },
+    },
+  });
+
+  const { state, send } = useMachine(toggleMachine);
+</script>
+
+<div>
+  <button on:click={() => send('TOGGLE')}>
+    {$state.value === 'inactive'
+      ? 'Click to activate'
+      : 'Active! Click to deactivate'}
+  </button>
+  <!-- 
+    <div class="envelope">
+      <div class="flap" />
+    <div class="letter">
+      <div class="eyebrow">New donation</div>
+      <div class="name">Leif van de longe Namen</div>
+      <div class="amount">50$</div>
+      <div class="message">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Temporibus,
+        earum eum, tempora nemo iure quisquam, blanditiis dolor ipsum et
+        voluptatibus enim debitis asperiores quas. Culpa aspernatur assumenda
+        excepturi deleniti nostrum.
+      </div>
+    </div>
+    <div class="body" />
+  </div>
+  <div class="donation-list">
+    <h3>Nice List</h3>
+    <div class="letters" />
+  </div> -->
+</div>
+
+<style lang="scss">
+  .donation-list {
+    background: wheat;
+    width: 105%;
+    height: 100%;
+    z-index: 5;
+    padding: 20px;
+    color: #000;
+    transform: rotate(-3deg) translate(5px, 10px);
+    box-shadow: 0 5px 20px rgba($color: #000000, $alpha: 0.5);
+    position: relative;
+  }
+  .letters {
+    display: flex;
+    flex-direction: column;
+  }
+  h3 {
+    margin-bottom: 10px;
+    opacity: 0.3;
+  }
+  .letter {
+    width: 120%;
+    padding-bottom: 10px;
+    color: #000;
+    border-radius: 0.25rem;
+    .name {
+      font-family: 'Recoleta';
+      font-weight: bold;
+    }
+  }
+  .envelope {
+    position: absolute;
+    background: cornflowerblue;
+    box-shadow: 0 2px 4px rgba($color: #000000, $alpha: 0.5);
+    bottom: -100%;
+    right: 0;
+    max-width: 320px;
+    padding: 2px;
+    z-index: 100;
+    transform: rotate(-2deg) translateX(10px) translateY(-200%);
+    transform-origin: 100% 100%;
+    .flap {
+      width: 73.8%;
+      height: 96%;
+      background: #fff;
+      border-radius: 1rem;
+      position: absolute;
+      top: 0;
+      transform-origin: 0% 0%;
+      rotate: -45deg;
+      translate: -0.5rem 0;
+      overflow: hidden;
+      // z-index: -1;
+    }
+    .letter {
+      background: wheat;
+      width: 100%;
+      padding: 15px;
+      max-height: 240px;
+      // overflow: hidden;
+      box-shadow: 0 5px 20px rgba($color: #000000, $alpha: 0.5);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      // translate: 0% -100%;
+      padding-bottom: 200px;
+      gap: 10px;
+      .name {
+        font-size: 150%;
+        line-height: 1.1;
+      }
+      .amount {
+      }
+      .message {
+        font-size: 85%;
+        text-align: left;
+      }
+    }
+  }
+</style>

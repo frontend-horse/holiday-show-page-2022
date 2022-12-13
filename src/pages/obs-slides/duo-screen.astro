@@ -3,6 +3,7 @@ import ProgressBar from '../../components/obs/ProgressBar.svelte';
 import NameTag from '../../components/obs/NameTag.svelte';
 import BottomCornerSnowbank from '../../components/obs/BottomCornerSnowbank.svelte';
 import SponsorRotation from '../../components/obs/SponsorRotation.svelte';
+import DonationList from '../../components/obs/DonationList.svelte';
 import OBSLayout from '../../layouts/OBSLayout.astro';
 import Position from '../../components/obs/Position.astro';
 import CameraBox from '../../components/obs/CameraBox.astro';
@@ -44,4 +45,6 @@ import Screen from '../../components/obs/Screen.astro';
   <Position xPos={1560} yPos={610}>
     <NameTag client:load />
   </Position>
+
+  <Position xPos={1600} yPos={810}><DonationList client:load /></Position>
 </OBSLayout>
