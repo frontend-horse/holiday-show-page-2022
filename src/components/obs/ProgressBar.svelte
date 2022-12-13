@@ -3,10 +3,8 @@
   import { campaignData } from './stores.js';
   import gsap from 'gsap';
   import ChristmasTree from './ChristmasTree.svelte';
-  console.log($campaignData);
 
-  let totalRaised = 0;
-  let mainTl, totalDuration, percentComplete;
+  let mainTl, percentComplete;
 
   onMount(() => {
     mainTl = gsap.timeline({ defaults: { ease: 'none' } });
@@ -74,21 +72,13 @@
     }
 
     mainTl.pause();
-
-    // mainTl.timeScale(4);
-
-    // TODO: Write a function to update the progress of the timeline based on the donation and index
   });
 
-  totalDuration = 13 * 10; // Seconds x trees
-  totalRaised = 0;
+  let totalDuration = 13 * 10; // Seconds x trees
+  let totalRaised = 0;
 
-  setInterval((mainTl) => {
+  setInterval(() => {
     totalRaised += 500;
-    console.log(
-      '🚀 ~ file: ProgressBar.svelte:80 ~ setInterval ~ percentComplete',
-      percentComplete
-    );
   }, 5000);
 
   function updateProgressBarAnimation(percentComplete) {
@@ -99,8 +89,8 @@
     });
   }
 
-  $: percentComplete = totalRaised / 20000;
-  $: totalRaised, updateProgressBarAnimation(percentComplete);
+  $: percentComplete = $campaignData?.totalAmountRaised / 20000;
+  $: $campaignData, updateProgressBarAnimation(percentComplete);
 </script>
 
 <div class="progress-bar">
@@ -109,7 +99,7 @@
     <!-- use the Intl API to show totalRaised like $1,000 -->
 
     <div class="header">
-      ${Intl.NumberFormat().format(totalRaised)} / $20,000
+      ${Intl.NumberFormat().format($campaignData?.totalAmountRaised || 0)} / $20,000
     </div>
   </div>
   <div class="christmastree-container">
