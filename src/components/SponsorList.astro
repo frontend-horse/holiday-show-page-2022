@@ -22,7 +22,7 @@ const bodyHTML = prismicH.asHTML(slice.primary.body);
       {
         sponsors.map((sponsor) => (
           <li class="sponsor">
-            <a href={`/sponsor/${sponsor.uid}`}>
+            <a href={`/sponsor/${sponsor.uid}`} rel="prefetch">
               <img src={sponsor.data.logo.url} alt={sponsor.data.name} />
             </a>
           </li>
@@ -38,7 +38,7 @@ const bodyHTML = prismicH.asHTML(slice.primary.body);
   .sponsors {
     .sponsor-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(15ch, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(20ch, 1fr));
       grid-gap: var(--space-s);
     }
 
@@ -54,10 +54,10 @@ const bodyHTML = prismicH.asHTML(slice.primary.body);
       &:hover {
         @media (forced-colors: none) {
           background: rgba(0, 0, 0, 0.3);
-		}
+        }
       }
 
-	  @include forced-colors-background();
+      @include forced-colors-background();
 
       a {
         &::before {

@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'Poppins';
-  src: url('/fonts/Poppins/Poppins-Variable.woff2') format('woff2'),
-    url('/fonts/Poppins/Poppins-Variable.woff') format('woff');
+  src: url('/fonts/Poppins/Poppins-Variable-latin.woff2') format('woff2'),
+    url('/fonts/Poppins/Poppins-Variable-latin.woff') format('woff');
   font-weight: 100 900;
   font-display: swap;
   font-style: normal;
@@ -9,14 +9,14 @@
 
 @font-face {
   font-family: 'Recoleta-Bold';
-  src: url('/fonts/Recoleta-Bold/font.woff2') format('woff2'),
-    url('/fonts/Recoleta-Bold/font.woff') format('woff');
+  src: url('/fonts/Recoleta-Bold/Recoleta-Bold-latin.woff2') format('woff2'),
+    url('/fonts/Recoleta-Bold/Recoleta-Bold-latin.woff') format('woff');
 }
 
 @font-face {
   font-family: 'Recoleta-Medium';
-  src: url('/fonts/Recoleta-Medium/font.woff2') format('woff2'),
-    url('/fonts/Recoleta-Medium/font.woff') format('woff');
+  src: url('/fonts/Recoleta-Medium/Recoleta-Medium-latin.woff2') format('woff2'),
+    url('/fonts/Recoleta-Medium/Recoleta-Medium-latin.woff') format('woff');
 }
 
 :root {
@@ -25,10 +25,6 @@
   /*   Headers   */
   --header-font-bold: 'Recoleta-Bold', serif;
   --header-font: 'Recoleta-Medium', serif;
-}
-
-html {
-  font-size: 16px;
 }
 
 body {
@@ -43,12 +39,18 @@ p {
 }
 
 a:where(:not(.button)) {
+  font-family: var(--body-font);
   font-size: var(--step-0);
-  color: var(--body--link);
-  text-decoration-color: var(--body--link-underline);
-  text-decoration-style: underline;
-  text-decoration-thickness: 3px;
-  font-weight: 600;
+  font-weight: 700;
+  text-align: center;
+  color: var(--body-font-color);
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--body--link-underline);
+    text-decoration-style: underline;
+    text-decoration-thickness: 3px;
+  }
 }
 
 h3 {

@@ -10,6 +10,7 @@ import Layout from '../layouts/Layout.astro';
 import SliceZone from '../components/SliceZone.astro';
 import HolidaySnowtacularLogo from '../components/HolidaySnowtacularLogo.astro';
 import RegistrationButton from '../components/RegistrationButton.astro';
+import HeroParallax from '../components/HeroParallax.astro';
 
 const page = await getHomepage();
 
@@ -60,16 +61,7 @@ const bodyText = prismicH.asText(page.data.body);
           </RegistrationButton>
         </div>
       </div>
-      <!-- <div class="hero-column"> -->
-      <Image
-        src={placeholderImage}
-        alt=""
-        width={363}
-        loading="eager"
-        fetchpriority="high"
-        style={{ margin: 'auto' }}
-      />
-      <!-- </div> -->
+      <HeroParallax />
     </section>
     <div class="slice-container">
       <SliceZone slices={page.data.slices} />
@@ -83,6 +75,8 @@ const bodyText = prismicH.asText(page.data.body);
   .grid-container {
     display: grid;
     place-items: center;
+    padding: var(--space-s-m);
+    overflow-x: hidden;
   }
   .slice-container {
     display: grid;
@@ -93,6 +87,7 @@ const bodyText = prismicH.asText(page.data.body);
     border-radius: var(--space-s-m);
     max-width: 1136px;
     width: 100%;
+    z-index: 10;
   }
 
   .hero {
@@ -100,7 +95,7 @@ const bodyText = prismicH.asText(page.data.body);
     --gap: var(--space-s);
 
     display: grid;
-    grid-gap: var(--gap);
+    grid-gap: 0 var(--gap);
     grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--min)), 1fr));
     max-width: 1136px;
     width: 100%;
@@ -110,7 +105,7 @@ const bodyText = prismicH.asText(page.data.body);
     display: grid;
     place-content: center;
     font-family: var(--header-font);
-    padding-block: var(--space-2xl);
+    padding-block-end: var(--space-2xl);
     margin-inline: auto;
     text-align: center;
     width: 100%;
@@ -136,6 +131,15 @@ const bodyText = prismicH.asText(page.data.body);
         margin-inline: var(--space-2xs);
       }
     }
+
+    @media (min-width: 640px) {
+      padding-block: var(--space-2xl);
+    }
+  }
+
+  .snowtacular-logo {
+    width: 80%;
+    margin: 0 auto;
   }
 
   .snowtacular-logo {
