@@ -27,6 +27,13 @@
           "thumbnails": []
         }
       },
+      "scheduledTime": {
+        "type": "Timestamp",
+        "config": {
+          "label": "Scheduled Time",
+          "placeholder": ""
+        }
+      },
       "jobTitle": {
         "type": "Text",
         "config": {

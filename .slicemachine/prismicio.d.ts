@@ -125,6 +125,17 @@ interface GuestDocumentData {
      */
     avatar: prismicT.ImageField<never>;
     /**
+     * Scheduled Time field in *Guest*
+     *
+     * - **Field Type**: Timestamp
+     * - **Placeholder**: *None*
+     * - **API ID Path**: guest.scheduledTime
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/timestamp
+     *
+     */
+    scheduledTime: prismicT.TimestampField;
+    /**
      * Job Title field in *Guest*
      *
      * - **Field Type**: Text

@@ -22,14 +22,19 @@ const bodyHTML = prismicH.asHTML(slice.primary.body);
     <Fragment set:html="bodyHTML" />
     <div class="guest-grid">
       {
-        allGuests.map((guest) => (
-          <article class="guest">
-            <GuestAvatar guest={guest} />
-            <a class="name" href={`/guest/${guest.uid}`} rel="prefetch">
-              {guest.data.name}
-            </a>
-          </article>
-        ))
+        allGuests
+          .sort((a, b) =>
+            a.data.scheduledTime > b.data.scheduledTime ? 1 : -1
+          )
+          .map((guest) => (
+            <article class="guest">
+              <GuestAvatar guest={guest} />
+              {/* guest.data.scheduledTime */}
+              <a class="name" href={`/guest/${guest.uid}`} rel="prefetch">
+                {guest.data.name}
+              </a>
+            </article>
+          ))
       }
     </div>
   </div>
