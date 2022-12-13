@@ -59,13 +59,14 @@ if (isHomepage) {
     <title>{title}</title>
     <OpenGraph title={title} description={description} />
     <StructuredData />
-    <script id="luma-checkout" defer src="https://embed.lu.ma/checkout-button.js"
+    <script
+      id="luma-checkout"
+      defer
+      src="https://embed.lu.ma/checkout-button.js"
     ></script>
   </head>
   <body>
-    <!-- <Snow className="back" />
-    <Snow className="middle" />
-    <Snow className="front" /> -->
+    <Snow />
     <NavBar />
     <slot />
     <Footer />
