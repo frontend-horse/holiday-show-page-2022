@@ -2,6 +2,10 @@
 
 <script>
   /* https://embed.im/snow */
+  if (window.matchMedia('(prefers-reduced-motion)').matches) {
+    return;
+  }
+
   var embedimSnow = document.getElementById('embedim--snow');
   if (!embedimSnow) {
     function embRand(a, b) {
