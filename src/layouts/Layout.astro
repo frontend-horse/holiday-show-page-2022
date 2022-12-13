@@ -12,6 +12,7 @@ import Footer from '../components/Footer.astro';
 import StructuredData from '../components/StructuredData.astro';
 import OpenGraph from '../components/OpenGraph.astro';
 import FaviconLinks from '../components/FaviconLinks.astro';
+import FontPreload from '../components/FontPreload.astro';
 
 const isHomepage = Astro.url.pathname === '/';
 
@@ -53,14 +54,19 @@ if (isHomepage) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <FaviconLinks />
+    <FontPreload />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <OpenGraph title={title} description={description} />
     <StructuredData />
-    <script id="luma-checkout" src="https://embed.lu.ma/checkout-button.js"
+    <script
+      id="luma-checkout"
+      defer
+      src="https://embed.lu.ma/checkout-button.js"
     ></script>
   </head>
   <body>
+    <Snow />
     <NavBar />
     <slot />
     <Footer />
