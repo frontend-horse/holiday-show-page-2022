@@ -113,8 +113,9 @@ const ariaCurrent = isHomepage ? 'page' : false;
       height: 100%;
       width: auto;
       max-height: 60px;
+
       path {
-        include forced-colors-fill-current-color();
+        @include forced-colors-fill-current-color();
       }
     }
   }
