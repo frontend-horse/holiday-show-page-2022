@@ -2,7 +2,7 @@ const fetch = require('node-fetch');
 
 const sitemapUrl = new URL(
   '/sitemap-index.html',
-  process.env.SITE || 'https://fundraiser.horse'
+  process.env.URL || 'https://fundraiser.horse'
 ).toString();
 
 exports.handler = async (event) => {
