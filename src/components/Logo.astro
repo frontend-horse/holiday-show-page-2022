@@ -93,6 +93,7 @@ const ariaCurrent = isHomepage ? 'page' : false;
 </a>
 
 <style lang="scss">
+  @import 'src/styles/mixins.scss';
   .frontend-horse-logo {
     path {
       fill: var(--accent);
@@ -112,6 +113,9 @@ const ariaCurrent = isHomepage ? 'page' : false;
       height: 100%;
       width: auto;
       max-height: 60px;
+      path {
+        include forced-colors-fill-current-color();
+	  }
     }
   }
 </style>
