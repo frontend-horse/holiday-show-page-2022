@@ -1,6 +1,9 @@
 const fetch = require('node-fetch');
 
-const sitemapUrl = 'https://fundraiser.frontend.horse/sitemap-index.xml';
+const sitemapUrl = new URL(
+  '/sitemap-index.html',
+  process.env.SITE || 'https://fundraiser.horse'
+).toString();
 
 exports.handler = async (event) => {
   try {
