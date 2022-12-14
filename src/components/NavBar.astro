@@ -2,7 +2,7 @@
 import Logo from './Logo.astro';
 import RegistrationButton from './RegistrationButton.astro';
 
-const {pathname} = Astro.url;
+const { pathname } = Astro.url;
 ---
 
 <header role="banner">
@@ -54,8 +54,10 @@ const {pathname} = Astro.url;
       flex: 1;
       justify-content: flex-end;
       order: 3;
-      @media (max-width: 640px) {
-        display: none;
+      html.index & {
+        @media (max-width: 640px) {
+          display: none;
+        }
       }
     }
   }

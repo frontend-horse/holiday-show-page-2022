@@ -1,0 +1,43 @@
+---
+import OBSLayout from '../../layouts/OBSScene.astro';
+import DonationList from '../../components/obs/DonationList.astro';
+---
+
+<OBSLayout>
+  <div class="screen"></div>
+  <div class="widgets">
+    <div class="donations">
+      <DonationList />
+    </div>
+  </div>
+</OBSLayout>
+
+<style lang="scss">
+  .screen {
+    width: 80%;
+    height: auto;
+    aspect-ratio: 16/9;
+    background: #000;
+    border-radius: 0 0 1rem 0;
+  }
+  .widgets {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, 20%);
+    grid-template-rows: repeat(5, 20%);
+    grid-template-areas:
+      '. . . . .'
+      '. . . . .'
+      '. . . . .'
+      '. . . . donations'
+      '. . . . donations';
+    z-index: 10;
+  }
+
+  .donations {
+    grid-area: donations;
+  }
+</style>

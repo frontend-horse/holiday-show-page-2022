@@ -1,0 +1,41 @@
+---
+import '../styles/main.scss';
+import Snow from '../components/Snow.astro';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920,height=1080 initial-scale=1" />
+  </head>
+  <body>
+    <Snow class="front" />
+    <div id="root">
+      <slot />
+    </div>
+  </body>
+</html>
+
+<style lang="scss" is:global>
+  #root {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(
+      180deg,
+      hsl(209deg 100% 9%) 0%,
+      hsl(218deg 93% 12%) 11%,
+      hsl(226deg 87% 15%) 22%,
+      hsl(236deg 60% 18%) 33%,
+      hsl(245deg 63% 21%) 44%,
+      hsl(253deg 67% 24%) 56%,
+      hsl(263deg 60% 26%) 67%,
+      hsl(272deg 53% 29%) 78%,
+      hsl(281deg 46% 32%) 89%,
+      hsl(290deg 40% 35%) 100%
+    );
+  }
+</style>

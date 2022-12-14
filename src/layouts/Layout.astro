@@ -23,7 +23,7 @@ const longPageBackground = `linear-gradient(
     hsl(339deg 37% 57%) 70%,
     hsl(7deg 60% 68%) 85%,
     hsl(29deg 77% 73%) 100%
-  );`;
+  )`;
 
 const shortPageBackground = `linear-gradient(
     180deg,
@@ -37,7 +37,7 @@ const shortPageBackground = `linear-gradient(
     hsl(272deg 53% 29%) 78%,
     hsl(281deg 46% 32%) 89%,
     hsl(290deg 40% 35%) 100%
-  );`;
+  )`;
 
 let pageBackground;
 
@@ -49,7 +49,7 @@ if (isHomepage) {
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class={`${isHomepage ? 'index' : ''}`}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -84,7 +84,12 @@ if (isHomepage) {
 
       body {
         min-height: 100vh;
-        background: var(--pageBackground);
+        max-width: 100dvw;
+        overflow-x: hidden;
+
+        background: url('/images/foreground-snow.svg'), var(--pageBackground);
+        background-size: 200px, auto;
+        background-repeat: repeat, auto;
       }
 
       section {
@@ -95,23 +100,6 @@ if (isHomepage) {
         p {
           margin-bottom: var(--space-xs-s);
         }
-      }
-
-      .back {
-        background-size: 4.8rem 4.8rem;
-        @include snow(0.2);
-        z-index: -1;
-      }
-      .middle {
-        background-size: 12rem 12rem;
-        z-index: 2;
-        @include snow(0.5);
-      }
-      .front {
-        background-size: 24rem 24rem;
-        z-index: 5;
-        filter: blur(3px);
-        @include snow(1);
       }
     </style>
   </body>

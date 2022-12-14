@@ -2,15 +2,15 @@ html {
   scroll-behavior: smooth;
   block-size: unset;
 }
+
 body {
   block-size: unset;
-  background-repeat: no-repeat;
   overflow-x: hidden;
 }
 
 // html, body { height: 100%;}
 
-body > footer {
+body>footer {
   position: sticky;
   top: 100vh;
 }
