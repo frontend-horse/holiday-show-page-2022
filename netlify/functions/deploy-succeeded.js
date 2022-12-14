@@ -1,7 +1,7 @@
 const fetch = require('node-fetch');
 
 const sitemapUrl = new URL(
-  '/sitemap-index.html',
+  '/sitemap-index.xml',
   process.env.URL || 'https://fundraiser.horse'
 ).toString();
 
