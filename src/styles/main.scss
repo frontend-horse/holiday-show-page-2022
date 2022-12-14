@@ -1,7 +1,6 @@
+@use "@acab/reset.css";
 @use "utopia";
 @use "globals";
 @use "typography";
 @use "components";
 @use "theme";
-
-@import "@acab/reset.css" layer(reset);
