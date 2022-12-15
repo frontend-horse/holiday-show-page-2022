@@ -1,5 +1,5 @@
 import { readable } from 'svelte/store';
-import { getCampaignData, createFakeDonation } from '../../lib/tiltify';
+import { getCampaignData } from '../../lib/tiltify';
 import { fetchNotionData } from '../../lib/notion';
 import { getAllGuests } from '../../lib/prismicio';
 
@@ -14,7 +14,7 @@ export const campaignData = readable(
 
     fetchDonations();
 
-    const interval = setInterval(fetchDonations, 15000);
+    const interval = setInterval(fetchDonations, 10000);
 
     return function stop() {
       clearInterval(interval);

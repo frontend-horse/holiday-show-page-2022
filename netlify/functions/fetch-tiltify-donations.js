@@ -6,8 +6,12 @@ exports.handler = async (event, context) => {
   // const userID = 467903; // TrostCodes UserId
   const campaignID = 467856; // Holiday snowtacular 2022 Campaign ID
 
-  const campaign = await fetchTiltify(`/campaigns/${campaignID}`);
-  const donations = await fetchTiltify(`/campaigns/${campaignID}/donations`);
+  const campaign = await fetchTiltify(`/api/v3/campaigns/${campaignID}`);
+
+  // TODO: Get donations through pagination
+  const donations = await fetchTiltify(
+    `/api/v3/campaigns/${campaignID}/donations?count=100`
+  );
 
   const body = JSON.stringify({
     fundraiserGoalAmount: campaign.data.fundraiserGoalAmount,
@@ -22,7 +26,7 @@ exports.handler = async (event, context) => {
 };
 
 async function fetchTiltify(param) {
-  const url = (param) => `https://tiltify.com/api/v3/${param}`;
+  const url = (param) => `https://tiltify.com${param}`;
 
   return await fetch(url(param), {
     method: 'GET',

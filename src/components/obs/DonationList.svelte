@@ -1,87 +1,142 @@
 <script>
-  import { useMachine } from '@xstate/svelte';
-  import { createMachine } from 'xstate';
+  import gsap from 'gsap';
+  import { onMount } from 'svelte';
+  import { campaignData } from './stores.js';
+  import DonationListIdle from './DonationListIdle.svelte';
 
-  // import { faker } from '@faker-js/faker';
-  // const container = document.querySelector('.letters');
+  $: newDonationQueue = [];
+  let resolvedDonationQueue = [];
+  let registeredDonationIDs = [];
 
-  // let latestDonors = [];
-  // const genDom = (donor) => `<div class="letter">
-  //         <div class="name">${donor.name}</div>
-  //         <div class="amount">${donor.amount}$</div>
-  //       </div>`;
-  // const addPerson = () => {
-  //   latestDonors.push({
-  //     name: faker.name.fullName(),
-  //     amount: faker.finance.amount(1, 9999),
-  //     message: faker.lorem.text(),
-  //   });
-  // };
-  // for (let index = 0; index < 10; index++) {
-  //   addPerson();
-  // }
-  // for (const donor of latestDonors) {
-  //   container.innerHTML += genDom(donor);
-  // }
-  // function onNewDonor(donor) {
-  //   latestDonors.push(donor);
-  // }
+  $: $campaignData, checkForNewDonations();
 
-  const toggleMachine = createMachine({
-    id: 'toggle',
-    initial: 'inactive',
-    states: {
-      inactive: {
-        on: { TOGGLE: 'active' },
+  function checkForNewDonations() {
+    if ($campaignData?.donations) {
+      const fiveMinutesAgo = Date.now() - 1000 * 60 * 5;
+      // Check if any donations in $campaignData.donations need to be processed
+      // If so, add them to newDonationQueue
+      $campaignData.donations.forEach((donation) => {
+        if (!registeredDonationIDs.includes(donation.id)) {
+          if (
+            donation.completedAt > fiveMinutesAgo ||
+            donation.updatedAt > fiveMinutesAgo
+          ) {
+            newDonationQueue.push(donation);
+          } else {
+            resolvedDonationQueue.push(donation);
+          }
+
+          registeredDonationIDs.push(donation.id);
+        }
+      });
+
+      onNewDonation();
+    }
+  }
+
+  let animationState = 'PAUSED';
+
+  function onNewDonation() {
+    if (newDonationQueue.length) {
+      if (animationState === 'PAUSED') {
+        animationState = 'PLAYING';
+        cycleDonationNotification();
+      }
+    }
+  }
+
+  function cycleDonationNotification() {
+    console.log('Called');
+    const tl = gsap.timeline();
+    tl.fromTo(
+      '.new-donation-notification',
+      { opacity: 0 },
+      { opacity: 1, duration: 0.1 } // Make much longer
+    );
+    tl.to('.new-donation-notification', {
+      opacity: 0,
+      duration: 0.1,
+      delay: 0.5,
+      onComplete: () => {
+        const [first, ...rest] = newDonationQueue;
+        newDonationQueue = rest;
+        resolvedDonationQueue = [...resolvedDonationQueue, first];
+        if (newDonationQueue.length) {
+          cycleDonationNotification();
+        } else {
+          animationState = 'PAUSED';
+        }
       },
-      active: {
-        on: { TOGGLE: 'inactive' },
-      },
-    },
+    });
+  }
+
+  onMount(() => {
+    function init() {
+      console.log('init');
+      gsap.set('.envelope', { y: 600 });
+
+      gsap.set('.new-donation-notification', { opacity: 0 });
+      gsap.set('.donation-list-root', { opacity: 1 });
+      onNewDonation();
+    }
+
+    init();
   });
-
-  const { state, send } = useMachine(toggleMachine);
 </script>
 
-<div>
-  <button on:click={() => send('TOGGLE')}>
-    {$state.value === 'inactive'
-      ? 'Click to activate'
-      : 'Active! Click to deactivate'}
-  </button>
-  <!-- 
-    <div class="envelope">
-      <div class="flap" />
-    <div class="letter">
-      <div class="eyebrow">New donation</div>
-      <div class="name">Leif van de longe Namen</div>
-      <div class="amount">50$</div>
-      <div class="message">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Temporibus,
-        earum eum, tempora nemo iure quisquam, blanditiis dolor ipsum et
-        voluptatibus enim debitis asperiores quas. Culpa aspernatur assumenda
-        excepturi deleniti nostrum.
+<div class="donation-list-root">
+  {#if newDonationQueue.length}
+    <div>
+      <div class="envelope">
+        <svg class="flap" viewBox="0 0 430 215" fill="none">
+          <path
+            d="M229.1 6.1a20 20 0 0 0-28.2 0L6.6 200.4c-4 4-6 9.3-5.8 14.6h428.4a20 20 0 0 0-5.8-14.6L229 6Z"
+            fill="#D9D9D9"
+          />
+        </svg>
+      </div>
+      <div class="letter new-donation-notification">
+        <div class="eyebrow">New donation</div>
+        <div class="name">
+          {newDonationQueue[0].name}
+          {newDonationQueue.length}
+        </div>
+        <div class="amount">${newDonationQueue[0].amount}</div>
+        <div class="message">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+        </div>
       </div>
     </div>
-    <div class="body" />
-  </div>
-  <div class="donation-list">
-    <h3>Nice List</h3>
-    <div class="letters" />
-  </div> -->
+  {:else}
+    <DonationListIdle donations={$campaignData?.donations} />
+  {/if}
 </div>
 
 <style lang="scss">
+  :root {
+    --letter-width: 330px;
+  }
+  .donation-list-root {
+    position: relative;
+    width: var(--letter-width);
+    height: 100%;
+    border: 1px solid red;
+    opacity: 0;
+  }
+
   .donation-list {
     background: wheat;
+    border-radius: 3px;
     width: 105%;
     height: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
     z-index: 5;
     padding: 20px;
     color: #000;
     transform: rotate(-3deg) translate(5px, 10px);
     box-shadow: 0 5px 20px rgba($color: #000000, $alpha: 0.5);
-    position: relative;
   }
   .letters {
     display: flex;
@@ -96,8 +151,9 @@
     padding-bottom: 10px;
     color: #000;
     border-radius: 0.25rem;
+
     .name {
-      font-family: 'Recoleta';
+      font-family: 'Poppins';
       font-weight: bold;
     }
   }
@@ -105,25 +161,20 @@
     position: absolute;
     background: cornflowerblue;
     box-shadow: 0 2px 4px rgba($color: #000000, $alpha: 0.5);
-    bottom: -100%;
-    right: 0;
-    max-width: 320px;
+    /* bottom: -400px; */
+    /* right: 0; */
+    width: 320px;
+
     padding: 2px;
     z-index: 100;
-    transform: rotate(-2deg) translateX(10px) translateY(-200%);
-    transform-origin: 100% 100%;
+    /* transform: rotate(-2deg) translateX(10px) translateY(-200%); */
+    /* transform-origin: 100% 100%; */
     .flap {
-      width: 73.8%;
-      height: 96%;
-      background: #fff;
-      border-radius: 1rem;
       position: absolute;
-      top: 0;
-      transform-origin: 0% 0%;
-      rotate: -45deg;
-      translate: -0.5rem 0;
-      overflow: hidden;
-      // z-index: -1;
+      top: -65%;
+      transform-origin: bottom center;
+
+      z-index: -1;
     }
     .letter {
       background: wheat;
@@ -143,6 +194,7 @@
         line-height: 1.1;
       }
       .amount {
+        /* color: red; */
       }
       .message {
         font-size: 85%;
