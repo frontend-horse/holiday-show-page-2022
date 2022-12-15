@@ -1,6 +1,6 @@
 <script>
-  export let host = false;
   import { currentGuest } from './stores.js';
+  export let host = false;
 
   $: displayName = host ? 'Alex Trost' : $currentGuest?.name;
   $: fontSize = displayName?.length > 16 ? '24px' : '32px';

@@ -1,0 +1,21 @@
+---
+import NameTag from '../../components/obs/NameTag.svelte';
+import Position from '../../components/obs/Position.astro';
+const host = Astro.url.searchParams.get('host')! || '';
+console.log(Astro.params, 'parans');
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Name Tag</title>
+  </head>
+  <body>
+    <Position xPos={20} yPos={20}>
+      <NameTag client:only />
+    </Position>
+  </body>
+</html>
