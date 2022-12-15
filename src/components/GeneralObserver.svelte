@@ -35,7 +35,7 @@
 
     function handler() {
       const bcr = container.getBoundingClientRect();
-      console.log(bcr.top, bcr.bottom);
+
       if (center) {
         intersecting =
           bcr.bottom + bottom > 0 &&

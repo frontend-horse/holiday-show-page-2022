@@ -20,17 +20,20 @@
     "@astrojs/prefetch": "^0.1.1",
     "@astrojs/sitemap": "^1.0.0",
     "@astrojs/svelte": "^1.0.2",
+    "@notionhq/client": "^2.2.2",
     "@prismicio/client": "^6.7.1",
     "@prismicio/helpers": "^2.3.6",
+    "@xstate/svelte": "^2.0.1",
     "astro": "^1.6.12",
     "astro-icon": "^0.8.0",
-    "motion": "^10.15.3",
+    "gsap": "^3.11.3",
     "node-fetch": "^2.6.7",
     "normalize-url": "^8.0.0",
     "open-props": "^1.5.1",
     "sass": "^1.56.1",
     "svelte": "^3.53.1",
-    "tiltifyapi": "^2.2.3"
+    "tiltifyapi": "^2.2.3",
+    "xstate": "^4.35.0"
   },
   "devDependencies": {
     "@faker-js/faker": "^7.6.0",

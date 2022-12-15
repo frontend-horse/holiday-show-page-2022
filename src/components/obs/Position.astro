@@ -1,0 +1,29 @@
+---
+interface Props {
+  xPos: number;
+  yPos: number;
+  w?: number | string;
+}
+
+let { xPos = 0, yPos = 0, w } = Astro.props;
+
+if (w === undefined) {
+  w = 'auto';
+} else {
+  w = `${w}px`;
+}
+---
+
+<div class="position-component">
+  <slot />
+</div>
+
+<style define:vars={{ xPos, yPos, w }}>
+  div {
+    position: absolute;
+    /*  Hack to stop linter from separating the var and 'px' */
+    top: calc(1px * var(--yPos));
+    left: calc(1px * var(--xPos));
+    width: var(--w);
+  }
+</style>

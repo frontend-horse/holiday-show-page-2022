@@ -1,0 +1,25 @@
+---
+export interface Props {
+  description: string;
+  title: string;
+}
+import '../styles/obs/main.scss';
+
+const { description, title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920,height=1080 initial-scale=1" />
+  </head>
+  <body class="obs-slide">
+    <slot />
+    <style lang="scss">
+      body {
+        position: relative;
+      }
+    </style>
+  </body>
+</html>
