@@ -6,14 +6,31 @@ const slice = Astro.props.slice as RegisterCtaSlice;
 ---
 
 <section class="registration">
-  <h2>
+  <!-- <h2>
     <span>{slice.primary.topText}</span>
     <span>{slice.primary.bottomText}</span>
+  </h2> -->
+  <h2>
+    <span>{slice.primary.topText}</span>
+    <span>Donate and tune in!</span>
   </h2>
-
-  <RegistrationButton>{slice.primary.buttontext}</RegistrationButton>
+  <!-- <RegistrationButton>{slice.primary.buttontext}</RegistrationButton> -->
+  <div>
+    <a
+      class="button"
+      data-variant="red"
+      href="https://tiltify.com/@trostcodes/holiday-snowtacular-2022"
+    >
+      Donate now
+    </a>
+    <a
+      class="button"
+      href="https://www.twitch.tv/trostcodes"
+    >
+      Watch live
+    </a>
+  </div>
 </section>
-
 <style lang="scss">
   section {
     background: var(--cta-section--background);
@@ -37,6 +54,13 @@ const slice = Astro.props.slice as RegisterCtaSlice;
 
     &:first-child {
       color: var(--cta-section--text-secondary);
+    }
+  }
+
+  a[data-variant='red'] {
+    --button-bg-color: var(--accent-constant-red);
+    &:where(:hover) {
+      --button-bg-color: var(--accent-constant-red-hover);
     }
   }
 </style>
