@@ -1,16 +1,16 @@
 ---
 import * as prismicH from '@prismicio/helpers';
 
-const { heading, body } = Astro.props.primary;
+const props = Astro.props;
 
-const bodyHTML = prismicH.asHTML(body);
+const bodyHTML = prismicH.asHTML(props?.primary?.body);
 
 // TODO: Fetch current donation amount and display it.
 // TODO: Fetch all donations and display top ~20.
 ---
 
 <section class="donations">
-  <h2>{heading}</h2>
+  {props?.primary?.heading ? <h2>{props.primary.heading}</h2> : null}
 
   <Fragment set:html="bodyHTML" />
   <!-- Display donation progress -->
