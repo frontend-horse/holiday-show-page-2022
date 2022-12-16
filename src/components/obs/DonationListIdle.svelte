@@ -30,6 +30,7 @@
       paused: true,
       onComplete: () => {
         cycleTl.play();
+        console.log('scrollTl done, starting cycle again');
       },
     });
     // const promoCardTL = gsap.timeline({ paused: true });

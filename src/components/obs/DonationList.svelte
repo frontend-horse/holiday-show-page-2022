@@ -146,7 +146,7 @@
 </script>
 
 <div class="donation-list-root">
-  <div class="letter-envelope-container">
+  <!-- <div class="letter-envelope-container">
     <div class="letter new-donation-notification">
       <div class="name">
         {newDonationQueue[0]?.name}
@@ -213,7 +213,7 @@
         </style>
       </svg>
     </div>
-  </div>
+  </div> -->
   <div class="donationListIdleWrapper" class:active={!newDonationQueue.length}>
     <DonationListIdle donations={$campaignData?.donations} />
   </div>
