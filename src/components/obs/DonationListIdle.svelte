@@ -36,6 +36,7 @@
       yPercent: -100,
       y: 250,
       duration: () => {
+        console.log(uniqueDonorNames.length);
         return uniqueDonorNames.length / 5;
       },
       onComplete: () => {
@@ -100,6 +101,7 @@
         transformOrigin: 'top left',
         duration: 1,
         onComplete: () => {
+          console.log('switching to scroll tl');
           cycleTl.pause();
           scrollTl.play();
         },
@@ -116,6 +118,7 @@
         transformOrigin: 'top left',
         duration: 1,
         onComplete: () => {
+          console.log('scrolltl ended, pausing and resetting');
           scrollTl.pause();
           scrollTl.time(0);
         },
