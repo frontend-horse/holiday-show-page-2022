@@ -22,7 +22,7 @@ const formatTime = (time) => {
               <h3>{guest.data.name}</h3>
             </a>
             <time class="schedule-item__time" datetime={formatTime(guest.data.scheduledTime)}>
-              {formatTime(guest.data.scheduledTime)}
+              {formatTime(guest.data.scheduledTime)} EST
             </time>
             <span>{guest.data.topicTitle}</span>
           </div>
