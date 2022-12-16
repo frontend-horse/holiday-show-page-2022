@@ -89,7 +89,9 @@
     });
   }
 
-  $: percentComplete = $campaignData?.totalAmountRaised / 20000;
+  const doubler = (amount) => amount < 10_000 ? amount*2 : amount + 10_000
+
+  $: percentComplete = doubler($campaignData?.totalAmountRaised) / 20000;
   $: $campaignData, updateProgressBarAnimation(percentComplete);
 </script>
 
@@ -99,7 +101,7 @@
     <!-- use the Intl API to show totalRaised like $1,000 -->
 
     <div class="header">
-      ${Intl.NumberFormat().format($campaignData?.totalAmountRaised || 0)} / $20,000
+      ${Intl.NumberFormat().format(doubler($campaignData?.totalAmountRaised) || 0)} / $20,000
     </div>
   </div>
   <div class="christmastree-container">

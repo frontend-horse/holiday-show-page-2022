@@ -1,54 +1,54 @@
-import { faker } from '@faker-js/faker';
+// import { faker } from '@faker-js/faker';
 
-let fakeDonations = [];
+// let fakeDonations = [];
 
-export function createFakeDonation() {
-  return {
-    id: faker.datatype.number(),
-    amount: faker.datatype.number(10, 50),
-    name: faker.name.fullName(),
-    comment: faker.lorem.sentence(),
-    createdAt: faker.helpers.arrayElement([
-      faker.date.past(),
-      faker.date.past(),
-      faker.date.past(),
-      Date.now() - faker.random.numeric(5),
-    ]),
-    updatedAt: faker.helpers.arrayElement([
-      faker.date.past(),
-      faker.date.past(),
-      faker.date.past(),
-      Date.now() - faker.random.numeric(5),
-    ]),
-    sustained: false,
-  };
-}
+// export function createFakeDonation() {
+//   return {
+//     id: faker.datatype.number(),
+//     amount: faker.datatype.number(10, 50),
+//     name: faker.name.fullName(),
+//     comment: faker.lorem.sentence(),
+//     createdAt: faker.helpers.arrayElement([
+//       faker.date.past(),
+//       faker.date.past(),
+//       faker.date.past(),
+//       Date.now() - faker.random.numeric(5),
+//     ]),
+//     updatedAt: faker.helpers.arrayElement([
+//       faker.date.past(),
+//       faker.date.past(),
+//       faker.date.past(),
+//       Date.now() - faker.random.numeric(5),
+//     ]),
+//     sustained: false,
+//   };
+// }
 
-function createFakeCampaignData() {
-  for (let index = 0; index < 10; index++) {
-    fakeDonations.push(createFakeDonation());
-  }
-  console.log(
-    '🚀 ~ file: tiltify.js:26 ~ createFakeCampaignData ~ fakeDonations',
-    fakeDonations
-  );
+// function createFakeCampaignData() {
+//   for (let index = 0; index < 10; index++) {
+//     fakeDonations.push(createFakeDonation());
+//   }
+//   console.log(
+//     '🚀 ~ file: tiltify.js:26 ~ createFakeCampaignData ~ fakeDonations',
+//     fakeDonations
+//   );
 
-  const data = {
-    donations: fakeDonations,
-    fundraiserGoalAmount: 15000,
-    totalAmountRaised: faker.datatype.number(15000),
-  };
+//   const data = {
+//     donations: fakeDonations,
+//     fundraiserGoalAmount: 15000,
+//     totalAmountRaised: faker.datatype.number(15000),
+//   };
 
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve(data);
-    }, 300);
-  });
-}
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       resolve(data);
+//     }, 300);
+//   });
+// }
 
 export async function getCampaignData() {
-  // return fetchData();
-  return createFakeCampaignData();
+  return fetchData();
+  // return createFakeCampaignData();
 }
 
 async function fetchData() {

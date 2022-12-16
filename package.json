@@ -11,7 +11,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "slicemachine": "start-slicemachine",
-    "generate-types": "npx prismic-ts-codegen"
+    "generate-types": "npx prismic-ts-codegen",
+    "netlify": "netlify dev"
   },
   "dependencies": {
     "@acab/reset.css": "^0.5.3",
