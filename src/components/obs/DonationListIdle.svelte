@@ -32,12 +32,15 @@
     donationListTL.to('.latest-donations-list', {
       x: 0,
       y: 0,
+      duration: 1,
+      delay: 3,
       rotation: -2,
       transformOrigin: 'top left',
     });
+
     donationListTL.to(
       '.all-donors-list',
-      { x: 400, y: 50, rotation: 0, transformOrigin: 'top left' },
+      { x: 400, y: 50, rotation: 0, transformOrigin: 'top left', duration: 1 },
       '0'
     );
     donationListTL.to(
@@ -58,14 +61,17 @@
     donorsListTL.to('.all-donors-list', {
       x: 0,
       y: 0,
+      duration: 1,
       rotation: -2,
       transformOrigin: 'top left',
     });
+
     donorsListTL.to(
       '.latest-donations-list',
       { x: 400, y: 50, rotation: 0, transformOrigin: 'top left' },
       '<'
     );
+
     donorsListTL.to(
       '.promotion-card',
       {
@@ -97,7 +103,7 @@
       y: 0,
       rotation: 0,
       transformOrigin: 'top left',
-      delay: 1,
+      delay: 3,
       duration: 1,
     });
     promoCardTL.to(
@@ -110,6 +116,7 @@
       { x: 400, y: 50, rotation: 0, transformOrigin: 'top left' },
       '<'
     );
+    // reset donor list
     promoCardTL.to(
       '.donor-list',
       {
