@@ -139,7 +139,7 @@
   }
 
   img {
-    width: 100%;
+    width: 250px;
     height: auto;
   }
 </style>
