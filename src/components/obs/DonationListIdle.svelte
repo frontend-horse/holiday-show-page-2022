@@ -31,20 +31,6 @@
     });
     // const promoCardTL = gsap.timeline({ paused: true });
 
-    scrollTl.to('.donor-list', {
-      ease: 'none',
-      yPercent: -100,
-      y: 250,
-      duration: (_, element) => {
-        console.log(element.offsetHeight);
-        return element.offsetHeight / 150;
-      },
-      onComplete: () => {
-        cycleTl.play();
-        console.log('scrollTl done, starting cycle again');
-      },
-    });
-
     // Show Latest donations list
     initTl.to('.latest-donations-list', {
       x: 0,
@@ -108,6 +94,20 @@
       },
       '<'
     );
+
+    scrollTl.to('.donor-list', {
+      ease: 'none',
+      yPercent: -100,
+      y: 250,
+      duration: (_, element) => {
+        console.log(element.offsetHeight);
+        return element.offsetHeight / 150;
+      },
+      onComplete: () => {
+        cycleTl.play();
+        console.log('scrollTl done, starting cycle again');
+      },
+    });
 
     cycleTl.to(
       '.all-donors-list',
