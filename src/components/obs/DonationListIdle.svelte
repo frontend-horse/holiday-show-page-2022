@@ -120,7 +120,7 @@
         onComplete: () => {
           console.log('scrolltl ended, pausing and resetting');
           scrollTl.pause();
-          scrollTl.time(0);
+          scrollTl.time(0).kill();
         },
       },
       '+=1'
