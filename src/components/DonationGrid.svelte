@@ -3,14 +3,22 @@
   import { getCampaignData } from '../lib/tiltify';
   import DonationCard from './DonationCard.svelte';
 
+  export let leaderboard = false;
   let donations = [];
   let fundraiserGoalAmount, totalAmountRaised;
   let result;
 
   onMount(async () => {
-    const result = await getCampaignData();
-
+    let result = await getCampaignData();
     donations = result.donations;
+
+    if (leaderboard) {
+      donations = result.donations
+        .sort((a, b) => a.amount - b.amount)
+        .reverse()
+        .slice(0, 10);
+    }
+
     fundraiserGoalAmount = result.fundraiserGoalAmount;
     totalAmountRaised = result.totalAmountRaised;
   });
