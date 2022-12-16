@@ -26,7 +26,22 @@
     console.log('Mounted');
     const initTl = gsap.timeline({ onComplete: () => cycleTl.play() });
     const cycleTl = gsap.timeline({ paused: true, repeat: -1 });
+    const scrollTl = gsap.timeline({
+      paused: true,
+      onComplete: () => {
+        cycleTl.play();
+      },
+    });
     // const promoCardTL = gsap.timeline({ paused: true });
+
+    scrollTl.to('.donor-list', {
+      ease: 'none',
+      yPercent: -100,
+      y: 250,
+      duration: () => {
+        return uniqueDonorNames.length / 5;
+      },
+    });
 
     // Show Latest donations list
     initTl.to('.latest-donations-list', {
@@ -83,21 +98,9 @@
         rotation: -2,
         transformOrigin: 'top left',
         duration: 1,
-        // delay: 3,
         onComplete: () => {
           cycleTl.pause();
-          //Scroll All Donors List
-          gsap.to('.donor-list', {
-            ease: 'none',
-            yPercent: -100,
-            y: 250,
-            duration: (_, element) => {
-              return element.offsetHeight / 150;
-            },
-            onComplete: () => {
-              cycleTl.play();
-            },
-          });
+          scrollTl.play();
         },
       },
       '<'
@@ -111,8 +114,12 @@
         rotation: 0,
         transformOrigin: 'top left',
         duration: 1,
+        onComplete: () => {
+          scrollTl.pause();
+          scrollTl.time(0);
+        },
       },
-      '+=5'
+      '+=1'
     );
 
     cycleTl.to(
@@ -212,6 +219,9 @@
 
     transform: rotate(-3deg) translate(5px, 10px);
     box-shadow: 0 5px 20px rgba($color: #000000, $alpha: 0.5);
+    > * {
+      max-width: 400px;
+    }
   }
   .letters {
     display: flex;
