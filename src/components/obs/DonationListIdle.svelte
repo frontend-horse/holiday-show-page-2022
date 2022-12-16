@@ -36,6 +36,7 @@
       yPercent: -100,
       y: 250,
       duration: (_, element) => {
+        console.log(element.offsetHeight);
         return element.offsetHeight / 150;
       },
       onComplete: () => {
