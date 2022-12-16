@@ -3,7 +3,7 @@ const { guests } = Astro.props;
 
 const formatTime = (time) => {
   const t = new Date(time);
-  return t.toLocaleTimeString('en-US', {hour: 'numeric', minute:'2-digit'});
+  return t.toLocaleTimeString('en-US', {hour: 'numeric', minute:'2-digit', timeZone: 'US/Eastern'});
 }
 ---
 
