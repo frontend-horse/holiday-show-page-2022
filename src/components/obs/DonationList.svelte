@@ -10,6 +10,17 @@
 
   $: $campaignData, checkForNewDonations();
 
+  // Uncomment that to simulate new donation on browser click
+  // document.addEventListener('click', () => {
+  //   newDonationQueue = [
+  //     ...newDonationQueue,
+  //     resolvedDonationQueue[
+  //       Math.floor(Math.random() * resolvedDonationQueue.length)
+  //     ],
+  //   ];
+  //   onNewDonation();
+  // });
+
   function checkForNewDonations() {
     if ($campaignData?.donations) {
       const fiveMinutesAgo = Date.now() - 1000 * 60 * 5;
@@ -21,7 +32,7 @@
             donation.completedAt > fiveMinutesAgo ||
             donation.updatedAt > fiveMinutesAgo
           ) {
-            newDonationQueue.push(donation);
+            newDonationQueue = [...newDonationQueue, donation];
           } else {
             resolvedDonationQueue.push(donation);
           }
@@ -55,16 +66,13 @@
       y: -100,
       rotate: 0,
       duration: 1,
-      delay: 3,
+      delay: 1,
       scale: 0.7,
     });
     // Open the flap
     tl.to('.flap', { scaleY: 1, transformOrigin: 'bottom center' });
     // Move the letter up
-    tl.to(
-      '.new-donation-notification',
-      { opacity: 1, duration: 1, y: 50 } // Make much longer
-    );
+    tl.to('.new-donation-notification', { opacity: 1, duration: 1, y: 50 });
     // close the flap
     tl.to('.flap', { scaleY: 0, transformOrigin: 'bottom center' });
     // move the envelope down and out of sight
@@ -83,17 +91,17 @@
     tl.to('.new-donation-notification', {
       duration: 1,
       x: 700,
-      delay: 3,
+      delay: 2,
     });
     //reset everything
 
     tl.to('.new-donation-notification', {
       opacity: 0,
 
-      duration: 1,
-      delay: 1,
+      duration: 0,
+      delay: 0.5,
       onComplete: () => {
-        resetAnimation();
+        tl.revert();
         const [first, ...rest] = newDonationQueue;
         newDonationQueue = rest;
         resolvedDonationQueue = [...resolvedDonationQueue, first];
@@ -109,10 +117,10 @@
   function resetAnimation() {
     const tl = gsap.timeline();
     // make everything invisible
-    tl.to('.letter-envelope-container', { opacity: 0 });
+    tl.to('.letter-envelope-container', { opacity: 0, duration: 0 });
 
     // move everything back to where it goes
-    tl.to('.new-donation-notification', { y: 230, x: 0 });
+    tl.to('.new-donation-notification', { y: 230, x: 0, duration: 0 });
     tl.to('.envelope', { y: 0, x: 0, rotate: 0 });
     tl.to('.letter-envelope-container', {
       x: -35,
@@ -127,7 +135,6 @@
 
   onMount(() => {
     function init() {
-      console.log('init');
       gsap.set('.donation-list-root', { opacity: 1 });
 
       resetAnimation();
@@ -144,7 +151,9 @@
       <div class="name">
         {newDonationQueue[0]?.name}
       </div>
-      <div class="amount">${newDonationQueue[0]?.amount}</div>
+      <div class="amount">
+        ${newDonationQueue[0]?.amount}
+      </div>
       <div class="message">
         {newDonationQueue[0]?.comment}
       </div>
@@ -205,12 +214,21 @@
       </svg>
     </div>
   </div>
-  {#if !newDonationQueue.length}
+  <div class="donationListIdleWrapper" class:active={!newDonationQueue.length}>
     <DonationListIdle donations={$campaignData?.donations} />
-  {/if}
+  </div>
 </div>
 
 <style lang="scss">
+  .donationListIdleWrapper {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    will-change: opacity;
+  }
+  .donationListIdleWrapper.active {
+    opacity: 1;
+  }
+
   .letter-envelope-container {
     display: grid;
     grid-template-areas: 'stack';
@@ -257,10 +275,30 @@
     background: wheat;
     padding: 15px;
     height: 300px;
+    overflow: hidden;
 
     .name {
       font-family: 'Poppins';
       font-weight: bold;
+      font-size: 175%;
+      line-height: 1.1;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+    .amount {
+      font-family: 'Poppins';
+      font-weight: bold;
+      font-size: 200%;
+      color: #800808;
+      line-height: 1.1;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+    .message {
+      font-size: 150%;
+      overflow: hidden;
+      text-align: center;
+      height: 190px;
     }
   }
   .envelope {
@@ -292,17 +330,6 @@
       // translate: 0% -100%;
       padding-bottom: 200px;
       gap: 10px;
-      .name {
-        font-size: 150%;
-        line-height: 1.1;
-      }
-      .amount {
-        /* color: red; */
-      }
-      .message {
-        font-size: 85%;
-        text-align: left;
-      }
     }
   }
 </style>

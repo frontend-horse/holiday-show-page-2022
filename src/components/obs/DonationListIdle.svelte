@@ -22,28 +22,19 @@
         .filter((name) => name !== 'Anonymous')
     : [];
 
-  $: donationBoxScrollDistance = uniqueDonorNames * 29 - 250;
-  $: donationBoxScrollDuration = donationBoxScrollDistance / -60;
-
   onMount(() => {
     console.log('Mounted');
     const donationListTL = gsap.timeline({});
     const donorsListTL = gsap.timeline({ paused: true });
     const promoCardTL = gsap.timeline({ paused: true });
 
-    const allDonorsState = {
-      inactive: { x: 400, y: 50, rotation: 0, transformOrigin: 'top left' },
-    };
-
-    const latestDonationsState = {
-      active: { x: 0, y: 0, rotation: -2, transformOrigin: 'top left' },
-      inactive: { x: 400, y: 50, rotation: 0, transformOrigin: 'top left' },
-    };
-
-    console.log('FFFF', donationBoxScrollDistance, donationBoxScrollDuration);
-
     // Show Latest donations list
-    donationListTL.to('.latest-donations-list', latestDonationsState.active);
+    donationListTL.to('.latest-donations-list', {
+      x: 0,
+      y: 0,
+      rotation: -2,
+      transformOrigin: 'top left',
+    });
     donationListTL.to(
       '.all-donors-list',
       { x: 400, y: 50, rotation: 0, transformOrigin: 'top left' },
@@ -72,7 +63,7 @@
     });
     donorsListTL.to(
       '.latest-donations-list',
-      latestDonationsState.inactive,
+      { x: 400, y: 50, rotation: 0, transformOrigin: 'top left' },
       '<'
     );
     donorsListTL.to(
@@ -116,7 +107,7 @@
     );
     promoCardTL.to(
       '.latest-donations-list',
-      latestDonationsState.inactive,
+      { x: 400, y: 50, rotation: 0, transformOrigin: 'top left' },
       '<'
     );
     promoCardTL.to(
@@ -141,8 +132,7 @@
       {#if donations?.length}
         {#each donations as donation}
           <div class="letter">
-            <div class="name">{donation.name}</div>
-            <div class="amount">{donation.amount}</div>
+            <div class="name">{donation.name} - ${donation.amount}</div>
             {#if donation.comment}
               <div class="comment">
                 {donation.comment}
@@ -155,11 +145,11 @@
   </div>
 
   <div class="donation-list all-donors-list">
-    <h3>{uniqueDonorNames.length} Donors</h3>
+    <h3>All {uniqueDonorNames.length} Donors</h3>
     <div class="donor-list-container">
       <div class="donor-list">
-        {#each uniqueDonorNames as donation}
-          <div class="name">{donation}</div>
+        {#each uniqueDonorNames as name}
+          <div class="name">{name}</div>
         {/each}
       </div>
     </div>
@@ -181,7 +171,7 @@
   .donation-list {
     background: wheat;
     border-radius: 3px;
-    width: 100%;
+    width: 85%;
 
     top: 0;
     left: 0;
@@ -269,6 +259,8 @@
     position: absolute;
     display: grid;
     gap: 16px;
+    text-align: center;
+    width: calc(100%);
   }
 
   .donor {
