@@ -2,7 +2,7 @@
 import Logo from './Logo.astro';
 import RegistrationButton from './RegistrationButton.astro';
 
-const {pathname} = Astro.url;
+const { pathname } = Astro.url;
 ---
 
 <header role="banner">
@@ -19,7 +19,7 @@ const {pathname} = Astro.url;
   </nav>
   <Logo />
   <div class="actions">
-    <RegistrationButton variant="red">Register</RegistrationButton>
+    <a class="button" data-variant="red" href="https://www.twitch.tv/trostcodes">Watch Live</a>
   </div>
 </header>
 
@@ -57,6 +57,13 @@ const {pathname} = Astro.url;
       @media (max-width: 640px) {
         display: none;
       }
+    }
+  }
+
+  a[data-variant='red'] {
+    --button-bg-color: var(--accent-constant-red);
+    &:where(:hover) {
+      --button-bg-color: var(--accent-constant-red-hover);
     }
   }
 </style>

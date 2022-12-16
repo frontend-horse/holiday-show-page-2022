@@ -23,15 +23,15 @@ const components = {
 };
 
 const { slices } = Astro.props;
-
 // This component takes in content from Prismic and renders the appropriate component
 ---
 
 <>
   {
-    slices.map((slice, index) => {
-      const Component = components[slice.slice_type];
-      return <Component key={index} slice={slice} />;
-    })
+    slices
+      .map((slice, index) => {
+        const Component = components[slice.slice_type];
+        return <Component key={index} slice={slice} />;
+      })
   }
 </>

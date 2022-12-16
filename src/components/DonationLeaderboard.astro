@@ -1,19 +1,30 @@
 ---
 import * as prismicH from '@prismicio/helpers';
+import DonationGrid from './DonationGrid.svelte';
+const slice = Astro.props.slice;
 
-const props = Astro.props;
-
-const bodyHTML = prismicH.asHTML(props?.primary?.body);
+const bodyHTML = prismicH.asHTML(slice.primary.body);
 
 // TODO: Fetch current donation amount and display it.
 // TODO: Fetch all donations and display top ~20.
 ---
 
 <section class="donations">
-  {props?.primary?.heading ? <h2>{props.primary.heading}</h2> : null}
+  <header>
+    <span class="heading-eyebrow">{slice.primary.eyebrow}</span>
+    <h2 id="communities-heading">{slice.primary.heading}</h2>
+  </header>
 
   <Fragment set:html="bodyHTML" />
   <!-- Display donation progress -->
   <!-- Display Donations -->
-  <a href="/donations" rel="prefetch">View all donations</a>
+  <DonationGrid client:load leaderboard="true" />
+  <a class="donation-link" href="/donations" rel="prefetch">View all donations</a>
 </section>
+
+<style lang="scss">
+  .donation-link{
+    display: flex;
+    padding-block-start: var(--space-m);
+  }
+</style>
