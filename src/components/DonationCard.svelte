@@ -13,7 +13,7 @@
   </div>
 
   <p class="comment">
-    {donation.comment}
+    {donation.comment ? donation.comment : ''}
   </p>
 </div>
 
