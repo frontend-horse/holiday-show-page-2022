@@ -139,6 +139,7 @@
   }
 
   img {
+    padding-left: 40px;
     width: 250px;
     margin: auto;
     height: auto;
