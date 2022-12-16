@@ -140,6 +140,7 @@
 
   img {
     width: 250px;
+    margin: auto;
     height: auto;
   }
 </style>
