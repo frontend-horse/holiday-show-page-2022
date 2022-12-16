@@ -10,11 +10,11 @@ export function createFakeDonation() {
     comment: faker.lorem.sentence(),
     createdAt: faker.helpers.arrayElement([
       faker.date.past(),
-      // Date.now() - faker.random.numeric(5),
+      Date.now() - faker.random.numeric(5),
     ]),
     updatedAt: faker.helpers.arrayElement([
       faker.date.past(),
-      // Date.now() - faker.random.numeric(5),
+      Date.now() - faker.random.numeric(5),
     ]),
     sustained: false,
   };

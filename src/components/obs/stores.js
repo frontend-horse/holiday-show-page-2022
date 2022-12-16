@@ -14,7 +14,7 @@ export const campaignData = readable(
 
     fetchDonations();
 
-    const interval = setInterval(fetchDonations, 10000);
+    const interval = setInterval(fetchDonations, 20000);
 
     return function stop() {
       clearInterval(interval);
