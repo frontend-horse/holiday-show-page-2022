@@ -26,14 +26,12 @@
   $: donationBoxScrollDuration = donationBoxScrollDistance / -60;
 
   onMount(() => {
-    const tl = gsap.timeline({
-      repeat: -1,
-      repeatDelay: 3,
-      repeatRefresh: true,
-    });
+    console.log('Mounted');
+    const donationListTL = gsap.timeline({});
+    const donorsListTL = gsap.timeline({ paused: true });
+    const promoCardTL = gsap.timeline({ paused: true });
 
     const allDonorsState = {
-      active: { x: 0, y: 0, rotation: -2, transformOrigin: 'top left' },
       inactive: { x: 400, y: 50, rotation: 0, transformOrigin: 'top left' },
     };
 
@@ -42,42 +40,97 @@
       inactive: { x: 400, y: 50, rotation: 0, transformOrigin: 'top left' },
     };
 
-    const promotionCardState = {
-      active: { x: 0, y: 0, rotation: 0, transformOrigin: 'top left' },
-      inactive: { x: 400, y: 50, rotation: 0, transformOrigin: 'top left' },
-      resetScroll: { y: 0, duration: 0 },
-    };
-
     console.log('FFFF', donationBoxScrollDistance, donationBoxScrollDuration);
 
     // Show Latest donations list
-    tl.to('.latest-donations-list', latestDonationsState.active);
-    tl.to('.all-donors-list', allDonorsState.inactive, '0');
-    tl.to('.promotion-card', promotionCardState.inactive, 0);
+    donationListTL.to('.latest-donations-list', latestDonationsState.active);
+    donationListTL.to(
+      '.all-donors-list',
+      { x: 400, y: 50, rotation: 0, transformOrigin: 'top left' },
+      '0'
+    );
+    donationListTL.to(
+      '.promotion-card',
+      {
+        x: 400,
+        y: 50,
+        rotation: 0,
+        transformOrigin: 'top left',
+        onComplete: () => {
+          donorsListTL.play(0);
+        },
+      },
+      0
+    );
 
     // Show All donors list
-    tl.to('.all-donors-list', allDonorsState.active, '+=1');
-    tl.to('.latest-donations-list', latestDonationsState.inactive, '<');
-    tl.to('.promotion-card', promotionCardState.inactive, '<');
-
-    //Scroll All Donors List
-    tl.to(
-      '.donor-list',
+    donorsListTL.to('.all-donors-list', {
+      x: 0,
+      y: 0,
+      rotation: -2,
+      transformOrigin: 'top left',
+    });
+    donorsListTL.to(
+      '.latest-donations-list',
+      latestDonationsState.inactive,
+      '<'
+    );
+    donorsListTL.to(
+      '.promotion-card',
       {
-        ease: 'none',
-        y: donationBoxScrollDistance,
-        duration: donationBoxScrollDuration,
+        x: 400,
+        y: 50,
+        rotation: 0,
+        transformOrigin: 'top left',
+        onComplete: () => {
+          //Scroll All Donors List
+          gsap.to('.donor-list', {
+            ease: 'none',
+            yPercent: -100,
+            y: 250,
+            duration: (i, element) => {
+              return element.offsetHeight / 150;
+            },
+            onComplete: () => {
+              promoCardTL.play(0);
+            },
+          });
+        },
       },
-      '+=1'
+      '<'
     );
 
     // Show Promotion card
-    tl.to('.promotion-card', promotionCardState.active, '+=5');
-    tl.to('.all-donors-list', allDonorsState.inactive, '<');
-    tl.to('.latest-donations-list', latestDonationsState.inactive, '<');
-    tl.to('.donor-list', promotionCardState.resetScroll, '1');
-
-    tl.timeScale(1.2);
+    promoCardTL.to('.promotion-card', {
+      x: 0,
+      y: 0,
+      rotation: 0,
+      transformOrigin: 'top left',
+      delay: 1,
+      duration: 4,
+    });
+    promoCardTL.to(
+      '.all-donors-list',
+      { x: 400, y: 50, rotation: 0, transformOrigin: 'top left' },
+      '<'
+    );
+    promoCardTL.to(
+      '.latest-donations-list',
+      latestDonationsState.inactive,
+      '<'
+    );
+    promoCardTL.to(
+      '.donor-list',
+      {
+        y: 0,
+        duration: 0,
+        yPercent: 0,
+        onComplete: () => {
+          donationListTL.play(0);
+        },
+      },
+      '+=1'
+    );
   });
 </script>
 
