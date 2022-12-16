@@ -35,9 +35,8 @@
       ease: 'none',
       yPercent: -100,
       y: 250,
-      duration: () => {
-        console.log(uniqueDonorNames.length);
-        return uniqueDonorNames.length / 5;
+      duration: (_, element) => {
+        return element.offsetHeight / 150;
       },
       onComplete: () => {
         cycleTl.play();
