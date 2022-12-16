@@ -1,0 +1,108 @@
+---
+const { guests } = Astro.props;
+
+const formatTime = (time) => {
+  const t = new Date(time);
+  return t.toLocaleTimeString('en-US', {hour: 'numeric', minute:'2-digit'});
+}
+---
+
+<ol class="schedule">
+  {
+    guests
+      .sort((a, b) => (a.data.scheduledTime > b.data.scheduledTime ? 1 : -1))
+      .map((guest) => (
+        <li class="schedule-item">
+          <div class="schedule-item__content">
+            <img
+              src={guest.data.avatar.url}
+              alt=""
+            />
+            <a href={`/guest/${guest.uid}`}>
+              <h3>{guest.data.name}</h3>
+            </a>
+            <time class="schedule-item__time" datetime={formatTime(guest.data.scheduledTime)}>
+              {formatTime(guest.data.scheduledTime)}
+            </time>
+            <span>{guest.data.topicTitle}</span>
+          </div>
+        </li>
+      ))
+  }
+</ol>
+
+<style lang="scss">
+  .schedule {
+    list-style: none;
+    margin-inline: auto;
+    padding: 0;
+    > * + * {
+      margin-block-start: var(--space-xs);
+    }
+    &-item {
+      padding-block: var(--space-s);
+      padding-inline: var(--space-s-m);
+      background: rgba(0, 0, 0, 0.25);
+      position: relative;
+      display: flex;
+      flex-flow: column;
+      gap: var(--space-s);
+      transition: background 0.2s ease;
+      border-radius: 0.5rem;
+      &:hover {
+        background: rgba(0, 0, 0, 0.3);
+      }
+      &__content {
+        display: grid;
+        grid-template-areas:
+          'image name'
+          'image time'
+          'image title';
+        width: fit-content;
+        *:not(img) {
+          margin: 0;
+          margin-inline: var(--space-s);
+        }
+        img {
+          grid-area: image;
+          height: 100px;
+          width: 100px;
+          aspect-ratio: 1;
+          border-radius: 100%;
+          border: 7.5px solid rgba(0, 0, 0, 0.25);
+          grid-area: image;
+        }
+        h3 {
+          color: var(--accent);
+          grid-area: title;
+          display: flex;
+          align-items: flex-end;
+          padding: 0;
+        }
+        a {
+          text-align: left;
+          grid-area: name;
+          margin: 0;
+          padding: 0;
+          &:before {
+            content: '';
+            position: absolute;
+            inset: 0;
+          }
+        }
+        time {
+          margin-block-start: var(--space-3xs);
+          font-weight: bold;
+        }
+        span {
+          margin-block-start: var(--space-xs);
+        }
+      }
+      &__guest {
+        display: flex;
+        align-items: center;
+        gap: var(--space-s);
+      }
+    }
+  }
+</style>

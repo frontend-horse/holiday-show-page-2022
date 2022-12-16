@@ -2,7 +2,7 @@
 import GuestList from './GuestList.astro';
 
 import SponsorList from './SponsorList.astro';
-import RegisterCTA from './RegisterCTA.astro';
+// import RegisterCTA from './RegisterCTA.astro';
 import CharityDetails from './CharityDetails.astro';
 import EventDetails from './EventDetails.astro';
 import LastYearRecap from './LastYearRecap.astro';
@@ -15,7 +15,7 @@ const components = {
   sponsor_list: SponsorList,
   charity_details: CharityDetails,
   event_details: EventDetails,
-  register_cta: RegisterCTA,
+  // register_cta: RegisterCTA,
   last_year_recap: LastYearRecap,
   donation_leaderboard: DonationLeaderboard,
   community_list: CommunityList,
@@ -23,15 +23,16 @@ const components = {
 };
 
 const { slices } = Astro.props;
-
 // This component takes in content from Prismic and renders the appropriate component
 ---
 
 <>
   {
-    slices.map((slice, index) => {
-      const Component = components[slice.slice_type];
-      return <Component key={index} slice={slice} />;
-    })
+    slices
+      .filter((slice) => slice.slice_type !== 'register_cta')
+      .map((slice, index) => {
+        const Component = components[slice.slice_type];
+        return <Component key={index} slice={slice} />;
+      })
   }
 </>

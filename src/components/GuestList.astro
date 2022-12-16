@@ -3,6 +3,7 @@ import * as prismicH from '@prismicio/helpers';
 import { getAllGuests } from '../lib/prismicio';
 import GuestAvatar from './GuestAvatar.astro';
 import { GuestListSlice } from '../../types.generated';
+import GuestSchedule from './GuestSchedule.astro';
 
 const slice = Astro.props.slice as GuestListSlice;
 
@@ -20,7 +21,8 @@ const bodyHTML = prismicH.asHTML(slice.primary.body);
 
   <div>
     <Fragment set:html="bodyHTML" />
-    <div class="guest-grid">
+    <GuestSchedule guests={allGuests} />
+    <!-- <div class="guest-grid">
       {
         allGuests
           .sort((a, b) =>
@@ -36,7 +38,7 @@ const bodyHTML = prismicH.asHTML(slice.primary.body);
             </article>
           ))
       }
-    </div>
+    </div> -->
   </div>
 </section>
 
