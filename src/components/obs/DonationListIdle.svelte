@@ -98,7 +98,7 @@
       rotation: 0,
       transformOrigin: 'top left',
       delay: 1,
-      duration: 4,
+      duration: 1,
     });
     promoCardTL.to(
       '.all-donors-list',
