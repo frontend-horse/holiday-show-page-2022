@@ -28,10 +28,6 @@
     const cycleTl = gsap.timeline({ paused: true, repeat: -1 });
     const scrollTl = gsap.timeline({
       paused: true,
-      onComplete: () => {
-        cycleTl.play();
-        console.log('scrollTl done, starting cycle again');
-      },
     });
     // const promoCardTL = gsap.timeline({ paused: true });
 
@@ -41,6 +37,10 @@
       y: 250,
       duration: () => {
         return uniqueDonorNames.length / 5;
+      },
+      onComplete: () => {
+        cycleTl.play();
+        console.log('scrollTl done, starting cycle again');
       },
     });
 
