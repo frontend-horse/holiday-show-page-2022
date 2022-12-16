@@ -1,0 +1,56 @@
+---
+---
+
+<div class="timer">
+  <p class="startingSoon">Starting soon!</p>
+  <p class="timeDisplay"></p>
+</div>
+
+<script>
+  // Count down for 6 minutes and show the time in .timeDisplay
+  // When you get to 0 just show "Starting soon!"
+
+  var countDownDate = new Date().getTime() + 6 * 60 * 1000;
+
+  var x = setInterval(function () {
+    var now = new Date().getTime();
+    var distance = countDownDate - now;
+
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    if (distance < 0) {
+      clearInterval(x);
+      document.querySelector('.timeDisplay').innerHTML = 'Starting soon!';
+    } else {
+      document.querySelector('.timeDisplay').innerHTML =
+        minutes + ':' + seconds;
+    }
+  }, 1000);
+</script>
+
+<style>
+  .timer {
+    text-align: center;
+  }
+
+  .timer p {
+    margin: 0;
+  }
+
+  .startingSoon {
+    color: #fff;
+    font-family: 'Recoleta Alt', display;
+    font-size: 52px;
+    font-weight: 500;
+  }
+
+  .timeDisplay {
+    color: #ffc973;
+    font-family: 'Roboto Mono', 'Recoleta Alt', display;
+    font-size: 150px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    margin-top: -0.25em !important;
+  }
+</style>
