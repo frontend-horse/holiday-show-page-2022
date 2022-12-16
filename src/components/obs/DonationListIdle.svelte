@@ -4,17 +4,19 @@
   import { onMount } from 'svelte';
   import DoctorsWithoutBordersLogo from './DoctorsWithoutBordersLogo.svelte';
 
+  $: currentDonation = [];
+
   // Create a list of unique donor names, removing duplicates
   // Sort the list by the sum of all donations made by each donor
-  $: uniqueDonorNames = donations
-    ? donations
+  $: uniqueDonorNames = currentDonation
+    ? currentDonation
         .map((donation) => donation.name)
         .filter((name, index, self) => self.indexOf(name) === index)
         .sort((a, b) => {
-          const aSum = donations
+          const aSum = currentDonation
             .filter((donation) => donation.name === a)
             .reduce((acc, donation) => acc + donation.amount, 0);
-          const bSum = donations
+          const bSum = currentDonation
             .filter((donation) => donation.name === b)
             .reduce((acc, donation) => acc + donation.amount, 0);
           return bSum - aSum;
@@ -22,33 +24,67 @@
         .filter((name) => name !== 'Anonymous')
     : [];
 
-  $: donationBoxScrollDistance = uniqueDonorNames * 29 - 250;
-  $: donationBoxScrollDuration = donationBoxScrollDistance / -60;
+  const animate = () => {
+    // Update and freeze current donations on each cycle
+    currentDonation = donations;
 
-  onMount(() => {
     const tl = gsap.timeline({
-      repeat: -1,
+      repeat: 0,
       repeatDelay: 3,
       repeatRefresh: true,
     });
 
-    const allDonorsState = {
-      active: { x: 0, y: 0, rotation: -2, transformOrigin: 'top left' },
-      inactive: { x: 400, y: 50, rotation: 0, transformOrigin: 'top left' },
+    const latestDonationsState = {
+      active: {
+        x: 0,
+        y: 0,
+        rotation: -2,
+        transformOrigin: 'top left',
+        duration: 1,
+      },
+      inactive: {
+        x: 400,
+        y: 50,
+        rotation: 0,
+        transformOrigin: 'top left',
+        duration: 1,
+      },
     };
 
-    const latestDonationsState = {
-      active: { x: 0, y: 0, rotation: -2, transformOrigin: 'top left' },
-      inactive: { x: 400, y: 50, rotation: 0, transformOrigin: 'top left' },
+    const allDonorsState = {
+      active: {
+        x: 0,
+        y: 0,
+        rotation: -2,
+        transformOrigin: 'top left',
+        duration: 1,
+      },
+      inactive: {
+        x: 400,
+        y: 50,
+        rotation: 0,
+        transformOrigin: 'top left',
+        duration: 1,
+      },
     };
 
     const promotionCardState = {
-      active: { x: 0, y: 0, rotation: 0, transformOrigin: 'top left' },
-      inactive: { x: 400, y: 50, rotation: 0, transformOrigin: 'top left' },
+      active: {
+        x: 0,
+        y: 0,
+        rotation: -2,
+        transformOrigin: 'top left',
+        duration: 1,
+      },
+      inactive: {
+        x: 400,
+        y: 50,
+        rotation: 0,
+        transformOrigin: 'top left',
+        duration: 1,
+      },
       resetScroll: { y: 0, duration: 0 },
     };
-
-    console.log('FFFF', donationBoxScrollDistance, donationBoxScrollDuration);
 
     // Show Latest donations list
     tl.to('.latest-donations-list', latestDonationsState.active);
@@ -56,28 +92,42 @@
     tl.to('.promotion-card', promotionCardState.inactive, 0);
 
     // Show All donors list
-    tl.to('.all-donors-list', allDonorsState.active, '+=1');
+    if (uniqueDonorNames.length) {
+      tl.to('.all-donors-list', allDonorsState.active, '+=3');
+    }
     tl.to('.latest-donations-list', latestDonationsState.inactive, '<');
     tl.to('.promotion-card', promotionCardState.inactive, '<');
 
-    //Scroll All Donors List
-    tl.to(
-      '.donor-list',
-      {
-        ease: 'none',
-        y: donationBoxScrollDistance,
-        duration: donationBoxScrollDuration,
-      },
-      '+=1'
-    );
+    if (uniqueDonorNames.length) {
+      //Scroll All Donors List
+      tl.to(
+        '.donor-list',
+        {
+          ease: 'none',
+          y: () => Math.min(uniqueDonorNames.length * -40, 0),
+          duration: () => uniqueDonorNames.length * 0.7,
+        },
+        '+=0.5'
+      );
+    }
 
     // Show Promotion card
-    tl.to('.promotion-card', promotionCardState.active, '+=5');
+    tl.to('.promotion-card', promotionCardState.active, '+=1');
     tl.to('.all-donors-list', allDonorsState.inactive, '<');
     tl.to('.latest-donations-list', latestDonationsState.inactive, '<');
     tl.to('.donor-list', promotionCardState.resetScroll, '1');
 
     tl.timeScale(1.2);
+
+    // We're forced to loop the timeline manually because duration cannot be recomputed
+    // See: https://greensock.com/forums/topic/30393-update-timeline-variables-when-refreshed/?do=findComment&comment=151767
+    tl.eventCallback('onComplete', () => {
+      setTimeout(animate, 3000);
+    });
+  };
+
+  onMount(() => {
+    animate();
   });
 </script>
 
@@ -88,8 +138,7 @@
       {#if donations?.length}
         {#each donations as donation}
           <div class="letter">
-            <div class="name">{donation.name}</div>
-            <div class="amount">{donation.amount}</div>
+            <div class="name">{donation.name} - ${donation.amount}</div>
             {#if donation.comment}
               <div class="comment">
                 {donation.comment}
@@ -102,11 +151,11 @@
   </div>
 
   <div class="donation-list all-donors-list">
-    <h3>{uniqueDonorNames.length} Donors</h3>
+    <h3>All {uniqueDonorNames.length} Donors</h3>
     <div class="donor-list-container">
       <div class="donor-list">
-        {#each uniqueDonorNames as donation}
-          <div class="name">{donation}</div>
+        {#each uniqueDonorNames as name}
+          <div class="name">{name}</div>
         {/each}
       </div>
     </div>
@@ -128,7 +177,7 @@
   .donation-list {
     background: wheat;
     border-radius: 3px;
-    width: 100%;
+    width: 85%;
 
     top: 0;
     left: 0;
@@ -216,6 +265,8 @@
     position: absolute;
     display: grid;
     gap: 16px;
+    text-align: center;
+    width: calc(100%);
   }
 
   .donor {
