@@ -20,6 +20,7 @@
           return bSum - aSum;
         })
         .filter((name) => name !== 'Anonymous')
+        .reverse()
     : [];
 
   onMount(() => {
@@ -112,7 +113,7 @@
         transformOrigin: 'top left',
         duration: 1,
       },
-      '+=5'
+      '+=1'
     );
 
     cycleTl.to(
@@ -136,6 +137,12 @@
         rotation: 0,
         transformOrigin: 'top left',
         duration: 1,
+        onComplete: () => {
+          gsap.set('.donor-list', {
+            yPercent: 0,
+            y: 0,
+          });
+        },
       },
       '+=5'
     );
