@@ -3,6 +3,7 @@ export interface Props {
   description: string;
   title: string;
 }
+import OBSSnow from '../components/obs/OBSSnow.astro';
 import '../styles/obs/main.scss';
 ---
 
@@ -13,6 +14,7 @@ import '../styles/obs/main.scss';
     <meta name="viewport" content="width=1920,height=1080 initial-scale=1" />
   </head>
   <body class="obs-slide">
+    <OBSSnow />
     <slot />
     <style lang="scss">
       body {
