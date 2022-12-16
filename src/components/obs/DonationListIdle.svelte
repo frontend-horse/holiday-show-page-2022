@@ -24,72 +24,78 @@
 
   onMount(() => {
     console.log('Mounted');
-    const donationListTL = gsap.timeline({});
-    const donorsListTL = gsap.timeline({ paused: true });
-    const promoCardTL = gsap.timeline({ paused: true });
+    const initTl = gsap.timeline({ onComplete: () => cycleTl.play() });
+    const cycleTl = gsap.timeline({ paused: true, repeat: -1 });
+    // const promoCardTL = gsap.timeline({ paused: true });
 
     // Show Latest donations list
-    donationListTL.to('.latest-donations-list', {
+    initTl.to('.latest-donations-list', {
       x: 0,
       y: 0,
       duration: 1,
-      delay: 3,
       rotation: -2,
       transformOrigin: 'top left',
     });
-
-    donationListTL.to(
+    initTl.to(
       '.all-donors-list',
-      { x: 400, y: 50, rotation: 0, transformOrigin: 'top left', duration: 1 },
-      '0'
+      {
+        x: 400,
+        y: 50,
+        rotation: 0,
+        transformOrigin: 'top left',
+        duration: 1,
+        // delay: 3,
+      },
+      '<'
     );
-    donationListTL.to(
+    initTl.to(
       '.promotion-card',
       {
         x: 400,
         y: 50,
         rotation: 0,
         transformOrigin: 'top left',
-        onComplete: () => {
-          donorsListTL.play(0);
-        },
       },
-      0
-    );
-
-    // Show All donors list
-    donorsListTL.to('.all-donors-list', {
-      x: 0,
-      y: 0,
-      duration: 1,
-      rotation: -2,
-      transformOrigin: 'top left',
-    });
-
-    donorsListTL.to(
-      '.latest-donations-list',
-      { x: 400, y: 50, rotation: 0, transformOrigin: 'top left' },
       '<'
     );
 
-    donorsListTL.to(
-      '.promotion-card',
+    // latest-donations-list
+    // all-donors-list
+    // promotion-card
+
+    cycleTl.to(
+      '.latest-donations-list',
       {
         x: 400,
         y: 50,
         rotation: 0,
         transformOrigin: 'top left',
+        duration: 1,
+      },
+      '5'
+    );
+
+    cycleTl.to(
+      '.all-donors-list',
+      {
+        x: 0,
+        y: 0,
+        rotation: -2,
+        transformOrigin: 'top left',
+        duration: 1,
+        // delay: 3,
         onComplete: () => {
+          cycleTl.pause();
           //Scroll All Donors List
           gsap.to('.donor-list', {
             ease: 'none',
             yPercent: -100,
             y: 250,
-            duration: (i, element) => {
+            duration: (_, element) => {
               return element.offsetHeight / 150;
             },
             onComplete: () => {
-              promoCardTL.play(0);
+              cycleTl.play();
             },
           });
         },
@@ -97,37 +103,53 @@
       '<'
     );
 
-    // Show Promotion card
-    promoCardTL.to('.promotion-card', {
-      x: 0,
-      y: 0,
-      rotation: 0,
-      transformOrigin: 'top left',
-      delay: 3,
-      duration: 1,
-    });
-    promoCardTL.to(
+    cycleTl.to(
       '.all-donors-list',
-      { x: 400, y: 50, rotation: 0, transformOrigin: 'top left' },
-      '<'
-    );
-    promoCardTL.to(
-      '.latest-donations-list',
-      { x: 400, y: 50, rotation: 0, transformOrigin: 'top left' },
-      '<'
-    );
-    // reset donor list
-    promoCardTL.to(
-      '.donor-list',
       {
-        y: 0,
-        duration: 0,
-        yPercent: 0,
-        onComplete: () => {
-          donationListTL.play(0);
-        },
+        x: 400,
+        y: 50,
+        rotation: 0,
+        transformOrigin: 'top left',
+        duration: 1,
       },
-      '+=1'
+      '+=5'
+    );
+
+    cycleTl.to(
+      '.promotion-card',
+      {
+        x: 0,
+        y: 0,
+        rotation: -2,
+        transformOrigin: 'top left',
+        duration: 1,
+        // delay: 3,
+      },
+      '<'
+    );
+
+    cycleTl.to(
+      '.promotion-card',
+      {
+        x: 400,
+        y: 50,
+        rotation: 0,
+        transformOrigin: 'top left',
+        duration: 1,
+      },
+      '+=5'
+    );
+
+    cycleTl.to(
+      '.latest-donations-list',
+      {
+        x: 0,
+        y: 0,
+        rotation: -2,
+        transformOrigin: 'top left',
+        duration: 1,
+      },
+      '<'
     );
   });
 </script>
