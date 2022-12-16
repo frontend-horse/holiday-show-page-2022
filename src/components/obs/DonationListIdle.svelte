@@ -84,6 +84,21 @@
         transformOrigin: 'top left',
         duration: 1,
         // delay: 3,
+        onComplete: () => {
+          cycleTl.pause();
+          //Scroll All Donors List
+          gsap.to('.donor-list', {
+            ease: 'none',
+            yPercent: -100,
+            y: 250,
+            duration: (_, element) => {
+              return element.offsetHeight / 150;
+            },
+            onComplete: () => {
+              cycleTl.play();
+            },
+          });
+        },
       },
       '<'
     );
