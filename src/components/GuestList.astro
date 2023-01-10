@@ -21,8 +21,8 @@ const bodyHTML = prismicH.asHTML(slice.primary.body);
 
   <div>
     <Fragment set:html="bodyHTML" />
-    <GuestSchedule guests={allGuests} />
-    <!-- <div class="guest-grid">
+    <!-- <GuestSchedule guests={allGuests} /> -->
+    <div class="guest-grid">
       {
         allGuests
           .sort((a, b) =>
@@ -38,7 +38,7 @@ const bodyHTML = prismicH.asHTML(slice.primary.body);
             </article>
           ))
       }
-    </div> -->
+    </div>
   </div>
 </section>
 
