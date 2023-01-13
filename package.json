@@ -16,14 +16,14 @@
   },
   "dependencies": {
     "@acab/reset.css": "^0.5.3",
-    "@astrojs/image": "^0.12.0",
+    "@astrojs/image": "^0.12.1",
     "@astrojs/partytown": "^1.0.2",
     "@astrojs/prefetch": "^0.1.1",
     "@astrojs/sitemap": "^1.0.0",
     "@astrojs/svelte": "^1.0.2",
-    "@notionhq/client": "^2.2.2",
-    "@prismicio/client": "^6.7.1",
-    "@prismicio/helpers": "^2.3.6",
+    "@notionhq/client": "^2.2.3",
+    "@prismicio/client": "^6.7.3",
+    "@prismicio/helpers": "^2.3.8",
     "@xstate/svelte": "^2.0.1",
     "astro": "^1.6.12",
     "astro-icon": "^0.8.0",
@@ -39,11 +39,11 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^7.6.0",
-    "@prismicio/types": "^0.2.4",
+    "@prismicio/types": "^0.2.7",
     "netlify-cli": "^12.2.8",
     "prismic-ts-codegen": "^0.1.5",
     "schema-dts": "^1.1.0",
-    "slice-machine-ui": "^0.5.2",
+    "slice-machine-ui": "^0.6.0",
     "svgo": "^2.8.0"
   },
   "prettier": {
